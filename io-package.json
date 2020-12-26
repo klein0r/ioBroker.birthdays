@@ -1,0 +1,77 @@
+{
+    "common": {
+        "name": "birthdays",
+        "version": "0.0.1",
+        "news": {
+            "0.0.1": {
+                "en": "initial release",
+                "de": "Erstveröffentlichung",
+                "ru": "Начальная версия",
+                "pt": "lançamento inicial",
+                "nl": "Eerste uitgave",
+                "fr": "Première version",
+                "it": "Versione iniziale",
+                "es": "Versión inicial",
+                "pl": "Pierwsze wydanie",
+                "zh-cn": "首次出版"
+            }
+        },
+        "title": "birthdays",
+        "titleLang": {
+            "en": "birthdays",
+            "de": "Geburtstage",
+            "ru": "дни рождения",
+            "pt": "aniversários",
+            "nl": "verjaardagen",
+            "fr": "anniversaires",
+            "it": "compleanni",
+            "es": "cumpleaños",
+            "pl": "urodziny",
+            "zh-cn": "生日"
+        },
+        "desc": {
+            "en": "Use an ical file to import your contacts birthdays",
+            "de": "Verwenden Sie eine ical-Datei, um die Geburtstage Ihrer Kontakte zu importieren",
+            "ru": "Используйте файл ical для импорта дней рождения контактов",
+            "pt": "Use um arquivo ical para importar os aniversários de seus contatos",
+            "nl": "Gebruik een ical-bestand om de verjaardagen van uw contacten te importeren",
+            "fr": "Utilisez un fichier ical pour importer les anniversaires de vos contacts",
+            "it": "Usa un file ical per importare i compleanni dei tuoi contatti",
+            "es": "Utilice un archivo ical para importar los cumpleaños de sus contactos",
+            "pl": "Użyj pliku ical, aby zaimportować urodziny kontaktów",
+            "zh-cn": "使用ical文件导入您的联系人生日"
+        },
+        "authors": [
+            "klein0r <info@haus-automatisierung.com>"
+        ],
+        "keywords": [
+            "calendar",
+            "birthday"
+        ],
+        "license": "MIT",
+        "platform": "Javascript/Node.js",
+        "main": "main.js",
+        "icon": "birthdays.png",
+        "enabled": true,
+        "extIcon": "https://raw.githubusercontent.com/klein0r/ioBroker.birthdays/master/admin/birthdays.png",
+        "readme": "https://github.com/klein0r/ioBroker.birthdays/blob/master/README.md",
+        "loglevel": "info",
+        "mode": "daemon",
+        "type": "date-and-time",
+        "compact": true,
+        "connectionType": "cloud",
+        "dataSource": "poll",
+        "materialize": true,
+        "dependencies": [
+            {
+                "js-controller": ">=2.0.0"
+            }
+        ]
+    },
+    "native": {
+        "option1": true,
+        "option2": "42"
+    },
+    "objects": [],
+    "instanceObjects": []
+}
