@@ -42,7 +42,7 @@
             "zh-cn": "使用ical文件导入您的联系人生日"
         },
         "authors": [
-            "klein0r <info@haus-automatisierung.com>"
+            "Matthias Kleine <info@haus-automatisierung.com>"
         ],
         "keywords": [
             "calendar",
@@ -56,7 +56,9 @@
         "extIcon": "https://raw.githubusercontent.com/klein0r/ioBroker.birthdays/master/admin/birthdays.png",
         "readme": "https://github.com/klein0r/ioBroker.birthdays/blob/master/README.md",
         "loglevel": "info",
-        "mode": "daemon",
+        "mode": "schedule",
+        "allowInit": true,
+        "schedule": "0 0 * * *",
         "type": "date-and-time",
         "compact": true,
         "connectionType": "cloud",
@@ -69,8 +71,7 @@
         ]
     },
     "native": {
-        "option1": true,
-        "option2": "42"
+        "icalUrl": ""
     },
     "objects": [],
     "instanceObjects": []
