@@ -2,6 +2,7 @@
 
 const utils = require('@iobroker/adapter-core');
 const ical = require('node-ical');
+const moment = require('moment');
 const axios = require('axios');
 const adapterName = require('./package.json').name.split('.').pop();
 
@@ -38,7 +39,7 @@ class Birthdays extends utils.Adapter {
             timeout: 4500
         }).then(
             function (response) {
-                this.log.debug('ical http request (' + response.status + '): ' + JSON.stringify(response.data));
+                this.log.debug('ical http request (' + response.status + ')');
                 this.refreshBirthdays(response.data);
             }.bind(this)
         ).catch(
@@ -51,8 +52,53 @@ class Birthdays extends utils.Adapter {
     refreshBirthdays(data) {
         this.log.debug('ical data: ' + data);
 
-        // Stop Adapter
-        this.stop.bind(this)
+        const now = moment({hour: 0, minute: 0});
+        const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        const birthdays = [];
+
+        ical.async.parseICS(
+            data,
+            (err, data) => {
+                if (data) {
+                    for (const e in data) {
+                        const event = data[e];
+
+                        if (event.summary !== undefined && !isNaN(event.description) && event.type === 'VEVENT' && event.start && event.start instanceof Date) {
+                            const name = event.summary;
+                            const day = event.start.getDate();
+                            const month = event.start.getMonth(); // month as a number (0-11)
+                            const birthYear = parseInt(event.description);
+
+                            this.log.debug('found birthday: ' + name + ' (' + birthYear + ')');
+
+                            let birthday = moment([birthYear, month, day]);
+                            let nextBirthday = moment([now.year(), month, day]);
+
+                            if (now.isAfter(nextBirthday) && !now.isSame(nextBirthday)) {
+                                nextBirthday.add(1, 'y');
+                            }
+
+                            birthdays.push(
+                                {
+                                    name: name,
+                                    birthYear: birthYear,
+                                    age: nextBirthday.diff(birthday, 'years'),
+                                    daysLeft: nextBirthday.diff(now, 'days')
+                                }
+                            );
+                        }
+                    }
+
+                    // Sort by daysLeft
+                    birthdays.sort((a, b) => (a.daysLeft > b.daysLeft) ? 1 : -1);
+
+                    this.log.debug('birthdays: ' + JSON.stringify(birthdays));
+                }
+
+                // Stop Adapter
+                this.stop.bind(this);
+            }
+        );
     }
 
     onUnload(callback) {
