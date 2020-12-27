@@ -15,6 +15,7 @@ class Birthdays extends utils.Adapter {
         });
 
         this.killTimeout = null;
+        this.birthdays = [];
 
         this.on('ready', this.onReady.bind(this));
         this.on('unload', this.onUnload.bind(this));
@@ -53,8 +54,6 @@ class Birthdays extends utils.Adapter {
         this.log.debug('ical data: ' + data);
 
         const now = moment({hour: 0, minute: 0});
-        const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-        const birthdays = [];
 
         ical.async.parseICS(
             data,
@@ -74,14 +73,16 @@ class Birthdays extends utils.Adapter {
                             let birthday = moment([birthYear, month, day]);
                             let nextBirthday = moment([now.year(), month, day]);
 
+                            // If birthday was already this year, add one year to the nextBirthday
                             if (now.isAfter(nextBirthday) && !now.isSame(nextBirthday)) {
                                 nextBirthday.add(1, 'y');
                             }
 
-                            birthdays.push(
+                            this.birthdays.push(
                                 {
                                     name: name,
                                     birthYear: birthYear,
+                                    dateFormat: nextBirthday.format('DD.MM.'),
                                     age: nextBirthday.diff(birthday, 'years'),
                                     daysLeft: nextBirthday.diff(now, 'days')
                                 }
@@ -90,9 +91,15 @@ class Birthdays extends utils.Adapter {
                     }
 
                     // Sort by daysLeft
-                    birthdays.sort((a, b) => (a.daysLeft > b.daysLeft) ? 1 : -1);
+                    this.birthdays.sort((a, b) => (a.daysLeft > b.daysLeft) ? 1 : -1);
 
-                    this.log.debug('birthdays: ' + JSON.stringify(birthdays));
+                    this.setState('summary.json', {val: JSON.stringify(this.birthdays), ack: true});
+
+                    for (const b in this.birthdays) {
+                        const birthday = this.birthdays[b];
+                    }
+
+                    this.log.debug('birthdays: ' + JSON.stringify(this.birthdays));
                 }
 
                 // Stop Adapter

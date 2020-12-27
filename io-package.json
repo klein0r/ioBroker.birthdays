@@ -74,5 +74,34 @@
         "icalUrl": ""
     },
     "objects": [],
-    "instanceObjects": []
+    "instanceObjects": [
+        {
+          "_id":  "next",
+          "type": "channel",
+          "common": {
+            "name": "Next birthday(s)"
+          },
+          "native": {}
+        },
+        {
+          "_id":  "summary",
+          "type": "channel",
+          "common": {
+            "name": "Birthday summary"
+          },
+          "native": {}
+        },
+        {
+            "_id": "summary.json",
+            "type": "state",
+            "common": {
+                "name": "JSON string for tables",
+                "type": "string",
+                "role": "value",
+                "read": true,
+                "write": false
+            },
+            "native": {}
+        }
+    ]
 }
