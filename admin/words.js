@@ -14,28 +14,88 @@ systemDictionary = {
         'pl': 'Ustawienia adaptera dla birthdays',
         'zh-cn': 'birthdays的适配器设置'
     },
-    'option1': {
-        'en': 'option1',
-        'de': 'Option 1',
-        'ru': 'Опция 1',
-        'pt': 'Opção 1',
-        'nl': 'Optie 1',
-        'fr': 'Option 1',
-        'it': 'opzione 1',
-        'es': 'Opción 1',
-        'pl': 'opcja 1',
-        'zh-cn': '选项1'
+    "main settings": {
+        "en": "main settings",
+        "de": "Haupteinstellungen",
+        "ru": "Основные настройки",
+        "pt": "configurações principais",
+        "nl": "belangrijkste instellingen",
+        "fr": "Réglages principaux",
+        "it": "impostazioni principali",
+        "es": "ajustes principales",
+        "pl": "Ustawienia główne",
+        "zh-cn": "主要设定"
     },
-    'option2': {
-        'en': 'option2',
-        'de': 'Option 2',
-        'ru': 'option2',
-        'pt': 'opção 2',
-        'nl': 'Optie 2',
-        'fr': 'Option 2',
-        'it': 'opzione 2',
-        'es': 'opcion 2',
-        'pl': 'Opcja 2',
-        'zh-cn': '选项2'
+    "birthdays": {
+        "en": "birthdays",
+        "de": "Geburtstage",
+        "ru": "дни рождения",
+        "pt": "aniversários",
+        "nl": "verjaardagen",
+        "fr": "anniversaires",
+        "it": "compleanni",
+        "es": "cumpleaños",
+        "pl": "urodziny",
+        "zh-cn": "生日"
+    },
+    "icalUrl": {
+        "en": "iCal Url",
+        "de": "iCal Url",
+        "ru": "iCal Url",
+        "pt": "Url iCal",
+        "nl": "iCal-URL",
+        "fr": "URL iCal",
+        "it": "iCal Url",
+        "es": "URL de iCal",
+        "pl": "iCal Url",
+        "zh-cn": "iCal网址"
+    },
+    "name": {
+        "en": "name",
+        "de": "Name",
+        "ru": "имя",
+        "pt": "nome",
+        "nl": "naam",
+        "fr": "Nom",
+        "it": "nome",
+        "es": "nombre",
+        "pl": "Nazwa",
+        "zh-cn": "名称"
+    },
+    "day": {
+        "en": "day",
+        "de": "Tag",
+        "ru": "день",
+        "pt": "dia",
+        "nl": "dag",
+        "fr": "journée",
+        "it": "giorno",
+        "es": "día",
+        "pl": "dzień",
+        "zh-cn": "天"
+    },
+    "month": {
+        "en": "month",
+        "de": "Monat",
+        "ru": "месяц",
+        "pt": "mês",
+        "nl": "maand",
+        "fr": "mois",
+        "it": "mese",
+        "es": "mes",
+        "pl": "miesiąc",
+        "zh-cn": "月"
+    },
+    "year": {
+        "en": "year",
+        "de": "Jahr",
+        "ru": "год",
+        "pt": "ano",
+        "nl": "jaar",
+        "fr": "an",
+        "it": "anno",
+        "es": "año",
+        "pl": "rok",
+        "zh-cn": "年"
     }
 };
