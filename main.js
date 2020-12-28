@@ -70,6 +70,7 @@ class Birthdays extends utils.Adapter {
         ).catch(
             function (error) {
                 this.log.warn(error);
+                this.fillStates();
             }.bind(this)
         );
     }
@@ -127,6 +128,8 @@ class Birthdays extends utils.Adapter {
         this.birthdays.sort((a, b) => (a.daysLeft > b.daysLeft) ? 1 : -1);
 
         this.setState('summary.json', {val: JSON.stringify(this.birthdays), ack: true});
+
+
 
         this.log.debug('birthdays: ' + JSON.stringify(this.birthdays));
 

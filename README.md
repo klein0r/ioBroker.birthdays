@@ -14,13 +14,29 @@
 
 ## birthdays adapter for ioBroker
 
-Use an ical file to import your contacts birthdays
+Use an ical file to import your contacts birthdays or define the birthday dates directly in the adapter settings
+
+## Configuration
+
+You can use an ical url to provide access to your birthday calendar. The adapter will search for all events within that file.
+
+Your events
+
+1. must contain the birth year in the description (e.g. 1987)
+2. are full day events
+3. have to be "repeated yearly"
+
+It is NOT required to use the ical option. You can also define all your birthday dates in the settings. When you use both options, the information will be merged.
 
 ## Changelog
 
 ### 0.0.1
 
 * (klein0r) initial release
+
+## Credits
+
+[Logo by herbanu](https://pixabay.com/de/vectors/geburtstag-karte-cele-feier-design-3148707/)
 
 ## License
 
