@@ -15,6 +15,7 @@ class Birthdays extends utils.Adapter {
         });
 
         this.killTimeout = null;
+        this.today = moment({hour: 0, minute: 0});
         this.birthdays = [];
 
         this.on('ready', this.onReady.bind(this));
@@ -22,16 +23,39 @@ class Birthdays extends utils.Adapter {
     }
 
     async onReady() {
-        const iCalUrl = this.config.icalUrl;
-
         this.killTimeout = setTimeout(this.stop.bind(this), 30000);
 
+        this.addBySettings();
+
+        const iCalUrl = this.config.icalUrl;
         if (iCalUrl) {
-            this.getCalendar(iCalUrl);
+            this.addByCalendar(iCalUrl);
+        } else {
+            this.fillStates();
         }
     }
 
-    getCalendar(iCalUrl) {
+    addBySettings() {
+        const birthdays = this.config.birthdays;
+        
+        if (birthdays && Array.isArray(birthdays)) {
+            for (const b in birthdays) {
+                const birthday = birthdays[b];
+
+                const configBirthday = moment({ year: birthday.year, month: birthday.month - 1, day: birthday.day });
+
+                if (configBirthday.isValid()) {
+                    this.log.debug('found birthday in settings: ' + birthday.name + ' (' + birthday.year + ')');
+
+                    this.addBirthday(birthday.name, configBirthday.date(), configBirthday.month(), configBirthday.year());
+                } else {
+                    this.log.warn('invalid birthday date in settings: ' + birthday.name);
+                }
+            }
+        }
+    }
+
+    addByCalendar(iCalUrl) {
         this.log.debug('ical url: ' + iCalUrl);
 
         axios({
@@ -41,7 +65,7 @@ class Birthdays extends utils.Adapter {
         }).then(
             function (response) {
                 this.log.debug('ical http request (' + response.status + ')');
-                this.refreshBirthdays(response.data);
+                this.addCalendarBirthdays(response.data);
             }.bind(this)
         ).catch(
             function (error) {
@@ -50,11 +74,7 @@ class Birthdays extends utils.Adapter {
         );
     }
 
-    refreshBirthdays(data) {
-        this.log.debug('ical data: ' + data);
-
-        const now = moment({hour: 0, minute: 0});
-
+    addCalendarBirthdays(data) {
         ical.async.parseICS(
             data,
             (err, data) => {
@@ -68,44 +88,50 @@ class Birthdays extends utils.Adapter {
                             const month = event.start.getMonth(); // month as a number (0-11)
                             const birthYear = parseInt(event.description);
 
-                            this.log.debug('found birthday: ' + name + ' (' + birthYear + ')');
+                            this.log.debug('found birthday in calendar: ' + name + ' (' + birthYear + ')');
 
-                            let birthday = moment([birthYear, month, day]);
-                            let nextBirthday = moment([now.year(), month, day]);
-
-                            // If birthday was already this year, add one year to the nextBirthday
-                            if (now.isAfter(nextBirthday) && !now.isSame(nextBirthday)) {
-                                nextBirthday.add(1, 'y');
-                            }
-
-                            this.birthdays.push(
-                                {
-                                    name: name,
-                                    birthYear: birthYear,
-                                    dateFormat: nextBirthday.format('DD.MM.'),
-                                    age: nextBirthday.diff(birthday, 'years'),
-                                    daysLeft: nextBirthday.diff(now, 'days')
-                                }
-                            );
+                            this.addBirthday(name, day, month, birthYear);
                         }
                     }
 
-                    // Sort by daysLeft
-                    this.birthdays.sort((a, b) => (a.daysLeft > b.daysLeft) ? 1 : -1);
-
-                    this.setState('summary.json', {val: JSON.stringify(this.birthdays), ack: true});
-
-                    for (const b in this.birthdays) {
-                        const birthday = this.birthdays[b];
-                    }
-
-                    this.log.debug('birthdays: ' + JSON.stringify(this.birthdays));
+                    this.fillStates();
                 }
-
-                // Stop Adapter
-                this.stop.bind(this);
             }
         );
+    }
+
+    addBirthday(name, day, month, birthYear) {
+
+        let birthday = moment([birthYear, month, day]);
+        let nextBirthday = moment([this.today.year(), month, day]);
+
+        // If birthday was already this year, add one year to the nextBirthday
+        if (this.today.isAfter(nextBirthday) && !this.today.isSame(nextBirthday)) {
+            nextBirthday.add(1, 'y');
+        }
+
+        this.birthdays.push(
+            {
+                name: name,
+                birthYear: birthYear,
+                dateFormat: nextBirthday.format('DD.MM.'),
+                age: nextBirthday.diff(birthday, 'years'),
+                daysLeft: nextBirthday.diff(this.today, 'days')
+            }
+        );
+    }
+
+    fillStates() {
+
+        // Sort by daysLeft
+        this.birthdays.sort((a, b) => (a.daysLeft > b.daysLeft) ? 1 : -1);
+
+        this.setState('summary.json', {val: JSON.stringify(this.birthdays), ack: true});
+
+        this.log.debug('birthdays: ' + JSON.stringify(this.birthdays));
+
+        // Stop Adapter
+        this.stop.bind(this);
     }
 
     onUnload(callback) {

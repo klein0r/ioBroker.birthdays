@@ -37,7 +37,9 @@
                 }
             });
             onChange(false);
-            // reinitialize all the Materialize labels on the page if you are dynamically adding inputs:
+
+            values2table('birthdays', settings.birthdays || [], onChange);
+
             if (M) M.updateTextFields();
         }
 
@@ -55,28 +57,59 @@
                     obj[$this.attr('id')] = $this.val();
                 }
             });
+
+            obj.birthdays = table2values('birthdays');
+
             callback(obj);
         }
     </script>
 </head>
 <body>
     <div class="m adapter-container">
-        <div class="row">
-            <div class="col s12 m4 l2">
-                <img src="birthdays.png" class="logo">
+        <div class="col s12">
+            <ul class="tabs">
+                <li class="tab col s2"><a href="#tab-main" class="translate active">main settings</a></li>
+                <li class="tab col s2"><a href="#tab-birthdays" class="translate">birthdays</a></li>
+            </ul>
+        </div>
+        <div id="tab-main" class="col s12 page">
+            <div class="row">
+                <div class="col s12 m4 l2">
+                    <img src="birthdays.png" class="logo">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s6 input-field">
+                    <input type="text" class="value" id="icalUrl" />
+                    <label for="icalUrl" class="translate">iCal Url</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <a target="_blank" href="https://haus-automatisierung.com/iobroker-kurs/?refid=iobroker-birthdays">
+                        <img class="ad" src="https://haus-automatisierung.com/images/ads/ioBroker-Kurs.png">
+                    </a>
+                </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col s12 input-field">
-                <input type="text" class="value" id="icalUrl" />
-                <label for="icalUrl" class="translate">iCal Url</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s6">
-                <a target="_blank" href="https://haus-automatisierung.com/iobroker-kurs/?refid=iobroker-birthdays">
-                    <img class="ad" src="https://haus-automatisierung.com/images/ads/ioBroker-Kurs.png">
-                </a>
+        <div id="tab-birthdays" class="col s12 page">
+            <div class="row">
+                <div class="col s12" id="birthdays">
+                    <a class="btn-floating waves-effect waves-light blue table-button-add"><i class="material-icons">add</i></a>
+                    <div class="table-values-div">
+                        <table class="table-values">
+                            <thead>
+                                <tr>
+                                    <th data-name="name" style="width: 45%" class="translate">name</th>
+                                    <th data-name="day" style="width: 15%" class="translate">day</th>
+                                    <th data-name="month" style="width: 15%" class="translate">month</th>
+                                    <th data-name="year" style="width: 15%" class="translate">year</th>
+                                    <th data-buttons="delete" style="width: 10%"></th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
