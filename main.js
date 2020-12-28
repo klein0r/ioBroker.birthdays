@@ -129,7 +129,9 @@ class Birthdays extends utils.Adapter {
 
         this.setState('summary.json', {val: JSON.stringify(this.birthdays), ack: true});
 
-
+        for (const b in this.birthdays) {
+            const birthday = this.birthdays[b];
+        }
 
         this.log.debug('birthdays: ' + JSON.stringify(this.birthdays));
 
