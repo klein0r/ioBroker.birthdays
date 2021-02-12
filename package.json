@@ -9,6 +9,9 @@
   "homepage": "https://github.com/klein0r/ioBroker.birthdays",
   "license": "MIT",
   "keywords": [
+    "ioBroker",
+    "Smart Home",
+    "home automation",
     "calendar",
     "birthday"
   ],
