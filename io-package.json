@@ -8,9 +8,9 @@
                 "de": "Erstveröffentlichung"
             }
         },
-        "title": "birthdays",
+        "title": "Birthdays",
         "titleLang": {
-            "en": "birthdays",
+            "en": "Birthdays",
             "de": "Geburtstage"
         },
         "desc": {
@@ -28,8 +28,8 @@
         "platform": "Javascript/Node.js",
         "main": "main.js",
         "icon": "birthdays.png",
-        "enabled": true,
         "extIcon": "https://raw.githubusercontent.com/klein0r/ioBroker.birthdays/master/admin/birthdays.png",
+        "enabled": true,
         "readme": "https://github.com/klein0r/ioBroker.birthdays/blob/master/README.md",
         "loglevel": "info",
         "mode": "schedule",
