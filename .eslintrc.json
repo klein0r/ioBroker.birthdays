@@ -1,14 +1,10 @@
 {
-    "root": true,
     "env": {
         "es6": true,
         "node": true,
         "mocha": true
     },
-    "extends": [
-        "eslint:recommended"
-    ],
-    "plugins": [],
+    "extends": "eslint:recommended",
     "rules": {
         "indent": [
             "error",
@@ -19,8 +15,8 @@
         ],
         "no-console": "off",
         "no-var": "error",
-        "no-trailing-spaces": "error",
         "prefer-const": "error",
+        "no-trailing-spaces": "error",
         "quotes": [
             "error",
             "single",
