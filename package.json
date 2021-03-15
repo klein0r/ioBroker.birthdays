@@ -19,6 +19,9 @@
     "type": "git",
     "url": "git@github.com:klein0r/ioBroker.birthdays.git"
   },
+  "engines": {
+    "node": ">=12.0.0"
+  },
   "dependencies": {
     "@iobroker/adapter-core": "^2.4.0",
     "axios": "^0.21.0",
