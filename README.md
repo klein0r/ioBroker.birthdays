@@ -190,9 +190,6 @@ It is NOT required to use the ical option. You can also define all birthday date
       </block>
     </statement>
   </block>
-  <block type="text" id="0yKccuq[$.AK1XrM%If%" x="426" y="444">
-    <field name="TEXT">Geburtstags-Kalender</field>
-  </block>
 </xml>
 ```
 
