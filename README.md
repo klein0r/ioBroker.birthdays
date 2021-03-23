@@ -26,9 +26,13 @@ Your events
 2. are full day events
 3. have to be "repeated yearly"
 
-It is NOT required to use the ical option. You can also define all your birthday dates in the settings. When you use both options, the information will be merged.
+It is NOT required to use the ical option. You can also define all birthday dates in the settings. *When you use both options, the information will be merged.*
 
 ## Changelog
+
+### 0.0.3
+
+* (klein0r) Added next and nextAfter birthdays
 
 ### 0.0.2
 

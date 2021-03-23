@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "birthdays",
-        "version": "0.0.2",
+        "version": "0.0.3",
         "news": {
+            "0.0.3": {
+                "en": "Added next and nextAfter birthdays",
+                "de": "Nächste und übernächste Geburtstage errechnet"
+            },
             "0.0.2": {
                 "en": "Added more objects and states",
                 "de": "Mehr Objekte und States zur Verfügung gestellt"
@@ -101,6 +105,18 @@
           "native": {}
         },
         {
+            "_id": "next.json",
+            "type": "state",
+            "common": {
+                "name": "JSON string for tables",
+                "type": "string",
+                "role": "value",
+                "read": true,
+                "write": false
+            },
+            "native": {}
+        },
+        {
             "_id": "next.text",
             "type": "state",
             "common": {
@@ -114,6 +130,50 @@
         },
         {
             "_id": "next.daysLeft",
+            "type": "state",
+            "common": {
+                "name": "Next days left",
+                "type": "number",
+                "role": "value",
+                "read": true,
+                "write": false
+            },
+            "native": {}
+        },
+        {
+          "_id":  "nextAfter",
+          "type": "channel",
+          "common": {
+            "name": "Next birthday(s)"
+          },
+          "native": {}
+        },
+        {
+            "_id": "nextAfter.json",
+            "type": "state",
+            "common": {
+                "name": "JSON string for tables",
+                "type": "string",
+                "role": "value",
+                "read": true,
+                "write": false
+            },
+            "native": {}
+        },
+        {
+            "_id": "nextAfter.text",
+            "type": "state",
+            "common": {
+                "name": "Next birthdays",
+                "type": "string",
+                "role": "value",
+                "read": true,
+                "write": false
+            },
+            "native": {}
+        },
+        {
+            "_id": "nextAfter.daysLeft",
             "type": "state",
             "common": {
                 "name": "Next days left",

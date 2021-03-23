@@ -31,7 +31,7 @@ class Birthdays extends utils.Adapter {
             await this.setObjectNotExistsAsync(this.getMonthPath(m), {
                 type: 'channel',
                 common: {
-                    name: mm.format("MMMM")
+                    name: mm.format('MMMM')
                 },
                 native: {}
             });
@@ -52,7 +52,7 @@ class Birthdays extends utils.Adapter {
 
     addBySettings() {
         const birthdays = this.config.birthdays;
-        
+
         if (birthdays && Array.isArray(birthdays)) {
             for (const b in birthdays) {
                 const birthday = birthdays[b];
@@ -122,8 +122,8 @@ class Birthdays extends utils.Adapter {
 
     addBirthday(name, day, month, birthYear) {
 
-        let birthday = moment([birthYear, month, day]);
-        let nextBirthday = moment([this.today.year(), month, day]);
+        const birthday = moment([birthYear, month, day]);
+        const nextBirthday = moment([this.today.year(), month, day]);
 
         // If birthday was already this year, add one year to the nextBirthday
         if (this.today.isAfter(nextBirthday) && !this.today.isSame(nextBirthday)) {
@@ -152,7 +152,7 @@ class Birthdays extends utils.Adapter {
 
         const keepBirthdays = [];
         const allBirhtdays = (await this.getChannelsOfAsync('month'))
-            .map(obj => { return this.removeNamespace(obj._id) })
+            .map(obj => { return this.removeNamespace(obj._id); })
             .filter(id => new RegExp('month\.[0-9]{2}\..+', 'g').test(id));
 
         for (const b in this.birthdays) {
@@ -184,17 +184,37 @@ class Birthdays extends utils.Adapter {
         // next birthdays
         if (this.birthdays.length > 0) {
             const nextBirthdayDaysLeft = this.birthdays[0].daysLeft;
-            const nextBirthdays = this.birthdays
-                .filter(birthday => birthday.daysLeft == nextBirthdayDaysLeft) // get all birthdays with same days left
-                .map(birthday => {
-                    return this.config.nextTextTemplate
-                        .replace('%n', birthday.name)
-                        .replace('%a', birthday.age);
-                });
 
-            await this.setStateAsync('next.daysLeft', {val: nextBirthdayDaysLeft, ack: true});
-            await this.setStateAsync('next.text', {val: nextBirthdays.join(', '), ack: true});
+            await this.fillAfter('next', nextBirthdayDaysLeft);
+
+            const nextAfterBirthdaysList = this.birthdays.filter(birthday => birthday.daysLeft > nextBirthdayDaysLeft);
+            if (nextAfterBirthdaysList.length > 0) {
+                const nextAfterBirthdaysLeft = nextAfterBirthdaysList[0].daysLeft;
+
+                await this.fillAfter('nextAfter', nextAfterBirthdaysLeft);
+            }
         }
+
+    }
+
+    async fillAfter(path, daysLeft) {
+
+        this.log.debug('filling ' + path + ' with ' + daysLeft + ' days left');
+
+        const nextBirthdays = this.birthdays
+            .filter(birthday => birthday.daysLeft == daysLeft); // get all birthdays with same days left
+
+        const nextBirthdaysText = nextBirthdays.map(
+            birthday => {
+                return this.config.nextTextTemplate
+                    .replace('%n', birthday.name)
+                    .replace('%a', birthday.age);
+            }
+        );
+
+        await this.setStateAsync(path + '.json', {val: JSON.stringify(nextBirthdays), ack: true});
+        await this.setStateAsync(path + '.daysLeft', {val: daysLeft, ack: true});
+        await this.setStateAsync(path + '.text', {val: nextBirthdaysText.join(', '), ack: true});
 
     }
 
