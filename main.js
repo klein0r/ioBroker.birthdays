@@ -146,12 +146,19 @@ class Birthdays extends utils.Adapter {
         this.log.debug('birthdays: ' + JSON.stringify(this.birthdays));
         this.setState('summary.json', {val: JSON.stringify(this.birthdays), ack: true});
 
+        const keepBirthdays = [];
+        const allBirhtdays = (await this.getChannelsOfAsync('month'))
+            .map(obj => { return this.removeNamespace(obj._id) })
+            .filter(id => new RegExp('month\.[0-9]{2}\..+', 'g').test(id));
+
         for (const b in this.birthdays) {
             const birthday = this.birthdays[b];
 
             const cleanName = this.cleanNamespace(birthday.name);
             const nextBirthday = birthday._nextBirthday;
             const monthPath = this.getMonthPath(nextBirthday.month() + 1) + '.' + cleanName;
+
+            keepBirthdays.push(monthPath);
 
             await this.setObjectNotExistsAsync(monthPath, {
                 type: 'channel',
@@ -227,6 +234,17 @@ class Birthdays extends utils.Adapter {
             await this.setStateAsync(monthPath + '.daysLeft', {val: birthday.daysLeft, ack: true});
         }
 
+        // Delete non existent birthdays
+        for (let i = 0; i < allBirhtdays.length; i++) {
+            const id = allBirhtdays[i];
+
+            if (keepBirthdays.indexOf(id) === -1) {
+                this.delObject(id, {recursive: true}, () => {
+                    this.log.debug('Birthday deleted: "' + id + '"');
+                });
+            }
+        }
+
         // next birthdays
         if (this.birthdays.length > 0) {
             const nextBirthdayDaysLeft = this.birthdays[0].daysLeft;
@@ -253,6 +271,11 @@ class Birthdays extends utils.Adapter {
             .replace(/_([a-z])/g, (m, w) => {
                 return w.toUpperCase();
             });
+    }
+
+    removeNamespace(id) {
+        const re = new RegExp(this.namespace + '*\.', 'g');
+        return id.replace(re, '');
     }
 
     onUnload(callback) {
