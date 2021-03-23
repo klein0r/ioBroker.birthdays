@@ -240,7 +240,7 @@ class Birthdays extends utils.Adapter {
 
             if (keepBirthdays.indexOf(id) === -1) {
                 this.delObject(id, {recursive: true}, () => {
-                    this.log.debug('Birthday deleted: "' + id + '"');
+                    this.log.debug('Birthday deleted: ' + id);
                 });
             }
         }
