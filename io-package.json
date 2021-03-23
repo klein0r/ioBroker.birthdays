@@ -164,7 +164,7 @@
             "_id": "nextAfter.text",
             "type": "state",
             "common": {
-                "name": "Next birthdays",
+                "name": "Next after birthdays",
                 "type": "string",
                 "role": "value",
                 "read": true,
@@ -176,7 +176,7 @@
             "_id": "nextAfter.daysLeft",
             "type": "state",
             "common": {
-                "name": "Next days left",
+                "name": "Next after days left",
                 "type": "number",
                 "role": "value",
                 "read": true,
