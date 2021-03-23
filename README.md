@@ -28,6 +28,174 @@ Your events
 
 It is NOT required to use the ical option. You can also define all birthday dates in the settings. *When you use both options, the information will be merged.*
 
+## Example (Blockly)
+
+(requires pushover)
+
+```xml
+<xml xmlns="https://developers.google.com/blockly/xml">
+  <block type="schedule" id="6#((PC;76=!e/P3^ZsKI" x="88" y="113">
+    <field name="SCHEDULE">0 7 * * *</field>
+    <statement name="STATEMENT">
+      <block type="controls_if" id="oZ%5t{r{bO3c{Xhl-|_a">
+        <mutation elseif="1"></mutation>
+        <value name="IF0">
+          <block type="logic_compare" id=",Ui1[S(n}f`O*5_zS=:K">
+            <field name="OP">EQ</field>
+            <value name="A">
+              <block type="get_value" id="L/Vh`N_zLwYK$+90B)l.">
+                <field name="ATTR">val</field>
+                <field name="OID">birthdays.0.next.daysLeft</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="math_number" id="W87L*`2V7yMC5j};TO0,">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="pushover" id="D7E4hKm%5=|Yi-b-)9(A">
+            <field name="INSTANCE"></field>
+            <field name="SOUND"></field>
+            <field name="PRIORITY">0</field>
+            <field name="LOG"></field>
+            <value name="MESSAGE">
+              <shadow type="text" id="prP3?f.yGgkkp))l]A07">
+                <field name="TEXT">text</field>
+              </shadow>
+              <block type="text_join" id="rQa(!TVIvOgf/Vnn,nWG">
+                <mutation items="2"></mutation>
+                <value name="ADD0">
+                  <block type="text" id="h770a|!zX%7)X[Vk.2,[">
+                    <field name="TEXT">Geburtstage heute: </field>
+                  </block>
+                </value>
+                <value name="ADD1">
+                  <block type="get_value" id="U2%GgLhMX(ra$S;y1/_K">
+                    <field name="ATTR">val</field>
+                    <field name="OID">birthdays.0.next.text</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <value name="TITLE">
+              <block type="text" id="T96y]A^n-1TV52cw%+Gk">
+                <field name="TEXT">Geburtstags-Kalender</field>
+              </block>
+            </value>
+            <next>
+              <block type="controls_if" id="$QQRR`a-vzSUU}88$?~`">
+                <value name="IF0">
+                  <block type="logic_compare" id="eg:?F}+ID`%G1LHM5PAZ">
+                    <field name="OP">EQ</field>
+                    <value name="A">
+                      <block type="get_value" id="Ato::k3GO0QfM_Fs.6s;">
+                        <field name="ATTR">val</field>
+                        <field name="OID">birthdays.0.nextAfter.daysLeft</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="n(N#~`eD{7Q,X!c=+/(V">
+                        <field name="NUM">1</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="pushover" id="wG+}P:l7Od9I1V-mHyU3">
+                    <field name="INSTANCE"></field>
+                    <field name="SOUND"></field>
+                    <field name="PRIORITY">0</field>
+                    <field name="LOG"></field>
+                    <value name="MESSAGE">
+                      <shadow type="text">
+                        <field name="TEXT">text</field>
+                      </shadow>
+                      <block type="text_join" id="*ne-l72dQ??5^6Dj2gV$">
+                        <mutation items="2"></mutation>
+                        <value name="ADD0">
+                          <block type="text" id="ba}815_R_35-Y~GG*}/R">
+                            <field name="TEXT">Geburtstage morgen: </field>
+                          </block>
+                        </value>
+                        <value name="ADD1">
+                          <block type="get_value" id="u?8B|PylEzphdFq{f]QK">
+                            <field name="ATTR">val</field>
+                            <field name="OID">birthdays.0.nextAfter.text</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <value name="TITLE">
+                      <block type="text" id="l-ng[ah4;}^HzUyoR1^.">
+                        <field name="TEXT">Geburtstags-Kalender</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <value name="IF1">
+          <block type="logic_compare" id="4E5@w,gT+=q(NaaGdT?U">
+            <field name="OP">EQ</field>
+            <value name="A">
+              <block type="get_value" id="~~U^$SjlNI3ns6I5Yz~O">
+                <field name="ATTR">val</field>
+                <field name="OID">birthdays.0.next.daysLeft</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="math_number" id="T{[v+psC[IzHkn.LkZP4">
+                <field name="NUM">1</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO1">
+          <block type="pushover" id="/EoP(1:9:8botzO.yz(3">
+            <field name="INSTANCE"></field>
+            <field name="SOUND"></field>
+            <field name="PRIORITY">0</field>
+            <field name="LOG"></field>
+            <value name="MESSAGE">
+              <shadow type="text">
+                <field name="TEXT">text</field>
+              </shadow>
+              <block type="text_join" id="!EFb@yB_*Hm!QU{gcA]I">
+                <mutation items="2"></mutation>
+                <value name="ADD0">
+                  <block type="text" id="{ofc`NkX8NjN`:`DEIH*">
+                    <field name="TEXT">Geburtstage morgen: </field>
+                  </block>
+                </value>
+                <value name="ADD1">
+                  <block type="get_value" id=",%aRO_hL*tODl=By@eru">
+                    <field name="ATTR">val</field>
+                    <field name="OID">birthdays.0.next.text</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <value name="TITLE">
+              <block type="text" id="l]Wlzi.kF(*1O`LQx4Qh">
+                <field name="TEXT">Geburtstags-Kalender</field>
+              </block>
+            </value>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type="text" id="0yKccuq[$.AK1XrM%If%" x="426" y="444">
+    <field name="TEXT">Geburtstags-Kalender</field>
+  </block>
+</xml>
+```
+
 ## Changelog
 
 ### 0.0.3
