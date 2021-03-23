@@ -50,6 +50,18 @@ systemDictionary = {
         "pl": "iCal Url",
         "zh-cn": "iCal网址"
     },
+    "text template (next)": {
+        "en": "text template (next)",
+        "de": "Textvorlage (nächste)",
+        "ru": "текстовый шаблон (следующий)",
+        "pt": "modelo de texto (próximo)",
+        "nl": "tekstsjabloon (volgende)",
+        "fr": "modèle de texte (suivant)",
+        "it": "modello di testo (successivo)",
+        "es": "plantilla de texto (siguiente)",
+        "pl": "szablon tekstowy (następny)",
+        "zh-cn": "文字范本（下一个）"
+    },
     "name": {
         "en": "name",
         "de": "Name",

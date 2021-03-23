@@ -51,7 +51,8 @@
         ]
     },
     "native": {
-        "icalUrl": ""
+        "icalUrl": "",
+        "nextTextTemplate": "%n turns %a"
     },
     "objects": [],
     "instanceObjects": [
@@ -98,6 +99,30 @@
             "name": "Next birthday(s)"
           },
           "native": {}
+        },
+        {
+            "_id": "next.text",
+            "type": "state",
+            "common": {
+                "name": "Next birthdays",
+                "type": "string",
+                "role": "value",
+                "read": true,
+                "write": false
+            },
+            "native": {}
+        },
+        {
+            "_id": "next.daysLeft",
+            "type": "state",
+            "common": {
+                "name": "Next days left",
+                "type": "number",
+                "role": "value",
+                "read": true,
+                "write": false
+            },
+            "native": {}
         }
     ]
 }

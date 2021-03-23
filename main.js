@@ -59,7 +59,7 @@ class Birthdays extends utils.Adapter {
 
                 const configBirthday = moment({ year: birthday.year, month: birthday.month - 1, day: birthday.day });
 
-                if (configBirthday.isValid()) {
+                if (configBirthday.isValid() && configBirthday.year() <= this.today.year()) {
                     this.log.debug('found birthday in settings: ' + birthday.name + ' (' + birthday.year + ')');
 
                     this.addBirthday(birthday.name, configBirthday.date(), configBirthday.month(), configBirthday.year());
@@ -104,9 +104,13 @@ class Birthdays extends utils.Adapter {
                             const month = event.start.getMonth(); // month as a number (0-11)
                             const birthYear = parseInt(event.description);
 
-                            this.log.debug('found birthday in calendar: ' + name + ' (' + birthYear + ')');
+                            if (!isNaN(birthYear) && birthYear <= this.today.year()) {
+                                this.log.debug('found birthday in calendar: ' + name + ' (' + birthYear + ')');
 
-                            this.addBirthday(name, day, month, birthYear);
+                                this.addBirthday(name, day, month, birthYear);
+                            } else {
+                                this.log.warn('invalid birthday date in calendar: ' + name);
+                            }
                         }
                     }
 
@@ -147,15 +151,9 @@ class Birthdays extends utils.Adapter {
         this.setState('summary.json', {val: JSON.stringify(this.birthdays), ack: true});
 
         const keepBirthdays = [];
-        const monthBirhtdays = (await this.getChannelsOfAsync('month'))
+        const allBirhtdays = (await this.getChannelsOfAsync('month'))
             .map(obj => { return this.removeNamespace(obj._id) })
             .filter(id => new RegExp('month\.[0-9]{2}\..+', 'g').test(id));
-
-        const nextBirhtdays = (await this.getChannelsOfAsync('next'))
-            .map(obj => { return this.removeNamespace(obj._id) })
-            .filter(id => new RegExp('next\..+', 'g').test(id));
-
-        const allBirhtdays = [].concat(monthBirhtdays, nextBirhtdays);
 
         for (const b in this.birthdays) {
             const birthday = this.birthdays[b];
@@ -165,26 +163,11 @@ class Birthdays extends utils.Adapter {
 
             keepBirthdays.push(monthPath);
 
-            await this.fillPathWithBirhtday(monthPath, birthday);
-        }
-
-        // next birthdays
-        if (this.birthdays.length > 0) {
-            const nextBirthdayDaysLeft = this.birthdays[0].daysLeft;
-            const nextBirthdays = this.birthdays.filter(birthday => birthday.daysLeft == nextBirthdayDaysLeft); // get all birthdays with same days left
-
-            this.log.debug('next birthday(s): ' + JSON.stringify(nextBirthdays));
-
-            for (const b in nextBirthdays) {
-                const birthday = this.birthdays[b];
-
-                const cleanName = this.cleanNamespace(birthday.name);
-                const nextPath = 'next.' + cleanName;
-
-                keepBirthdays.push(nextPath);
-
-                await this.fillPathWithBirhtday(nextPath, birthday);
+            if (allBirhtdays.indexOf(monthPath) === -1) {
+                this.log.debug('birthday added: ' + monthPath);
             }
+
+            await this.fillPathWithBirhtday(monthPath, birthday);
         }
 
         // Delete non existent birthdays
@@ -193,9 +176,24 @@ class Birthdays extends utils.Adapter {
 
             if (keepBirthdays.indexOf(id) === -1) {
                 this.delObject(id, {recursive: true}, () => {
-                    this.log.debug('Birthday deleted: ' + id);
+                    this.log.debug('birthday deleted: ' + id);
                 });
             }
+        }
+
+        // next birthdays
+        if (this.birthdays.length > 0) {
+            const nextBirthdayDaysLeft = this.birthdays[0].daysLeft;
+            const nextBirthdays = this.birthdays
+                .filter(birthday => birthday.daysLeft == nextBirthdayDaysLeft) // get all birthdays with same days left
+                .map(birthday => {
+                    return this.config.nextTextTemplate
+                        .replace('%n', birthday.name)
+                        .replace('%a', birthday.age);
+                });
+
+            await this.setStateAsync('next.daysLeft', {val: nextBirthdayDaysLeft, ack: true});
+            await this.setStateAsync('next.text', {val: nextBirthdays.join(', '), ack: true});
         }
 
     }
