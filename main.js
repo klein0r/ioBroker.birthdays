@@ -24,14 +24,14 @@ class Birthdays extends utils.Adapter {
 
     async onReady() {
 
-       // Create month channels
+        // Create month channels
         for (let m = 1; m <= 12; m++) {
             const mm = moment({ month: m - 1 });
 
-            await this.setObjectNotExistsAsync('month.' + new String(m).padStart(2, '0'), {
+            await this.setObjectNotExistsAsync(this.getMonthPath(m), {
                 type: 'channel',
                 common: {
-                    name: mm.format("MMMM"),
+                    name: mm.format("MMMM")
                 },
                 native: {}
             });
@@ -132,26 +132,105 @@ class Birthdays extends utils.Adapter {
                 birthYear: birthYear,
                 dateFormat: nextBirthday.format('DD.MM.'),
                 age: nextBirthday.diff(birthday, 'years'),
-                daysLeft: nextBirthday.diff(this.today, 'days')
+                daysLeft: nextBirthday.diff(this.today, 'days'),
+                _nextBirthday: nextBirthday
             }
         );
     }
 
-    fillStates() {
+    async fillStates() {
 
         // Sort by daysLeft
         this.birthdays.sort((a, b) => (a.daysLeft > b.daysLeft) ? 1 : -1);
 
+        this.log.debug('birthdays: ' + JSON.stringify(this.birthdays));
         this.setState('summary.json', {val: JSON.stringify(this.birthdays), ack: true});
 
         for (const b in this.birthdays) {
             const birthday = this.birthdays[b];
+
+            const cleanName = this.cleanNamespace(birthday.name);
+            const nextBirthday = birthday._nextBirthday;
+            const monthPath = this.getMonthPath(nextBirthday.month() + 1) + '.' + cleanName;
+
+            await this.setObjectNotExistsAsync(monthPath, {
+                type: 'channel',
+                common: {
+                    name: birthday.name
+                },
+                native: {}
+            });
+
+            await this.setObjectNotExistsAsync(monthPath + '.age', {
+                type: 'state',
+                common: {
+                    name: 'New age',
+                    type: 'number',
+                    role: 'value',
+                    read: true,
+                    write: false
+                },
+                native: {}
+            });
+            await this.setStateAsync(monthPath + '.age', {val: birthday.age, ack: true});
+
+            await this.setObjectNotExistsAsync(monthPath + '.day', {
+                type: 'state',
+                common: {
+                    name: 'Day of month',
+                    type: 'number',
+                    role: 'value',
+                    read: true,
+                    write: false
+                },
+                native: {}
+            });
+            await this.setStateAsync(monthPath + '.day', {val: nextBirthday.date(), ack: true});
+
+            await this.setObjectNotExistsAsync(monthPath + '.year', {
+                type: 'state',
+                common: {
+                    name: 'Birth year',
+                    type: 'number',
+                    role: 'value',
+                    read: true,
+                    write: false
+                },
+                native: {}
+            });
+            await this.setStateAsync(monthPath + '.year', {val: birthday.birthYear, ack: true});
+
+            await this.setObjectNotExistsAsync(monthPath + '.daysLeft', {
+                type: 'state',
+                common: {
+                    name: 'Days left',
+                    type: 'number',
+                    role: 'value',
+                    read: true,
+                    write: false
+                },
+                native: {}
+            });
+            await this.setStateAsync(monthPath + '.daysLeft', {val: birthday.daysLeft, ack: true});
         }
+    }
 
-        this.log.debug('birthdays: ' + JSON.stringify(this.birthdays));
+    getMonthPath(m) {
+        return 'month.' + new String(m).padStart(2, '0');
+    }
 
-        // Stop Adapter
-        this.stop.bind(this);
+    cleanNamespace(id) {
+        return id
+            .trim()
+            .replace(/\s/g, '_') // Replace whitespaces with underscores
+            .replace(/[^\p{Ll}\p{Lu}\p{Nd}]+/gu, '_') // Replace not allowed chars with underscore
+            .replace(/[_]+$/g, '') // Remove underscores end
+            .replace(/^[_]+/g, '') // Remove underscores beginning
+            .replace(/_+/g, '_') // Replace multiple underscores with one
+            .toLowerCase()
+            .replace(/_([a-z])/g, (m, w) => {
+                return w.toUpperCase();
+            });
     }
 
     onUnload(callback) {
