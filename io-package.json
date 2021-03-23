@@ -90,6 +90,14 @@
             "name": "By month"
           },
           "native": {}
+        },
+        {
+          "_id":  "next",
+          "type": "channel",
+          "common": {
+            "name": "Next birthday(s)"
+          },
+          "native": {}
         }
     ]
 }

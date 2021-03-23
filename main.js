@@ -161,6 +161,19 @@ class Birthdays extends utils.Adapter {
                 native: {}
             });
 
+            await this.setObjectNotExistsAsync(monthPath + '.name', {
+                type: 'state',
+                common: {
+                    name: 'Name',
+                    type: 'string',
+                    role: 'value',
+                    read: true,
+                    write: false
+                },
+                native: {}
+            });
+            await this.setStateAsync(monthPath + '.name', {val: birthday.name, ack: true});
+
             await this.setObjectNotExistsAsync(monthPath + '.age', {
                 type: 'state',
                 common: {
@@ -212,6 +225,15 @@ class Birthdays extends utils.Adapter {
                 native: {}
             });
             await this.setStateAsync(monthPath + '.daysLeft', {val: birthday.daysLeft, ack: true});
+        }
+
+        // next birthdays
+        if (this.birthdays.length > 0) {
+            const nextBirthdayDaysLeft = this.birthdays[0].daysLeft;
+            const nextBirthdays = this.birthdays.filter(birthday => birthday.daysLeft == nextBirthdayDaysLeft); // get all birthdays with same days left
+
+            this.log.debug('next birthday(s): ' + JSON.stringify(nextBirthdays));
+            
         }
     }
 
