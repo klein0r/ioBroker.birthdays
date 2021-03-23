@@ -147,91 +147,44 @@ class Birthdays extends utils.Adapter {
         this.setState('summary.json', {val: JSON.stringify(this.birthdays), ack: true});
 
         const keepBirthdays = [];
-        const allBirhtdays = (await this.getChannelsOfAsync('month'))
+        const monthBirhtdays = (await this.getChannelsOfAsync('month'))
             .map(obj => { return this.removeNamespace(obj._id) })
             .filter(id => new RegExp('month\.[0-9]{2}\..+', 'g').test(id));
+
+        const nextBirhtdays = (await this.getChannelsOfAsync('next'))
+            .map(obj => { return this.removeNamespace(obj._id) })
+            .filter(id => new RegExp('next\..+', 'g').test(id));
+
+        const allBirhtdays = [].concat(monthBirhtdays, nextBirhtdays);
 
         for (const b in this.birthdays) {
             const birthday = this.birthdays[b];
 
             const cleanName = this.cleanNamespace(birthday.name);
-            const nextBirthday = birthday._nextBirthday;
-            const monthPath = this.getMonthPath(nextBirthday.month() + 1) + '.' + cleanName;
+            const monthPath = this.getMonthPath(birthday._nextBirthday.month() + 1) + '.' + cleanName;
 
             keepBirthdays.push(monthPath);
 
-            await this.setObjectNotExistsAsync(monthPath, {
-                type: 'channel',
-                common: {
-                    name: birthday.name
-                },
-                native: {}
-            });
+            await this.fillPathWithBirhtday(monthPath, birthday);
+        }
 
-            await this.setObjectNotExistsAsync(monthPath + '.name', {
-                type: 'state',
-                common: {
-                    name: 'Name',
-                    type: 'string',
-                    role: 'value',
-                    read: true,
-                    write: false
-                },
-                native: {}
-            });
-            await this.setStateAsync(monthPath + '.name', {val: birthday.name, ack: true});
+        // next birthdays
+        if (this.birthdays.length > 0) {
+            const nextBirthdayDaysLeft = this.birthdays[0].daysLeft;
+            const nextBirthdays = this.birthdays.filter(birthday => birthday.daysLeft == nextBirthdayDaysLeft); // get all birthdays with same days left
 
-            await this.setObjectNotExistsAsync(monthPath + '.age', {
-                type: 'state',
-                common: {
-                    name: 'New age',
-                    type: 'number',
-                    role: 'value',
-                    read: true,
-                    write: false
-                },
-                native: {}
-            });
-            await this.setStateAsync(monthPath + '.age', {val: birthday.age, ack: true});
+            this.log.debug('next birthday(s): ' + JSON.stringify(nextBirthdays));
 
-            await this.setObjectNotExistsAsync(monthPath + '.day', {
-                type: 'state',
-                common: {
-                    name: 'Day of month',
-                    type: 'number',
-                    role: 'value',
-                    read: true,
-                    write: false
-                },
-                native: {}
-            });
-            await this.setStateAsync(monthPath + '.day', {val: nextBirthday.date(), ack: true});
+            for (const b in nextBirthdays) {
+                const birthday = this.birthdays[b];
 
-            await this.setObjectNotExistsAsync(monthPath + '.year', {
-                type: 'state',
-                common: {
-                    name: 'Birth year',
-                    type: 'number',
-                    role: 'value',
-                    read: true,
-                    write: false
-                },
-                native: {}
-            });
-            await this.setStateAsync(monthPath + '.year', {val: birthday.birthYear, ack: true});
+                const cleanName = this.cleanNamespace(birthday.name);
+                const nextPath = 'next.' + cleanName;
 
-            await this.setObjectNotExistsAsync(monthPath + '.daysLeft', {
-                type: 'state',
-                common: {
-                    name: 'Days left',
-                    type: 'number',
-                    role: 'value',
-                    read: true,
-                    write: false
-                },
-                native: {}
-            });
-            await this.setStateAsync(monthPath + '.daysLeft', {val: birthday.daysLeft, ack: true});
+                keepBirthdays.push(nextPath);
+
+                await this.fillPathWithBirhtday(nextPath, birthday);
+            }
         }
 
         // Delete non existent birthdays
@@ -245,14 +198,85 @@ class Birthdays extends utils.Adapter {
             }
         }
 
-        // next birthdays
-        if (this.birthdays.length > 0) {
-            const nextBirthdayDaysLeft = this.birthdays[0].daysLeft;
-            const nextBirthdays = this.birthdays.filter(birthday => birthday.daysLeft == nextBirthdayDaysLeft); // get all birthdays with same days left
+    }
 
-            this.log.debug('next birthday(s): ' + JSON.stringify(nextBirthdays));
-            
-        }
+    async fillPathWithBirhtday(path, birthday) {
+
+        const nextBirthday = birthday._nextBirthday;
+
+        await this.setObjectNotExistsAsync(path, {
+            type: 'channel',
+            common: {
+                name: birthday.name
+            },
+            native: {}
+        });
+
+        await this.setObjectNotExistsAsync(path + '.name', {
+            type: 'state',
+            common: {
+                name: 'Name',
+                type: 'string',
+                role: 'value',
+                read: true,
+                write: false
+            },
+            native: {}
+        });
+        await this.setStateAsync(path + '.name', {val: birthday.name, ack: true});
+
+        await this.setObjectNotExistsAsync(path + '.age', {
+            type: 'state',
+            common: {
+                name: 'New age',
+                type: 'number',
+                role: 'value',
+                read: true,
+                write: false
+            },
+            native: {}
+        });
+        await this.setStateAsync(path + '.age', {val: birthday.age, ack: true});
+
+        await this.setObjectNotExistsAsync(path + '.day', {
+            type: 'state',
+            common: {
+                name: 'Day of month',
+                type: 'number',
+                role: 'value',
+                read: true,
+                write: false
+            },
+            native: {}
+        });
+        await this.setStateAsync(path + '.day', {val: nextBirthday.date(), ack: true});
+
+        await this.setObjectNotExistsAsync(path + '.year', {
+            type: 'state',
+            common: {
+                name: 'Birth year',
+                type: 'number',
+                role: 'value',
+                read: true,
+                write: false
+            },
+            native: {}
+        });
+        await this.setStateAsync(path + '.year', {val: birthday.birthYear, ack: true});
+
+        await this.setObjectNotExistsAsync(path + '.daysLeft', {
+            type: 'state',
+            common: {
+                name: 'Days left',
+                type: 'number',
+                role: 'value',
+                read: true,
+                write: false
+            },
+            native: {}
+        });
+        await this.setStateAsync(path + '.daysLeft', {val: birthday.daysLeft, ack: true});
+
     }
 
     getMonthPath(m) {
