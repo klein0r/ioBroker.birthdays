@@ -1,10 +1,11 @@
 {
   "name": "iobroker.birthdays",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Use an ical file to import your contacts birthdays",
   "author": {
     "name": "klein0r",
-    "email": "info@haus-automatisierung.com"
+    "email": "info@haus-automatisierung.com",
+    "url" : "https://haus-automatisierung.com/"
   },
   "homepage": "https://github.com/klein0r/ioBroker.birthdays",
   "license": "MIT",

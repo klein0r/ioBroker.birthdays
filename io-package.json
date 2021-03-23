@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "birthdays",
-        "version": "0.0.1",
+        "version": "0.0.2",
         "news": {
+            "0.0.2": {
+                "en": "Added more objects and states",
+                "de": "Mehr Objekte und States zur Verfügung gestellt"
+            },
             "0.0.1": {
                 "en": "initial release",
                 "de": "Erstveröffentlichung"
@@ -78,6 +82,14 @@
                 "write": false
             },
             "native": {}
+        },
+        {
+          "_id":  "month",
+          "type": "channel",
+          "common": {
+            "name": "By month"
+          },
+          "native": {}
         }
     ]
 }

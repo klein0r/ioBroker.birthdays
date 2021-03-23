@@ -23,7 +23,19 @@ class Birthdays extends utils.Adapter {
     }
 
     async onReady() {
-        this.killTimeout = setTimeout(this.stop.bind(this), 30000);
+
+       // Create month channels
+        for (let m = 1; m <= 12; m++) {
+            const mm = moment({ month: m - 1 });
+
+            await this.setObjectNotExistsAsync('month.' + new String(m).padStart(2, '0'), {
+                type: 'channel',
+                common: {
+                    name: mm.format("MMMM"),
+                },
+                native: {}
+            });
+        }
 
         this.addBySettings();
 
@@ -33,6 +45,9 @@ class Birthdays extends utils.Adapter {
         } else {
             this.fillStates();
         }
+
+        this.killTimeout = setTimeout(this.stop.bind(this), 30000);
+
     }
 
     addBySettings() {

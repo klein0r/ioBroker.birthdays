@@ -30,6 +30,10 @@ It is NOT required to use the ical option. You can also define all your birthday
 
 ## Changelog
 
+### 0.0.2
+
+* (klein0r) Added more objects and states
+
 ### 0.0.1
 
 * (klein0r) initial release
@@ -42,7 +46,7 @@ It is NOT required to use the ical option. You can also define all your birthday
 
 The MIT License (MIT)
 
-Copyright (c) 2020 Matthias Kleine <info@haus-automatisierung.com>
+Copyright (c) 2021 Matthias Kleine <info@haus-automatisierung.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
