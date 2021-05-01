@@ -27,7 +27,7 @@
     "@iobroker/adapter-core": "^2.4.0",
     "axios": "^0.21.0",
     "moment": "^2.29.1",
-    "node-ical": "^0.12.8"
+    "node-ical": "^0.13.0"
   },
   "devDependencies": {
     "@iobroker/testing": "^2.4.4",
