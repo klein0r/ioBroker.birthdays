@@ -12,9 +12,15 @@
 
 [![NPM](https://nodei.co/npm/iobroker.birthdays.png?downloads=true)](https://nodei.co/npm/iobroker.birthdays/)
 
-## birthdays adapter for ioBroker
-
 Use an ical file to import your contacts birthdays or define the birthday dates directly in the adapter settings
+
+## Installation
+
+Please use the "adapter list" in ioBroker to install a stable version of this adapter. You can also use the CLI to install this adapter:
+
+```
+iobroker add birthdays
+```
 
 ## Configuration
 
