@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "birthdays",
-        "version": "0.0.3",
+        "version": "0.1.0",
         "news": {
+            "0.1.0": {
+                "en": "Admin 5 Support",
+                "de": "Admin 5 Support"
+            },
             "0.0.3": {
                 "en": "Added next and nextAfter birthdays",
                 "de": "Nächste und übernächste Geburtstage errechnet"
@@ -48,6 +52,14 @@
         "connectionType": "cloud",
         "dataSource": "poll",
         "materialize": true,
+        "adminUI": {
+            "config": "json"
+        },
+        "globalDependencies": [
+            {
+                "admin": ">=5.1.19"
+            }
+        ],
         "dependencies": [
             {
                 "js-controller": ">=3.3.0"

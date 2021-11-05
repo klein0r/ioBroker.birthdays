@@ -199,6 +199,10 @@ It is NOT required to use the ical option. You can also define all birthday date
 
 ## Changelog
 
+### 0.1.0
+
+* (klein0r) Admin 5 Support
+
 ### 0.0.3
 
 * (klein0r) Added next and nextAfter birthdays
