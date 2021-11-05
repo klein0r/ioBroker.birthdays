@@ -214,8 +214,14 @@ class Birthdays extends utils.Adapter {
 
         await this.setStateAsync(path + '.json', {val: JSON.stringify(nextBirthdays), ack: true});
         await this.setStateAsync(path + '.daysLeft', {val: daysLeft, ack: true});
-        await this.setStateAsync(path + '.text', {val: nextBirthdaysText.join(', '), ack: true});
+        await this.setStateAsync(path + '.text', {val: nextBirthdaysText.join(this.config.nextSeparator), ack: true});
 
+        const birthdayDate = moment()
+            .set({'hour': 0, 'minute': 0, 'second': 0})
+            .add(daysLeft, 'days');
+
+        await this.setStateAsync(path + '.date', {val: birthdayDate.valueOf(), ack: true});
+        await this.setStateAsync(path + '.dateFormat', {val: birthdayDate.format('DD.MM.YYYY'), ack: true});
     }
 
     async fillPathWithBirhtday(path, birthday) {

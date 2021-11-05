@@ -50,6 +50,30 @@ systemDictionary = {
         "pl": "szablon tekstowy (następny)",
         "zh-cn": "文字范本（下一个）"
     },
+    "use %n for name and %a for age": {
+        "en": "use %n for name and %a for age",
+        "de": "Verwende %n für den Namen und %a für das Alter",
+        "ru": "используйте% n для имени и% a для возраста",
+        "pt": "use% n para nome e% a para idade",
+        "nl": "gebruik %n voor naam en %a voor leeftijd",
+        "fr": "utilisez %n pour le nom et %a pour l'âge",
+        "it": "usa %n per il nome e %a per l'età",
+        "es": "use% n para el nombre y% a para la edad",
+        "pl": "użyj %n dla imienia i %a dla wieku",
+        "zh-cn": "使用 %n 作为姓名，使用 %a 作为年龄"
+    },
+    "next separator": {
+        "en": "Next-Text Separator",
+        "de": "Trenner für Nächste-Text",
+        "ru": "Разделитель следующего текста",
+        "pt": "Separador de texto seguinte",
+        "nl": "Volgende-tekstscheider",
+        "fr": "Séparateur de texte suivant",
+        "it": "Separatore testo successivo",
+        "es": "Separador de texto siguiente",
+        "pl": "Separator następnego tekstu",
+        "zh-cn": "下一个文本分隔符"
+    },
     "name": {
         "en": "name",
         "de": "Name",

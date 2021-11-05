@@ -4,7 +4,9 @@
     "ical url": "URL iCal",
     "month": "mois",
     "name": "Nom",
+    "next separator": "Séparateur de texte suivant",
     "options": "Options",
     "text template (next)": "modèle de texte (suivant)",
+    "use %n for name and %a for age": "utilisez %n pour le nom et %a pour l'âge",
     "year": "an"
 }

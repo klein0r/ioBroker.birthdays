@@ -4,7 +4,9 @@
     "ical url": "iCal Url",
     "month": "month",
     "name": "name",
+    "next separator": "Next-Text Separator",
     "options": "Options",
     "text template (next)": "text template (next)",
+    "use %n for name and %a for age": "use %n for name and %a for age",
     "year": "year"
 }

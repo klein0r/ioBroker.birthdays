@@ -4,7 +4,9 @@
     "ical url": "iCal Url",
     "month": "месяц",
     "name": "имя",
+    "next separator": "Разделитель следующего текста",
     "options": "Настройки",
     "text template (next)": "текстовый шаблон (следующий)",
+    "use %n for name and %a for age": "используйте% n для имени и% a для возраста",
     "year": "год"
 }

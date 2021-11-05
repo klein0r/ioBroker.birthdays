@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "birthdays",
-        "version": "0.1.0",
+        "version": "0.1.1",
         "news": {
+            "0.1.1": {
+                "en": "Added custom date format",
+                "de": "Eigenes Datumsformat hinzugefügt"
+            },
             "0.1.0": {
                 "en": "Admin 5 Support",
                 "de": "Admin 5 Support"
@@ -68,7 +72,8 @@
     },
     "native": {
         "icalUrl": "",
-        "nextTextTemplate": "%n turns %a"
+        "nextTextTemplate": "%n turns %a",
+        "nextSeparator": ", "
     },
     "objects": [],
     "instanceObjects": [
@@ -153,6 +158,30 @@
             "native": {}
         },
         {
+            "_id": "next.date",
+            "type": "state",
+            "common": {
+                "name": "Next date",
+                "type": "number",
+                "role": "date",
+                "read": true,
+                "write": false
+            },
+            "native": {}
+        },
+        {
+            "_id": "next.dateFormat",
+            "type": "state",
+            "common": {
+                "name": "Next date format",
+                "type": "string",
+                "role": "value",
+                "read": true,
+                "write": false
+            },
+            "native": {}
+        },
+        {
           "_id":  "nextAfter",
           "type": "channel",
           "common": {
@@ -190,6 +219,30 @@
             "common": {
                 "name": "Next after days left",
                 "type": "number",
+                "role": "value",
+                "read": true,
+                "write": false
+            },
+            "native": {}
+        },
+        {
+            "_id": "nextAfter.date",
+            "type": "state",
+            "common": {
+                "name": "Next after date",
+                "type": "number",
+                "role": "date",
+                "read": true,
+                "write": false
+            },
+            "native": {}
+        },
+        {
+            "_id": "nextAfter.dateFormat",
+            "type": "state",
+            "common": {
+                "name": "Next after date format",
+                "type": "string",
                 "role": "value",
                 "read": true,
                 "write": false

@@ -199,6 +199,11 @@ It is NOT required to use the ical option. You can also define all birthday date
 
 ## Changelog
 
+### 0.1.1
+
+* (klein0r) Added custom date format
+* (klein0r) Added custom next separator
+
 ### 0.1.0
 
 * (klein0r) Admin 5 Support

@@ -9,8 +9,8 @@
                 "icalUrl": {
                     "type": "text",
                     "sm": 12,
-                    "md": 6,
-                    "lg": 6,
+                    "md": 12,
+                    "lg": 12,
                     "label": "ical url"
                 },
                 "nextTextTemplate": {
@@ -19,7 +19,15 @@
                     "sm": 12,
                     "md": 6,
                     "lg": 6,
-                    "label": "text template (next)"
+                    "label": "text template (next)",
+                    "help": "use %n for name and %a for age"
+                },
+                "nextSeparator": {
+                    "type": "text",
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 6,
+                    "label": "next separator"
                 },
                 "_ioBrokerKursBanner": {
                     "newLine": true,
