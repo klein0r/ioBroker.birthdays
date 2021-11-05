@@ -18,7 +18,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git@github.com:klein0r/ioBroker.birthdays.git"
+    "url": "git+https://github.com/klein0r/ioBroker.birthdays.git"
   },
   "engines": {
     "node": ">=12.0.0"
