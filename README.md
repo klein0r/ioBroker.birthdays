@@ -38,6 +38,8 @@ It is NOT required to use the ical option. You can also define all birthday date
 
 (requires pushover)
 
+![Blockly example](images/exampleBlockly.png)
+
 ```xml
 <xml xmlns="https://developers.google.com/blockly/xml">
   <variables>
