@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "birthdays",
-        "version": "0.1.1",
+        "version": "0.1.2",
         "news": {
+            "0.1.2": {
+                "en": "Fixed missing translations",
+                "de": "Fehlende Übersetzungen hinzugefügt"
+            },
             "0.1.1": {
                 "en": "Added custom date format",
                 "de": "Eigenes Datumsformat hinzugefügt"
