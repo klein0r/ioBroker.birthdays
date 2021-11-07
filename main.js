@@ -12,6 +12,7 @@ class Birthdays extends utils.Adapter {
         super({
             ...options,
             name: adapterName,
+            useFormatDate: true
         });
 
         this.killTimeout = null;
@@ -134,7 +135,7 @@ class Birthdays extends utils.Adapter {
             {
                 name: name,
                 birthYear: birthYear,
-                dateFormat: nextBirthday.format('DD.MM.'),
+                dateFormat: this.formatDate(nextBirthday.toDate()),
                 age: nextBirthday.diff(birthday, 'years'),
                 daysLeft: nextBirthday.diff(this.today, 'days'),
                 _nextBirthday: nextBirthday
@@ -221,7 +222,7 @@ class Birthdays extends utils.Adapter {
             .add(daysLeft, 'days');
 
         await this.setStateAsync(path + '.date', {val: birthdayDate.valueOf(), ack: true});
-        await this.setStateAsync(path + '.dateFormat', {val: birthdayDate.format('DD.MM.YYYY'), ack: true});
+        await this.setStateAsync(path + '.dateFormat', {val: this.formatDate(birthdayDate.toDate()), ack: true});
     }
 
     async fillPathWithBirhtday(path, birthday) {

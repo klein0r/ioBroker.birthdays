@@ -207,6 +207,10 @@ It is NOT required to use the ical option. You can also define all birthday date
 
 ## Changelog
 
+### 0.1.3
+
+* (klein0r) Format dates using ioBrokers configured formats
+
 ### 0.1.2
 
 * (klein0r) Fixed missing translations

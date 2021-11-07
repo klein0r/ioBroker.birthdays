@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "birthdays",
-        "version": "0.1.2",
+        "version": "0.1.3",
         "news": {
+            "0.1.3": {
+                "en": "Format dates using ioBrokers configured formats",
+                "de": "Datum mit dem konfigurierten Datumsformat vom ioBroker formatieren"
+            },
             "0.1.2": {
                 "en": "Fixed missing translations",
                 "de": "Fehlende Übersetzungen hinzugefügt"
