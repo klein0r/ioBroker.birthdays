@@ -209,6 +209,11 @@ It is NOT required to use the ical option. You can also define all birthday date
 
 ## Changelog
 
+<!--
+  Placeholder for the next version (at the beginning of the line):
+  ### **WORK IN PROGRESS**
+-->
+
 ### 0.1.3
 
 * (klein0r) Format dates using ioBrokers configured formats
