@@ -34,6 +34,8 @@ Your events
 
 It is NOT required to use the ical option. You can also define all birthday dates in the settings. *When you use both options, the information will be merged.*
 
+![Calendar example](images/exampleCalendar.png)
+
 ## Example (Blockly)
 
 (requires pushover)
