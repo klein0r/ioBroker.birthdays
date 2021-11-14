@@ -214,6 +214,10 @@ It is NOT required to use the ical option. You can also define all birthday date
   ### **WORK IN PROGRESS**
 -->
 
+### 0.1.4
+
+* (klein0r) Translated all objects
+
 ### 0.1.3
 
 * (klein0r) Format dates using ioBrokers configured formats
