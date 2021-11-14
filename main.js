@@ -213,16 +213,16 @@ class Birthdays extends utils.Adapter {
             }
         );
 
-        await this.setStateAsync(path + '.json', {val: JSON.stringify(nextBirthdays), ack: true});
-        await this.setStateAsync(path + '.daysLeft', {val: daysLeft, ack: true});
-        await this.setStateAsync(path + '.text', {val: nextBirthdaysText.join(this.config.nextSeparator), ack: true});
+        await this.setStateAsync(path + '.json', JSON.stringify(nextBirthdays), true);
+        await this.setStateAsync(path + '.daysLeft', daysLeft, true);
+        await this.setStateAsync(path + '.text', nextBirthdaysText.join(this.config.nextSeparator), true);
 
         const birthdayDate = moment()
             .set({'hour': 0, 'minute': 0, 'second': 0})
             .add(daysLeft, 'days');
 
-        await this.setStateAsync(path + '.date', {val: birthdayDate.valueOf(), ack: true});
-        await this.setStateAsync(path + '.dateFormat', {val: this.formatDate(birthdayDate.toDate()), ack: true});
+        await this.setStateAsync(path + '.date', birthdayDate.valueOf(), true);
+        await this.setStateAsync(path + '.dateFormat', this.formatDate(birthdayDate.toDate()), true);
     }
 
     async fillPathWithBirhtday(path, birthday) {
@@ -259,7 +259,7 @@ class Birthdays extends utils.Adapter {
             },
             native: {}
         });
-        await this.setStateAsync(path + '.name', {val: birthday.name, ack: true});
+        await this.setStateAsync(path + '.name', birthday.name, true);
 
         await this.setObjectNotExistsAsync(path + '.age', {
             type: 'state',
@@ -283,7 +283,7 @@ class Birthdays extends utils.Adapter {
             },
             native: {}
         });
-        await this.setStateAsync(path + '.age', {val: birthday.age, ack: true});
+        await this.setStateAsync(path + '.age', birthday.age, true);
 
         await this.setObjectNotExistsAsync(path + '.day', {
             type: 'state',
@@ -307,7 +307,7 @@ class Birthdays extends utils.Adapter {
             },
             native: {}
         });
-        await this.setStateAsync(path + '.day', {val: nextBirthday.date(), ack: true});
+        await this.setStateAsync(path + '.day', nextBirthday.date(), true);
 
         await this.setObjectNotExistsAsync(path + '.year', {
             type: 'state',
@@ -331,7 +331,7 @@ class Birthdays extends utils.Adapter {
             },
             native: {}
         });
-        await this.setStateAsync(path + '.year', {val: birthday.birthYear, ack: true});
+        await this.setStateAsync(path + '.year', birthday.birthYear, true);
 
         await this.setObjectNotExistsAsync(path + '.daysLeft', {
             type: 'state',
@@ -355,8 +355,7 @@ class Birthdays extends utils.Adapter {
             },
             native: {}
         });
-        await this.setStateAsync(path + '.daysLeft', {val: birthday.daysLeft, ack: true});
-
+        await this.setStateAsync(path + '.daysLeft', birthday.daysLeft, true);
     }
 
     getMonthPath(m) {
@@ -394,16 +393,6 @@ class Birthdays extends utils.Adapter {
             callback();
         } catch (e) {
             callback();
-        }
-    }
-
-    onStateChange(id, state) {
-        if (state) {
-            // The state was changed
-            this.log.info(`state ${id} changed: ${state.val} (ack = ${state.ack})`);
-        } else {
-            // The state was deleted
-            this.log.info(`state ${id} deleted`);
         }
     }
 }
