@@ -159,7 +159,18 @@
             "_id": "next",
             "type": "channel",
             "common": {
-                "name": "Next birthday(s)"
+                "name": {
+                    "en": "Next birthdays",
+                    "de": "Nächste Geburtstage",
+                    "ru": "Следующие дни рождения",
+                    "pt": "Próximos aniversários",
+                    "nl": "Volgende verjaardagen",
+                    "fr": "Prochains anniversaires",
+                    "it": "Prossimi compleanni",
+                    "es": "Próximos cumpleaños",
+                    "pl": "Następne urodziny",
+                    "zh-cn": "下一个生日"
+                }
             },
             "native": {}
         },
@@ -167,7 +178,18 @@
             "_id": "summary",
             "type": "channel",
             "common": {
-                "name": "Birthday summary"
+                "name": {
+                    "en": "Birthdays summary",
+                    "de": "Zusammenfassung der Geburtstage",
+                    "ru": "Сводка дней рождения",
+                    "pt": "Resumo de aniversários",
+                    "nl": "Verjaardagen samenvatting",
+                    "fr": "Résumé des anniversaires",
+                    "it": "Riepilogo compleanni",
+                    "es": "Resumen de cumpleaños",
+                    "pl": "Podsumowanie urodzin",
+                    "zh-cn": "生日总结"
+                }
             },
             "native": {}
         },
@@ -175,7 +197,18 @@
             "_id": "summary.json",
             "type": "state",
             "common": {
-                "name": "JSON string for tables",
+                "name": {
+                    "en": "Birthdays JSON",
+                    "de": "Geburtstage JSON",
+                    "ru": "Дни рождения JSON",
+                    "pt": "JSON de aniversários",
+                    "nl": "Verjaardagen JSON",
+                    "fr": "Anniversaires JSON",
+                    "it": "Compleanni JSON",
+                    "es": "Cumpleaños JSON",
+                    "pl": "Urodziny JSON",
+                    "zh-cn": "生日 JSON"
+                },
                 "type": "string",
                 "role": "value",
                 "read": true,
@@ -187,7 +220,18 @@
             "_id": "month",
             "type": "channel",
             "common": {
-                "name": "By month"
+                "name": {
+                    "en": "By month",
+                    "de": "Nach Monaten",
+                    "ru": "По месяцам",
+                    "pt": "Por mês",
+                    "nl": "Bij maand",
+                    "fr": "Par mois",
+                    "it": "Per mese",
+                    "es": "Por mes",
+                    "pl": "Według miesiąca",
+                    "zh-cn": "按月"
+                }
             },
             "native": {}
         },
@@ -195,7 +239,18 @@
             "_id": "next",
             "type": "channel",
             "common": {
-                "name": "Next birthday(s)"
+                "name": {
+                    "en": "Next birthdays",
+                    "de": "Nächste Geburtstage",
+                    "ru": "Следующие дни рождения",
+                    "pt": "Próximos aniversários",
+                    "nl": "Volgende verjaardagen",
+                    "fr": "Prochains anniversaires",
+                    "it": "Prossimi compleanni",
+                    "es": "Próximos cumpleaños",
+                    "pl": "Następne urodziny",
+                    "zh-cn": "下一个生日"
+                }
             },
             "native": {}
         },
@@ -203,7 +258,18 @@
             "_id": "next.json",
             "type": "state",
             "common": {
-                "name": "JSON string for tables",
+                "name": {
+                    "en": "Birthdays JSON",
+                    "de": "Geburtstage JSON",
+                    "ru": "Дни рождения JSON",
+                    "pt": "JSON de aniversários",
+                    "nl": "Verjaardagen JSON",
+                    "fr": "Anniversaires JSON",
+                    "it": "Compleanni JSON",
+                    "es": "Cumpleaños JSON",
+                    "pl": "Urodziny JSON",
+                    "zh-cn": "生日 JSON"
+                },
                 "type": "string",
                 "role": "value",
                 "read": true,
@@ -215,7 +281,18 @@
             "_id": "next.text",
             "type": "state",
             "common": {
-                "name": "Next birthdays",
+                "name": {
+                    "en": "Next birthdays",
+                    "de": "Nächste Geburtstage",
+                    "ru": "Следующие дни рождения",
+                    "pt": "Próximos aniversários",
+                    "nl": "Volgende verjaardagen",
+                    "fr": "Prochains anniversaires",
+                    "it": "Prossimi compleanni",
+                    "es": "Próximos cumpleaños",
+                    "pl": "Następne urodziny",
+                    "zh-cn": "下一个生日"
+                },
                 "type": "string",
                 "role": "value",
                 "read": true,
@@ -227,7 +304,18 @@
             "_id": "next.daysLeft",
             "type": "state",
             "common": {
-                "name": "Next days left",
+                "name": {
+                    "en": "Next birthdays - days left",
+                    "de": "Nächste Geburtstage - verbleibende Tage",
+                    "ru": "Следующие дни рождения - осталось дней",
+                    "pt": "Próximos aniversários - faltam dias",
+                    "nl": "Volgende verjaardagen - resterende dagen",
+                    "fr": "Prochains anniversaires - jours restants",
+                    "it": "Prossimi compleanni - giorni rimasti",
+                    "es": "Próximos cumpleaños: quedan días",
+                    "pl": "Następne urodziny - pozostały dni",
+                    "zh-cn": "下一个生日 - 剩余天数"
+                },
                 "type": "number",
                 "role": "value",
                 "read": true,
@@ -239,7 +327,18 @@
             "_id": "next.date",
             "type": "state",
             "common": {
-                "name": "Next date",
+                "name": {
+                    "en": "Next birthdays - date",
+                    "de": "Nächste Geburtstage - Datum",
+                    "ru": "Следующие дни рождения - дата",
+                    "pt": "Próximos aniversários - data",
+                    "nl": "Volgende verjaardagen - datum",
+                    "fr": "Prochains anniversaires - date",
+                    "it": "Prossimi compleanni - data",
+                    "es": "Próximos cumpleaños - fecha",
+                    "pl": "Następne urodziny - data",
+                    "zh-cn": "下一个生日 - 日期"
+                },
                 "type": "number",
                 "role": "date",
                 "read": true,
@@ -251,7 +350,18 @@
             "_id": "next.dateFormat",
             "type": "state",
             "common": {
-                "name": "Next date format",
+                "name": {
+                    "en": "Next birthdays - date formatted",
+                    "de": "Nächste Geburtstage - Datum formatiert",
+                    "ru": "Следующие дни рождения - дата в формате",
+                    "pt": "Próximos aniversários - data formatada",
+                    "nl": "Volgende verjaardagen - datum geformatteerd",
+                    "fr": "Prochains anniversaires - date formatée",
+                    "it": "Prossimi compleanni - data formattata",
+                    "es": "Próximos cumpleaños: fecha formateada",
+                    "pl": "Następne urodziny - data sformatowana",
+                    "zh-cn": "下一个生日 - 日期格式"
+                },
                 "type": "string",
                 "role": "value",
                 "read": true,
@@ -263,7 +373,18 @@
             "_id": "nextAfter",
             "type": "channel",
             "common": {
-                "name": "Next birthday(s)"
+                "name": {
+                    "en": "After next birthdays",
+                    "de": "Nach den nächsten Geburtstagen",
+                    "ru": "После следующих дней рождения",
+                    "pt": "Depois dos próximos aniversários",
+                    "nl": "Na volgende verjaardagen",
+                    "fr": "Après les prochains anniversaires",
+                    "it": "Dopo i prossimi compleanni",
+                    "es": "Después de los próximos cumpleaños",
+                    "pl": "Po następnych urodzinach",
+                    "zh-cn": "下一个生日之后"
+                }
             },
             "native": {}
         },
@@ -271,7 +392,18 @@
             "_id": "nextAfter.json",
             "type": "state",
             "common": {
-                "name": "JSON string for tables",
+                "name": {
+                    "en": "Birthdays JSON",
+                    "de": "Geburtstage JSON",
+                    "ru": "Дни рождения JSON",
+                    "pt": "JSON de aniversários",
+                    "nl": "Verjaardagen JSON",
+                    "fr": "Anniversaires JSON",
+                    "it": "Compleanni JSON",
+                    "es": "Cumpleaños JSON",
+                    "pl": "Urodziny JSON",
+                    "zh-cn": "生日 JSON"
+                },
                 "type": "string",
                 "role": "value",
                 "read": true,
@@ -283,7 +415,18 @@
             "_id": "nextAfter.text",
             "type": "state",
             "common": {
-                "name": "Next after birthdays",
+                "name": {
+                    "en": "After next birthdays",
+                    "de": "Nach den nächsten Geburtstagen",
+                    "ru": "После следующих дней рождения",
+                    "pt": "Depois dos próximos aniversários",
+                    "nl": "Na volgende verjaardagen",
+                    "fr": "Après les prochains anniversaires",
+                    "it": "Dopo i prossimi compleanni",
+                    "es": "Después de los próximos cumpleaños",
+                    "pl": "Po następnych urodzinach",
+                    "zh-cn": "下一个生日之后"
+                },
                 "type": "string",
                 "role": "value",
                 "read": true,
@@ -295,7 +438,18 @@
             "_id": "nextAfter.daysLeft",
             "type": "state",
             "common": {
-                "name": "Next after days left",
+                "name": {
+                    "en": "After next birthdays - days left",
+                    "de": "Nach den nächsten Geburtstagen - verbleibende Tage",
+                    "ru": "После следующих дней рождения - осталось дней",
+                    "pt": "Após os próximos aniversários - faltam dias",
+                    "nl": "Na de volgende verjaardagen - nog dagen over",
+                    "fr": "Après les prochains anniversaires - jours restants",
+                    "it": "Dopo i prossimi compleanni - giorni rimasti",
+                    "es": "Después de los próximos cumpleaños - quedan días",
+                    "pl": "Po następnych urodzinach - pozostały dni",
+                    "zh-cn": "下一个生日之后 - 剩下的天数"
+                },
                 "type": "number",
                 "role": "value",
                 "read": true,
@@ -307,7 +461,18 @@
             "_id": "nextAfter.date",
             "type": "state",
             "common": {
-                "name": "Next after date",
+                "name": {
+                    "en": "After next birthdays - date",
+                    "de": "Nach den nächsten Geburtstagen - Datum",
+                    "ru": "После следующих дней рождения - дата",
+                    "pt": "Após os próximos aniversários - data",
+                    "nl": "Na volgende verjaardagen - datum",
+                    "fr": "Après les prochains anniversaires - date",
+                    "it": "Dopo i prossimi compleanni - data",
+                    "es": "Después de los próximos cumpleaños - fecha",
+                    "pl": "Po następnych urodzinach - data",
+                    "zh-cn": "在下一个生日之后 - 日期"
+                },
                 "type": "number",
                 "role": "date",
                 "read": true,
@@ -319,7 +484,18 @@
             "_id": "nextAfter.dateFormat",
             "type": "state",
             "common": {
-                "name": "Next after date format",
+                "name": {
+                    "en": "After next birthdays - date formatted",
+                    "de": "Nach den nächsten Geburtstagen - Datum formatiert",
+                    "ru": "После следующих дней рождения - дата в формате",
+                    "pt": "Após os próximos aniversários - data formatada",
+                    "nl": "Na volgende verjaardagen - datum geformatteerd",
+                    "fr": "Après les prochains anniversaires - date formatée",
+                    "it": "Dopo i prossimi compleanni - data formattata",
+                    "es": "Después de los próximos cumpleaños: formato de fecha",
+                    "pl": "Po następnych urodzinach - data sformatowana",
+                    "zh-cn": "在下一个生日之后 - 日期格式化"
+                },
                 "type": "string",
                 "role": "value",
                 "read": true,
