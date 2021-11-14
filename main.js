@@ -78,17 +78,13 @@ class Birthdays extends utils.Adapter {
             method: 'get',
             url: iCalUrl,
             timeout: 4500
-        }).then(
-            function (response) {
-                this.log.debug('ical http request (' + response.status + ')');
-                this.addCalendarBirthdays(response.data);
-            }.bind(this)
-        ).catch(
-            function (error) {
-                this.log.warn(error);
-                this.fillStates();
-            }.bind(this)
-        );
+        }).then((response) => {
+            this.log.debug('ical http request (' + response.status + ')');
+            this.addCalendarBirthdays(response.data);
+        }).catch((error) => {
+            this.log.warn(error);
+            this.fillStates();
+        });
     }
 
     addCalendarBirthdays(data) {
