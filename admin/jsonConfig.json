@@ -54,8 +54,19 @@
                         {
                             "type": "text",
                             "attr": "name",
-                            "width": "45%",
-                            "title": "name",
+                            "width": "55%",
+                            "title": {
+                                "en": "Name",
+                                "de": "Name",
+                                "ru": "Имя",
+                                "pt": "Nome",
+                                "nl": "Naam",
+                                "fr": "Nom",
+                                "it": "Nome",
+                                "es": "Nombre",
+                                "pl": "Nazwa",
+                                "zh-cn": "姓名"
+                            },
                             "filter": true,
                             "sort": true,
                             "default": ""
@@ -66,7 +77,18 @@
                             "min": 1,
                             "max": 31,
                             "width": "15%",
-                            "title": "day",
+                            "title": {
+                                "en": "Day",
+                                "de": "Tag",
+                                "ru": "День",
+                                "pt": "Dia",
+                                "nl": "Dag",
+                                "fr": "Jour",
+                                "it": "Giorno",
+                                "es": "Día",
+                                "pl": "Dzień",
+                                "zh-cn": "日"
+                            },
                             "filter": false,
                             "sort": false,
                             "default": ""
@@ -77,7 +99,18 @@
                             "min": 1,
                             "max": 12,
                             "width": "15%",
-                            "title": "month",
+                            "title": {
+                                "en": "Month",
+                                "de": "Monat",
+                                "ru": "Месяц",
+                                "pt": "Mês",
+                                "nl": "Maand",
+                                "fr": "Mois",
+                                "it": "Mese",
+                                "es": "Mes",
+                                "pl": "Miesiąc",
+                                "zh-cn": "月"
+                            },
                             "filter": false,
                             "sort": false,
                             "default": ""
@@ -88,7 +121,18 @@
                             "min": 1900,
                             "max": 2100,
                             "width": "15%",
-                            "title": "year",
+                            "title": {
+                                "en": "Year",
+                                "de": "Jahr",
+                                "ru": "Год",
+                                "pt": "Ano",
+                                "nl": "Jaar",
+                                "fr": "Année",
+                                "it": "Anno",
+                                "es": "Año",
+                                "pl": "Rok",
+                                "zh-cn": "年"
+                            },
                             "filter": false,
                             "sort": false,
                             "default": ""

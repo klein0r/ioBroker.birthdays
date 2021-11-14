@@ -1,12 +1,8 @@
 {
     "birthdays": "Geburtstage",
-    "day": "Tag",
-    "ical url": "iCal Url",
-    "month": "Monat",
-    "name": "Name",
-    "next separator": "Trenner für Nächste-Text",
-    "options": "Einstellungen",
-    "text template (next)": "Textvorlage (nächste)",
-    "use %n for name and %a for age": "Verwende %n für den Namen und %a für das Alter",
-    "year": "Jahr"
+    "ical url": "iCal-URL",
+    "next separator": "Nächster-Text Trennzeichen",
+    "options": "Optionen",
+    "text template (next)": "Textvorlage (weiter)",
+    "use %n for name and %a for age": "Verwenden Sie %n für den Namen und %a für das Alter"
 }

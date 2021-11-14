@@ -1,12 +1,8 @@
 {
-    "birthdays": "cumpleaños",
-    "day": "día",
+    "birthdays": "Cumpleaños",
     "ical url": "URL de iCal",
-    "month": "mes",
-    "name": "nombre",
     "next separator": "Separador de texto siguiente",
     "options": "Opciones",
     "text template (next)": "plantilla de texto (siguiente)",
-    "use %n for name and %a for age": "use% n para el nombre y% a para la edad",
-    "year": "año"
+    "use %n for name and %a for age": "use% n para el nombre y% a para la edad"
 }

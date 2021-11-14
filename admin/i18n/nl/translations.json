@@ -1,12 +1,8 @@
 {
     "birthdays": "verjaardagen",
-    "day": "dag",
     "ical url": "iCal-URL",
-    "month": "maand",
-    "name": "naam",
-    "next separator": "Volgende-tekstscheider",
-    "options": "opties",
+    "next separator": "Scheidingsteken voor volgende tekst",
+    "options": "Opties",
     "text template (next)": "tekstsjabloon (volgende)",
-    "use %n for name and %a for age": "gebruik %n voor naam en %a voor leeftijd",
-    "year": "jaar"
+    "use %n for name and %a for age": "gebruik %n voor naam en %a voor leeftijd"
 }

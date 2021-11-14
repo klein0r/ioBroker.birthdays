@@ -1,12 +1,8 @@
 {
-    "birthdays": "urodziny",
-    "day": "dzień",
-    "ical url": "iCal Url",
-    "month": "miesiąc",
-    "name": "Nazwa",
+    "birthdays": "Urodziny",
+    "ical url": "URL iCal",
     "next separator": "Separator następnego tekstu",
     "options": "Opcje",
-    "text template (next)": "szablon tekstowy (następny)",
-    "use %n for name and %a for age": "użyj %n dla imienia i %a dla wieku",
-    "year": "rok"
+    "text template (next)": "szablon tekstu (następny)",
+    "use %n for name and %a for age": "użyj %n jako nazwy i %a jako wieku"
 }
