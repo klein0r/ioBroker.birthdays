@@ -240,7 +240,18 @@ class Birthdays extends utils.Adapter {
         await this.setObjectNotExistsAsync(path + '.name', {
             type: 'state',
             common: {
-                name: 'Name',
+                name: {
+                    en: 'Name',
+                    de: 'Name',
+                    ru: 'Имя',
+                    pt: 'Nome',
+                    nl: 'Naam',
+                    fr: 'Nom',
+                    it: 'Nome',
+                    es: 'Nombre',
+                    pl: 'Nazwa',
+                    'zh-cn': '姓名'
+                },
                 type: 'string',
                 role: 'value',
                 read: true,
@@ -253,7 +264,18 @@ class Birthdays extends utils.Adapter {
         await this.setObjectNotExistsAsync(path + '.age', {
             type: 'state',
             common: {
-                name: 'New age',
+                name: {
+                    en: 'Age',
+                    de: 'Alter',
+                    ru: 'Возраст',
+                    pt: 'Era',
+                    nl: 'Leeftijd',
+                    fr: 'Âge',
+                    it: 'Età',
+                    es: 'La edad',
+                    pl: 'Wiek',
+                    'zh-cn': '年龄'
+                },
                 type: 'number',
                 role: 'value',
                 read: true,
@@ -266,7 +288,18 @@ class Birthdays extends utils.Adapter {
         await this.setObjectNotExistsAsync(path + '.day', {
             type: 'state',
             common: {
-                name: 'Day of month',
+                name: {
+                    en: 'Day of month',
+                    de: 'Monatstag',
+                    ru: 'День месяца',
+                    pt: 'Dia do mês',
+                    nl: 'Dag van de maand',
+                    fr: 'Jour du mois',
+                    it: 'Giorno del mese',
+                    es: 'Dia del mes',
+                    pl: 'Dzień miesiąca',
+                    'zh-cn': '每月的第几天'
+                },
                 type: 'number',
                 role: 'value',
                 read: true,
@@ -279,7 +312,18 @@ class Birthdays extends utils.Adapter {
         await this.setObjectNotExistsAsync(path + '.year', {
             type: 'state',
             common: {
-                name: 'Birth year',
+                name: {
+                    en: 'Birth year',
+                    de: 'Geburtsjahr',
+                    ru: 'Год рождения',
+                    pt: 'Ano de Nascimento',
+                    nl: 'Geboortejaar',
+                    fr: 'Année de naissance',
+                    it: 'Anno di nascita',
+                    es: 'Año de nacimiento',
+                    pl: 'Rok urodzenia',
+                    'zh-cn': '出生年'
+                },
                 type: 'number',
                 role: 'value',
                 read: true,
@@ -292,7 +336,18 @@ class Birthdays extends utils.Adapter {
         await this.setObjectNotExistsAsync(path + '.daysLeft', {
             type: 'state',
             common: {
-                name: 'Days left',
+                name: {
+                    en: 'Days left',
+                    de: 'Tage übrig',
+                    ru: 'Осталось дней',
+                    pt: 'Dias restantes',
+                    nl: 'Dagen over',
+                    fr: 'Jours restants',
+                    it: 'Giorni rimasti',
+                    es: 'Días restantes',
+                    pl: 'Pozostałe dni',
+                    'zh-cn': '剩余天数'
+                },
                 type: 'number',
                 role: 'value',
                 read: true,
