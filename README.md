@@ -214,6 +214,10 @@ It is NOT required to use the ical option. You can also define all birthday date
   ### **WORK IN PROGRESS**
 -->
 
+### 0.1.5
+
+* (klein0r) Updated internal state handling
+
 ### 0.1.4
 
 * (klein0r) Translated all objects

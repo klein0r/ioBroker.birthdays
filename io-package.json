@@ -1,8 +1,20 @@
 {
     "common": {
         "name": "birthdays",
-        "version": "0.1.4",
+        "version": "0.1.5",
         "news": {
+            "0.1.5": {
+                "en": "Updated internal state handling",
+                "de": "Aktualisierte interne Zustandsbehandlung",
+                "ru": "Обновленная обработка внутреннего состояния",
+                "pt": "Tratamento de estado interno atualizado",
+                "nl": "Bijgewerkte interne statusafhandeling",
+                "fr": "Gestion de l'état interne mise à jour",
+                "it": "Aggiornata la gestione dello stato interno",
+                "es": "Manejo de estado interno actualizado",
+                "pl": "Zaktualizowano obsługę stanów wewnętrznych",
+                "zh-cn": "更新的内部状态处理"
+            },
             "0.1.4": {
                 "en": "Translated all objects",
                 "de": "Alle Objekte übersetzt",
