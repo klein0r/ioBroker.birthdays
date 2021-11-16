@@ -14,6 +14,10 @@
 
 Use an ical file to import your contacts birthdays or define the birthday dates directly in the adapter settings
 
+## Sponsored by
+
+[![ioBroker Master Kurs](https://haus-automatisierung.com/images/ads/ioBroker-Kurs.png)](https://haus-automatisierung.com/iobroker-kurs/?refid=iobroker-birthdays)
+
 ## Installation
 
 Please use the "adapter list" in ioBroker to install a stable version of this adapter. You can also use the CLI to install this adapter:
