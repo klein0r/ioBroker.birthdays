@@ -1,495 +1,507 @@
 {
-    "common": {
-        "name": "birthdays",
-        "version": "0.1.5",
-        "news": {
-            "0.1.5": {
-                "en": "Updated internal state handling",
-                "de": "Aktualisierte interne Zustandsbehandlung",
-                "ru": "Обновленная обработка внутреннего состояния",
-                "pt": "Tratamento de estado interno atualizado",
-                "nl": "Bijgewerkte interne statusafhandeling",
-                "fr": "Gestion de l'état interne mise à jour",
-                "it": "Aggiornata la gestione dello stato interno",
-                "es": "Manejo de estado interno actualizado",
-                "pl": "Zaktualizowano obsługę stanów wewnętrznych",
-                "zh-cn": "更新的内部状态处理"
-            },
-            "0.1.4": {
-                "en": "Translated all objects",
-                "de": "Alle Objekte übersetzt",
-                "ru": "Переведены все объекты",
-                "pt": "Todos os objetos traduzidos",
-                "nl": "Alle objecten vertaald",
-                "fr": "Traduit tous les objets",
-                "it": "Tradotto tutti gli oggetti",
-                "es": "Traducido todos los objetos",
-                "pl": "Przetłumaczono wszystkie obiekty",
-                "zh-cn": "翻译所有对象"
-            },
-            "0.1.3": {
-                "en": "Format dates using ioBrokers configured formats",
-                "de": "Datum mit dem konfigurierten Datumsformat vom ioBroker formatieren",
-                "ru": "Форматирование дат с использованием форматов, настроенных ioBrokers",
-                "pt": "Formate as datas usando os formatos configurados do ioBrokers",
-                "nl": "Datums formatteren met behulp van door ioBrokers geconfigureerde formaten",
-                "fr": "Formater les dates à l'aide des formats configurés par ioBrokers",
-                "it": "Formattare le date utilizzando i formati configurati da ioBrokers",
-                "es": "Dar formato a las fechas con los formatos configurados de ioBrokers",
-                "pl": "Formatuj daty za pomocą formatów skonfigurowanych przez ioBrokers",
-                "zh-cn": "使用 ioBrokers 配置的格式格式化日期"
-            },
-            "0.1.2": {
-                "en": "Fixed missing translations",
-                "de": "Fehlende Übersetzungen hinzugefügt",
-                "ru": "Исправлены отсутствующие переводы",
-                "pt": "Traduções em falta corrigidas",
-                "nl": "Ontbrekende vertalingen verholpen",
-                "fr": "Correction des traductions manquantes",
-                "it": "Risolte le traduzioni mancanti",
-                "es": "Se corrigieron las traducciones faltantes",
-                "pl": "Naprawiono brakujące tłumaczenia",
-                "zh-cn": "修复了缺失的翻译"
-            },
-            "0.1.1": {
-                "en": "Added custom date format",
-                "de": "Eigenes Datumsformat hinzugefügt",
-                "ru": "Добавлен собственный формат даты",
-                "pt": "Adicionado formato de data personalizado",
-                "nl": "Aangepaste datumnotatie toegevoegd",
-                "fr": "Ajout d'un format de date personnalisé",
-                "it": "Aggiunto formato data personalizzato",
-                "es": "Formato de fecha personalizado agregado",
-                "pl": "Dodano niestandardowy format daty",
-                "zh-cn": "添加自定义日期格式"
-            },
-            "0.1.0": {
-                "en": "Admin 5 Support",
-                "de": "Admin 5 Support",
-                "ru": "Admin 5 Поддержка",
-                "pt": "Suporte Admin 5",
-                "nl": "Beheerder 5 Ondersteuning",
-                "fr": "Assistance administrateur 5",
-                "it": "Supporto amministratore 5",
-                "es": "Soporte Admin 5",
-                "pl": "Wsparcie administratora 5",
-                "zh-cn": "管理员 5 支持"
-            }
-        },
-        "title": "Birthdays",
-        "titleLang": {
-            "en": "Birthdays",
-            "de": "Geburtstage",
-            "ru": "Дни рождения",
-            "pt": "Aniversários",
-            "nl": "verjaardagen",
-            "fr": "Anniversaires",
-            "it": "compleanni",
-            "es": "Cumpleaños",
-            "pl": "Urodziny",
-            "zh-cn": "生日"
-        },
-        "desc": {
-            "en": "Use an ical file to import your contacts birthdays",
-            "de": "Verwenden Sie eine ical-Datei, um die Geburtstage Ihrer Kontakte zu importieren",
-            "ru": "Используйте файл ical для импорта дней рождения контактов",
-            "pt": "Use um arquivo ical para importar os aniversários de seus contatos",
-            "nl": "Gebruik een ical-bestand om de verjaardagen van uw contacten te importeren",
-            "fr": "Utilisez un fichier ical pour importer les anniversaires de vos contacts",
-            "it": "Usa un file ical per importare i compleanni dei tuoi contatti",
-            "es": "Utilice un archivo ical para importar los cumpleaños de sus contactos",
-            "pl": "Użyj pliku ical, aby zaimportować daty urodzin kontaktów",
-            "zh-cn": "使用 ical 文件导入您的联系人生日"
-        },
-        "authors": [
-            "Matthias Kleine <info@haus-automatisierung.com>"
-        ],
-        "keywords": [
-            "calendar",
-            "birthday"
-        ],
-        "license": "MIT",
-        "platform": "Javascript/Node.js",
-        "icon": "birthdays.png",
-        "extIcon": "https://raw.githubusercontent.com/klein0r/ioBroker.birthdays/master/admin/birthdays.png",
-        "enabled": true,
-        "readme": "https://github.com/klein0r/ioBroker.birthdays/blob/master/README.md",
-        "loglevel": "info",
-        "mode": "schedule",
-        "allowInit": true,
-        "schedule": "0 0 * * *",
-        "type": "date-and-time",
-        "compact": true,
-        "connectionType": "cloud",
-        "dataSource": "poll",
-        "adminUI": {
-            "config": "json"
-        },
-        "globalDependencies": [
-            {
-                "admin": ">=5.1.28"
-            }
-        ],
-        "dependencies": [
-            {
-                "js-controller": ">=3.3.19"
-            }
-        ]
+  "common": {
+    "name": "birthdays",
+    "version": "0.1.6",
+    "news": {
+      "0.1.6": {
+        "en": "Require new version for translated instance objects\nFixed timeout handling",
+        "de": "Neue Version für übersetzte Instanzobjekte erforderlich\nBehobene Timeout-Behandlung",
+        "ru": "Требовать новую версию для переведенных экземпляров объектов\nФиксированная обработка тайм-аута",
+        "pt": "Requer nova versão para objetos de instância traduzidos\nTratamento de tempo limite fixo",
+        "nl": "Nieuwe versie vereisen voor vertaalde instantieobjecten\nVaste time-outafhandeling",
+        "fr": "Exiger une nouvelle version pour les objets d'instance traduits\nGestion du délai d'attente fixe",
+        "it": "Richiedi una nuova versione per gli oggetti istanza tradotti\nGestione del timeout fisso",
+        "es": "Requerir una nueva versión para los objetos de instancia traducidos\nManejo del tiempo de espera fijo",
+        "pl": "Wymagaj nowej wersji dla przetłumaczonych obiektów instancji\nNaprawiono obsługę limitu czasu",
+        "zh-cn": "需要新版本的翻译实例对象\n固定超时处理"
+      },
+      "0.1.5": {
+        "en": "Updated internal state handling",
+        "de": "Aktualisierte interne Zustandsbehandlung",
+        "ru": "Обновленная обработка внутреннего состояния",
+        "pt": "Tratamento de estado interno atualizado",
+        "nl": "Bijgewerkte interne statusafhandeling",
+        "fr": "Gestion de l'état interne mise à jour",
+        "it": "Aggiornata la gestione dello stato interno",
+        "es": "Manejo de estado interno actualizado",
+        "pl": "Zaktualizowano obsługę stanów wewnętrznych",
+        "zh-cn": "更新的内部状态处理"
+      },
+      "0.1.4": {
+        "en": "Translated all objects",
+        "de": "Alle Objekte übersetzt",
+        "ru": "Переведены все объекты",
+        "pt": "Todos os objetos traduzidos",
+        "nl": "Alle objecten vertaald",
+        "fr": "Traduit tous les objets",
+        "it": "Tradotto tutti gli oggetti",
+        "es": "Traducido todos los objetos",
+        "pl": "Przetłumaczono wszystkie obiekty",
+        "zh-cn": "翻译所有对象"
+      },
+      "0.1.3": {
+        "en": "Format dates using ioBrokers configured formats",
+        "de": "Datum mit dem konfigurierten Datumsformat vom ioBroker formatieren",
+        "ru": "Форматирование дат с использованием форматов, настроенных ioBrokers",
+        "pt": "Formate as datas usando os formatos configurados do ioBrokers",
+        "nl": "Datums formatteren met behulp van door ioBrokers geconfigureerde formaten",
+        "fr": "Formater les dates à l'aide des formats configurés par ioBrokers",
+        "it": "Formattare le date utilizzando i formati configurati da ioBrokers",
+        "es": "Dar formato a las fechas con los formatos configurados de ioBrokers",
+        "pl": "Formatuj daty za pomocą formatów skonfigurowanych przez ioBrokers",
+        "zh-cn": "使用 ioBrokers 配置的格式格式化日期"
+      },
+      "0.1.2": {
+        "en": "Fixed missing translations",
+        "de": "Fehlende Übersetzungen hinzugefügt",
+        "ru": "Исправлены отсутствующие переводы",
+        "pt": "Traduções em falta corrigidas",
+        "nl": "Ontbrekende vertalingen verholpen",
+        "fr": "Correction des traductions manquantes",
+        "it": "Risolte le traduzioni mancanti",
+        "es": "Se corrigieron las traducciones faltantes",
+        "pl": "Naprawiono brakujące tłumaczenia",
+        "zh-cn": "修复了缺失的翻译"
+      },
+      "0.1.1": {
+        "en": "Added custom date format",
+        "de": "Eigenes Datumsformat hinzugefügt",
+        "ru": "Добавлен собственный формат даты",
+        "pt": "Adicionado formato de data personalizado",
+        "nl": "Aangepaste datumnotatie toegevoegd",
+        "fr": "Ajout d'un format de date personnalisé",
+        "it": "Aggiunto formato data personalizzato",
+        "es": "Formato de fecha personalizado agregado",
+        "pl": "Dodano niestandardowy format daty",
+        "zh-cn": "添加自定义日期格式"
+      },
+      "0.1.0": {
+        "en": "Admin 5 Support",
+        "de": "Admin 5 Support",
+        "ru": "Admin 5 Поддержка",
+        "pt": "Suporte Admin 5",
+        "nl": "Beheerder 5 Ondersteuning",
+        "fr": "Assistance administrateur 5",
+        "it": "Supporto amministratore 5",
+        "es": "Soporte Admin 5",
+        "pl": "Wsparcie administratora 5",
+        "zh-cn": "管理员 5 支持"
+      }
     },
-    "native": {
-        "icalUrl": "",
-        "nextTextTemplate": "%n turns %a",
-        "nextSeparator": ", "
+    "title": "Birthdays",
+    "titleLang": {
+      "en": "Birthdays",
+      "de": "Geburtstage",
+      "ru": "Дни рождения",
+      "pt": "Aniversários",
+      "nl": "verjaardagen",
+      "fr": "Anniversaires",
+      "it": "compleanni",
+      "es": "Cumpleaños",
+      "pl": "Urodziny",
+      "zh-cn": "生日"
     },
-    "objects": [],
-    "instanceObjects": [
-        {
-            "_id": "next",
-            "type": "channel",
-            "common": {
-                "name": {
-                    "en": "Next birthdays",
-                    "de": "Nächste Geburtstage",
-                    "ru": "Следующие дни рождения",
-                    "pt": "Próximos aniversários",
-                    "nl": "Volgende verjaardagen",
-                    "fr": "Prochains anniversaires",
-                    "it": "Prossimi compleanni",
-                    "es": "Próximos cumpleaños",
-                    "pl": "Następne urodziny",
-                    "zh-cn": "下一个生日"
-                }
-            },
-            "native": {}
-        },
-        {
-            "_id": "summary",
-            "type": "channel",
-            "common": {
-                "name": {
-                    "en": "Birthdays summary",
-                    "de": "Zusammenfassung der Geburtstage",
-                    "ru": "Сводка дней рождения",
-                    "pt": "Resumo de aniversários",
-                    "nl": "Verjaardagen samenvatting",
-                    "fr": "Résumé des anniversaires",
-                    "it": "Riepilogo compleanni",
-                    "es": "Resumen de cumpleaños",
-                    "pl": "Podsumowanie urodzin",
-                    "zh-cn": "生日总结"
-                }
-            },
-            "native": {}
-        },
-        {
-            "_id": "summary.json",
-            "type": "state",
-            "common": {
-                "name": {
-                    "en": "Birthdays JSON",
-                    "de": "Geburtstage JSON",
-                    "ru": "Дни рождения JSON",
-                    "pt": "JSON de aniversários",
-                    "nl": "Verjaardagen JSON",
-                    "fr": "Anniversaires JSON",
-                    "it": "Compleanni JSON",
-                    "es": "Cumpleaños JSON",
-                    "pl": "Urodziny JSON",
-                    "zh-cn": "生日 JSON"
-                },
-                "type": "string",
-                "role": "value",
-                "read": true,
-                "write": false
-            },
-            "native": {}
-        },
-        {
-            "_id": "month",
-            "type": "channel",
-            "common": {
-                "name": {
-                    "en": "By month",
-                    "de": "Nach Monaten",
-                    "ru": "По месяцам",
-                    "pt": "Por mês",
-                    "nl": "Bij maand",
-                    "fr": "Par mois",
-                    "it": "Per mese",
-                    "es": "Por mes",
-                    "pl": "Według miesiąca",
-                    "zh-cn": "按月"
-                }
-            },
-            "native": {}
-        },
-        {
-            "_id": "next",
-            "type": "channel",
-            "common": {
-                "name": {
-                    "en": "Next birthdays",
-                    "de": "Nächste Geburtstage",
-                    "ru": "Следующие дни рождения",
-                    "pt": "Próximos aniversários",
-                    "nl": "Volgende verjaardagen",
-                    "fr": "Prochains anniversaires",
-                    "it": "Prossimi compleanni",
-                    "es": "Próximos cumpleaños",
-                    "pl": "Następne urodziny",
-                    "zh-cn": "下一个生日"
-                }
-            },
-            "native": {}
-        },
-        {
-            "_id": "next.json",
-            "type": "state",
-            "common": {
-                "name": {
-                    "en": "Birthdays JSON",
-                    "de": "Geburtstage JSON",
-                    "ru": "Дни рождения JSON",
-                    "pt": "JSON de aniversários",
-                    "nl": "Verjaardagen JSON",
-                    "fr": "Anniversaires JSON",
-                    "it": "Compleanni JSON",
-                    "es": "Cumpleaños JSON",
-                    "pl": "Urodziny JSON",
-                    "zh-cn": "生日 JSON"
-                },
-                "type": "string",
-                "role": "value",
-                "read": true,
-                "write": false
-            },
-            "native": {}
-        },
-        {
-            "_id": "next.text",
-            "type": "state",
-            "common": {
-                "name": {
-                    "en": "Next birthdays",
-                    "de": "Nächste Geburtstage",
-                    "ru": "Следующие дни рождения",
-                    "pt": "Próximos aniversários",
-                    "nl": "Volgende verjaardagen",
-                    "fr": "Prochains anniversaires",
-                    "it": "Prossimi compleanni",
-                    "es": "Próximos cumpleaños",
-                    "pl": "Następne urodziny",
-                    "zh-cn": "下一个生日"
-                },
-                "type": "string",
-                "role": "value",
-                "read": true,
-                "write": false
-            },
-            "native": {}
-        },
-        {
-            "_id": "next.daysLeft",
-            "type": "state",
-            "common": {
-                "name": {
-                    "en": "Next birthdays - days left",
-                    "de": "Nächste Geburtstage - verbleibende Tage",
-                    "ru": "Следующие дни рождения - осталось дней",
-                    "pt": "Próximos aniversários - faltam dias",
-                    "nl": "Volgende verjaardagen - resterende dagen",
-                    "fr": "Prochains anniversaires - jours restants",
-                    "it": "Prossimi compleanni - giorni rimasti",
-                    "es": "Próximos cumpleaños: quedan días",
-                    "pl": "Następne urodziny - pozostały dni",
-                    "zh-cn": "下一个生日 - 剩余天数"
-                },
-                "type": "number",
-                "role": "value",
-                "read": true,
-                "write": false
-            },
-            "native": {}
-        },
-        {
-            "_id": "next.date",
-            "type": "state",
-            "common": {
-                "name": {
-                    "en": "Next birthdays - date",
-                    "de": "Nächste Geburtstage - Datum",
-                    "ru": "Следующие дни рождения - дата",
-                    "pt": "Próximos aniversários - data",
-                    "nl": "Volgende verjaardagen - datum",
-                    "fr": "Prochains anniversaires - date",
-                    "it": "Prossimi compleanni - data",
-                    "es": "Próximos cumpleaños - fecha",
-                    "pl": "Następne urodziny - data",
-                    "zh-cn": "下一个生日 - 日期"
-                },
-                "type": "number",
-                "role": "date",
-                "read": true,
-                "write": false
-            },
-            "native": {}
-        },
-        {
-            "_id": "next.dateFormat",
-            "type": "state",
-            "common": {
-                "name": {
-                    "en": "Next birthdays - date formatted",
-                    "de": "Nächste Geburtstage - Datum formatiert",
-                    "ru": "Следующие дни рождения - дата в формате",
-                    "pt": "Próximos aniversários - data formatada",
-                    "nl": "Volgende verjaardagen - datum geformatteerd",
-                    "fr": "Prochains anniversaires - date formatée",
-                    "it": "Prossimi compleanni - data formattata",
-                    "es": "Próximos cumpleaños: fecha formateada",
-                    "pl": "Następne urodziny - data sformatowana",
-                    "zh-cn": "下一个生日 - 日期格式"
-                },
-                "type": "string",
-                "role": "value",
-                "read": true,
-                "write": false
-            },
-            "native": {}
-        },
-        {
-            "_id": "nextAfter",
-            "type": "channel",
-            "common": {
-                "name": {
-                    "en": "After next birthdays",
-                    "de": "Nach den nächsten Geburtstagen",
-                    "ru": "После следующих дней рождения",
-                    "pt": "Depois dos próximos aniversários",
-                    "nl": "Na volgende verjaardagen",
-                    "fr": "Après les prochains anniversaires",
-                    "it": "Dopo i prossimi compleanni",
-                    "es": "Después de los próximos cumpleaños",
-                    "pl": "Po następnych urodzinach",
-                    "zh-cn": "下一个生日之后"
-                }
-            },
-            "native": {}
-        },
-        {
-            "_id": "nextAfter.json",
-            "type": "state",
-            "common": {
-                "name": {
-                    "en": "Birthdays JSON",
-                    "de": "Geburtstage JSON",
-                    "ru": "Дни рождения JSON",
-                    "pt": "JSON de aniversários",
-                    "nl": "Verjaardagen JSON",
-                    "fr": "Anniversaires JSON",
-                    "it": "Compleanni JSON",
-                    "es": "Cumpleaños JSON",
-                    "pl": "Urodziny JSON",
-                    "zh-cn": "生日 JSON"
-                },
-                "type": "string",
-                "role": "value",
-                "read": true,
-                "write": false
-            },
-            "native": {}
-        },
-        {
-            "_id": "nextAfter.text",
-            "type": "state",
-            "common": {
-                "name": {
-                    "en": "After next birthdays",
-                    "de": "Nach den nächsten Geburtstagen",
-                    "ru": "После следующих дней рождения",
-                    "pt": "Depois dos próximos aniversários",
-                    "nl": "Na volgende verjaardagen",
-                    "fr": "Après les prochains anniversaires",
-                    "it": "Dopo i prossimi compleanni",
-                    "es": "Después de los próximos cumpleaños",
-                    "pl": "Po następnych urodzinach",
-                    "zh-cn": "下一个生日之后"
-                },
-                "type": "string",
-                "role": "value",
-                "read": true,
-                "write": false
-            },
-            "native": {}
-        },
-        {
-            "_id": "nextAfter.daysLeft",
-            "type": "state",
-            "common": {
-                "name": {
-                    "en": "After next birthdays - days left",
-                    "de": "Nach den nächsten Geburtstagen - verbleibende Tage",
-                    "ru": "После следующих дней рождения - осталось дней",
-                    "pt": "Após os próximos aniversários - faltam dias",
-                    "nl": "Na de volgende verjaardagen - nog dagen over",
-                    "fr": "Après les prochains anniversaires - jours restants",
-                    "it": "Dopo i prossimi compleanni - giorni rimasti",
-                    "es": "Después de los próximos cumpleaños - quedan días",
-                    "pl": "Po następnych urodzinach - pozostały dni",
-                    "zh-cn": "下一个生日之后 - 剩下的天数"
-                },
-                "type": "number",
-                "role": "value",
-                "read": true,
-                "write": false
-            },
-            "native": {}
-        },
-        {
-            "_id": "nextAfter.date",
-            "type": "state",
-            "common": {
-                "name": {
-                    "en": "After next birthdays - date",
-                    "de": "Nach den nächsten Geburtstagen - Datum",
-                    "ru": "После следующих дней рождения - дата",
-                    "pt": "Após os próximos aniversários - data",
-                    "nl": "Na volgende verjaardagen - datum",
-                    "fr": "Après les prochains anniversaires - date",
-                    "it": "Dopo i prossimi compleanni - data",
-                    "es": "Después de los próximos cumpleaños - fecha",
-                    "pl": "Po następnych urodzinach - data",
-                    "zh-cn": "在下一个生日之后 - 日期"
-                },
-                "type": "number",
-                "role": "date",
-                "read": true,
-                "write": false
-            },
-            "native": {}
-        },
-        {
-            "_id": "nextAfter.dateFormat",
-            "type": "state",
-            "common": {
-                "name": {
-                    "en": "After next birthdays - date formatted",
-                    "de": "Nach den nächsten Geburtstagen - Datum formatiert",
-                    "ru": "После следующих дней рождения - дата в формате",
-                    "pt": "Após os próximos aniversários - data formatada",
-                    "nl": "Na volgende verjaardagen - datum geformatteerd",
-                    "fr": "Après les prochains anniversaires - date formatée",
-                    "it": "Dopo i prossimi compleanni - data formattata",
-                    "es": "Después de los próximos cumpleaños: formato de fecha",
-                    "pl": "Po następnych urodzinach - data sformatowana",
-                    "zh-cn": "在下一个生日之后 - 日期格式化"
-                },
-                "type": "string",
-                "role": "value",
-                "read": true,
-                "write": false
-            },
-            "native": {}
-        }
+    "desc": {
+      "en": "Use an ical file to import your contacts birthdays",
+      "de": "Verwenden Sie eine ical-Datei, um die Geburtstage Ihrer Kontakte zu importieren",
+      "ru": "Используйте файл ical для импорта дней рождения контактов",
+      "pt": "Use um arquivo ical para importar os aniversários de seus contatos",
+      "nl": "Gebruik een ical-bestand om de verjaardagen van uw contacten te importeren",
+      "fr": "Utilisez un fichier ical pour importer les anniversaires de vos contacts",
+      "it": "Usa un file ical per importare i compleanni dei tuoi contatti",
+      "es": "Utilice un archivo ical para importar los cumpleaños de sus contactos",
+      "pl": "Użyj pliku ical, aby zaimportować daty urodzin kontaktów",
+      "zh-cn": "使用 ical 文件导入您的联系人生日"
+    },
+    "authors": [
+      "Matthias Kleine <info@haus-automatisierung.com>"
+    ],
+    "keywords": [
+      "calendar",
+      "birthday"
+    ],
+    "license": "MIT",
+    "platform": "Javascript/Node.js",
+    "icon": "birthdays.png",
+    "extIcon": "https://raw.githubusercontent.com/klein0r/ioBroker.birthdays/master/admin/birthdays.png",
+    "enabled": true,
+    "readme": "https://github.com/klein0r/ioBroker.birthdays/blob/master/README.md",
+    "loglevel": "info",
+    "mode": "schedule",
+    "allowInit": true,
+    "schedule": "0 0 * * *",
+    "type": "date-and-time",
+    "compact": true,
+    "connectionType": "cloud",
+    "dataSource": "poll",
+    "adminUI": {
+      "config": "json"
+    },
+    "globalDependencies": [
+      {
+        "admin": ">=5.1.28"
+      }
+    ],
+    "dependencies": [
+      {
+        "js-controller": ">=3.3.19"
+      }
     ]
+  },
+  "native": {
+    "icalUrl": "",
+    "nextTextTemplate": "%n turns %a",
+    "nextSeparator": ", "
+  },
+  "objects": [],
+  "instanceObjects": [
+    {
+      "_id": "next",
+      "type": "channel",
+      "common": {
+        "name": {
+          "en": "Next birthdays",
+          "de": "Nächste Geburtstage",
+          "ru": "Следующие дни рождения",
+          "pt": "Próximos aniversários",
+          "nl": "Volgende verjaardagen",
+          "fr": "Prochains anniversaires",
+          "it": "Prossimi compleanni",
+          "es": "Próximos cumpleaños",
+          "pl": "Następne urodziny",
+          "zh-cn": "下一个生日"
+        }
+      },
+      "native": {}
+    },
+    {
+      "_id": "summary",
+      "type": "channel",
+      "common": {
+        "name": {
+          "en": "Birthdays summary",
+          "de": "Zusammenfassung der Geburtstage",
+          "ru": "Сводка дней рождения",
+          "pt": "Resumo de aniversários",
+          "nl": "Verjaardagen samenvatting",
+          "fr": "Résumé des anniversaires",
+          "it": "Riepilogo compleanni",
+          "es": "Resumen de cumpleaños",
+          "pl": "Podsumowanie urodzin",
+          "zh-cn": "生日总结"
+        }
+      },
+      "native": {}
+    },
+    {
+      "_id": "summary.json",
+      "type": "state",
+      "common": {
+        "name": {
+          "en": "Birthdays JSON",
+          "de": "Geburtstage JSON",
+          "ru": "Дни рождения JSON",
+          "pt": "JSON de aniversários",
+          "nl": "Verjaardagen JSON",
+          "fr": "Anniversaires JSON",
+          "it": "Compleanni JSON",
+          "es": "Cumpleaños JSON",
+          "pl": "Urodziny JSON",
+          "zh-cn": "生日 JSON"
+        },
+        "type": "string",
+        "role": "value",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "month",
+      "type": "channel",
+      "common": {
+        "name": {
+          "en": "By month",
+          "de": "Nach Monaten",
+          "ru": "По месяцам",
+          "pt": "Por mês",
+          "nl": "Bij maand",
+          "fr": "Par mois",
+          "it": "Per mese",
+          "es": "Por mes",
+          "pl": "Według miesiąca",
+          "zh-cn": "按月"
+        }
+      },
+      "native": {}
+    },
+    {
+      "_id": "next",
+      "type": "channel",
+      "common": {
+        "name": {
+          "en": "Next birthdays",
+          "de": "Nächste Geburtstage",
+          "ru": "Следующие дни рождения",
+          "pt": "Próximos aniversários",
+          "nl": "Volgende verjaardagen",
+          "fr": "Prochains anniversaires",
+          "it": "Prossimi compleanni",
+          "es": "Próximos cumpleaños",
+          "pl": "Następne urodziny",
+          "zh-cn": "下一个生日"
+        }
+      },
+      "native": {}
+    },
+    {
+      "_id": "next.json",
+      "type": "state",
+      "common": {
+        "name": {
+          "en": "Birthdays JSON",
+          "de": "Geburtstage JSON",
+          "ru": "Дни рождения JSON",
+          "pt": "JSON de aniversários",
+          "nl": "Verjaardagen JSON",
+          "fr": "Anniversaires JSON",
+          "it": "Compleanni JSON",
+          "es": "Cumpleaños JSON",
+          "pl": "Urodziny JSON",
+          "zh-cn": "生日 JSON"
+        },
+        "type": "string",
+        "role": "value",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "next.text",
+      "type": "state",
+      "common": {
+        "name": {
+          "en": "Next birthdays",
+          "de": "Nächste Geburtstage",
+          "ru": "Следующие дни рождения",
+          "pt": "Próximos aniversários",
+          "nl": "Volgende verjaardagen",
+          "fr": "Prochains anniversaires",
+          "it": "Prossimi compleanni",
+          "es": "Próximos cumpleaños",
+          "pl": "Następne urodziny",
+          "zh-cn": "下一个生日"
+        },
+        "type": "string",
+        "role": "value",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "next.daysLeft",
+      "type": "state",
+      "common": {
+        "name": {
+          "en": "Next birthdays - days left",
+          "de": "Nächste Geburtstage - verbleibende Tage",
+          "ru": "Следующие дни рождения - осталось дней",
+          "pt": "Próximos aniversários - faltam dias",
+          "nl": "Volgende verjaardagen - resterende dagen",
+          "fr": "Prochains anniversaires - jours restants",
+          "it": "Prossimi compleanni - giorni rimasti",
+          "es": "Próximos cumpleaños: quedan días",
+          "pl": "Następne urodziny - pozostały dni",
+          "zh-cn": "下一个生日 - 剩余天数"
+        },
+        "type": "number",
+        "role": "value",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "next.date",
+      "type": "state",
+      "common": {
+        "name": {
+          "en": "Next birthdays - date",
+          "de": "Nächste Geburtstage - Datum",
+          "ru": "Следующие дни рождения - дата",
+          "pt": "Próximos aniversários - data",
+          "nl": "Volgende verjaardagen - datum",
+          "fr": "Prochains anniversaires - date",
+          "it": "Prossimi compleanni - data",
+          "es": "Próximos cumpleaños - fecha",
+          "pl": "Następne urodziny - data",
+          "zh-cn": "下一个生日 - 日期"
+        },
+        "type": "number",
+        "role": "date",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "next.dateFormat",
+      "type": "state",
+      "common": {
+        "name": {
+          "en": "Next birthdays - date formatted",
+          "de": "Nächste Geburtstage - Datum formatiert",
+          "ru": "Следующие дни рождения - дата в формате",
+          "pt": "Próximos aniversários - data formatada",
+          "nl": "Volgende verjaardagen - datum geformatteerd",
+          "fr": "Prochains anniversaires - date formatée",
+          "it": "Prossimi compleanni - data formattata",
+          "es": "Próximos cumpleaños: fecha formateada",
+          "pl": "Następne urodziny - data sformatowana",
+          "zh-cn": "下一个生日 - 日期格式"
+        },
+        "type": "string",
+        "role": "value",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "nextAfter",
+      "type": "channel",
+      "common": {
+        "name": {
+          "en": "After next birthdays",
+          "de": "Nach den nächsten Geburtstagen",
+          "ru": "После следующих дней рождения",
+          "pt": "Depois dos próximos aniversários",
+          "nl": "Na volgende verjaardagen",
+          "fr": "Après les prochains anniversaires",
+          "it": "Dopo i prossimi compleanni",
+          "es": "Después de los próximos cumpleaños",
+          "pl": "Po następnych urodzinach",
+          "zh-cn": "下一个生日之后"
+        }
+      },
+      "native": {}
+    },
+    {
+      "_id": "nextAfter.json",
+      "type": "state",
+      "common": {
+        "name": {
+          "en": "Birthdays JSON",
+          "de": "Geburtstage JSON",
+          "ru": "Дни рождения JSON",
+          "pt": "JSON de aniversários",
+          "nl": "Verjaardagen JSON",
+          "fr": "Anniversaires JSON",
+          "it": "Compleanni JSON",
+          "es": "Cumpleaños JSON",
+          "pl": "Urodziny JSON",
+          "zh-cn": "生日 JSON"
+        },
+        "type": "string",
+        "role": "value",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "nextAfter.text",
+      "type": "state",
+      "common": {
+        "name": {
+          "en": "After next birthdays",
+          "de": "Nach den nächsten Geburtstagen",
+          "ru": "После следующих дней рождения",
+          "pt": "Depois dos próximos aniversários",
+          "nl": "Na volgende verjaardagen",
+          "fr": "Après les prochains anniversaires",
+          "it": "Dopo i prossimi compleanni",
+          "es": "Después de los próximos cumpleaños",
+          "pl": "Po następnych urodzinach",
+          "zh-cn": "下一个生日之后"
+        },
+        "type": "string",
+        "role": "value",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "nextAfter.daysLeft",
+      "type": "state",
+      "common": {
+        "name": {
+          "en": "After next birthdays - days left",
+          "de": "Nach den nächsten Geburtstagen - verbleibende Tage",
+          "ru": "После следующих дней рождения - осталось дней",
+          "pt": "Após os próximos aniversários - faltam dias",
+          "nl": "Na de volgende verjaardagen - nog dagen over",
+          "fr": "Après les prochains anniversaires - jours restants",
+          "it": "Dopo i prossimi compleanni - giorni rimasti",
+          "es": "Después de los próximos cumpleaños - quedan días",
+          "pl": "Po następnych urodzinach - pozostały dni",
+          "zh-cn": "下一个生日之后 - 剩下的天数"
+        },
+        "type": "number",
+        "role": "value",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "nextAfter.date",
+      "type": "state",
+      "common": {
+        "name": {
+          "en": "After next birthdays - date",
+          "de": "Nach den nächsten Geburtstagen - Datum",
+          "ru": "После следующих дней рождения - дата",
+          "pt": "Após os próximos aniversários - data",
+          "nl": "Na volgende verjaardagen - datum",
+          "fr": "Après les prochains anniversaires - date",
+          "it": "Dopo i prossimi compleanni - data",
+          "es": "Después de los próximos cumpleaños - fecha",
+          "pl": "Po następnych urodzinach - data",
+          "zh-cn": "在下一个生日之后 - 日期"
+        },
+        "type": "number",
+        "role": "date",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
+      "_id": "nextAfter.dateFormat",
+      "type": "state",
+      "common": {
+        "name": {
+          "en": "After next birthdays - date formatted",
+          "de": "Nach den nächsten Geburtstagen - Datum formatiert",
+          "ru": "После следующих дней рождения - дата в формате",
+          "pt": "Após os próximos aniversários - data formatada",
+          "nl": "Na volgende verjaardagen - datum geformatteerd",
+          "fr": "Après les prochains anniversaires - date formatée",
+          "it": "Dopo i prossimi compleanni - data formattata",
+          "es": "Después de los próximos cumpleaños: formato de fecha",
+          "pl": "Po następnych urodzinach - data sformatowana",
+          "zh-cn": "在下一个生日之后 - 日期格式化"
+        },
+        "type": "string",
+        "role": "value",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    }
+  ]
 }
