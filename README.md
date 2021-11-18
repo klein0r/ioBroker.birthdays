@@ -218,6 +218,11 @@ It is NOT required to use the ical option. You can also define all birthday date
   ### **WORK IN PROGRESS**
 -->
 
+### **WORK IN PROGRESS**
+
+* (klein0r) Require new version for translated instance objects
+* (klein0r) Fixed timeout handling
+
 ### 0.1.5
 
 * (klein0r) Updated internal state handling

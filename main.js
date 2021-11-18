@@ -47,8 +47,7 @@ class Birthdays extends utils.Adapter {
             this.fillStates();
         }
 
-        this.killTimeout = setTimeout(this.stop.bind(this), 30000);
-
+        this.killTimeout = this.setTimeout(this.stop.bind(this), 30000);
     }
 
     addBySettings() {
@@ -382,7 +381,7 @@ class Birthdays extends utils.Adapter {
 
             if (this.killTimeout) {
                 this.log.debug('clearing kill timeout');
-                clearTimeout(this.killTimeout);
+                this.clearTimeout(this.killTimeout);
             }
 
             this.log.debug('cleaned everything up...');
