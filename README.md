@@ -222,40 +222,40 @@ It is NOT required to use the ical option. You can also define all birthday date
 * (klein0r) Require new version for translated instance objects
 * (klein0r) Fixed timeout handling
 
-### 0.1.5
+### 0.1.5 (2021-11-15)
 
 * (klein0r) Updated internal state handling
 
-### 0.1.4
+### 0.1.4 (2021-11-14)
 
 * (klein0r) Translated all objects
 
-### 0.1.3
+### 0.1.3 (2021-11-07)
 
 * (klein0r) Format dates using ioBrokers configured formats
 
-### 0.1.2
+### 0.1.2 (2021-11-06)
 
 * (klein0r) Fixed missing translations
 
-### 0.1.1
+### 0.1.1 (2021-11-05)
 
 * (klein0r) Added custom date format
 * (klein0r) Added custom next separator
 
-### 0.1.0
+### 0.1.0 (2021-11-05)
 
 * (klein0r) Admin 5 Support
 
-### 0.0.3
+### 0.0.3 (2021-03-23)
 
 * (klein0r) Added next and nextAfter birthdays
 
-### 0.0.2
+### 0.0.2 (2021-03-23)
 
 * (klein0r) Added more objects and states
 
-### 0.0.1
+### 0.0.1 (2020-12-28)
 
 * (klein0r) initial release
 
