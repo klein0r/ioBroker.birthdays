@@ -91,7 +91,7 @@
                             },
                             "filter": false,
                             "sort": false,
-                            "default": ""
+                            "default": 1
                         },
                         {
                             "type": "number",
@@ -113,7 +113,7 @@
                             },
                             "filter": false,
                             "sort": false,
-                            "default": ""
+                            "default": 1
                         },
                         {
                             "type": "number",
@@ -135,7 +135,7 @@
                             },
                             "filter": false,
                             "sort": false,
-                            "default": ""
+                            "default": 2000
                         }
                     ]
                 }
