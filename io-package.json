@@ -1,8 +1,20 @@
 {
   "common": {
     "name": "birthdays",
-    "version": "0.1.6",
+    "version": "0.1.7",
     "news": {
+      "0.1.7": {
+        "en": "Added defaults for birthdays table",
+        "de": "Standardwerte für Geburtstagstabelle hinzugefügt",
+        "ru": "Добавлены значения по умолчанию для таблицы дней рождения",
+        "pt": "Adicionados padrões para a tabela de aniversários",
+        "nl": "Standaardwaarden toegevoegd voor verjaardagstabel",
+        "fr": "Ajout de valeurs par défaut pour la table des anniversaires",
+        "it": "Aggiunte impostazioni predefinite per la tabella dei compleanni",
+        "es": "Se agregaron valores predeterminados para la tabla de cumpleaños.",
+        "pl": "Dodano wartości domyślne dla tabeli urodzin",
+        "zh-cn": "添加了生日表的默认值"
+      },
       "0.1.6": {
         "en": "Require new version for translated instance objects\nFixed timeout handling",
         "de": "Neue Version für übersetzte Instanzobjekte erforderlich\nBehobene Timeout-Behandlung",
@@ -74,18 +86,6 @@
         "es": "Formato de fecha personalizado agregado",
         "pl": "Dodano niestandardowy format daty",
         "zh-cn": "添加自定义日期格式"
-      },
-      "0.1.0": {
-        "en": "Admin 5 Support",
-        "de": "Admin 5 Support",
-        "ru": "Admin 5 Поддержка",
-        "pt": "Suporte Admin 5",
-        "nl": "Beheerder 5 Ondersteuning",
-        "fr": "Assistance administrateur 5",
-        "it": "Supporto amministratore 5",
-        "es": "Soporte Admin 5",
-        "pl": "Wsparcie administratora 5",
-        "zh-cn": "管理员 5 支持"
       }
     },
     "title": "Birthdays",

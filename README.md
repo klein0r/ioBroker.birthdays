@@ -217,8 +217,7 @@ It is NOT required to use the ical option. You can also define all birthday date
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
-
-### **WORK IN PROGRESS**
+### 0.1.7 (2021-12-23)
 
 * (klein0r) Added defaults for birthdays table
 
