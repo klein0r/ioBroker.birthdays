@@ -1,8 +1,20 @@
 {
   "common": {
     "name": "birthdays",
-    "version": "0.1.7",
+    "version": "0.1.8",
     "news": {
+      "0.1.8": {
+        "en": "Birthdays on 29th of February create NaN objects\nAdded check for empty names\nAdded date checks",
+        "de": "Geburtstage am 29. Februar erschaffen NaN-Objekte\nPrüfung auf leere Namen hinzugefügt\nDatumsüberprüfungen hinzugefügt",
+        "ru": "Дни рождения 29 февраля создают объекты NaN\nДобавлена проверка на пустые имена\nДобавлены проверки даты",
+        "pt": "Aniversários em 29 de fevereiro criam objetos NaN\nAdicionada verificação de nomes vazios\nAdicionadas verificações de data",
+        "nl": "Verjaardagen op 29 februari maken NaN-objecten\nControle op lege namen toegevoegd\nDatumcontroles toegevoegd",
+        "fr": "Les anniversaires du 29 février créent des objets NaN\nAjout de la vérification des noms vides\nAjout de contrôles de date",
+        "it": "I compleanni del 29 febbraio creano oggetti NaN\nAggiunto controllo per i nomi vuoti\nAggiunti controlli della data",
+        "es": "Los cumpleaños del 29 de febrero crean objetos NaN\nVerificación agregada para nombres vacíos\nVerificaciones de fecha agregada",
+        "pl": "Urodziny 29 lutego tworzą obiekty NaN\nDodano sprawdzanie pustych nazw\nDodano kontrole dat",
+        "zh-cn": "2 月 29 日的生日创建 NaN 对象\n添加了对空名称的检查\n添加日期检查"
+      },
       "0.1.7": {
         "en": "Added defaults for birthdays table",
         "de": "Standardwerte für Geburtstagstabelle hinzugefügt",
@@ -74,18 +86,6 @@
         "es": "Se corrigieron las traducciones faltantes",
         "pl": "Naprawiono brakujące tłumaczenia",
         "zh-cn": "修复了缺失的翻译"
-      },
-      "0.1.1": {
-        "en": "Added custom date format",
-        "de": "Eigenes Datumsformat hinzugefügt",
-        "ru": "Добавлен собственный формат даты",
-        "pt": "Adicionado formato de data personalizado",
-        "nl": "Aangepaste datumnotatie toegevoegd",
-        "fr": "Ajout d'un format de date personnalisé",
-        "it": "Aggiunto formato data personalizzato",
-        "es": "Formato de fecha personalizado agregado",
-        "pl": "Dodano niestandardowy format daty",
-        "zh-cn": "添加自定义日期格式"
       }
     },
     "title": "Birthdays",
