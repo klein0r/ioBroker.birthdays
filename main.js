@@ -56,15 +56,16 @@ class Birthdays extends utils.Adapter {
         if (birthdays && Array.isArray(birthdays)) {
             for (const b in birthdays) {
                 const birthday = birthdays[b];
-
                 const configBirthday = moment({ year: birthday.year, month: birthday.month - 1, day: birthday.day });
 
-                if (configBirthday.isValid() && configBirthday.year() <= this.today.year()) {
-                    this.log.debug('found birthday in settings: ' + birthday.name + ' (' + birthday.year + ')');
+                if (birthday.name) {
+                    if (configBirthday.isValid() && configBirthday.year() <= this.today.year()) {
+                        this.log.debug('found birthday in settings: ' + birthday.name + ' (' + birthday.year + ')');
 
-                    this.addBirthday(birthday.name, configBirthday.date(), configBirthday.month(), configBirthday.year());
-                } else {
-                    this.log.warn('invalid birthday date in settings: ' + birthday.name);
+                        this.addBirthday(birthday.name, configBirthday.date(), configBirthday.month(), configBirthday.year());
+                    } else {
+                        this.log.warn('invalid birthday date in settings: ' + birthday.name);
+                    }
                 }
             }
         }
@@ -100,12 +101,14 @@ class Birthdays extends utils.Adapter {
                             const month = event.start.getMonth(); // month as a number (0-11)
                             const birthYear = parseInt(event.description);
 
-                            if (!isNaN(birthYear) && birthYear <= this.today.year()) {
-                                this.log.debug('found birthday in calendar: ' + name + ' (' + birthYear + ')');
+                            if (name) {
+                                if (!isNaN(birthYear) && birthYear <= this.today.year()) {
+                                    this.log.debug('found birthday in calendar: ' + name + ' (' + birthYear + ')');
 
-                                this.addBirthday(name, day, month, birthYear);
-                            } else {
-                                this.log.warn('invalid birthday date in calendar: ' + name);
+                                    this.addBirthday(name, day, month, birthYear);
+                                } else {
+                                    this.log.warn('invalid birthday date in calendar: ' + name);
+                                }
                             }
                         }
                     }
@@ -117,7 +120,6 @@ class Birthdays extends utils.Adapter {
     }
 
     addBirthday(name, day, month, birthYear) {
-
         const birthday = moment([birthYear, month, day]);
         const nextBirthday = moment([this.today.year(), month, day]);
 
