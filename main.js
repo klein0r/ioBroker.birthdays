@@ -55,13 +55,14 @@ class Birthdays extends utils.Adapter {
         if (birthdays && Array.isArray(birthdays)) {
             for (const b in birthdays) {
                 const birthday = birthdays[b];
-                const configBirthday = moment({ year: birthday.year, month: birthday.month - 1, day: birthday.day });
 
                 if (birthday.name) {
+                    const configBirthday = moment({ year: birthday.year, month: birthday.month - 1, day: birthday.day });
+
                     if (configBirthday.isValid() && configBirthday.year() <= this.today.year()) {
                         this.log.debug('found birthday in settings: ' + birthday.name + ' (' + birthday.year + ')');
 
-                        this.addBirthday(birthday.name, configBirthday.date(), configBirthday.month(), configBirthday.year());
+                        this.addBirthday(birthday.name, configBirthday);
                     } else {
                         this.log.warn('invalid birthday date in settings: ' + birthday.name);
                     }
@@ -96,15 +97,15 @@ class Birthdays extends utils.Adapter {
 
                         if (event.summary !== undefined && !isNaN(event.description) && event.type === 'VEVENT' && event.start && event.start instanceof Date) {
                             const name = event.summary;
-                            const day = event.start.getDate();
-                            const month = event.start.getMonth(); // month as a number (0-11)
                             const birthYear = parseInt(event.description);
 
-                            if (name) {
-                                if (!isNaN(birthYear) && birthYear <= this.today.year()) {
+                            if (name && birthYear && !isNaN(birthYear)) {
+                                const calendarBirthday = moment({ year: birthYear, month: event.start.getMonth(), day: event.start.getDate() });
+
+                                if (calendarBirthday.isValid() && calendarBirthday.year() <= this.today.year()) {
                                     this.log.debug('found birthday in calendar: ' + name + ' (' + birthYear + ')');
 
-                                    this.addBirthday(name, day, month, birthYear);
+                                    this.addBirthday(name, calendarBirthday);
                                 } else {
                                     this.log.warn('invalid birthday date in calendar: ' + name);
                                 }
@@ -118,11 +119,9 @@ class Birthdays extends utils.Adapter {
         );
     }
 
-    addBirthday(name, day, month, birthYear) {
-        const birthday = moment([birthYear, month, day]);
-
-        const nextBirthday = moment([birthYear, month, day]);
-        nextBirthday.add(this.today.year() - birthYear, 'y');
+    addBirthday(name, birthday) {
+        const nextBirthday = birthday.clone();
+        nextBirthday.add(this.today.year() - birthday.year(), 'y');
 
         // If birthday was already this year, add one year to the nextBirthday
         if (this.today.isAfter(nextBirthday) && !this.today.isSame(nextBirthday)) {
@@ -132,7 +131,7 @@ class Birthdays extends utils.Adapter {
         this.birthdays.push(
             {
                 name: name,
-                birthYear: birthYear,
+                birthYear: birthday.year(),
                 dateFormat: this.formatDate(nextBirthday.toDate()),
                 age: nextBirthday.diff(birthday, 'years'),
                 daysLeft: nextBirthday.diff(this.today, 'days'),

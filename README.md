@@ -220,7 +220,9 @@ It is NOT required to use the ical option. You can also define all birthday date
 
 ### **WORK IN PROGRESS**
 
+* (klein0r) Birthdays on 29th of February create NaN objects
 * (klein0r) Added check for empty names
+* (klein0r) Added date checks
 
 ### 0.1.7 (2021-12-23)
 
