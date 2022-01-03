@@ -33,8 +33,7 @@ class Birthdays extends utils.Adapter {
                 type: 'channel',
                 common: {
                     name: mm.format('MMMM')
-                },
-                native: {}
+                }
             });
         }
 
@@ -121,7 +120,9 @@ class Birthdays extends utils.Adapter {
 
     addBirthday(name, day, month, birthYear) {
         const birthday = moment([birthYear, month, day]);
-        const nextBirthday = moment([this.today.year(), month, day]);
+
+        const nextBirthday = moment([birthYear, month, day]);
+        nextBirthday.add(this.today.year() - birthYear, 'y');
 
         // If birthday was already this year, add one year to the nextBirthday
         if (this.today.isAfter(nextBirthday) && !this.today.isSame(nextBirthday)) {
@@ -135,6 +136,7 @@ class Birthdays extends utils.Adapter {
                 dateFormat: this.formatDate(nextBirthday.toDate()),
                 age: nextBirthday.diff(birthday, 'years'),
                 daysLeft: nextBirthday.diff(this.today, 'days'),
+                _birthday: birthday,
                 _nextBirthday: nextBirthday
             }
         );
@@ -154,10 +156,10 @@ class Birthdays extends utils.Adapter {
             .filter(id => new RegExp('month\.[0-9]{2}\..+', 'g').test(id));
 
         for (const b in this.birthdays) {
-            const birthday = this.birthdays[b];
+            const birthdayObj = this.birthdays[b];
 
-            const cleanName = this.cleanNamespace(birthday.name);
-            const monthPath = this.getMonthPath(birthday._nextBirthday.month() + 1) + '.' + cleanName;
+            const cleanName = this.cleanNamespace(birthdayObj.name);
+            const monthPath = this.getMonthPath(birthdayObj._birthday.month() + 1) + '.' + cleanName;
 
             keepBirthdays.push(monthPath);
 
@@ -165,7 +167,7 @@ class Birthdays extends utils.Adapter {
                 this.log.debug('birthday added: ' + monthPath);
             }
 
-            await this.fillPathWithBirhtday(monthPath, birthday);
+            await this.fillPathWithBirthday(monthPath, birthdayObj);
         }
 
         // Delete non existent birthdays
@@ -222,16 +224,17 @@ class Birthdays extends utils.Adapter {
         await this.setStateAsync(path + '.dateFormat', {val: this.formatDate(birthdayDate.toDate()), ack: true});
     }
 
-    async fillPathWithBirhtday(path, birthday) {
+    async fillPathWithBirthday(path, birthdayObj) {
+        this.log.debug(`fillPathWithBirthday - path: "${path}", birthday: ${JSON.stringify(birthdayObj)}`);
 
-        const nextBirthday = birthday._nextBirthday;
+        const birthday = birthdayObj._birthday;
+        const nextBirthday = birthdayObj._nextBirthday;
 
         await this.setObjectNotExistsAsync(path, {
             type: 'channel',
             common: {
-                name: birthday.name
-            },
-            native: {}
+                name: birthdayObj.name
+            }
         });
 
         await this.setObjectNotExistsAsync(path + '.name', {
@@ -256,7 +259,7 @@ class Birthdays extends utils.Adapter {
             },
             native: {}
         });
-        await this.setStateAsync(path + '.name', {val: birthday.name, ack: true});
+        await this.setStateAsync(path + '.name', {val: birthdayObj.name, ack: true});
 
         await this.setObjectNotExistsAsync(path + '.age', {
             type: 'state',
@@ -280,7 +283,7 @@ class Birthdays extends utils.Adapter {
             },
             native: {}
         });
-        await this.setStateAsync(path + '.age', {val: birthday.age, ack: true});
+        await this.setStateAsync(path + '.age', {val: birthdayObj.age, ack: true});
 
         await this.setObjectNotExistsAsync(path + '.day', {
             type: 'state',
@@ -304,7 +307,7 @@ class Birthdays extends utils.Adapter {
             },
             native: {}
         });
-        await this.setStateAsync(path + '.day', {val: nextBirthday.date(), ack: true});
+        await this.setStateAsync(path + '.day', {val: birthday.date(), ack: true});
 
         await this.setObjectNotExistsAsync(path + '.year', {
             type: 'state',
@@ -328,7 +331,7 @@ class Birthdays extends utils.Adapter {
             },
             native: {}
         });
-        await this.setStateAsync(path + '.year', {val: birthday.birthYear, ack: true});
+        await this.setStateAsync(path + '.year', {val: birthdayObj.birthYear, ack: true});
 
         await this.setObjectNotExistsAsync(path + '.daysLeft', {
             type: 'state',
@@ -352,7 +355,7 @@ class Birthdays extends utils.Adapter {
             },
             native: {}
         });
-        await this.setStateAsync(path + '.daysLeft', {val: birthday.daysLeft, ack: true});
+        await this.setStateAsync(path + '.daysLeft', {val: birthdayObj.daysLeft, ack: true});
     }
 
     getMonthPath(m) {
