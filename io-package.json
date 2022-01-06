@@ -149,9 +149,10 @@
     ]
   },
   "native": {
-    "icalUrl": "",
     "nextTextTemplate": "%n turns %a",
-    "nextSeparator": ", "
+    "nextSeparator": ", ",
+    "icalUrl": "",
+    "icalUrlIgnoreCertErrors": false
   },
   "objects": [],
   "instanceObjects": [

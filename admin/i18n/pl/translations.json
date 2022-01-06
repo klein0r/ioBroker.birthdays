@@ -1,8 +1,10 @@
 {
+    "iCal": "iCal",
     "birthdays": "Urodziny",
     "ical url": "URL iCal",
     "next separator": "Separator następnego tekstu",
     "options": "Opcje",
     "text template (next)": "szablon tekstu (następny)",
-    "use %n for name and %a for age": "użyj %n jako nazwy i %a jako wieku"
+    "use %n for name and %a for age": "użyj %n jako nazwy i %a jako wieku",
+    "ignore certificate errors": "Ignoruj ​​błędy certyfikatów"
 }

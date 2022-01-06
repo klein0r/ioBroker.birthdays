@@ -1,8 +1,10 @@
 {
+    "iCal": "iCal",
     "birthdays": "生日",
     "ical url": "iCal 网址",
     "next separator": "下一个文本分隔符",
     "options": "选项",
     "text template (next)": "文本模板（下）",
-    "use %n for name and %a for age": "使用 %n 作为姓名，使用 %a 作为年龄"
+    "use %n for name and %a for age": "使用 %n 作为姓名，使用 %a 作为年龄",
+    "ignore certificate errors": "忽略证书错误"
 }

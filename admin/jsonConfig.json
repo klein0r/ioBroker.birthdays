@@ -6,13 +6,6 @@
             "type": "panel",
             "label": "options",
             "items": {
-                "icalUrl": {
-                    "type": "text",
-                    "sm": 12,
-                    "md": 12,
-                    "lg": 12,
-                    "label": "ical url"
-                },
                 "nextTextTemplate": {
                     "newLine": true,
                     "type": "text",
@@ -37,6 +30,26 @@
                     "lg": 6,
                     "href": "https://haus-automatisierung.com/iobroker-kurs/?refid=iobroker-birthdays",
                     "src": "https://haus-automatisierung.com/images/ads/ioBroker-Kurs.png"
+                }
+            }
+        },
+        "_ical": {
+            "type": "panel",
+            "label": "iCal",
+            "items": {
+                "icalUrl": {
+                    "type": "text",
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 6,
+                    "label": "ical url"
+                },
+                "icalUrlIgnoreCertErrors": {
+                    "type": "checkbox",
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 6,
+                    "label": "ignore certificate errors"
                 }
             }
         },

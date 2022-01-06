@@ -4,6 +4,7 @@ const utils = require('@iobroker/adapter-core');
 const ical = require('node-ical');
 const moment = require('moment');
 const axios = require('axios');
+const https = require('https');
 const adapterName = require('./package.json').name.split('.').pop();
 
 class Birthdays extends utils.Adapter {
@@ -74,10 +75,18 @@ class Birthdays extends utils.Adapter {
     addByCalendar(iCalUrl) {
         this.log.debug('ical url: ' + iCalUrl);
 
+        const httpsAgentOptions = {};
+
+        if (this.config.icalUrlIgnoreCertErrors) {
+            this.log.debug('addByCalendar - performing https requests with rejectUnauthorized = false');
+            httpsAgentOptions.rejectUnauthorized = false;
+        }
+
         axios({
             method: 'get',
             url: iCalUrl,
-            timeout: 4500
+            timeout: 4500,
+            httpsAgent: new https.Agent(httpsAgentOptions)
         }).then((response) => {
             this.log.debug('ical http request (' + response.status + ')');
             this.addCalendarBirthdays(response.data);
