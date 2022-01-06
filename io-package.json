@@ -1,8 +1,20 @@
 {
   "common": {
     "name": "birthdays",
-    "version": "0.1.8",
+    "version": "0.2.0",
     "news": {
+      "0.2.0": {
+        "en": "Added option to ignore certificate errors",
+        "de": "Option zum Ignorieren von Zertifikatsfehlern hinzugefügt",
+        "ru": "Добавлена возможность игнорировать ошибки сертификата.",
+        "pt": "Adicionada opção para ignorar erros de certificado",
+        "nl": "Optie toegevoegd om certificaatfouten te negeren",
+        "fr": "Ajout d'une option pour ignorer les erreurs de certificat",
+        "it": "Aggiunta l'opzione per ignorare gli errori del certificato",
+        "es": "Opción agregada para ignorar los errores del certificado",
+        "pl": "Dodano opcję ignorowania błędów certyfikatów",
+        "zh-cn": "添加了忽略证书错误的选项"
+      },
       "0.1.8": {
         "en": "Birthdays on 29th of February create NaN objects\nAdded check for empty names\nAdded date checks",
         "de": "Geburtstage am 29. Februar erschaffen NaN-Objekte\nPrüfung auf leere Namen hinzugefügt\nDatumsüberprüfungen hinzugefügt",
@@ -74,18 +86,6 @@
         "es": "Dar formato a las fechas con los formatos configurados de ioBrokers",
         "pl": "Formatuj daty za pomocą formatów skonfigurowanych przez ioBrokers",
         "zh-cn": "使用 ioBrokers 配置的格式格式化日期"
-      },
-      "0.1.2": {
-        "en": "Fixed missing translations",
-        "de": "Fehlende Übersetzungen hinzugefügt",
-        "ru": "Исправлены отсутствующие переводы",
-        "pt": "Traduções em falta corrigidas",
-        "nl": "Ontbrekende vertalingen verholpen",
-        "fr": "Correction des traductions manquantes",
-        "it": "Risolte le traduzioni mancanti",
-        "es": "Se corrigieron las traducciones faltantes",
-        "pl": "Naprawiono brakujące tłumaczenia",
-        "zh-cn": "修复了缺失的翻译"
       }
     },
     "title": "Birthdays",
