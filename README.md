@@ -217,6 +217,10 @@ It is NOT required to use the ical option. You can also define all birthday date
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+
+* (klein0r) Updated state roles
+
 ### 0.2.0 (2022-01-06)
 
 * (klein0r) Added option to ignore certificate errors

@@ -211,7 +211,7 @@
           "zh-cn": "生日 JSON"
         },
         "type": "string",
-        "role": "value",
+        "role": "json",
         "read": true,
         "write": false
       },
@@ -272,7 +272,7 @@
           "zh-cn": "生日 JSON"
         },
         "type": "string",
-        "role": "value",
+        "role": "json",
         "read": true,
         "write": false
       },
@@ -295,7 +295,7 @@
           "zh-cn": "下一个生日"
         },
         "type": "string",
-        "role": "value",
+        "role": "text",
         "read": true,
         "write": false
       },
@@ -364,7 +364,7 @@
           "zh-cn": "下一个生日 - 日期格式"
         },
         "type": "string",
-        "role": "value",
+        "role": "text",
         "read": true,
         "write": false
       },
@@ -406,7 +406,7 @@
           "zh-cn": "生日 JSON"
         },
         "type": "string",
-        "role": "value",
+        "role": "json",
         "read": true,
         "write": false
       },
@@ -429,7 +429,7 @@
           "zh-cn": "下一个生日之后"
         },
         "type": "string",
-        "role": "value",
+        "role": "text",
         "read": true,
         "write": false
       },
@@ -498,7 +498,7 @@
           "zh-cn": "在下一个生日之后 - 日期格式化"
         },
         "type": "string",
-        "role": "value",
+        "role": "text",
         "read": true,
         "write": false
       },

@@ -34,7 +34,8 @@ class Birthdays extends utils.Adapter {
                 type: 'channel',
                 common: {
                     name: mm.format('MMMM')
-                }
+                },
+                native: {}
             });
         }
 
@@ -242,7 +243,8 @@ class Birthdays extends utils.Adapter {
             type: 'channel',
             common: {
                 name: birthdayObj.name
-            }
+            },
+            native: {}
         });
 
         await this.setObjectNotExistsAsync(path + '.name', {
@@ -261,7 +263,7 @@ class Birthdays extends utils.Adapter {
                     'zh-cn': '姓名'
                 },
                 type: 'string',
-                role: 'value',
+                role: 'text',
                 read: true,
                 write: false
             },
