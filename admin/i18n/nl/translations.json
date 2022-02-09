@@ -4,7 +4,7 @@
     "ical url": "iCal-URL",
     "next separator": "Scheidingsteken voor volgende tekst",
     "options": "Opties",
-    "text template (next)": "tekstsjabloon (volgende)",
+    "text template (next)": "Tekstsjabloon (volgende)",
     "use %n for name and %a for age": "gebruik %n voor naam en %a voor leeftijd",
     "ignore certificate errors": "Certificaatfouten negeren"
 }

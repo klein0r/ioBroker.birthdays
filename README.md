@@ -220,6 +220,7 @@ It is NOT required to use the ical option. You can also define all birthday date
 ### **WORK IN PROGRESS**
 
 * (klein0r) Updated state roles
+* (klein0r) Fixed translations
 
 ### 0.2.0 (2022-01-06)
 

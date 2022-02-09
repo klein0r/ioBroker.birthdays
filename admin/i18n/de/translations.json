@@ -4,7 +4,7 @@
     "ical url": "iCal-URL",
     "next separator": "Nächster-Text Trennzeichen",
     "options": "Optionen",
-    "text template (next)": "Textvorlage (weiter)",
+    "text template (next)": "Textvorlage (nächster)",
     "use %n for name and %a for age": "Verwende %n für den Namen und %a für das Alter",
     "ignore certificate errors": "Zertifikatsfehler ignorieren"
 }
