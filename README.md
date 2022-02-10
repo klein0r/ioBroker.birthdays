@@ -41,6 +41,7 @@ iobroker add birthdays
 ### **WORK IN PROGRESS**
 
 * (klein0r) Updated state roles
+* (klein0r) Added hint for Admin 4 configuration
 * (klein0r) Fixed translations
 
 ### 0.2.0 (2022-01-06)
