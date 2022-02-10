@@ -38,7 +38,7 @@ iobroker add birthdays
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 1.0.0 (2022-02-10)
 
 * (klein0r) Updated state roles
 * (klein0r) Added hint for Admin 4 configuration
