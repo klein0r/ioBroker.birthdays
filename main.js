@@ -33,7 +33,18 @@ class Birthdays extends utils.Adapter {
             await this.setObjectNotExistsAsync(this.getMonthPath(m), {
                 type: 'channel',
                 common: {
-                    name: mm.format('MMMM')
+                    name: {
+                        en: this.getMonthTranslation(mm, 'en'),
+                        de: this.getMonthTranslation(mm, 'de'),
+                        ru: this.getMonthTranslation(mm, 'ru'),
+                        pt: this.getMonthTranslation(mm, 'pt'),
+                        nl: this.getMonthTranslation(mm, 'nl'),
+                        fr: this.getMonthTranslation(mm, 'fr'),
+                        it: this.getMonthTranslation(mm, 'it'),
+                        es: this.getMonthTranslation(mm, 'es'),
+                        pl: this.getMonthTranslation(mm, 'pl'),
+                        'zh-cn': this.getMonthTranslation(mm, 'zh-cn')
+                    }
                 },
                 native: {}
             });
@@ -370,6 +381,13 @@ class Birthdays extends utils.Adapter {
 
     getMonthPath(m) {
         return 'month.' + new String(m).padStart(2, '0');
+    }
+
+    getMonthTranslation(moment, locale) {
+        const momentCopy = moment.clone();
+        momentCopy.locale(locale);
+
+        return momentCopy.format('MMMM');
     }
 
     cleanNamespace(id) {
