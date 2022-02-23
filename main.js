@@ -18,7 +18,6 @@ class Birthdays extends utils.Adapter {
             useFormatDate: true
         });
 
-        this.killTimeout = null;
         this.today = moment({hour: 0, minute: 0});
         this.birthdays = [];
 
@@ -52,8 +51,6 @@ class Birthdays extends utils.Adapter {
             });
         }
 
-        ;
-
         Promise.all(
             [
                 this.addBySettings(),
@@ -63,8 +60,6 @@ class Birthdays extends utils.Adapter {
         ).then(data => {
             this.fillStates();
         });
-
-        this.killTimeout = this.setTimeout(this.stop.bind(this), 30000);
     }
 
     async addBySettings() {
@@ -113,11 +108,11 @@ class Birthdays extends utils.Adapter {
                     url: iCalUrl,
                     timeout: 4500,
                     httpsAgent: new https.Agent(httpsAgentOptions)
-                }).then((response) => {
+                }).then(async (response) => {
                     this.log.debug(`[ical] http request finished with status: ${response.status}`);
-                    this.addCalendarBirthdays(response.data);
+                    const addedBirthdays = await this.addCalendarBirthdays(response.data);
 
-                    resolve(0);
+                    resolve(addedBirthdays);
                 }).catch((error) => {
                     this.log.warn(error);
                     resolve(0);
@@ -187,12 +182,16 @@ class Birthdays extends utils.Adapter {
 
                 const addressBooks = await client.fetchAddressBooks();
 
+                this.log.debug(`[carddav] found address books: ${JSON.stringify(addressBooks)}`);
+
                 const vcards = await client.fetchVCards({
                     addressBook: addressBooks[0], // Always fetch first address book
                 });
 
                 for (const v in vcards) {
                     const vcard = vcards[v];
+
+                    this.log.debug(`[carddav] processing vcard: ${JSON.stringify(vcard)}`);
 
                     // Parse VCARD
                     const vcardData = ICAL.parse(vcard.data);
@@ -492,12 +491,6 @@ class Birthdays extends utils.Adapter {
 
     onUnload(callback) {
         try {
-
-            if (this.killTimeout) {
-                this.log.debug('clearing kill timeout');
-                this.clearTimeout(this.killTimeout);
-            }
-
             this.log.debug('cleaned everything up...');
             callback();
         } catch (e) {
