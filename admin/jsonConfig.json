@@ -40,16 +40,45 @@
                 "icalUrl": {
                     "type": "text",
                     "sm": 12,
-                    "md": 6,
-                    "lg": 6,
+                    "md": 12,
+                    "lg": 12,
                     "label": "ical url"
                 },
                 "icalUrlIgnoreCertErrors": {
+                    "newLine": true,
                     "type": "checkbox",
                     "sm": 12,
                     "md": 6,
                     "lg": 6,
                     "label": "ignore certificate errors"
+                }
+            }
+        },
+        "_carddav": {
+            "type": "panel",
+            "label": "CardDAV",
+            "items": {
+                "carddavUrl": {
+                    "type": "text",
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12,
+                    "label": "carddav url"
+                },
+                "carddavUser": {
+                    "newLine": true,
+                    "type": "text",
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 6,
+                    "label": "carddav username"
+                },
+                "carddavPassword": {
+                    "type": "text",
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 6,
+                    "label": "carddav password"
                 }
             }
         },

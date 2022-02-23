@@ -6,5 +6,9 @@
     "options": "Opties",
     "text template (next)": "Tekstsjabloon (volgende)",
     "use %n for name and %a for age": "gebruik %n voor naam en %a voor leeftijd",
-    "ignore certificate errors": "Certificaatfouten negeren"
+    "ignore certificate errors": "Certificaatfouten negeren",
+    "CardDAV": "CardDAV",
+    "carddav url": "CardDAV-url",
+    "carddav username": "CardDAV-gebruikersnaam",
+    "carddav password": "CardDAV-wachtwoord"
 }

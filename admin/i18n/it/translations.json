@@ -6,5 +6,9 @@
     "options": "Opzioni",
     "text template (next)": "Modello di testo (successivo)",
     "use %n for name and %a for age": "usa %n per il nome e %a per l'età",
-    "ignore certificate errors": "Ignora errori di certificato"
+    "ignore certificate errors": "Ignora errori di certificato",
+    "CardDAV": "CardDAV",
+    "carddav url": "Url CardDAV",
+    "carddav username": "Nome utente CardDAV",
+    "carddav password": "Password CardDAV"
 }

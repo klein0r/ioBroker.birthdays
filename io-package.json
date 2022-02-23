@@ -156,7 +156,10 @@
     "nextTextTemplate": "%n turns %a",
     "nextSeparator": ", ",
     "icalUrl": "",
-    "icalUrlIgnoreCertErrors": false
+    "icalUrlIgnoreCertErrors": false,
+    "carddavUrl": "",
+    "carddavUser": "",
+    "carddavPassword": ""
   },
   "objects": [],
   "instanceObjects": [

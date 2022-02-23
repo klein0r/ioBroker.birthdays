@@ -6,5 +6,9 @@
     "options": "Параметры",
     "text template (next)": "текстовый шаблон (следующий)",
     "use %n for name and %a for age": "используйте% n для имени и% a для возраста",
-    "ignore certificate errors": "Игнорировать ошибки сертификата"
+    "ignore certificate errors": "Игнорировать ошибки сертификата",
+    "CardDAV": "CardDAV",
+    "carddav url": "URL-адрес CardDAV",
+    "carddav username": "Имя пользователя CardDAV",
+    "carddav password": "CardDAV Пароль"
 }

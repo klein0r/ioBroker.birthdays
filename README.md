@@ -38,6 +38,10 @@ iobroker add birthdays
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+
+* (klein0r) Added CardDAV support
+
 ### 1.0.0 (2022-02-10)
 
 * (klein0r) Updated state roles

@@ -5,6 +5,8 @@ const ical = require('node-ical');
 const moment = require('moment');
 const axios = require('axios');
 const https = require('https');
+const { createDAVClient } = require('tsdav');
+const ICAL = require('ical.js');
 const adapterName = require('./package.json').name.split('.').pop();
 
 class Birthdays extends utils.Adapter {
@@ -50,94 +52,173 @@ class Birthdays extends utils.Adapter {
             });
         }
 
-        this.addBySettings();
+        ;
 
-        const iCalUrl = this.config.icalUrl;
-        if (iCalUrl) {
-            this.addByCalendar(iCalUrl);
-        } else {
+        Promise.all(
+            [
+                this.addBySettings(),
+                this.addByCalendar(),
+                this.addByCardDav()
+            ]
+        ).then(data => {
             this.fillStates();
-        }
+        });
 
         this.killTimeout = this.setTimeout(this.stop.bind(this), 30000);
     }
 
-    addBySettings() {
-        const birthdays = this.config.birthdays;
+    async addBySettings() {
+        return new Promise((resolve) => {
+            const birthdays = this.config.birthdays;
+            let addedBirthdays = 0;
 
-        if (birthdays && Array.isArray(birthdays)) {
-            for (const b in birthdays) {
-                const birthday = birthdays[b];
+            if (birthdays && Array.isArray(birthdays)) {
+                for (const b in birthdays) {
+                    const birthday = birthdays[b];
 
-                if (birthday.name) {
-                    const configBirthday = moment({ year: birthday.year, month: birthday.month - 1, day: birthday.day });
+                    if (birthday.name) {
+                        const configBirthday = moment({ year: birthday.year, month: birthday.month - 1, day: birthday.day });
 
-                    if (configBirthday.isValid() && configBirthday.year() <= this.today.year()) {
-                        this.log.debug('found birthday in settings: ' + birthday.name + ' (' + birthday.year + ')');
+                        if (configBirthday.isValid() && configBirthday.year() <= this.today.year()) {
+                            this.log.debug(`[settings] found birthday: ${birthday.name} (${birthday.year})`);
 
-                        this.addBirthday(birthday.name, configBirthday);
-                    } else {
-                        this.log.warn('invalid birthday date in settings: ' + birthday.name);
+                            this.addBirthday(birthday.name, configBirthday);
+                            addedBirthdays++;
+                        } else {
+                            this.log.warn(`[settings] invalid birthday date: ${birthday.name}`);
+                        }
                     }
                 }
             }
-        }
-    }
 
-    addByCalendar(iCalUrl) {
-        this.log.debug('ical url: ' + iCalUrl);
-
-        const httpsAgentOptions = {};
-
-        if (this.config.icalUrlIgnoreCertErrors) {
-            this.log.debug('addByCalendar - performing https requests with rejectUnauthorized = false');
-            httpsAgentOptions.rejectUnauthorized = false;
-        }
-
-        axios({
-            method: 'get',
-            url: iCalUrl,
-            timeout: 4500,
-            httpsAgent: new https.Agent(httpsAgentOptions)
-        }).then((response) => {
-            this.log.debug('ical http request (' + response.status + ')');
-            this.addCalendarBirthdays(response.data);
-        }).catch((error) => {
-            this.log.warn(error);
-            this.fillStates();
+            resolve(addedBirthdays);
         });
     }
 
-    addCalendarBirthdays(data) {
-        ical.async.parseICS(
-            data,
-            (err, data) => {
-                if (data) {
-                    for (const e in data) {
-                        const event = data[e];
+    async addByCalendar() {
+        return new Promise((resolve) => {
+            const iCalUrl = this.config.icalUrl;
+            if (iCalUrl) {
+                this.log.debug(`[ical] url: ${iCalUrl}`);
 
-                        if (event.summary !== undefined && !isNaN(event.description) && event.type === 'VEVENT' && event.start && event.start instanceof Date) {
-                            const name = event.summary;
-                            const birthYear = parseInt(event.description);
+                const httpsAgentOptions = {};
 
-                            if (name && birthYear && !isNaN(birthYear)) {
-                                const calendarBirthday = moment({ year: birthYear, month: event.start.getMonth(), day: event.start.getDate() });
+                if (this.config.icalUrlIgnoreCertErrors) {
+                    this.log.debug('[ical] addByCalendar - performing https requests with rejectUnauthorized = false');
+                    httpsAgentOptions.rejectUnauthorized = false;
+                }
 
-                                if (calendarBirthday.isValid() && calendarBirthday.year() <= this.today.year()) {
-                                    this.log.debug('found birthday in calendar: ' + name + ' (' + birthYear + ')');
+                axios({
+                    method: 'get',
+                    url: iCalUrl,
+                    timeout: 4500,
+                    httpsAgent: new https.Agent(httpsAgentOptions)
+                }).then((response) => {
+                    this.log.debug(`[ical] http request finished with status: ${response.status}`);
+                    this.addCalendarBirthdays(response.data);
 
-                                    this.addBirthday(name, calendarBirthday);
-                                } else {
-                                    this.log.warn('invalid birthday date in calendar: ' + name);
+                    resolve(0);
+                }).catch((error) => {
+                    this.log.warn(error);
+                    resolve(0);
+                });
+            } else {
+                this.log.debug(`[ical] url not configured - skipped`);
+                resolve(0);
+            }
+        });
+    }
+
+    async addCalendarBirthdays(data) {
+        return new Promise((resolve) => {
+            ical.async.parseICS(
+                data,
+                (err, data) => {
+                    let addedBirthdays = 0;
+
+                    if (data) {
+                        for (const e in data) {
+                            const event = data[e];
+
+                            if (event.summary !== undefined && !isNaN(event.description) && event.type === 'VEVENT' && event.start && event.start instanceof Date) {
+                                const name = event.summary;
+                                const birthYear = parseInt(event.description);
+
+                                if (name && birthYear && !isNaN(birthYear)) {
+                                    const calendarBirthday = moment({ year: birthYear, month: event.start.getMonth(), day: event.start.getDate() });
+
+                                    if (calendarBirthday.isValid() && calendarBirthday.year() <= this.today.year()) {
+                                        this.log.debug(`[ical] found birthday: ${name} (${birthYear})`);
+
+                                        this.addBirthday(name, calendarBirthday);
+                                        addedBirthdays++;
+                                    } else {
+                                        this.log.warn(`[ical] invalid birthday date: ${name}`);
+                                    }
                                 }
                             }
                         }
                     }
 
-                    this.fillStates();
+                    resolve(addedBirthdays);
                 }
+            );
+        });
+    }
+
+    async addByCardDav() {
+        return new Promise(async (resolve) => {
+            const carddavUrl = this.config.carddavUrl;
+            if (carddavUrl) {
+                this.log.debug(`[carddav] url: ${carddavUrl}`);
+                let addedBirthdays = 0;
+
+                const client = await createDAVClient(
+                    {
+                        serverUrl: carddavUrl,
+                        credentials: {
+                            username: this.config.carddavUser,
+                            password: this.config.carddavPassword,
+                        },
+                        authMethod: 'Basic',
+                        defaultAccountType: 'carddav'
+                    }
+                );
+
+                const addressBooks = await client.fetchAddressBooks();
+
+                const vcards = await client.fetchVCards({
+                    addressBook: addressBooks[0], // Always fetch first address book
+                });
+
+                for (const v in vcards) {
+                    const vcard = vcards[v];
+
+                    // Parse VCARD
+                    const vcardData = ICAL.parse(vcard.data);
+
+                    var comp = new ICAL.Component(vcardData);
+                    var name = comp.getFirstPropertyValue('fn');
+                    var bday = comp.getFirstPropertyValue('bday');
+
+                    if (name) {
+                        const carddavBirthday = moment(bday, 'YYYY-MM-DD');
+
+                        if (carddavBirthday.isValid() && carddavBirthday.year() <= this.today.year()) {
+                            this.log.debug(`[carddav] found birthday: ${name} (${carddavBirthday.year()})`);
+
+                            this.addBirthday(name, carddavBirthday);
+                            addedBirthdays++;
+                        }
+                    }
+                }
+
+                resolve(addedBirthdays);
+            } else {
+                this.log.debug(`[carddav] url not configured - skipped`);
+                resolve(0);
             }
-        );
+        });
     }
 
     addBirthday(name, birthday) {

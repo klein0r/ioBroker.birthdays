@@ -6,5 +6,9 @@
     "options": "选项",
     "text template (next)": "文本模板（下）",
     "use %n for name and %a for age": "使用 %n 作为姓名，使用 %a 作为年龄",
-    "ignore certificate errors": "忽略证书错误"
+    "ignore certificate errors": "忽略证书错误",
+    "CardDAV": "CardDAV",
+    "carddav url": "CardDAV 网址",
+    "carddav username": "CardDAV 用户名",
+    "carddav password": "CardDAV 密码"
 }
