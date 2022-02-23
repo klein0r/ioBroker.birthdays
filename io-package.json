@@ -152,6 +152,13 @@
       }
     ]
   },
+  "protectedNative": [
+    "carddavUser",
+    "carddavPassword"
+  ],
+  "encryptedNative": [
+    "carddavPassword"
+  ],
   "native": {
     "nextTextTemplate": "%n turns %a",
     "nextSeparator": ", ",
