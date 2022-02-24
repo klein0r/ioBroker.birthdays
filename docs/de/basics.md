@@ -2,19 +2,9 @@
 
 # ioBroker.birthdays
 
-## iCal
+## Inhaltsverzeichnis
 
-Du kannst eine iCal-URL nutzen, welche alle Geburtstage enthält. Der Adapter sucht nach allen Terminen in dieser Datei.
-
-Deine Termine
-
-1. müssen das Geburtsjahr in der Beschreibung enthalten (z.B. 1987)
-2. sind ganztäging
-3. stehen auf "jährlich wiederholen"
-
-Es ist NICHT zwingend erforderlich die iCal-Option zu nutzen. Du kannst alternativ auch alle Geburtstage manuell in der Instanz eintragen. *Falls Du beide Optionen nutzt, werden die Informationen zusammengeführt.*
-
-![Calendar example](../exampleCalendar.png)
+- [iCal](ical.md)
 
 ## Beispiel (Blockly)
 

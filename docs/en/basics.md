@@ -2,19 +2,9 @@
 
 # ioBroker.birthdays
 
-## iCal
+## Table of contents
 
-You can use an ical url to provide access to your birthday calendar. The adapter will search for all events within that file.
-
-Your events
-
-1. must contain the birth year in the description (e.g. 1987)
-2. are full day events
-3. have to be "repeated yearly"
-
-It is NOT required to use the ical option. You can also define all birthday dates in the settings. *When you use both options, the information will be merged.*
-
-![Calendar example](../exampleCalendar.png)
+- [iCal](ical.md)
 
 ## Example (Blockly)
 
