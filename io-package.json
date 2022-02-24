@@ -1,8 +1,20 @@
 {
   "common": {
     "name": "birthdays",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "news": {
+      "1.1.0": {
+        "en": "Added CardDAV support",
+        "de": "CardDAV-Unterstützung hinzugefügt",
+        "ru": "Добавлена поддержка CardDAV.",
+        "pt": "Adicionado suporte CardDAV",
+        "nl": "CardDAV-ondersteuning toegevoegd",
+        "fr": "Ajout de la prise en charge de CardDAV",
+        "it": "Aggiunto supporto CardDAV",
+        "es": "Compatibilidad con CardDAV añadida",
+        "pl": "Dodano obsługę CardDAV",
+        "zh-cn": "添加了 CardDAV 支持"
+      },
       "1.0.0": {
         "en": "Updated state roles\nAdded hint for Admin 4 configuration\nFixed translations",
         "de": "Statusrollen aktualisiert\nHinweis für die Konfiguration von Admin 4 hinzugefügt\nÜbersetzungen korrigiert",
@@ -74,18 +86,6 @@
         "es": "Manejo de estado interno actualizado",
         "pl": "Zaktualizowano obsługę stanów wewnętrznych",
         "zh-cn": "更新的内部状态处理"
-      },
-      "0.1.4": {
-        "en": "Translated all objects",
-        "de": "Alle Objekte übersetzt",
-        "ru": "Переведены все объекты",
-        "pt": "Todos os objetos traduzidos",
-        "nl": "Alle objecten vertaald",
-        "fr": "Traduit tous les objets",
-        "it": "Tradotto tutti gli oggetti",
-        "es": "Traducido todos los objetos",
-        "pl": "Przetłumaczono wszystkie obiekty",
-        "zh-cn": "翻译所有对象"
       }
     },
     "titleLang": {
