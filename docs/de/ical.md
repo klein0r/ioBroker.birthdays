@@ -14,7 +14,7 @@ Deine Termine
 
 Es ist NICHT zwingend erforderlich die iCal-Option zu nutzen. Du kannst alternativ auch alle Geburtstage manuell in der Instanz eintragen. *Falls Du beide Optionen nutzt, werden die Informationen zusammengeführt.*
 
-## Beispiel Google-Kalender
+### Beispiel Google-Kalender
 
 Gehe zum [Google Kalender](http://calendar.google.com/) und erstelle einen neuen Kalender. In diesen trägst Du dann neue Termine ein, welche den Kriterien (siehe oben) entsprechen. Danach kann die private Kalender-URL im Adapter verwendet werden um die Termine zu nutzen.
 

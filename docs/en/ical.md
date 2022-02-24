@@ -14,7 +14,7 @@ Your events
 
 It is NOT required to use the ical option. You can also define all birthday dates in the settings. *When you use both options, the information will be merged.*
 
-## Example Google Calendar
+### Example Google Calendar
 
 Go to [Google Calendar](http://calendar.google.com/) and create a new calendar. Add new birthday events to that calendar, which match the required criteria (see above). After that, you have to copy the private calendar url to use this calendar in the adapter.
 

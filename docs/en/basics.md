@@ -5,4 +5,5 @@
 ## Table of contents
 
 - [iCal](ical.md)
+- [CardDAV](carddav.md)
 - [Blockly](blockly.md)
