@@ -74,7 +74,9 @@
                     "label": "carddav username"
                 },
                 "carddavPassword": {
-                    "type": "text",
+                    "type": "password",
+                    "repeat": false,
+                    "visible": false,
                     "sm": 12,
                     "md": 6,
                     "lg": 6,
