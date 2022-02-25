@@ -1,8 +1,20 @@
 {
   "common": {
     "name": "birthdays",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "news": {
+      "1.1.1": {
+        "en": "CardDAV password config is not a clear text anymore",
+        "de": "Die CardDAV-Passwortkonfiguration ist kein Klartext mehr",
+        "ru": "Конфигурация пароля CardDAV больше не является открытым текстом",
+        "pt": "A configuração de senha do CardDAV não é mais um texto claro",
+        "nl": "CardDAV-wachtwoordconfiguratie is geen duidelijke tekst meer",
+        "fr": "La configuration du mot de passe CardDAV n'est plus un texte clair",
+        "it": "La configurazione della password CardDAV non è più un testo in chiaro",
+        "es": "La configuración de contraseña de CardDAV ya no es un texto claro",
+        "pl": "Konfiguracja hasła CardDAV nie jest już zwykłym tekstem",
+        "zh-cn": "CardDAV 密码配置不再是明文"
+      },
       "1.1.0": {
         "en": "Added CardDAV support",
         "de": "CardDAV-Unterstützung hinzugefügt",
@@ -74,18 +86,6 @@
         "es": "Requerir una nueva versión para los objetos de instancia traducidos\nManejo del tiempo de espera fijo",
         "pl": "Wymagaj nowej wersji dla przetłumaczonych obiektów instancji\nNaprawiono obsługę limitu czasu",
         "zh-cn": "需要新版本的翻译实例对象\n固定超时处理"
-      },
-      "0.1.5": {
-        "en": "Updated internal state handling",
-        "de": "Aktualisierte interne Zustandsbehandlung",
-        "ru": "Обновленная обработка внутреннего состояния",
-        "pt": "Tratamento de estado interno atualizado",
-        "nl": "Bijgewerkte interne statusafhandeling",
-        "fr": "Gestion de l'état interne mise à jour",
-        "it": "Aggiornata la gestione dello stato interno",
-        "es": "Manejo de estado interno actualizado",
-        "pl": "Zaktualizowano obsługę stanów wewnętrznych",
-        "zh-cn": "更新的内部状态处理"
       }
     },
     "titleLang": {
