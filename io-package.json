@@ -138,8 +138,16 @@
       "config": "json"
     },
     "docs": {
-      "en": "docs/en/basics.md",
-      "de": "docs/de/basics.md"
+      "en": [
+        "docs/en/basics.md",
+        "docs/en/ical.md",
+        "docs/en/carddav.md"
+      ],
+      "de": [
+        "docs/de/basics.md",
+        "docs/de/ical.md",
+        "docs/de/carddav.md"
+      ]
     },
     "globalDependencies": [
       {
