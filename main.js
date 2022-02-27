@@ -59,7 +59,8 @@ class Birthdays extends utils.Adapter {
             ]
         ).then(async (data) => {
             await this.fillStates();
-            this.stop();
+
+            setTimeout(async () => this.stop(), 6000);
         });
     }
 
