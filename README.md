@@ -38,7 +38,7 @@ iobroker add birthdays
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 1.1.2 (2022-02-27)
 
 * (klein0r) Stop adapter when everything was processed
 

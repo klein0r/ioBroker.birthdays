@@ -1,8 +1,20 @@
 {
   "common": {
     "name": "birthdays",
-    "version": "1.1.1",
+    "version": "1.1.2",
     "news": {
+      "1.1.2": {
+        "en": "Stop adapter when everything was processed",
+        "de": "Stoppen Sie den Adapter, wenn alles verarbeitet wurde",
+        "ru": "Остановить адаптер, когда все было обработано",
+        "pt": "Parar o adaptador quando tudo foi processado",
+        "nl": "Stop adapter wanneer alles is verwerkt",
+        "fr": "Arrêter l'adaptateur lorsque tout a été traité",
+        "it": "Interrompi l'adattatore quando tutto è stato elaborato",
+        "es": "Detenga el adaptador cuando todo haya sido procesado",
+        "pl": "Zatrzymaj adapter, gdy wszystko zostało przetworzone",
+        "zh-cn": "处理完所有内容后停止适配器"
+      },
       "1.1.1": {
         "en": "CardDAV password config is not a clear text anymore",
         "de": "Die CardDAV-Passwortkonfiguration ist kein Klartext mehr",
@@ -74,18 +86,6 @@
         "es": "Se agregaron valores predeterminados para la tabla de cumpleaños.",
         "pl": "Dodano wartości domyślne dla tabeli urodzin",
         "zh-cn": "添加了生日表的默认值"
-      },
-      "0.1.6": {
-        "en": "Require new version for translated instance objects\nFixed timeout handling",
-        "de": "Neue Version für übersetzte Instanzobjekte erforderlich\nBehobene Timeout-Behandlung",
-        "ru": "Требовать новую версию для переведенных экземпляров объектов\nФиксированная обработка тайм-аута",
-        "pt": "Requer nova versão para objetos de instância traduzidos\nTratamento de tempo limite fixo",
-        "nl": "Nieuwe versie vereisen voor vertaalde instantieobjecten\nVaste time-outafhandeling",
-        "fr": "Exiger une nouvelle version pour les objets d'instance traduits\nGestion du délai d'attente fixe",
-        "it": "Richiedi una nuova versione per gli oggetti istanza tradotti\nGestione del timeout fisso",
-        "es": "Requerir una nueva versión para los objetos de instancia traducidos\nManejo del tiempo de espera fijo",
-        "pl": "Wymagaj nowej wersji dla przetłumaczonych obiektów instancji\nNaprawiono obsługę limitu czasu",
-        "zh-cn": "需要新版本的翻译实例对象\n固定超时处理"
       }
     },
     "titleLang": {
