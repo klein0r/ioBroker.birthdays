@@ -1,8 +1,20 @@
 {
   "common": {
     "name": "birthdays",
-    "version": "1.1.2",
+    "version": "1.1.3",
     "news": {
+      "1.1.3": {
+        "en": "Stop adapter when everything was processed (with timeout)",
+        "de": "Adapter beenden, wenn alles verarbeitet wurde (mit Timeout)",
+        "ru": "Остановить адаптер, когда все было обработано (с тайм-аутом)",
+        "pt": "Parar o adaptador quando tudo foi processado (com tempo limite)",
+        "nl": "Stop adapter als alles is verwerkt (met time-out)",
+        "fr": "Arrêter l'adaptateur lorsque tout a été traité (avec timeout)",
+        "it": "Arresta adattatore quando tutto è stato elaborato (con timeout)",
+        "es": "Detener el adaptador cuando todo se procesó (con tiempo de espera)",
+        "pl": "Zatrzymaj adapter, gdy wszystko zostało przetworzone (z limitem czasu)",
+        "zh-cn": "处理完所有内容后停止适配器（超时）"
+      },
       "1.1.2": {
         "en": "Stop adapter when everything was processed",
         "de": "Stoppen Sie den Adapter, wenn alles verarbeitet wurde",
@@ -74,18 +86,6 @@
         "es": "Los cumpleaños del 29 de febrero crean objetos NaN\nVerificación agregada para nombres vacíos\nVerificaciones de fecha agregada",
         "pl": "Urodziny 29 lutego tworzą obiekty NaN\nDodano sprawdzanie pustych nazw\nDodano kontrole dat",
         "zh-cn": "2 月 29 日的生日创建 NaN 对象\n添加了对空名称的检查\n添加日期检查"
-      },
-      "0.1.7": {
-        "en": "Added defaults for birthdays table",
-        "de": "Standardwerte für Geburtstagstabelle hinzugefügt",
-        "ru": "Добавлены значения по умолчанию для таблицы дней рождения",
-        "pt": "Adicionados padrões para a tabela de aniversários",
-        "nl": "Standaardwaarden toegevoegd voor verjaardagstabel",
-        "fr": "Ajout de valeurs par défaut pour la table des anniversaires",
-        "it": "Aggiunte impostazioni predefinite per la tabella dei compleanni",
-        "es": "Se agregaron valores predeterminados para la tabla de cumpleaños.",
-        "pl": "Dodano wartości domyślne dla tabeli urodzin",
-        "zh-cn": "添加了生日表的默认值"
       }
     },
     "titleLang": {
