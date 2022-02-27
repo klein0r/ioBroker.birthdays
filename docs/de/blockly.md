@@ -4,9 +4,7 @@
 
 ## Beispiel (Blockly)
 
-(erfordert pushover)
-
-![Blockly example](../exampleBlockly.png)
+![Blockly example](./blockly-example.png)
 
 ```xml
 <xml xmlns="https://developers.google.com/blockly/xml">
@@ -20,28 +18,12 @@
     <field name="NAME">sendText</field>
     <comment pinned="false" h="80" w="160">Beschreibe diese Funktion …</comment>
     <statement name="STACK">
-      <block type="pushover" id="D7E4hKm%5=|Yi-b-)9(A">
-        <field name="INSTANCE"></field>
-        <field name="SOUND"></field>
-        <field name="PRIORITY">0</field>
-        <field name="LOG"></field>
-        <value name="MESSAGE">
-          <shadow type="text" id="prP3?f.yGgkkp))l]A07">
-            <field name="TEXT">text</field>
-          </shadow>
-          <block type="variables_get" id="iMSl1Pg7ZEvE%hQd6B9{">
-            <field name="VAR" id="p+Z^g1!hvR3!J9i,X(AI">text</field>
-          </block>
-        </value>
-        <value name="TITLE">
-          <block type="text" id="T96y]A^n-1TV52cw%+Gk">
-            <field name="TEXT">Geburtstags-Kalender</field>
-          </block>
-        </value>
+      <block type="comment" id="/|AnoBF{dDY`~SsIfzH|">
+        <field name="COMMENT">Eigene Logik (pushover, telegram, ...)</field>
       </block>
     </statement>
   </block>
-  <block type="schedule" id="6#((PC;76=!e/P3^ZsKI" x="88" y="113">
+  <block type="schedule" id="6#((PC;76=!e/P3^ZsKI" x="88" y="163">
     <field name="SCHEDULE">0 7 * * *</field>
     <statement name="STATEMENT">
       <block type="controls_if" id="oZ%5t{r{bO3c{Xhl-|_a">
