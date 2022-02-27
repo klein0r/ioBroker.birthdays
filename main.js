@@ -57,8 +57,9 @@ class Birthdays extends utils.Adapter {
                 this.addByCalendar(),
                 this.addByCardDav()
             ]
-        ).then(data => {
-            this.fillStates();
+        ).then(async (data) => {
+            await this.fillStates();
+            this.stop();
         });
     }
 
@@ -86,6 +87,7 @@ class Birthdays extends utils.Adapter {
                 }
             }
 
+            this.log.debug(`[settings] done`);
             resolve(addedBirthdays);
         });
     }
@@ -115,10 +117,11 @@ class Birthdays extends utils.Adapter {
                     resolve(addedBirthdays);
                 }).catch((error) => {
                     this.log.warn(error);
+                    this.log.debug(`[ical] done with error`);
                     resolve(0);
                 });
             } else {
-                this.log.debug(`[ical] url not configured - skipped`);
+                this.log.debug(`[ical] done - url not configured - skipped`);
                 resolve(0);
             }
         });
@@ -212,9 +215,10 @@ class Birthdays extends utils.Adapter {
                     }
                 }
 
+                this.log.debug(`[carddav] done`);
                 resolve(addedBirthdays);
             } else {
-                this.log.debug(`[carddav] url not configured - skipped`);
+                this.log.debug(`[carddav] done - url not configured - skipped`);
                 resolve(0);
             }
         });
@@ -247,7 +251,7 @@ class Birthdays extends utils.Adapter {
         // Sort by daysLeft
         this.birthdays.sort((a, b) => (a.daysLeft > b.daysLeft) ? 1 : -1);
 
-        this.log.debug('birthdays: ' + JSON.stringify(this.birthdays));
+        this.log.debug(`[fillStates] birthdays: ${JSON.stringify(this.birthdays)}`);
         await this.setStateAsync('summary.json', {val: JSON.stringify(this.birthdays), ack: true});
 
         const keepBirthdays = [];
@@ -276,7 +280,7 @@ class Birthdays extends utils.Adapter {
 
             if (keepBirthdays.indexOf(id) === -1) {
                 this.delObject(id, {recursive: true}, () => {
-                    this.log.debug('birthday deleted: ' + id);
+                    this.log.debug(`[fillStates] birthday deleted: ${id}`);
                 });
             }
         }
@@ -299,7 +303,7 @@ class Birthdays extends utils.Adapter {
 
     async fillAfter(path, daysLeft) {
 
-        this.log.debug('filling ' + path + ' with ' + daysLeft + ' days left');
+        this.log.debug(`[fillAfter] filling ${path} with ${daysLeft} days left`);
 
         const nextBirthdays = this.birthdays
             .filter(birthday => birthday.daysLeft == daysLeft); // get all birthdays with same days left

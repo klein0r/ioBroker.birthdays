@@ -38,6 +38,10 @@ iobroker add birthdays
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+
+* (klein0r) Stop adapter when everything was processed
+
 ### 1.1.1 (2022-02-25)
 
 * (klein0r) CardDAV password config is not a clear text anymore
