@@ -4,7 +4,7 @@
 
 ## Example (Blockly)
 
-![Blockly example](./blockly-example.png)
+![Blockly example](./img/blockly-example.png)
 
 ```xml
 <xml xmlns="https://developers.google.com/blockly/xml">
