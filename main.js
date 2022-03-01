@@ -57,6 +57,13 @@ class Birthdays extends utils.Adapter {
                 this.addByCardDav()
             ]
         ).then(async (data) => {
+            this.log.debug(`[onReady] everything collected: ${JSON.stringify(data)}`);
+
+            const addedBirthdaysSum = data.reduce((pv, cv) => pv + cv, 0);
+            if (addedBirthdaysSum === 0) {
+                this.log.error(`No birthdays found in any configured source - please check configuration and retry`);
+            }
+
             await this.fillStates();
             this.stop();
         });
@@ -265,7 +272,7 @@ class Birthdays extends utils.Adapter {
         await this.setStateAsync('summary.json', {val: JSON.stringify(this.birthdays), ack: true});
 
         const keepBirthdays = [];
-        const allBirhtdays = (await this.getChannelsOfAsync('month'))
+        const allBirthdays = (await this.getChannelsOfAsync('month'))
             .map(obj => { return this.removeNamespace(obj._id); })
             .filter(id => new RegExp('month\.[0-9]{2}\..+', 'g').test(id));
 
@@ -277,7 +284,7 @@ class Birthdays extends utils.Adapter {
 
             keepBirthdays.push(monthPath);
 
-            if (allBirhtdays.indexOf(monthPath) === -1) {
+            if (allBirthdays.indexOf(monthPath) === -1) {
                 this.log.debug('birthday added: ' + monthPath);
             }
 
@@ -285,8 +292,8 @@ class Birthdays extends utils.Adapter {
         }
 
         // Delete non existent birthdays
-        for (let i = 0; i < allBirhtdays.length; i++) {
-            const id = allBirhtdays[i];
+        for (let i = 0; i < allBirthdays.length; i++) {
+            const id = allBirthdays[i];
 
             if (keepBirthdays.indexOf(id) === -1) {
                 this.delObject(id, {recursive: true}, () => {
@@ -339,7 +346,7 @@ class Birthdays extends utils.Adapter {
     }
 
     async fillPathWithBirthday(path, birthdayObj) {
-        this.log.debug(`fillPathWithBirthday - path: "${path}", birthday: ${JSON.stringify(birthdayObj)}`);
+        this.log.debug(`[fillPathWithBirthday] path: "${path}", birthday: ${JSON.stringify(birthdayObj)}`);
 
         const birthday = birthdayObj._birthday;
         const nextBirthday = birthdayObj._nextBirthday;
