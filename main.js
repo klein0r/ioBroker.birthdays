@@ -1,7 +1,6 @@
 'use strict';
 
 const utils = require('@iobroker/adapter-core');
-const ical = require('node-ical');
 const moment = require('moment');
 const axios = require('axios');
 const https = require('https');
@@ -129,40 +128,49 @@ class Birthdays extends utils.Adapter {
 
     async addCalendarBirthdays(data) {
         return new Promise((resolve) => {
-            ical.async.parseICS(
-                data,
-                (err, data) => {
-                    let addedBirthdays = 0;
+            let addedBirthdays = 0;
 
-                    if (data) {
-                        for (const e in data) {
-                            const event = data[e];
+            if (data) {
+                // Parse ical
+                const icalData = ICAL.parse(data);
 
-                            if (event.summary !== undefined && !isNaN(event.description) && event.type === 'VEVENT' && event.start && event.start instanceof Date) {
-                                const name = event.summary;
-                                const birthYear = parseInt(event.description);
+                var comp = new ICAL.Component(icalData);
 
-                                this.log.debug(`[ical] processing event: ${JSON.stringify(event)}`);
+                const vevents = comp.getAllSubcomponents('vevent');
 
-                                if (name && birthYear && !isNaN(birthYear)) {
-                                    const calendarBirthday = moment({ year: birthYear, month: event.start.getMonth(), day: event.start.getDate() });
+                this.log.debug(`[ical] found ${vevents.length} events`);
 
-                                    if (calendarBirthday.isValid() && calendarBirthday.year() <= this.today.year()) {
-                                        this.log.debug(`[ical] found birthday: ${name} (${birthYear})`);
+                for (const e in vevents) {
+                    const vevent = vevents[e];
 
-                                        this.addBirthday(name, calendarBirthday);
-                                        addedBirthdays++;
-                                    } else {
-                                        this.log.warn(`[ical] invalid birthday date: ${name}`);
-                                    }
-                                }
+                    var event = new ICAL.Event(vevent);
+
+                    if (event.summary !== undefined && !isNaN(event.description) && event.startDate) {
+                        const name = event.summary;
+                        const birthYear = parseInt(event.description);
+
+                        this.log.debug(`[ical] processing event: ${JSON.stringify(event)}`);
+
+                        if (name && birthYear && !isNaN(birthYear)) {
+                            const startDate = event.startDate.toJSDate();
+                            const calendarBirthday = moment({ year: birthYear, month: startDate.getMonth(), day: startDate.getDate() });
+
+                            if (calendarBirthday.isValid() && calendarBirthday.year() <= this.today.year()) {
+                                this.log.debug(`[ical] found birthday: ${name} (${birthYear})`);
+
+                                this.addBirthday(name, calendarBirthday);
+                                addedBirthdays++;
+                            } else {
+                                this.log.warn(`[ical] invalid birthday date: ${name}`);
                             }
+                        } else if (name) {
+                            this.log.debug(`[ical] missing birth year in event: ${name}`);
                         }
                     }
-
-                    resolve(addedBirthdays);
                 }
-            );
+            }
+
+            resolve(addedBirthdays);
         });
     }
 

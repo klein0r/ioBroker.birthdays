@@ -117,6 +117,8 @@
     ],
     "keywords": [
       "calendar",
+      "ical",
+      "carddav",
       "birthday"
     ],
     "license": "MIT",
