@@ -142,6 +142,8 @@ class Birthdays extends utils.Adapter {
                                 const name = event.summary;
                                 const birthYear = parseInt(event.description);
 
+                                this.log.debug(`[ical] processing event: ${JSON.stringify(event)}`);
+
                                 if (name && birthYear && !isNaN(birthYear)) {
                                     const calendarBirthday = moment({ year: birthYear, month: event.start.getMonth(), day: event.start.getDate() });
 
