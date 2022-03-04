@@ -41,6 +41,7 @@ iobroker add birthdays
 ### **WORK IN PROGRESS**
 
 * (klein0r) Dropped "node-ical" dependency and parse events directly
+* (klein0r) Stop scheduled adapter instance in any case and report errors
 
 ### 1.1.3 (2022-02-27)
 

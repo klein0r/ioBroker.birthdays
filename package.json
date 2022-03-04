@@ -31,10 +31,10 @@
     "tsdav": "^2.0.0"
   },
   "devDependencies": {
-    "@alcalzone/release-script": "^3.5.2",
-    "@alcalzone/release-script-plugin-iobroker": "^3.5.1",
-    "@alcalzone/release-script-plugin-license": "^3.5.0",
-    "@iobroker/testing": "^2.5.4",
+    "@alcalzone/release-script": "^3.5.4",
+    "@alcalzone/release-script-plugin-iobroker": "^3.5.3",
+    "@alcalzone/release-script-plugin-license": "^3.5.3",
+    "@iobroker/testing": "^2.5.5",
     "@types/chai": "^4.3.0",
     "@types/chai-as-promised": "^7.1.5",
     "@types/gulp": "^4.0.9",
