@@ -65,6 +65,11 @@ class Birthdays extends utils.Adapter {
             }
 
             await this.fillStates();
+            this.log.debug(`[onReady] Everything done`);
+        }).catch((err) => {
+            this.log.error(`[onReady] Error: ${JSON.stringify(err)}`);
+        }).finally(() => {
+            this.log.debug(`[onReady] Finally shutting down`);
             this.stop();
         });
     }
