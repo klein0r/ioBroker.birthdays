@@ -38,7 +38,7 @@ iobroker add birthdays
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 1.2.0 (2022-03-04)
 
 * (klein0r) Dropped "node-ical" dependency and parse events directly
 * (klein0r) Stop scheduled adapter instance in any case and report errors
