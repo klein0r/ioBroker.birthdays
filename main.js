@@ -123,7 +123,47 @@ class Birthdays extends utils.Adapter {
                     httpsAgent: new https.Agent(httpsAgentOptions)
                 }).then(async (response) => {
                     this.log.debug(`[ical] http request finished with status: ${response.status}`);
-                    const addedBirthdays = await this.addCalendarBirthdays(response.data);
+                    let addedBirthdays = 0;
+
+                    if (response.data) {
+                        // Parse ical
+                        const icalData = ICAL.parse(response.data);
+
+                        const comp = new ICAL.Component(icalData);
+
+                        const vevents = comp.getAllSubcomponents('vevent');
+
+                        this.log.debug(`[ical] found ${vevents.length} events`);
+
+                        for (const e in vevents) {
+                            const vevent = vevents[e];
+
+                            const event = new ICAL.Event(vevent);
+
+                            if (event.summary !== undefined && !isNaN(event.description) && event.startDate) {
+                                const name = event.summary;
+                                const birthYear = parseInt(event.description);
+
+                                this.log.debug(`[ical] processing event: ${JSON.stringify(event)}`);
+
+                                if (name && birthYear && !isNaN(birthYear)) {
+                                    const startDate = event.startDate.toJSDate();
+                                    const calendarBirthday = moment({ year: birthYear, month: startDate.getMonth(), day: startDate.getDate() });
+
+                                    if (calendarBirthday.isValid() && calendarBirthday.year() <= this.today.year()) {
+                                        this.log.debug(`[ical] found birthday: ${name} (${birthYear})`);
+
+                                        this.addBirthday(name, calendarBirthday);
+                                        addedBirthdays++;
+                                    } else {
+                                        this.log.warn(`[ical] invalid birthday date: ${name}`);
+                                    }
+                                } else if (name) {
+                                    this.log.debug(`[ical] missing birth year in event: ${name}`);
+                                }
+                            }
+                        }
+                    }
 
                     resolve(addedBirthdays);
                 }).catch((error) => {
@@ -135,54 +175,6 @@ class Birthdays extends utils.Adapter {
                 this.log.debug(`[ical] done - url not configured - skipped`);
                 resolve(0);
             }
-        });
-    }
-
-    async addCalendarBirthdays(data) {
-        return new Promise((resolve) => {
-            let addedBirthdays = 0;
-
-            if (data) {
-                // Parse ical
-                const icalData = ICAL.parse(data);
-
-                var comp = new ICAL.Component(icalData);
-
-                const vevents = comp.getAllSubcomponents('vevent');
-
-                this.log.debug(`[ical] found ${vevents.length} events`);
-
-                for (const e in vevents) {
-                    const vevent = vevents[e];
-
-                    var event = new ICAL.Event(vevent);
-
-                    if (event.summary !== undefined && !isNaN(event.description) && event.startDate) {
-                        const name = event.summary;
-                        const birthYear = parseInt(event.description);
-
-                        this.log.debug(`[ical] processing event: ${JSON.stringify(event)}`);
-
-                        if (name && birthYear && !isNaN(birthYear)) {
-                            const startDate = event.startDate.toJSDate();
-                            const calendarBirthday = moment({ year: birthYear, month: startDate.getMonth(), day: startDate.getDate() });
-
-                            if (calendarBirthday.isValid() && calendarBirthday.year() <= this.today.year()) {
-                                this.log.debug(`[ical] found birthday: ${name} (${birthYear})`);
-
-                                this.addBirthday(name, calendarBirthday);
-                                addedBirthdays++;
-                            } else {
-                                this.log.warn(`[ical] invalid birthday date: ${name}`);
-                            }
-                        } else if (name) {
-                            this.log.debug(`[ical] missing birth year in event: ${name}`);
-                        }
-                    }
-                }
-            }
-
-            resolve(addedBirthdays);
         });
     }
 
@@ -221,9 +213,9 @@ class Birthdays extends utils.Adapter {
                     // Parse VCARD
                     const vcardData = ICAL.parse(vcard.data);
 
-                    var comp = new ICAL.Component(vcardData);
-                    var name = comp.getFirstPropertyValue('fn');
-                    var bday = comp.getFirstPropertyValue('bday');
+                    const comp = new ICAL.Component(vcardData);
+                    const name = comp.getFirstPropertyValue('fn');
+                    const bday = comp.getFirstPropertyValue('bday');
 
                     if (name) {
                         const carddavBirthday = moment(bday, 'YYYY-MM-DD');
@@ -354,7 +346,6 @@ class Birthdays extends utils.Adapter {
         this.log.debug(`[fillPathWithBirthday] path: "${path}", birthday: ${JSON.stringify(birthdayObj)}`);
 
         const birthday = birthdayObj._birthday;
-        const nextBirthday = birthdayObj._nextBirthday;
 
         await this.setObjectNotExistsAsync(path, {
             type: 'channel',
