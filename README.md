@@ -38,7 +38,7 @@ iobroker add birthdays
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 1.2.1 (2022-04-08)
 
 * (klein0r) Removed tsdav
 * (klein0r) Allow carddav url without valid certificate (configurable)

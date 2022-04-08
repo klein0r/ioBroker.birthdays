@@ -1,8 +1,20 @@
 {
   "common": {
     "name": "birthdays",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "news": {
+      "1.2.1": {
+        "en": "Removed tsdav\nAllow carddav url without valid certificate (configurable)",
+        "de": "tsdav entfernt\nCarddav-URL ohne gültiges Zertifikat zulassen (konfigurierbar)",
+        "ru": "Удален цдав\nРазрешить URL-адрес carddav без действительного сертификата (настраивается)",
+        "pt": "tsdav removido\nPermitir url carddav sem certificado válido (configurável)",
+        "nl": "tsdav . verwijderd\nCarddav-url toestaan zonder geldig certificaat (configureerbaar)",
+        "fr": "tsdav supprimé\nAutoriser l'url carddav sans certificat valide (configurable)",
+        "it": "Rimosso tsdav\nConsenti URL carddav senza certificato valido (configurabile)",
+        "es": "Tsdav eliminado\nPermitir URL carddav sin certificado válido (configurable)",
+        "pl": "Usunięto tsdav\nZezwalaj na adres URL carddav bez ważnego certyfikatu (konfigurowalne)",
+        "zh-cn": "删除了 tsdav\n允许没有有效证书的 carddav url（可配置）"
+      },
       "1.2.0": {
         "en": "Dropped \"node-ical\" dependency and parse events directly\nStop scheduled adapter instance in any case and report errors",
         "de": "„Node-ical“-Abhängigkeit entfernt und Ereignisse direkt geparst\nGeplante Adapterinstanz auf jeden Fall stoppen und Fehler melden",
@@ -74,18 +86,6 @@
         "es": "Roles de estado actualizados\nSugerencia agregada para la configuración de Admin 4\nTraducciones fijas",
         "pl": "Zaktualizowane role stanowe\nDodano wskazówkę dotyczącą konfiguracji Admin 4\nNaprawiono tłumaczenia",
         "zh-cn": "更新了状态角色\n添加了 Admin 4 配置的提示\n固定翻译"
-      },
-      "0.2.0": {
-        "en": "Added option to ignore certificate errors",
-        "de": "Option zum Ignorieren von Zertifikatsfehlern hinzugefügt",
-        "ru": "Добавлена возможность игнорировать ошибки сертификата.",
-        "pt": "Adicionada opção para ignorar erros de certificado",
-        "nl": "Optie toegevoegd om certificaatfouten te negeren",
-        "fr": "Ajout d'une option pour ignorer les erreurs de certificat",
-        "it": "Aggiunta l'opzione per ignorare gli errori del certificato",
-        "es": "Opción agregada para ignorar los errores del certificado",
-        "pl": "Dodano opcję ignorowania błędów certyfikatów",
-        "zh-cn": "添加了忽略证书错误的选项"
       }
     },
     "titleLang": {
