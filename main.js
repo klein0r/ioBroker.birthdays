@@ -188,7 +188,7 @@ class Birthdays extends utils.Adapter {
                 const httpsAgentOptions = {};
 
                 if (this.config.carddavIgnoreCertErrors) {
-                    this.log.debug('[carddav] addByCalendar - performing https requests with rejectUnauthorized = false');
+                    this.log.debug('[carddav] addByCardDav - performing https requests with rejectUnauthorized = false');
                     httpsAgentOptions.rejectUnauthorized = false;
                 }
 
