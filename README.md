@@ -38,6 +38,11 @@ iobroker add birthdays
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+
+* (klein0r) Removed tsdav
+* (klein0r) Allow carddav url without valid certificate (configurable)
+
 ### 1.2.0 (2022-03-04)
 
 * (klein0r) Dropped "node-ical" dependency and parse events directly

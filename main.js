@@ -4,7 +4,6 @@ const utils = require('@iobroker/adapter-core');
 const moment = require('moment');
 const axios = require('axios');
 const https = require('https');
-const { createDAVClient } = require('tsdav');
 const ICAL = require('ical.js');
 const adapterName = require('./package.json').name.split('.').pop();
 
@@ -122,7 +121,7 @@ class Birthdays extends utils.Adapter {
                     timeout: 4500,
                     httpsAgent: new https.Agent(httpsAgentOptions)
                 }).then(async (response) => {
-                    this.log.debug(`[ical] http request finished with status: ${response.status}`);
+                    this.log.debug(`[ical] http(s) request finished with status: ${response.status}`);
                     let addedBirthdays = 0;
 
                     if (response.data) {
@@ -163,6 +162,8 @@ class Birthdays extends utils.Adapter {
                                 }
                             }
                         }
+
+                        this.log.debug(`[ical] processed all events`);
                     }
 
                     resolve(addedBirthdays);
@@ -183,54 +184,67 @@ class Birthdays extends utils.Adapter {
             const carddavUrl = this.config.carddavUrl;
             if (carddavUrl) {
                 this.log.debug(`[carddav] url: ${carddavUrl}`);
-                let addedBirthdays = 0;
 
-                const client = await createDAVClient(
-                    {
-                        serverUrl: carddavUrl,
-                        credentials: {
-                            username: this.config.carddavUser,
-                            password: this.config.carddavPassword,
-                        },
-                        authMethod: 'Basic',
-                        defaultAccountType: 'carddav'
-                    }
-                );
+                const httpsAgentOptions = {};
 
-                const addressBooks = await client.fetchAddressBooks();
-
-                this.log.debug(`[carddav] found address books: ${JSON.stringify(addressBooks)}`);
-
-                const vcards = await client.fetchVCards({
-                    addressBook: addressBooks[0], // Always fetch first address book
-                });
-
-                for (const v in vcards) {
-                    const vcard = vcards[v];
-
-                    this.log.debug(`[carddav] processing vcard: ${JSON.stringify(vcard)}`);
-
-                    // Parse VCARD
-                    const vcardData = ICAL.parse(vcard.data);
-
-                    const comp = new ICAL.Component(vcardData);
-                    const name = comp.getFirstPropertyValue('fn');
-                    const bday = comp.getFirstPropertyValue('bday');
-
-                    if (name) {
-                        const carddavBirthday = moment(bday, 'YYYY-MM-DD');
-
-                        if (carddavBirthday.isValid() && carddavBirthday.year() <= this.today.year()) {
-                            this.log.debug(`[carddav] found birthday: ${name} (${carddavBirthday.year()})`);
-
-                            this.addBirthday(name, carddavBirthday);
-                            addedBirthdays++;
-                        }
-                    }
+                if (this.config.carddavIgnoreCertErrors) {
+                    this.log.debug('[carddav] addByCalendar - performing https requests with rejectUnauthorized = false');
+                    httpsAgentOptions.rejectUnauthorized = false;
                 }
 
-                this.log.debug(`[carddav] done`);
-                resolve(addedBirthdays);
+                axios({
+                    method: 'get',
+                    url: carddavUrl,
+                    timeout: 4500,
+                    httpsAgent: new https.Agent(httpsAgentOptions),
+                    auth: {
+                        username: this.config.carddavUser,
+                        password: this.config.carddavPassword
+                    }
+                }).then(async (response) => {
+                    this.log.debug(`[carddav] http(s) request finished with status: ${response.status}`);
+                    let addedBirthdays = 0;
+
+                    if (response.data) {
+                        // Parse vcards
+                        const vcards = ICAL.parse(response.data);
+
+                        this.log.debug(`[carddav] found ${vcards.length} contacts`);
+
+                        for (const v in vcards) {
+                            const vcard = vcards[v];
+
+                            this.log.debug(`[carddav] processing vcard: ${JSON.stringify(vcard)}`);
+
+                            const comp = new ICAL.Component(vcard);
+                            const name = comp.getFirstPropertyValue('fn');
+                            const bday = comp.getFirstPropertyValue('bday');
+
+                            if (name && bday) {
+                                const carddavBirthday = moment(bday, 'YYYY-MM-DD');
+
+                                if (carddavBirthday.isValid() && carddavBirthday.year() <= this.today.year()) {
+                                    this.log.debug(`[carddav] found birthday: ${name} (${carddavBirthday.year()})`);
+
+                                    this.addBirthday(name, carddavBirthday);
+                                    addedBirthdays++;
+                                } else {
+                                    this.log.warn(`[carddav] invalid birthdate: ${name}`);
+                                }
+                            } else if (name) {
+                                this.log.debug(`[carddav] missing birthdate in event: ${name}`);
+                            }
+                        }
+                    }
+
+                    this.log.debug(`[carddav] done`);
+                    resolve(addedBirthdays);
+                }).catch((error) => {
+                    this.log.warn(error);
+                    this.log.debug(`[carddav] done with error`);
+                    resolve(0);
+                });
+
             } else {
                 this.log.debug(`[carddav] done - url not configured - skipped`);
                 resolve(0);

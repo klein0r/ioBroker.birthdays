@@ -176,7 +176,8 @@
     "icalUrlIgnoreCertErrors": false,
     "carddavUrl": "",
     "carddavUser": "",
-    "carddavPassword": ""
+    "carddavPassword": "",
+    "carddavIgnoreCertErrors": false
   },
   "objects": [],
   "instanceObjects": [
