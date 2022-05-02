@@ -6,7 +6,6 @@
 [![Downloads](https://img.shields.io/npm/dm/iobroker.birthdays.svg)](https://www.npmjs.com/package/iobroker.birthdays)
 [![Stable](http://iobroker.live/badges/birthdays-stable.svg)](http://iobroker.live/badges/birthdays-stable.svg)
 [![installed](http://iobroker.live/badges/birthdays-installed.svg)](http://iobroker.live/badges/birthdays-installed.svg)
-[![Dependency Status](https://img.shields.io/david/klein0r/iobroker.birthdays.svg)](https://david-dm.org/klein0r/iobroker.birthdays)
 [![Known Vulnerabilities](https://snyk.io/test/github/klein0r/ioBroker.birthdays/badge.svg)](https://snyk.io/test/github/klein0r/ioBroker.birthdays)
 ![Test and Release](https://github.com/klein0r/ioBroker.birthdays/workflows/Test%20and%20Release/badge.svg)
 
