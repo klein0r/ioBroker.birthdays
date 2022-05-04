@@ -39,7 +39,9 @@ iobroker add birthdays
 -->
 ### **WORK IN PROGRESS**
 
-(klein0r) Updated depedency for js-controller to 4.0.15
+NodeJS 14.x is required (nodejs 12.x is EOL)
+
+* (klein0r) Updated depedency for js-controller to 4.0.15
 
 ### 1.2.1 (2022-04-08)
 
