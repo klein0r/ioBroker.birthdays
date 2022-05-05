@@ -39,7 +39,7 @@ iobroker add birthdays
 -->
 ### **WORK IN PROGRESS**
 
-NodeJS 14.x is required (nodejs 12.x is EOL)
+NodeJS 14.x is required (NodeJS 12.x is EOL)
 
 * (klein0r) Updated depedency for js-controller to 4.0.15
 
