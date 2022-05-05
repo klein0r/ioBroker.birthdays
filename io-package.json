@@ -1,533 +1,514 @@
 {
-  "common": {
-    "name": "birthdays",
-    "version": "1.2.1",
-    "news": {
-      "1.2.1": {
-        "en": "Removed tsdav\nAllow carddav url without valid certificate (configurable)",
-        "de": "tsdav entfernt\nCarddav-URL ohne gültiges Zertifikat zulassen (konfigurierbar)",
-        "ru": "Удален цдав\nРазрешить URL-адрес carddav без действительного сертификата (настраивается)",
-        "pt": "tsdav removido\nPermitir url carddav sem certificado válido (configurável)",
-        "nl": "tsdav . verwijderd\nCarddav-url toestaan zonder geldig certificaat (configureerbaar)",
-        "fr": "tsdav supprimé\nAutoriser l'url carddav sans certificat valide (configurable)",
-        "it": "Rimosso tsdav\nConsenti URL carddav senza certificato valido (configurabile)",
-        "es": "Tsdav eliminado\nPermitir URL carddav sin certificado válido (configurable)",
-        "pl": "Usunięto tsdav\nZezwalaj na adres URL carddav bez ważnego certyfikatu (konfigurowalne)",
-        "zh-cn": "删除了 tsdav\n允许没有有效证书的 carddav url（可配置）"
-      },
-      "1.2.0": {
-        "en": "Dropped \"node-ical\" dependency and parse events directly\nStop scheduled adapter instance in any case and report errors",
-        "de": "„Node-ical“-Abhängigkeit entfernt und Ereignisse direkt geparst\nGeplante Adapterinstanz auf jeden Fall stoppen und Fehler melden",
-        "ru": "Отброшена «узловая» зависимость и события синтаксического анализа напрямую\nВ любом случае остановить экземпляр запланированного адаптера и сообщить об ошибках",
-        "pt": "Descartou a dependência \"node-ical\" e analisa os eventos diretamente\nInterrompa a instância do adaptador agendado em qualquer caso e relate erros",
-        "nl": "\"node-ical\" afhankelijkheid verwijderd en gebeurtenissen direct ontleden\nStop de geplande adapterinstantie in ieder geval en meld fouten",
-        "fr": "Suppression de la dépendance \"nœud-ical\" et analyse directe des événements\nArrêtez l'instance d'adaptateur planifiée dans tous les cas et signalez les erreurs",
-        "it": "Eliminata la dipendenza \"node-ical\" e analizza direttamente gli eventi\nArresta in ogni caso l'istanza dell'adattatore pianificata e segnala gli errori",
-        "es": "Se eliminó la dependencia \"node-ical\" y se analizaron los eventos directamente\nDetenga la instancia del adaptador programado en cualquier caso e informe los errores",
-        "pl": "Zrezygnowano z zależności „węzłowej” i bezpośrednio analizowano zdarzenia\nZatrzymaj zaplanowaną instancję adaptera w każdym przypadku i zgłoś błędy",
-        "zh-cn": "删除“node-ical”依赖并直接解析事件\n在任何情况下停止计划的适配器实例并报告错误"
-      },
-      "1.1.3": {
-        "en": "Stop adapter when everything was processed (with timeout)",
-        "de": "Adapter beenden, wenn alles verarbeitet wurde (mit Timeout)",
-        "ru": "Остановить адаптер, когда все было обработано (с тайм-аутом)",
-        "pt": "Parar o adaptador quando tudo foi processado (com tempo limite)",
-        "nl": "Stop adapter als alles is verwerkt (met time-out)",
-        "fr": "Arrêter l'adaptateur lorsque tout a été traité (avec timeout)",
-        "it": "Arresta adattatore quando tutto è stato elaborato (con timeout)",
-        "es": "Detener el adaptador cuando todo se procesó (con tiempo de espera)",
-        "pl": "Zatrzymaj adapter, gdy wszystko zostało przetworzone (z limitem czasu)",
-        "zh-cn": "处理完所有内容后停止适配器（超时）"
-      },
-      "1.1.2": {
-        "en": "Stop adapter when everything was processed",
-        "de": "Stoppen Sie den Adapter, wenn alles verarbeitet wurde",
-        "ru": "Остановить адаптер, когда все было обработано",
-        "pt": "Parar o adaptador quando tudo foi processado",
-        "nl": "Stop adapter wanneer alles is verwerkt",
-        "fr": "Arrêter l'adaptateur lorsque tout a été traité",
-        "it": "Interrompi l'adattatore quando tutto è stato elaborato",
-        "es": "Detenga el adaptador cuando todo haya sido procesado",
-        "pl": "Zatrzymaj adapter, gdy wszystko zostało przetworzone",
-        "zh-cn": "处理完所有内容后停止适配器"
-      },
-      "1.1.1": {
-        "en": "CardDAV password config is not a clear text anymore",
-        "de": "Die CardDAV-Passwortkonfiguration ist kein Klartext mehr",
-        "ru": "Конфигурация пароля CardDAV больше не является открытым текстом",
-        "pt": "A configuração de senha do CardDAV não é mais um texto claro",
-        "nl": "CardDAV-wachtwoordconfiguratie is geen duidelijke tekst meer",
-        "fr": "La configuration du mot de passe CardDAV n'est plus un texte clair",
-        "it": "La configurazione della password CardDAV non è più un testo in chiaro",
-        "es": "La configuración de contraseña de CardDAV ya no es un texto claro",
-        "pl": "Konfiguracja hasła CardDAV nie jest już zwykłym tekstem",
-        "zh-cn": "CardDAV 密码配置不再是明文"
-      },
-      "1.1.0": {
-        "en": "Added CardDAV support",
-        "de": "CardDAV-Unterstützung hinzugefügt",
-        "ru": "Добавлена поддержка CardDAV.",
-        "pt": "Adicionado suporte CardDAV",
-        "nl": "CardDAV-ondersteuning toegevoegd",
-        "fr": "Ajout de la prise en charge de CardDAV",
-        "it": "Aggiunto supporto CardDAV",
-        "es": "Compatibilidad con CardDAV añadida",
-        "pl": "Dodano obsługę CardDAV",
-        "zh-cn": "添加了 CardDAV 支持"
-      },
-      "1.0.0": {
-        "en": "Updated state roles\nAdded hint for Admin 4 configuration\nFixed translations",
-        "de": "Statusrollen aktualisiert\nHinweis für die Konfiguration von Admin 4 hinzugefügt\nÜbersetzungen korrigiert",
-        "ru": "Обновлены роли состояния\nДобавлена подсказка для конфигурации Admin 4\nИсправлены переводы",
-        "pt": "Funções de estado atualizadas\nAdicionada dica para configuração do Admin 4\nTraduções fixas",
-        "nl": "Bijgewerkte statusrollen\nHint toegevoegd voor configuratie van Admin 4\nVaste vertalingen",
-        "fr": "Rôles d'état mis à jour\nAjout d'un indice pour la configuration d'Admin 4\nTraductions fixes",
-        "it": "Ruoli statali aggiornati\nAggiunto suggerimento per la configurazione dell'amministratore 4\nTraduzioni fisse",
-        "es": "Roles de estado actualizados\nSugerencia agregada para la configuración de Admin 4\nTraducciones fijas",
-        "pl": "Zaktualizowane role stanowe\nDodano wskazówkę dotyczącą konfiguracji Admin 4\nNaprawiono tłumaczenia",
-        "zh-cn": "更新了状态角色\n添加了 Admin 4 配置的提示\n固定翻译"
-      }
+    "common": {
+        "name": "birthdays",
+        "version": "1.2.1",
+        "news": {
+            "1.2.1": {
+                "en": "Removed tsdav\nAllow carddav url without valid certificate (configurable)",
+                "de": "tsdav entfernt\nCarddav-URL ohne gültiges Zertifikat zulassen (konfigurierbar)",
+                "ru": "Удален цдав\nРазрешить URL-адрес carddav без действительного сертификата (настраивается)",
+                "pt": "tsdav removido\nPermitir url carddav sem certificado válido (configurável)",
+                "nl": "tsdav . verwijderd\nCarddav-url toestaan zonder geldig certificaat (configureerbaar)",
+                "fr": "tsdav supprimé\nAutoriser l'url carddav sans certificat valide (configurable)",
+                "it": "Rimosso tsdav\nConsenti URL carddav senza certificato valido (configurabile)",
+                "es": "Tsdav eliminado\nPermitir URL carddav sin certificado válido (configurable)",
+                "pl": "Usunięto tsdav\nZezwalaj na adres URL carddav bez ważnego certyfikatu (konfigurowalne)",
+                "zh-cn": "删除了 tsdav\n允许没有有效证书的 carddav url（可配置）"
+            },
+            "1.2.0": {
+                "en": "Dropped \"node-ical\" dependency and parse events directly\nStop scheduled adapter instance in any case and report errors",
+                "de": "„Node-ical“-Abhängigkeit entfernt und Ereignisse direkt geparst\nGeplante Adapterinstanz auf jeden Fall stoppen und Fehler melden",
+                "ru": "Отброшена «узловая» зависимость и события синтаксического анализа напрямую\nВ любом случае остановить экземпляр запланированного адаптера и сообщить об ошибках",
+                "pt": "Descartou a dependência \"node-ical\" e analisa os eventos diretamente\nInterrompa a instância do adaptador agendado em qualquer caso e relate erros",
+                "nl": "\"node-ical\" afhankelijkheid verwijderd en gebeurtenissen direct ontleden\nStop de geplande adapterinstantie in ieder geval en meld fouten",
+                "fr": "Suppression de la dépendance \"nœud-ical\" et analyse directe des événements\nArrêtez l'instance d'adaptateur planifiée dans tous les cas et signalez les erreurs",
+                "it": "Eliminata la dipendenza \"node-ical\" e analizza direttamente gli eventi\nArresta in ogni caso l'istanza dell'adattatore pianificata e segnala gli errori",
+                "es": "Se eliminó la dependencia \"node-ical\" y se analizaron los eventos directamente\nDetenga la instancia del adaptador programado en cualquier caso e informe los errores",
+                "pl": "Zrezygnowano z zależności „węzłowej” i bezpośrednio analizowano zdarzenia\nZatrzymaj zaplanowaną instancję adaptera w każdym przypadku i zgłoś błędy",
+                "zh-cn": "删除“node-ical”依赖并直接解析事件\n在任何情况下停止计划的适配器实例并报告错误"
+            },
+            "1.1.3": {
+                "en": "Stop adapter when everything was processed (with timeout)",
+                "de": "Adapter beenden, wenn alles verarbeitet wurde (mit Timeout)",
+                "ru": "Остановить адаптер, когда все было обработано (с тайм-аутом)",
+                "pt": "Parar o adaptador quando tudo foi processado (com tempo limite)",
+                "nl": "Stop adapter als alles is verwerkt (met time-out)",
+                "fr": "Arrêter l'adaptateur lorsque tout a été traité (avec timeout)",
+                "it": "Arresta adattatore quando tutto è stato elaborato (con timeout)",
+                "es": "Detener el adaptador cuando todo se procesó (con tiempo de espera)",
+                "pl": "Zatrzymaj adapter, gdy wszystko zostało przetworzone (z limitem czasu)",
+                "zh-cn": "处理完所有内容后停止适配器（超时）"
+            },
+            "1.1.2": {
+                "en": "Stop adapter when everything was processed",
+                "de": "Stoppen Sie den Adapter, wenn alles verarbeitet wurde",
+                "ru": "Остановить адаптер, когда все было обработано",
+                "pt": "Parar o adaptador quando tudo foi processado",
+                "nl": "Stop adapter wanneer alles is verwerkt",
+                "fr": "Arrêter l'adaptateur lorsque tout a été traité",
+                "it": "Interrompi l'adattatore quando tutto è stato elaborato",
+                "es": "Detenga el adaptador cuando todo haya sido procesado",
+                "pl": "Zatrzymaj adapter, gdy wszystko zostało przetworzone",
+                "zh-cn": "处理完所有内容后停止适配器"
+            },
+            "1.1.1": {
+                "en": "CardDAV password config is not a clear text anymore",
+                "de": "Die CardDAV-Passwortkonfiguration ist kein Klartext mehr",
+                "ru": "Конфигурация пароля CardDAV больше не является открытым текстом",
+                "pt": "A configuração de senha do CardDAV não é mais um texto claro",
+                "nl": "CardDAV-wachtwoordconfiguratie is geen duidelijke tekst meer",
+                "fr": "La configuration du mot de passe CardDAV n'est plus un texte clair",
+                "it": "La configurazione della password CardDAV non è più un testo in chiaro",
+                "es": "La configuración de contraseña de CardDAV ya no es un texto claro",
+                "pl": "Konfiguracja hasła CardDAV nie jest już zwykłym tekstem",
+                "zh-cn": "CardDAV 密码配置不再是明文"
+            },
+            "1.1.0": {
+                "en": "Added CardDAV support",
+                "de": "CardDAV-Unterstützung hinzugefügt",
+                "ru": "Добавлена поддержка CardDAV.",
+                "pt": "Adicionado suporte CardDAV",
+                "nl": "CardDAV-ondersteuning toegevoegd",
+                "fr": "Ajout de la prise en charge de CardDAV",
+                "it": "Aggiunto supporto CardDAV",
+                "es": "Compatibilidad con CardDAV añadida",
+                "pl": "Dodano obsługę CardDAV",
+                "zh-cn": "添加了 CardDAV 支持"
+            },
+            "1.0.0": {
+                "en": "Updated state roles\nAdded hint for Admin 4 configuration\nFixed translations",
+                "de": "Statusrollen aktualisiert\nHinweis für die Konfiguration von Admin 4 hinzugefügt\nÜbersetzungen korrigiert",
+                "ru": "Обновлены роли состояния\nДобавлена подсказка для конфигурации Admin 4\nИсправлены переводы",
+                "pt": "Funções de estado atualizadas\nAdicionada dica para configuração do Admin 4\nTraduções fixas",
+                "nl": "Bijgewerkte statusrollen\nHint toegevoegd voor configuratie van Admin 4\nVaste vertalingen",
+                "fr": "Rôles d'état mis à jour\nAjout d'un indice pour la configuration d'Admin 4\nTraductions fixes",
+                "it": "Ruoli statali aggiornati\nAggiunto suggerimento per la configurazione dell'amministratore 4\nTraduzioni fisse",
+                "es": "Roles de estado actualizados\nSugerencia agregada para la configuración de Admin 4\nTraducciones fijas",
+                "pl": "Zaktualizowane role stanowe\nDodano wskazówkę dotyczącą konfiguracji Admin 4\nNaprawiono tłumaczenia",
+                "zh-cn": "更新了状态角色\n添加了 Admin 4 配置的提示\n固定翻译"
+            }
+        },
+        "titleLang": {
+            "en": "Birthdays",
+            "de": "Geburtstage",
+            "ru": "Дни рождения",
+            "pt": "Aniversários",
+            "nl": "verjaardagen",
+            "fr": "Anniversaires",
+            "it": "compleanni",
+            "es": "Cumpleaños",
+            "pl": "Urodziny",
+            "zh-cn": "生日"
+        },
+        "desc": {
+            "en": "Use an ical file to import your contacts birthdays",
+            "de": "Verwenden Sie eine ical-Datei, um die Geburtstage Ihrer Kontakte zu importieren",
+            "ru": "Используйте файл ical для импорта дней рождения контактов",
+            "pt": "Use um arquivo ical para importar os aniversários de seus contatos",
+            "nl": "Gebruik een ical-bestand om de verjaardagen van uw contacten te importeren",
+            "fr": "Utilisez un fichier ical pour importer les anniversaires de vos contacts",
+            "it": "Usa un file ical per importare i compleanni dei tuoi contatti",
+            "es": "Utilice un archivo ical para importar los cumpleaños de sus contactos",
+            "pl": "Użyj pliku ical, aby zaimportować daty urodzin kontaktów",
+            "zh-cn": "使用 ical 文件导入您的联系人生日"
+        },
+        "authors": ["Matthias Kleine <info@haus-automatisierung.com>"],
+        "keywords": ["calendar", "ical", "carddav", "birthday"],
+        "license": "MIT",
+        "platform": "Javascript/Node.js",
+        "icon": "birthdays.png",
+        "extIcon": "https://raw.githubusercontent.com/klein0r/ioBroker.birthdays/master/admin/birthdays.png",
+        "enabled": true,
+        "readme": "https://github.com/klein0r/ioBroker.birthdays/blob/master/README.md",
+        "loglevel": "info",
+        "mode": "schedule",
+        "allowInit": true,
+        "schedule": "0 0 * * *",
+        "type": "date-and-time",
+        "compact": true,
+        "connectionType": "cloud",
+        "dataSource": "poll",
+        "materialize": true,
+        "adminUI": {
+            "config": "json"
+        },
+        "docs": {
+            "en": ["docs/en/basics.md", "docs/en/ical.md", "docs/en/carddav.md"],
+            "de": ["docs/de/basics.md", "docs/de/ical.md", "docs/de/carddav.md"]
+        },
+        "globalDependencies": [
+            {
+                "admin": ">=5.3.2"
+            }
+        ],
+        "dependencies": [
+            {
+                "js-controller": ">=4.0.15"
+            }
+        ]
     },
-    "titleLang": {
-      "en": "Birthdays",
-      "de": "Geburtstage",
-      "ru": "Дни рождения",
-      "pt": "Aniversários",
-      "nl": "verjaardagen",
-      "fr": "Anniversaires",
-      "it": "compleanni",
-      "es": "Cumpleaños",
-      "pl": "Urodziny",
-      "zh-cn": "生日"
+    "protectedNative": ["carddavUser", "carddavPassword"],
+    "encryptedNative": ["carddavPassword"],
+    "native": {
+        "nextTextTemplate": "%n turns %a",
+        "nextSeparator": ", ",
+        "icalUrl": "",
+        "icalUrlIgnoreCertErrors": false,
+        "carddavUrl": "",
+        "carddavUser": "",
+        "carddavPassword": "",
+        "carddavIgnoreCertErrors": false,
+        "birthdays": []
     },
-    "desc": {
-      "en": "Use an ical file to import your contacts birthdays",
-      "de": "Verwenden Sie eine ical-Datei, um die Geburtstage Ihrer Kontakte zu importieren",
-      "ru": "Используйте файл ical для импорта дней рождения контактов",
-      "pt": "Use um arquivo ical para importar os aniversários de seus contatos",
-      "nl": "Gebruik een ical-bestand om de verjaardagen van uw contacten te importeren",
-      "fr": "Utilisez un fichier ical pour importer les anniversaires de vos contacts",
-      "it": "Usa un file ical per importare i compleanni dei tuoi contatti",
-      "es": "Utilice un archivo ical para importar los cumpleaños de sus contactos",
-      "pl": "Użyj pliku ical, aby zaimportować daty urodzin kontaktów",
-      "zh-cn": "使用 ical 文件导入您的联系人生日"
-    },
-    "authors": [
-      "Matthias Kleine <info@haus-automatisierung.com>"
-    ],
-    "keywords": [
-      "calendar",
-      "ical",
-      "carddav",
-      "birthday"
-    ],
-    "license": "MIT",
-    "platform": "Javascript/Node.js",
-    "icon": "birthdays.png",
-    "extIcon": "https://raw.githubusercontent.com/klein0r/ioBroker.birthdays/master/admin/birthdays.png",
-    "enabled": true,
-    "readme": "https://github.com/klein0r/ioBroker.birthdays/blob/master/README.md",
-    "loglevel": "info",
-    "mode": "schedule",
-    "allowInit": true,
-    "schedule": "0 0 * * *",
-    "type": "date-and-time",
-    "compact": true,
-    "connectionType": "cloud",
-    "dataSource": "poll",
-    "materialize": true,
-    "adminUI": {
-      "config": "json"
-    },
-    "docs": {
-      "en": [
-        "docs/en/basics.md",
-        "docs/en/ical.md",
-        "docs/en/carddav.md"
-      ],
-      "de": [
-        "docs/de/basics.md",
-        "docs/de/ical.md",
-        "docs/de/carddav.md"
-      ]
-    },
-    "globalDependencies": [
-      {
-        "admin": ">=5.3.2"
-      }
-    ],
-    "dependencies": [
-      {
-        "js-controller": ">=4.0.15"
-      }
+    "objects": [],
+    "instanceObjects": [
+        {
+            "_id": "next",
+            "type": "channel",
+            "common": {
+                "name": {
+                    "en": "Next birthdays",
+                    "de": "Nächste Geburtstage",
+                    "ru": "Следующие дни рождения",
+                    "pt": "Próximos aniversários",
+                    "nl": "Volgende verjaardagen",
+                    "fr": "Prochains anniversaires",
+                    "it": "Prossimi compleanni",
+                    "es": "Próximos cumpleaños",
+                    "pl": "Następne urodziny",
+                    "zh-cn": "下一个生日"
+                }
+            },
+            "native": {}
+        },
+        {
+            "_id": "summary",
+            "type": "channel",
+            "common": {
+                "name": {
+                    "en": "Birthdays summary",
+                    "de": "Zusammenfassung der Geburtstage",
+                    "ru": "Сводка дней рождения",
+                    "pt": "Resumo de aniversários",
+                    "nl": "Verjaardagen samenvatting",
+                    "fr": "Résumé des anniversaires",
+                    "it": "Riepilogo compleanni",
+                    "es": "Resumen de cumpleaños",
+                    "pl": "Podsumowanie urodzin",
+                    "zh-cn": "生日总结"
+                }
+            },
+            "native": {}
+        },
+        {
+            "_id": "summary.json",
+            "type": "state",
+            "common": {
+                "name": {
+                    "en": "Birthdays JSON",
+                    "de": "Geburtstage JSON",
+                    "ru": "Дни рождения JSON",
+                    "pt": "JSON de aniversários",
+                    "nl": "Verjaardagen JSON",
+                    "fr": "Anniversaires JSON",
+                    "it": "Compleanni JSON",
+                    "es": "Cumpleaños JSON",
+                    "pl": "Urodziny JSON",
+                    "zh-cn": "生日 JSON"
+                },
+                "type": "string",
+                "role": "json",
+                "read": true,
+                "write": false
+            },
+            "native": {}
+        },
+        {
+            "_id": "month",
+            "type": "channel",
+            "common": {
+                "name": {
+                    "en": "By month",
+                    "de": "Nach Monaten",
+                    "ru": "По месяцам",
+                    "pt": "Por mês",
+                    "nl": "Bij maand",
+                    "fr": "Par mois",
+                    "it": "Per mese",
+                    "es": "Por mes",
+                    "pl": "Według miesiąca",
+                    "zh-cn": "按月"
+                }
+            },
+            "native": {}
+        },
+        {
+            "_id": "next",
+            "type": "channel",
+            "common": {
+                "name": {
+                    "en": "Next birthdays",
+                    "de": "Nächste Geburtstage",
+                    "ru": "Следующие дни рождения",
+                    "pt": "Próximos aniversários",
+                    "nl": "Volgende verjaardagen",
+                    "fr": "Prochains anniversaires",
+                    "it": "Prossimi compleanni",
+                    "es": "Próximos cumpleaños",
+                    "pl": "Następne urodziny",
+                    "zh-cn": "下一个生日"
+                }
+            },
+            "native": {}
+        },
+        {
+            "_id": "next.json",
+            "type": "state",
+            "common": {
+                "name": {
+                    "en": "Birthdays JSON",
+                    "de": "Geburtstage JSON",
+                    "ru": "Дни рождения JSON",
+                    "pt": "JSON de aniversários",
+                    "nl": "Verjaardagen JSON",
+                    "fr": "Anniversaires JSON",
+                    "it": "Compleanni JSON",
+                    "es": "Cumpleaños JSON",
+                    "pl": "Urodziny JSON",
+                    "zh-cn": "生日 JSON"
+                },
+                "type": "string",
+                "role": "json",
+                "read": true,
+                "write": false
+            },
+            "native": {}
+        },
+        {
+            "_id": "next.text",
+            "type": "state",
+            "common": {
+                "name": {
+                    "en": "Next birthdays",
+                    "de": "Nächste Geburtstage",
+                    "ru": "Следующие дни рождения",
+                    "pt": "Próximos aniversários",
+                    "nl": "Volgende verjaardagen",
+                    "fr": "Prochains anniversaires",
+                    "it": "Prossimi compleanni",
+                    "es": "Próximos cumpleaños",
+                    "pl": "Następne urodziny",
+                    "zh-cn": "下一个生日"
+                },
+                "type": "string",
+                "role": "text",
+                "read": true,
+                "write": false
+            },
+            "native": {}
+        },
+        {
+            "_id": "next.daysLeft",
+            "type": "state",
+            "common": {
+                "name": {
+                    "en": "Next birthdays - days left",
+                    "de": "Nächste Geburtstage - verbleibende Tage",
+                    "ru": "Следующие дни рождения - осталось дней",
+                    "pt": "Próximos aniversários - faltam dias",
+                    "nl": "Volgende verjaardagen - resterende dagen",
+                    "fr": "Prochains anniversaires - jours restants",
+                    "it": "Prossimi compleanni - giorni rimasti",
+                    "es": "Próximos cumpleaños: quedan días",
+                    "pl": "Następne urodziny - pozostały dni",
+                    "zh-cn": "下一个生日 - 剩余天数"
+                },
+                "type": "number",
+                "role": "value",
+                "read": true,
+                "write": false
+            },
+            "native": {}
+        },
+        {
+            "_id": "next.date",
+            "type": "state",
+            "common": {
+                "name": {
+                    "en": "Next birthdays - date",
+                    "de": "Nächste Geburtstage - Datum",
+                    "ru": "Следующие дни рождения - дата",
+                    "pt": "Próximos aniversários - data",
+                    "nl": "Volgende verjaardagen - datum",
+                    "fr": "Prochains anniversaires - date",
+                    "it": "Prossimi compleanni - data",
+                    "es": "Próximos cumpleaños - fecha",
+                    "pl": "Następne urodziny - data",
+                    "zh-cn": "下一个生日 - 日期"
+                },
+                "type": "number",
+                "role": "date",
+                "read": true,
+                "write": false
+            },
+            "native": {}
+        },
+        {
+            "_id": "next.dateFormat",
+            "type": "state",
+            "common": {
+                "name": {
+                    "en": "Next birthdays - date formatted",
+                    "de": "Nächste Geburtstage - Datum formatiert",
+                    "ru": "Следующие дни рождения - дата в формате",
+                    "pt": "Próximos aniversários - data formatada",
+                    "nl": "Volgende verjaardagen - datum geformatteerd",
+                    "fr": "Prochains anniversaires - date formatée",
+                    "it": "Prossimi compleanni - data formattata",
+                    "es": "Próximos cumpleaños: fecha formateada",
+                    "pl": "Następne urodziny - data sformatowana",
+                    "zh-cn": "下一个生日 - 日期格式"
+                },
+                "type": "string",
+                "role": "text",
+                "read": true,
+                "write": false
+            },
+            "native": {}
+        },
+        {
+            "_id": "nextAfter",
+            "type": "channel",
+            "common": {
+                "name": {
+                    "en": "After next birthdays",
+                    "de": "Nach den nächsten Geburtstagen",
+                    "ru": "После следующих дней рождения",
+                    "pt": "Depois dos próximos aniversários",
+                    "nl": "Na volgende verjaardagen",
+                    "fr": "Après les prochains anniversaires",
+                    "it": "Dopo i prossimi compleanni",
+                    "es": "Después de los próximos cumpleaños",
+                    "pl": "Po następnych urodzinach",
+                    "zh-cn": "下一个生日之后"
+                }
+            },
+            "native": {}
+        },
+        {
+            "_id": "nextAfter.json",
+            "type": "state",
+            "common": {
+                "name": {
+                    "en": "Birthdays JSON",
+                    "de": "Geburtstage JSON",
+                    "ru": "Дни рождения JSON",
+                    "pt": "JSON de aniversários",
+                    "nl": "Verjaardagen JSON",
+                    "fr": "Anniversaires JSON",
+                    "it": "Compleanni JSON",
+                    "es": "Cumpleaños JSON",
+                    "pl": "Urodziny JSON",
+                    "zh-cn": "生日 JSON"
+                },
+                "type": "string",
+                "role": "json",
+                "read": true,
+                "write": false
+            },
+            "native": {}
+        },
+        {
+            "_id": "nextAfter.text",
+            "type": "state",
+            "common": {
+                "name": {
+                    "en": "After next birthdays",
+                    "de": "Nach den nächsten Geburtstagen",
+                    "ru": "После следующих дней рождения",
+                    "pt": "Depois dos próximos aniversários",
+                    "nl": "Na volgende verjaardagen",
+                    "fr": "Après les prochains anniversaires",
+                    "it": "Dopo i prossimi compleanni",
+                    "es": "Después de los próximos cumpleaños",
+                    "pl": "Po następnych urodzinach",
+                    "zh-cn": "下一个生日之后"
+                },
+                "type": "string",
+                "role": "text",
+                "read": true,
+                "write": false
+            },
+            "native": {}
+        },
+        {
+            "_id": "nextAfter.daysLeft",
+            "type": "state",
+            "common": {
+                "name": {
+                    "en": "After next birthdays - days left",
+                    "de": "Nach den nächsten Geburtstagen - verbleibende Tage",
+                    "ru": "После следующих дней рождения - осталось дней",
+                    "pt": "Após os próximos aniversários - faltam dias",
+                    "nl": "Na de volgende verjaardagen - nog dagen over",
+                    "fr": "Après les prochains anniversaires - jours restants",
+                    "it": "Dopo i prossimi compleanni - giorni rimasti",
+                    "es": "Después de los próximos cumpleaños - quedan días",
+                    "pl": "Po następnych urodzinach - pozostały dni",
+                    "zh-cn": "下一个生日之后 - 剩下的天数"
+                },
+                "type": "number",
+                "role": "value",
+                "read": true,
+                "write": false
+            },
+            "native": {}
+        },
+        {
+            "_id": "nextAfter.date",
+            "type": "state",
+            "common": {
+                "name": {
+                    "en": "After next birthdays - date",
+                    "de": "Nach den nächsten Geburtstagen - Datum",
+                    "ru": "После следующих дней рождения - дата",
+                    "pt": "Após os próximos aniversários - data",
+                    "nl": "Na volgende verjaardagen - datum",
+                    "fr": "Après les prochains anniversaires - date",
+                    "it": "Dopo i prossimi compleanni - data",
+                    "es": "Después de los próximos cumpleaños - fecha",
+                    "pl": "Po następnych urodzinach - data",
+                    "zh-cn": "在下一个生日之后 - 日期"
+                },
+                "type": "number",
+                "role": "date",
+                "read": true,
+                "write": false
+            },
+            "native": {}
+        },
+        {
+            "_id": "nextAfter.dateFormat",
+            "type": "state",
+            "common": {
+                "name": {
+                    "en": "After next birthdays - date formatted",
+                    "de": "Nach den nächsten Geburtstagen - Datum formatiert",
+                    "ru": "После следующих дней рождения - дата в формате",
+                    "pt": "Após os próximos aniversários - data formatada",
+                    "nl": "Na volgende verjaardagen - datum geformatteerd",
+                    "fr": "Après les prochains anniversaires - date formatée",
+                    "it": "Dopo i prossimi compleanni - data formattata",
+                    "es": "Después de los próximos cumpleaños: formato de fecha",
+                    "pl": "Po następnych urodzinach - data sformatowana",
+                    "zh-cn": "在下一个生日之后 - 日期格式化"
+                },
+                "type": "string",
+                "role": "text",
+                "read": true,
+                "write": false
+            },
+            "native": {}
+        }
     ]
-  },
-  "protectedNative": [
-    "carddavUser",
-    "carddavPassword"
-  ],
-  "encryptedNative": [
-    "carddavPassword"
-  ],
-  "native": {
-    "nextTextTemplate": "%n turns %a",
-    "nextSeparator": ", ",
-    "icalUrl": "",
-    "icalUrlIgnoreCertErrors": false,
-    "carddavUrl": "",
-    "carddavUser": "",
-    "carddavPassword": "",
-    "carddavIgnoreCertErrors": false
-  },
-  "objects": [],
-  "instanceObjects": [
-    {
-      "_id": "next",
-      "type": "channel",
-      "common": {
-        "name": {
-          "en": "Next birthdays",
-          "de": "Nächste Geburtstage",
-          "ru": "Следующие дни рождения",
-          "pt": "Próximos aniversários",
-          "nl": "Volgende verjaardagen",
-          "fr": "Prochains anniversaires",
-          "it": "Prossimi compleanni",
-          "es": "Próximos cumpleaños",
-          "pl": "Następne urodziny",
-          "zh-cn": "下一个生日"
-        }
-      },
-      "native": {}
-    },
-    {
-      "_id": "summary",
-      "type": "channel",
-      "common": {
-        "name": {
-          "en": "Birthdays summary",
-          "de": "Zusammenfassung der Geburtstage",
-          "ru": "Сводка дней рождения",
-          "pt": "Resumo de aniversários",
-          "nl": "Verjaardagen samenvatting",
-          "fr": "Résumé des anniversaires",
-          "it": "Riepilogo compleanni",
-          "es": "Resumen de cumpleaños",
-          "pl": "Podsumowanie urodzin",
-          "zh-cn": "生日总结"
-        }
-      },
-      "native": {}
-    },
-    {
-      "_id": "summary.json",
-      "type": "state",
-      "common": {
-        "name": {
-          "en": "Birthdays JSON",
-          "de": "Geburtstage JSON",
-          "ru": "Дни рождения JSON",
-          "pt": "JSON de aniversários",
-          "nl": "Verjaardagen JSON",
-          "fr": "Anniversaires JSON",
-          "it": "Compleanni JSON",
-          "es": "Cumpleaños JSON",
-          "pl": "Urodziny JSON",
-          "zh-cn": "生日 JSON"
-        },
-        "type": "string",
-        "role": "json",
-        "read": true,
-        "write": false
-      },
-      "native": {}
-    },
-    {
-      "_id": "month",
-      "type": "channel",
-      "common": {
-        "name": {
-          "en": "By month",
-          "de": "Nach Monaten",
-          "ru": "По месяцам",
-          "pt": "Por mês",
-          "nl": "Bij maand",
-          "fr": "Par mois",
-          "it": "Per mese",
-          "es": "Por mes",
-          "pl": "Według miesiąca",
-          "zh-cn": "按月"
-        }
-      },
-      "native": {}
-    },
-    {
-      "_id": "next",
-      "type": "channel",
-      "common": {
-        "name": {
-          "en": "Next birthdays",
-          "de": "Nächste Geburtstage",
-          "ru": "Следующие дни рождения",
-          "pt": "Próximos aniversários",
-          "nl": "Volgende verjaardagen",
-          "fr": "Prochains anniversaires",
-          "it": "Prossimi compleanni",
-          "es": "Próximos cumpleaños",
-          "pl": "Następne urodziny",
-          "zh-cn": "下一个生日"
-        }
-      },
-      "native": {}
-    },
-    {
-      "_id": "next.json",
-      "type": "state",
-      "common": {
-        "name": {
-          "en": "Birthdays JSON",
-          "de": "Geburtstage JSON",
-          "ru": "Дни рождения JSON",
-          "pt": "JSON de aniversários",
-          "nl": "Verjaardagen JSON",
-          "fr": "Anniversaires JSON",
-          "it": "Compleanni JSON",
-          "es": "Cumpleaños JSON",
-          "pl": "Urodziny JSON",
-          "zh-cn": "生日 JSON"
-        },
-        "type": "string",
-        "role": "json",
-        "read": true,
-        "write": false
-      },
-      "native": {}
-    },
-    {
-      "_id": "next.text",
-      "type": "state",
-      "common": {
-        "name": {
-          "en": "Next birthdays",
-          "de": "Nächste Geburtstage",
-          "ru": "Следующие дни рождения",
-          "pt": "Próximos aniversários",
-          "nl": "Volgende verjaardagen",
-          "fr": "Prochains anniversaires",
-          "it": "Prossimi compleanni",
-          "es": "Próximos cumpleaños",
-          "pl": "Następne urodziny",
-          "zh-cn": "下一个生日"
-        },
-        "type": "string",
-        "role": "text",
-        "read": true,
-        "write": false
-      },
-      "native": {}
-    },
-    {
-      "_id": "next.daysLeft",
-      "type": "state",
-      "common": {
-        "name": {
-          "en": "Next birthdays - days left",
-          "de": "Nächste Geburtstage - verbleibende Tage",
-          "ru": "Следующие дни рождения - осталось дней",
-          "pt": "Próximos aniversários - faltam dias",
-          "nl": "Volgende verjaardagen - resterende dagen",
-          "fr": "Prochains anniversaires - jours restants",
-          "it": "Prossimi compleanni - giorni rimasti",
-          "es": "Próximos cumpleaños: quedan días",
-          "pl": "Następne urodziny - pozostały dni",
-          "zh-cn": "下一个生日 - 剩余天数"
-        },
-        "type": "number",
-        "role": "value",
-        "read": true,
-        "write": false
-      },
-      "native": {}
-    },
-    {
-      "_id": "next.date",
-      "type": "state",
-      "common": {
-        "name": {
-          "en": "Next birthdays - date",
-          "de": "Nächste Geburtstage - Datum",
-          "ru": "Следующие дни рождения - дата",
-          "pt": "Próximos aniversários - data",
-          "nl": "Volgende verjaardagen - datum",
-          "fr": "Prochains anniversaires - date",
-          "it": "Prossimi compleanni - data",
-          "es": "Próximos cumpleaños - fecha",
-          "pl": "Następne urodziny - data",
-          "zh-cn": "下一个生日 - 日期"
-        },
-        "type": "number",
-        "role": "date",
-        "read": true,
-        "write": false
-      },
-      "native": {}
-    },
-    {
-      "_id": "next.dateFormat",
-      "type": "state",
-      "common": {
-        "name": {
-          "en": "Next birthdays - date formatted",
-          "de": "Nächste Geburtstage - Datum formatiert",
-          "ru": "Следующие дни рождения - дата в формате",
-          "pt": "Próximos aniversários - data formatada",
-          "nl": "Volgende verjaardagen - datum geformatteerd",
-          "fr": "Prochains anniversaires - date formatée",
-          "it": "Prossimi compleanni - data formattata",
-          "es": "Próximos cumpleaños: fecha formateada",
-          "pl": "Następne urodziny - data sformatowana",
-          "zh-cn": "下一个生日 - 日期格式"
-        },
-        "type": "string",
-        "role": "text",
-        "read": true,
-        "write": false
-      },
-      "native": {}
-    },
-    {
-      "_id": "nextAfter",
-      "type": "channel",
-      "common": {
-        "name": {
-          "en": "After next birthdays",
-          "de": "Nach den nächsten Geburtstagen",
-          "ru": "После следующих дней рождения",
-          "pt": "Depois dos próximos aniversários",
-          "nl": "Na volgende verjaardagen",
-          "fr": "Après les prochains anniversaires",
-          "it": "Dopo i prossimi compleanni",
-          "es": "Después de los próximos cumpleaños",
-          "pl": "Po następnych urodzinach",
-          "zh-cn": "下一个生日之后"
-        }
-      },
-      "native": {}
-    },
-    {
-      "_id": "nextAfter.json",
-      "type": "state",
-      "common": {
-        "name": {
-          "en": "Birthdays JSON",
-          "de": "Geburtstage JSON",
-          "ru": "Дни рождения JSON",
-          "pt": "JSON de aniversários",
-          "nl": "Verjaardagen JSON",
-          "fr": "Anniversaires JSON",
-          "it": "Compleanni JSON",
-          "es": "Cumpleaños JSON",
-          "pl": "Urodziny JSON",
-          "zh-cn": "生日 JSON"
-        },
-        "type": "string",
-        "role": "json",
-        "read": true,
-        "write": false
-      },
-      "native": {}
-    },
-    {
-      "_id": "nextAfter.text",
-      "type": "state",
-      "common": {
-        "name": {
-          "en": "After next birthdays",
-          "de": "Nach den nächsten Geburtstagen",
-          "ru": "После следующих дней рождения",
-          "pt": "Depois dos próximos aniversários",
-          "nl": "Na volgende verjaardagen",
-          "fr": "Après les prochains anniversaires",
-          "it": "Dopo i prossimi compleanni",
-          "es": "Después de los próximos cumpleaños",
-          "pl": "Po następnych urodzinach",
-          "zh-cn": "下一个生日之后"
-        },
-        "type": "string",
-        "role": "text",
-        "read": true,
-        "write": false
-      },
-      "native": {}
-    },
-    {
-      "_id": "nextAfter.daysLeft",
-      "type": "state",
-      "common": {
-        "name": {
-          "en": "After next birthdays - days left",
-          "de": "Nach den nächsten Geburtstagen - verbleibende Tage",
-          "ru": "После следующих дней рождения - осталось дней",
-          "pt": "Após os próximos aniversários - faltam dias",
-          "nl": "Na de volgende verjaardagen - nog dagen over",
-          "fr": "Après les prochains anniversaires - jours restants",
-          "it": "Dopo i prossimi compleanni - giorni rimasti",
-          "es": "Después de los próximos cumpleaños - quedan días",
-          "pl": "Po następnych urodzinach - pozostały dni",
-          "zh-cn": "下一个生日之后 - 剩下的天数"
-        },
-        "type": "number",
-        "role": "value",
-        "read": true,
-        "write": false
-      },
-      "native": {}
-    },
-    {
-      "_id": "nextAfter.date",
-      "type": "state",
-      "common": {
-        "name": {
-          "en": "After next birthdays - date",
-          "de": "Nach den nächsten Geburtstagen - Datum",
-          "ru": "После следующих дней рождения - дата",
-          "pt": "Após os próximos aniversários - data",
-          "nl": "Na volgende verjaardagen - datum",
-          "fr": "Après les prochains anniversaires - date",
-          "it": "Dopo i prossimi compleanni - data",
-          "es": "Después de los próximos cumpleaños - fecha",
-          "pl": "Po następnych urodzinach - data",
-          "zh-cn": "在下一个生日之后 - 日期"
-        },
-        "type": "number",
-        "role": "date",
-        "read": true,
-        "write": false
-      },
-      "native": {}
-    },
-    {
-      "_id": "nextAfter.dateFormat",
-      "type": "state",
-      "common": {
-        "name": {
-          "en": "After next birthdays - date formatted",
-          "de": "Nach den nächsten Geburtstagen - Datum formatiert",
-          "ru": "После следующих дней рождения - дата в формате",
-          "pt": "Após os próximos aniversários - data formatada",
-          "nl": "Na volgende verjaardagen - datum geformatteerd",
-          "fr": "Après les prochains anniversaires - date formatée",
-          "it": "Dopo i prossimi compleanni - data formattata",
-          "es": "Después de los próximos cumpleaños: formato de fecha",
-          "pl": "Po następnych urodzinach - data sformatowana",
-          "zh-cn": "在下一个生日之后 - 日期格式化"
-        },
-        "type": "string",
-        "role": "text",
-        "read": true,
-        "write": false
-      },
-      "native": {}
-    }
-  ]
 }

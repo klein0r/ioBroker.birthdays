@@ -2,7 +2,7 @@
 
 const utils = require('@iobroker/adapter-core');
 const moment = require('moment');
-const axios = require('axios');
+const axios = require('axios').default;
 const https = require('https');
 const ICAL = require('ical.js');
 const adapterName = require('./package.json').name.split('.').pop();
