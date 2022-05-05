@@ -8,15 +8,14 @@ const ICAL = require('ical.js');
 const adapterName = require('./package.json').name.split('.').pop();
 
 class Birthdays extends utils.Adapter {
-
     constructor(options) {
         super({
             ...options,
             name: adapterName,
-            useFormatDate: true
+            useFormatDate: true,
         });
 
-        this.today = moment({hour: 0, minute: 0});
+        this.today = moment({ hour: 0, minute: 0 });
         this.birthdays = [];
 
         this.on('ready', this.onReady.bind(this));
@@ -24,7 +23,6 @@ class Birthdays extends utils.Adapter {
     }
 
     async onReady() {
-
         // Create month channels
         for (let m = 1; m <= 12; m++) {
             const mm = moment({ month: m - 1 });
@@ -42,35 +40,32 @@ class Birthdays extends utils.Adapter {
                         it: this.getMonthTranslation(mm, 'it'),
                         es: this.getMonthTranslation(mm, 'es'),
                         pl: this.getMonthTranslation(mm, 'pl'),
-                        'zh-cn': this.getMonthTranslation(mm, 'zh-cn')
-                    }
+                        'zh-cn': this.getMonthTranslation(mm, 'zh-cn'),
+                    },
                 },
-                native: {}
+                native: {},
             });
         }
 
-        Promise.all(
-            [
-                this.addBySettings(),
-                this.addByCalendar(),
-                this.addByCardDav()
-            ]
-        ).then(async (data) => {
-            this.log.debug(`[onReady] everything collected: ${JSON.stringify(data)}`);
+        Promise.all([this.addBySettings(), this.addByCalendar(), this.addByCardDav()])
+            .then(async (data) => {
+                this.log.debug(`[onReady] everything collected: ${JSON.stringify(data)}`);
 
-            const addedBirthdaysSum = data.reduce((pv, cv) => pv + cv, 0);
-            if (addedBirthdaysSum === 0) {
-                this.log.error(`No birthdays found in any configured source - please check configuration and retry`);
-            }
+                const addedBirthdaysSum = data.reduce((pv, cv) => pv + cv, 0);
+                if (addedBirthdaysSum === 0) {
+                    this.log.error(`No birthdays found in any configured source - please check configuration and retry`);
+                }
 
-            await this.fillStates();
-            this.log.debug(`[onReady] Everything done`);
-        }).catch((err) => {
-            this.log.error(`[onReady] Error: ${JSON.stringify(err)}`);
-        }).finally(() => {
-            this.log.debug(`[onReady] Finally shutting down`);
-            this.stop();
-        });
+                await this.fillStates();
+                this.log.debug(`[onReady] Everything done`);
+            })
+            .catch((err) => {
+                this.log.error(`[onReady] Error: ${JSON.stringify(err)}`);
+            })
+            .finally(() => {
+                this.log.debug(`[onReady] Finally shutting down`);
+                this.stop();
+            });
     }
 
     async addBySettings() {
@@ -119,59 +114,61 @@ class Birthdays extends utils.Adapter {
                     method: 'get',
                     url: iCalUrl,
                     timeout: 4500,
-                    httpsAgent: new https.Agent(httpsAgentOptions)
-                }).then(async (response) => {
-                    this.log.debug(`[ical] http(s) request finished with status: ${response.status}`);
-                    let addedBirthdays = 0;
+                    httpsAgent: new https.Agent(httpsAgentOptions),
+                })
+                    .then(async (response) => {
+                        this.log.debug(`[ical] http(s) request finished with status: ${response.status}`);
+                        let addedBirthdays = 0;
 
-                    if (response.data) {
-                        // Parse ical
-                        const icalData = ICAL.parse(response.data);
+                        if (response.data) {
+                            // Parse ical
+                            const icalData = ICAL.parse(response.data);
 
-                        const comp = new ICAL.Component(icalData);
+                            const comp = new ICAL.Component(icalData);
 
-                        const vevents = comp.getAllSubcomponents('vevent');
+                            const vevents = comp.getAllSubcomponents('vevent');
 
-                        this.log.debug(`[ical] found ${vevents.length} events`);
+                            this.log.debug(`[ical] found ${vevents.length} events`);
 
-                        for (const e in vevents) {
-                            const vevent = vevents[e];
+                            for (const e in vevents) {
+                                const vevent = vevents[e];
 
-                            const event = new ICAL.Event(vevent);
+                                const event = new ICAL.Event(vevent);
 
-                            if (event.summary !== undefined && !isNaN(event.description) && event.startDate) {
-                                const name = event.summary;
-                                const birthYear = parseInt(event.description);
+                                if (event.summary !== undefined && !isNaN(event.description) && event.startDate) {
+                                    const name = event.summary;
+                                    const birthYear = parseInt(event.description);
 
-                                this.log.debug(`[ical] processing event: ${JSON.stringify(event)}`);
+                                    this.log.debug(`[ical] processing event: ${JSON.stringify(event)}`);
 
-                                if (name && birthYear && !isNaN(birthYear)) {
-                                    const startDate = event.startDate.toJSDate();
-                                    const calendarBirthday = moment({ year: birthYear, month: startDate.getMonth(), day: startDate.getDate() });
+                                    if (name && birthYear && !isNaN(birthYear)) {
+                                        const startDate = event.startDate.toJSDate();
+                                        const calendarBirthday = moment({ year: birthYear, month: startDate.getMonth(), day: startDate.getDate() });
 
-                                    if (calendarBirthday.isValid() && calendarBirthday.year() <= this.today.year()) {
-                                        this.log.debug(`[ical] found birthday: ${name} (${birthYear})`);
+                                        if (calendarBirthday.isValid() && calendarBirthday.year() <= this.today.year()) {
+                                            this.log.debug(`[ical] found birthday: ${name} (${birthYear})`);
 
-                                        this.addBirthday(name, calendarBirthday);
-                                        addedBirthdays++;
-                                    } else {
-                                        this.log.warn(`[ical] invalid birthday date: ${name}`);
+                                            this.addBirthday(name, calendarBirthday);
+                                            addedBirthdays++;
+                                        } else {
+                                            this.log.warn(`[ical] invalid birthday date: ${name}`);
+                                        }
+                                    } else if (name) {
+                                        this.log.debug(`[ical] missing birth year in event: ${name}`);
                                     }
-                                } else if (name) {
-                                    this.log.debug(`[ical] missing birth year in event: ${name}`);
                                 }
                             }
+
+                            this.log.debug(`[ical] processed all events`);
                         }
 
-                        this.log.debug(`[ical] processed all events`);
-                    }
-
-                    resolve(addedBirthdays);
-                }).catch((error) => {
-                    this.log.warn(error);
-                    this.log.debug(`[ical] done with error`);
-                    resolve(0);
-                });
+                        resolve(addedBirthdays);
+                    })
+                    .catch((error) => {
+                        this.log.warn(error);
+                        this.log.debug(`[ical] done with error`);
+                        resolve(0);
+                    });
             } else {
                 this.log.debug(`[ical] done - url not configured - skipped`);
                 resolve(0);
@@ -180,7 +177,7 @@ class Birthdays extends utils.Adapter {
     }
 
     async addByCardDav() {
-        return new Promise(async (resolve) => {
+        return new Promise((resolve) => {
             const carddavUrl = this.config.carddavUrl;
             if (carddavUrl) {
                 this.log.debug(`[carddav] url: ${carddavUrl}`);
@@ -199,52 +196,53 @@ class Birthdays extends utils.Adapter {
                     httpsAgent: new https.Agent(httpsAgentOptions),
                     auth: {
                         username: this.config.carddavUser,
-                        password: this.config.carddavPassword
-                    }
-                }).then(async (response) => {
-                    this.log.debug(`[carddav] http(s) request finished with status: ${response.status}`);
-                    let addedBirthdays = 0;
+                        password: this.config.carddavPassword,
+                    },
+                })
+                    .then(async (response) => {
+                        this.log.debug(`[carddav] http(s) request finished with status: ${response.status}`);
+                        let addedBirthdays = 0;
 
-                    if (response.data) {
-                        // Parse vcards
-                        const vcards = ICAL.parse(response.data);
+                        if (response.data) {
+                            // Parse vcards
+                            const vcards = ICAL.parse(response.data);
 
-                        this.log.debug(`[carddav] found ${vcards.length} contacts`);
+                            this.log.debug(`[carddav] found ${vcards.length} contacts`);
 
-                        for (const v in vcards) {
-                            const vcard = vcards[v];
+                            for (const v in vcards) {
+                                const vcard = vcards[v];
 
-                            this.log.debug(`[carddav] processing vcard: ${JSON.stringify(vcard)}`);
+                                this.log.debug(`[carddav] processing vcard: ${JSON.stringify(vcard)}`);
 
-                            const comp = new ICAL.Component(vcard);
-                            const name = comp.getFirstPropertyValue('fn');
-                            const bday = comp.getFirstPropertyValue('bday');
+                                const comp = new ICAL.Component(vcard);
+                                const name = comp.getFirstPropertyValue('fn');
+                                const bday = comp.getFirstPropertyValue('bday');
 
-                            if (name && bday) {
-                                const carddavBirthday = moment(bday, 'YYYY-MM-DD');
+                                if (name && bday) {
+                                    const carddavBirthday = moment(bday, 'YYYY-MM-DD');
 
-                                if (carddavBirthday.isValid() && carddavBirthday.year() <= this.today.year()) {
-                                    this.log.debug(`[carddav] found birthday: ${name} (${carddavBirthday.year()})`);
+                                    if (carddavBirthday.isValid() && carddavBirthday.year() <= this.today.year()) {
+                                        this.log.debug(`[carddav] found birthday: ${name} (${carddavBirthday.year()})`);
 
-                                    this.addBirthday(name, carddavBirthday);
-                                    addedBirthdays++;
-                                } else {
-                                    this.log.warn(`[carddav] invalid birthdate: ${name}`);
+                                        this.addBirthday(name, carddavBirthday);
+                                        addedBirthdays++;
+                                    } else {
+                                        this.log.warn(`[carddav] invalid birthdate: ${name}`);
+                                    }
+                                } else if (name) {
+                                    this.log.debug(`[carddav] missing birthdate in event: ${name}`);
                                 }
-                            } else if (name) {
-                                this.log.debug(`[carddav] missing birthdate in event: ${name}`);
                             }
                         }
-                    }
 
-                    this.log.debug(`[carddav] done`);
-                    resolve(addedBirthdays);
-                }).catch((error) => {
-                    this.log.warn(error);
-                    this.log.debug(`[carddav] done with error`);
-                    resolve(0);
-                });
-
+                        this.log.debug(`[carddav] done`);
+                        resolve(addedBirthdays);
+                    })
+                    .catch((error) => {
+                        this.log.warn(error);
+                        this.log.debug(`[carddav] done with error`);
+                        resolve(0);
+                    });
             } else {
                 this.log.debug(`[carddav] done - url not configured - skipped`);
                 resolve(0);
@@ -261,31 +259,30 @@ class Birthdays extends utils.Adapter {
             nextBirthday.add(1, 'y');
         }
 
-        this.birthdays.push(
-            {
-                name: name,
-                birthYear: birthday.year(),
-                dateFormat: this.formatDate(nextBirthday.toDate()),
-                age: nextBirthday.diff(birthday, 'years'),
-                daysLeft: nextBirthday.diff(this.today, 'days'),
-                _birthday: birthday,
-                _nextBirthday: nextBirthday
-            }
-        );
+        this.birthdays.push({
+            name: name,
+            birthYear: birthday.year(),
+            dateFormat: this.formatDate(nextBirthday.toDate()),
+            age: nextBirthday.diff(birthday, 'years'),
+            daysLeft: nextBirthday.diff(this.today, 'days'),
+            _birthday: birthday,
+            _nextBirthday: nextBirthday,
+        });
     }
 
     async fillStates() {
-
         // Sort by daysLeft
-        this.birthdays.sort((a, b) => (a.daysLeft > b.daysLeft) ? 1 : -1);
+        this.birthdays.sort((a, b) => (a.daysLeft > b.daysLeft ? 1 : -1));
 
         this.log.debug(`[fillStates] birthdays: ${JSON.stringify(this.birthdays)}`);
-        await this.setStateAsync('summary.json', {val: JSON.stringify(this.birthdays), ack: true});
+        await this.setStateAsync('summary.json', { val: JSON.stringify(this.birthdays), ack: true });
 
         const keepBirthdays = [];
         const allBirthdays = (await this.getChannelsOfAsync('month'))
-            .map(obj => { return this.removeNamespace(obj._id); })
-            .filter(id => new RegExp('month\.[0-9]{2}\..+', 'g').test(id));
+            .map((obj) => {
+                return this.removeNamespace(obj._id);
+            })
+            .filter((id) => new RegExp('month.[0-9]{2}..+', 'g').test(id));
 
         for (const b in this.birthdays) {
             const birthdayObj = this.birthdays[b];
@@ -307,7 +304,7 @@ class Birthdays extends utils.Adapter {
             const id = allBirthdays[i];
 
             if (keepBirthdays.indexOf(id) === -1) {
-                this.delObject(id, {recursive: true}, () => {
+                this.delObject(id, { recursive: true }, () => {
                     this.log.debug(`[fillStates] birthday deleted: ${id}`);
                 });
             }
@@ -319,41 +316,32 @@ class Birthdays extends utils.Adapter {
 
             await this.fillAfter('next', nextBirthdayDaysLeft);
 
-            const nextAfterBirthdaysList = this.birthdays.filter(birthday => birthday.daysLeft > nextBirthdayDaysLeft);
+            const nextAfterBirthdaysList = this.birthdays.filter((birthday) => birthday.daysLeft > nextBirthdayDaysLeft);
             if (nextAfterBirthdaysList.length > 0) {
                 const nextAfterBirthdaysLeft = nextAfterBirthdaysList[0].daysLeft;
 
                 await this.fillAfter('nextAfter', nextAfterBirthdaysLeft);
             }
         }
-
     }
 
     async fillAfter(path, daysLeft) {
-
         this.log.debug(`[fillAfter] filling ${path} with ${daysLeft} days left`);
 
-        const nextBirthdays = this.birthdays
-            .filter(birthday => birthday.daysLeft == daysLeft); // get all birthdays with same days left
+        const nextBirthdays = this.birthdays.filter((birthday) => birthday.daysLeft == daysLeft); // get all birthdays with same days left
 
-        const nextBirthdaysText = nextBirthdays.map(
-            birthday => {
-                return this.config.nextTextTemplate
-                    .replace('%n', birthday.name)
-                    .replace('%a', birthday.age);
-            }
-        );
+        const nextBirthdaysText = nextBirthdays.map((birthday) => {
+            return this.config.nextTextTemplate.replace('%n', birthday.name).replace('%a', birthday.age);
+        });
 
-        await this.setStateAsync(path + '.json', {val: JSON.stringify(nextBirthdays), ack: true});
-        await this.setStateAsync(path + '.daysLeft', {val: daysLeft, ack: true});
-        await this.setStateAsync(path + '.text', {val: nextBirthdaysText.join(this.config.nextSeparator), ack: true});
+        await this.setStateAsync(path + '.json', { val: JSON.stringify(nextBirthdays), ack: true });
+        await this.setStateAsync(path + '.daysLeft', { val: daysLeft, ack: true });
+        await this.setStateAsync(path + '.text', { val: nextBirthdaysText.join(this.config.nextSeparator), ack: true });
 
-        const birthdayDate = moment()
-            .set({'hour': 0, 'minute': 0, 'second': 0})
-            .add(daysLeft, 'days');
+        const birthdayDate = moment().set({ hour: 0, minute: 0, second: 0 }).add(daysLeft, 'days');
 
-        await this.setStateAsync(path + '.date', {val: birthdayDate.valueOf(), ack: true});
-        await this.setStateAsync(path + '.dateFormat', {val: this.formatDate(birthdayDate.toDate()), ack: true});
+        await this.setStateAsync(path + '.date', { val: birthdayDate.valueOf(), ack: true });
+        await this.setStateAsync(path + '.dateFormat', { val: this.formatDate(birthdayDate.toDate()), ack: true });
     }
 
     async fillPathWithBirthday(path, birthdayObj) {
@@ -364,9 +352,9 @@ class Birthdays extends utils.Adapter {
         await this.setObjectNotExistsAsync(path, {
             type: 'channel',
             common: {
-                name: birthdayObj.name
+                name: birthdayObj.name,
             },
-            native: {}
+            native: {},
         });
 
         await this.setObjectNotExistsAsync(path + '.name', {
@@ -382,16 +370,16 @@ class Birthdays extends utils.Adapter {
                     it: 'Nome',
                     es: 'Nombre',
                     pl: 'Nazwa',
-                    'zh-cn': '姓名'
+                    'zh-cn': '姓名',
                 },
                 type: 'string',
                 role: 'text',
                 read: true,
-                write: false
+                write: false,
             },
-            native: {}
+            native: {},
         });
-        await this.setStateAsync(path + '.name', {val: birthdayObj.name, ack: true});
+        await this.setStateAsync(path + '.name', { val: birthdayObj.name, ack: true });
 
         await this.setObjectNotExistsAsync(path + '.age', {
             type: 'state',
@@ -406,16 +394,16 @@ class Birthdays extends utils.Adapter {
                     it: 'Età',
                     es: 'La edad',
                     pl: 'Wiek',
-                    'zh-cn': '年龄'
+                    'zh-cn': '年龄',
                 },
                 type: 'number',
                 role: 'value',
                 read: true,
-                write: false
+                write: false,
             },
-            native: {}
+            native: {},
         });
-        await this.setStateAsync(path + '.age', {val: birthdayObj.age, ack: true});
+        await this.setStateAsync(path + '.age', { val: birthdayObj.age, ack: true });
 
         await this.setObjectNotExistsAsync(path + '.day', {
             type: 'state',
@@ -430,16 +418,16 @@ class Birthdays extends utils.Adapter {
                     it: 'Giorno del mese',
                     es: 'Dia del mes',
                     pl: 'Dzień miesiąca',
-                    'zh-cn': '每月的第几天'
+                    'zh-cn': '每月的第几天',
                 },
                 type: 'number',
                 role: 'value',
                 read: true,
-                write: false
+                write: false,
             },
-            native: {}
+            native: {},
         });
-        await this.setStateAsync(path + '.day', {val: birthday.date(), ack: true});
+        await this.setStateAsync(path + '.day', { val: birthday.date(), ack: true });
 
         await this.setObjectNotExistsAsync(path + '.year', {
             type: 'state',
@@ -454,16 +442,16 @@ class Birthdays extends utils.Adapter {
                     it: 'Anno di nascita',
                     es: 'Año de nacimiento',
                     pl: 'Rok urodzenia',
-                    'zh-cn': '出生年'
+                    'zh-cn': '出生年',
                 },
                 type: 'number',
                 role: 'value',
                 read: true,
-                write: false
+                write: false,
             },
-            native: {}
+            native: {},
         });
-        await this.setStateAsync(path + '.year', {val: birthdayObj.birthYear, ack: true});
+        await this.setStateAsync(path + '.year', { val: birthdayObj.birthYear, ack: true });
 
         await this.setObjectNotExistsAsync(path + '.daysLeft', {
             type: 'state',
@@ -478,16 +466,16 @@ class Birthdays extends utils.Adapter {
                     it: 'Giorni rimasti',
                     es: 'Días restantes',
                     pl: 'Pozostałe dni',
-                    'zh-cn': '剩余天数'
+                    'zh-cn': '剩余天数',
                 },
                 type: 'number',
                 role: 'value',
                 read: true,
-                write: false
+                write: false,
             },
-            native: {}
+            native: {},
         });
-        await this.setStateAsync(path + '.daysLeft', {val: birthdayObj.daysLeft, ack: true});
+        await this.setStateAsync(path + '.daysLeft', { val: birthdayObj.daysLeft, ack: true });
     }
 
     getMonthPath(m) {
