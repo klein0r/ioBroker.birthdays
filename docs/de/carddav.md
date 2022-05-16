@@ -4,7 +4,9 @@
 
 ## CardDAV
 
-*CardDAV ist seit Adapter-Version 1.1.0 verfügbar*
+_CardDAV ist seit Adapter-Version 1.1.0 verfügbar_
+
+Es ist NICHT zwingend erforderlich die CardDAV-Option zu nutzen. Du kannst auch andere Quellen für Geburtstage nutzen. _Falls Du mehrere Optionen nutzt, werden die Informationen zusammengeführt._
 
 ### Synology Contacts
 

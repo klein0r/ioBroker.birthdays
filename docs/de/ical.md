@@ -4,7 +4,9 @@
 
 ## iCal
 
-Du kannst eine iCal-URL nutzen, welche alle Geburtstage enthält. Der Adapter sucht nach allen Terminen in dieser Datei.
+Du kannst eine iCal-Datei (HTTP-URL oder Pfad zu einer lokalen Datei) nutzen, welche alle Geburtstage enthält. Der Adapter sucht nach allen Terminen in dieser Datei.
+
+_Lokale Dateien werden seit Adapter-Version 2.0.0 unterstützt_
 
 Deine Termine
 
@@ -12,7 +14,7 @@ Deine Termine
 2. sind ganztäging
 3. stehen auf "jährlich wiederholen"
 
-Es ist NICHT zwingend erforderlich die iCal-Option zu nutzen. Du kannst alternativ auch alle Geburtstage manuell in der Instanz eintragen. *Falls Du beide Optionen nutzt, werden die Informationen zusammengeführt.*
+Es ist NICHT zwingend erforderlich die iCal-Option zu nutzen. Du kannst auch andere Quellen für Geburtstage nutzen. _Falls Du mehrere Optionen nutzt, werden die Informationen zusammengeführt._
 
 ### Beispiel Google-Kalender
 

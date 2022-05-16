@@ -4,7 +4,9 @@
 
 ## iCal
 
-You can use an ical url to provide access to your birthday calendar. The adapter will search for all events within that file.
+You can use an ical file (http url or local path to file) to provide access to your birthday calendar. The adapter will search for all events within that file.
+
+_Local files are supported since adapter version 2.0.0_
 
 Your events
 
@@ -12,7 +14,7 @@ Your events
 2. are full day events
 3. have to be "repeated yearly"
 
-It is NOT required to use the ical option. You can also define all birthday dates in the settings. *When you use both options, the information will be merged.*
+It is NOT required to use the iCal option. You can also define other birthday sources in the settings. _When you use multiple options, the information will be merged._
 
 ### Example Google Calendar
 
