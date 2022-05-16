@@ -1,6 +1,7 @@
 'use strict';
 
 const utils = require('@iobroker/adapter-core');
+const fs = require('fs');
 const moment = require('moment');
 const axios = require('axios').default;
 const https = require('https');
@@ -101,79 +102,117 @@ class Birthdays extends utils.Adapter {
         return new Promise((resolve) => {
             const iCalUrl = this.config.icalUrl;
             if (iCalUrl) {
-                this.log.debug(`[ical] url: ${iCalUrl}`);
+                this.log.debug(`[ical] url/path: ${iCalUrl}`);
 
-                const httpsAgentOptions = {};
+                if (iCalUrl.startsWith('http')) {
+                    this.log.debug('[ical] addByCalendar - looks like an http url, performing get request');
 
-                if (this.config.icalUrlIgnoreCertErrors) {
-                    this.log.debug('[ical] addByCalendar - performing https requests with rejectUnauthorized = false');
-                    httpsAgentOptions.rejectUnauthorized = false;
-                }
+                    const httpsAgentOptions = {};
 
-                axios({
-                    method: 'get',
-                    url: iCalUrl,
-                    timeout: 4500,
-                    httpsAgent: new https.Agent(httpsAgentOptions),
-                })
-                    .then(async (response) => {
-                        this.log.debug(`[ical] http(s) request finished with status: ${response.status}`);
-                        let addedBirthdays = 0;
+                    if (this.config.icalUrlIgnoreCertErrors) {
+                        this.log.debug('[ical] addByCalendar - performing https requests with rejectUnauthorized = false');
+                        httpsAgentOptions.rejectUnauthorized = false;
+                    }
 
-                        if (response.data) {
-                            // Parse ical
-                            const icalData = ICAL.parse(response.data);
+                    axios({
+                        method: 'get',
+                        url: iCalUrl,
+                        timeout: 4500,
+                        httpsAgent: new https.Agent(httpsAgentOptions),
+                    })
+                        .then(async (response) => {
+                            this.log.debug(`[ical] http(s) request finished with status: ${response.status}`);
+                            let addedBirthdays = 0;
 
-                            const comp = new ICAL.Component(icalData);
+                            if (response.data) {
+                                this.log.silly(`[ical] addByCalendar - received file contents: ${response.data}`);
 
-                            const vevents = comp.getAllSubcomponents('vevent');
-
-                            this.log.debug(`[ical] found ${vevents.length} events`);
-
-                            for (const e in vevents) {
-                                const vevent = vevents[e];
-
-                                const event = new ICAL.Event(vevent);
-
-                                if (event.summary !== undefined && !isNaN(event.description) && event.startDate) {
-                                    const name = event.summary;
-                                    const birthYear = parseInt(event.description);
-
-                                    this.log.debug(`[ical] processing event: ${JSON.stringify(event)}`);
-
-                                    if (name && birthYear && !isNaN(birthYear)) {
-                                        const startDate = event.startDate.toJSDate();
-                                        const calendarBirthday = moment({ year: birthYear, month: startDate.getMonth(), day: startDate.getDate() });
-
-                                        if (calendarBirthday.isValid() && calendarBirthday.year() <= this.today.year()) {
-                                            this.log.debug(`[ical] found birthday: ${name} (${birthYear})`);
-
-                                            this.addBirthday(name, calendarBirthday);
-                                            addedBirthdays++;
-                                        } else {
-                                            this.log.warn(`[ical] invalid birthday date: ${name}`);
-                                        }
-                                    } else if (name) {
-                                        this.log.debug(`[ical] missing birth year in event: ${name}`);
-                                    }
-                                }
+                                addedBirthdays = await this.addByIcalData(response.data);
                             }
 
-                            this.log.debug(`[ical] processed all events`);
-                        }
+                            resolve(addedBirthdays);
+                        })
+                        .catch((error) => {
+                            this.log.warn(error);
+                            this.log.debug(`[ical] done with error`);
+                            resolve(0);
+                        });
+                } else {
+                    try {
+                        this.log.debug('[ical] addByCalendar - try to load local file');
 
-                        resolve(addedBirthdays);
-                    })
-                    .catch((error) => {
-                        this.log.warn(error);
-                        this.log.debug(`[ical] done with error`);
+                        // local file
+                        if (fs.existsSync(iCalUrl)) {
+                            const data = fs.readFileSync(iCalUrl).toString();
+                            this.log.silly(`[ical] addByCalendar - loaded file contents: ${data}`);
+
+                            this.addByIcalData(data).then((addedBirthdays) => {
+                                resolve(addedBirthdays);
+                            });
+                        } else {
+                            this.log.error(`[ical] local file "${iCalUrl}" doesn't exists`);
+                            resolve(0);
+                        }
+                    } catch (err) {
+                        this.log.error(`[ical] error when loading local file "${iCalUrl}": ${err}`);
                         resolve(0);
-                    });
+                    }
+                }
             } else {
                 this.log.debug(`[ical] done - url not configured - skipped`);
                 resolve(0);
             }
         });
+    }
+
+    async addByIcalData(dataStr) {
+        let addedBirthdays = 0;
+
+        try {
+            // Parse ical
+            const icalData = ICAL.parse(dataStr);
+
+            const comp = new ICAL.Component(icalData);
+
+            const vevents = comp.getAllSubcomponents('vevent');
+
+            this.log.debug(`[ical] found ${vevents.length} events`);
+
+            for (const e in vevents) {
+                const vevent = vevents[e];
+
+                const event = new ICAL.Event(vevent);
+
+                if (event.summary !== undefined && !isNaN(event.description) && event.startDate) {
+                    const name = event.summary;
+                    const birthYear = parseInt(event.description);
+
+                    this.log.debug(`[ical] processing event: ${JSON.stringify(event)}`);
+
+                    if (name && birthYear && !isNaN(birthYear)) {
+                        const startDate = event.startDate.toJSDate();
+                        const calendarBirthday = moment({ year: birthYear, month: startDate.getMonth(), day: startDate.getDate() });
+
+                        if (calendarBirthday.isValid() && calendarBirthday.year() <= this.today.year()) {
+                            this.log.debug(`[ical] found birthday: ${name} (${birthYear})`);
+
+                            this.addBirthday(name, calendarBirthday);
+                            addedBirthdays++;
+                        } else {
+                            this.log.warn(`[ical] invalid birthday date: ${name}`);
+                        }
+                    } else if (name) {
+                        this.log.debug(`[ical] missing birth year in event: ${name}`);
+                    }
+                }
+            }
+
+            this.log.debug(`[ical] processed all events`);
+        } catch (err) {
+            this.log.error(`[ical] unable to parse ical data (invalid file format?): ${err}`);
+        }
+
+        return addedBirthdays;
     }
 
     async addByCardDav() {

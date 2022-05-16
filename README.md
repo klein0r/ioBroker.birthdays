@@ -41,6 +41,7 @@ iobroker add birthdays
 
 NodeJS 14.x is required (NodeJS 12.x is EOL)
 
+* (klein0r) Allow to use local ical files by path
 * (klein0r) Updated depedency for js-controller to 4.0.15
 
 ### 1.2.1 (2022-04-08)

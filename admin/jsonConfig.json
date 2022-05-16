@@ -42,7 +42,7 @@
                     "sm": 12,
                     "md": 12,
                     "lg": 12,
-                    "label": "ical url"
+                    "label": "ical url or path"
                 },
                 "icalUrlIgnoreCertErrors": {
                     "newLine": true,

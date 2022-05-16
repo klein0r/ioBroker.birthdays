@@ -1,7 +1,7 @@
 {
     "iCal": "iCal",
     "birthdays": "Cumpleaños",
-    "ical url": "URL de iCal",
+    "ical url or path": "URL o ruta de iCal",
     "next separator": "Separador de texto siguiente",
     "options": "Opciones",
     "text template (next)": "Plantilla de texto (siguiente)",

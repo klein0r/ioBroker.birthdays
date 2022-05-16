@@ -1,7 +1,7 @@
 {
     "iCal": "iCal",
     "birthdays": "verjaardagen",
-    "ical url": "iCal-URL",
+    "ical url or path": "iCal-URL of pad",
     "next separator": "Scheidingsteken voor volgende tekst",
     "options": "Opties",
     "text template (next)": "Tekstsjabloon (volgende)",

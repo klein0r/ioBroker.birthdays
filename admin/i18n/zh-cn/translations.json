@@ -1,7 +1,7 @@
 {
     "iCal": "iCal",
     "birthdays": "生日",
-    "ical url": "iCal 网址",
+    "ical url or path": "iCal 网址或路径",
     "next separator": "下一个文本分隔符",
     "options": "选项",
     "text template (next)": "文本模板（下）",
