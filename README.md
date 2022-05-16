@@ -37,7 +37,7 @@ iobroker add birthdays
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 2.0.0 (2022-05-16)
 
 NodeJS 14.x is required (NodeJS 12.x is EOL)
 
