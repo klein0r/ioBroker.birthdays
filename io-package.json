@@ -163,25 +163,6 @@
     "objects": [],
     "instanceObjects": [
         {
-            "_id": "next",
-            "type": "channel",
-            "common": {
-                "name": {
-                    "en": "Next birthdays",
-                    "de": "Nächste Geburtstage",
-                    "ru": "Следующие дни рождения",
-                    "pt": "Próximos aniversários",
-                    "nl": "Volgende verjaardagen",
-                    "fr": "Prochains anniversaires",
-                    "it": "Prossimi compleanni",
-                    "es": "Próximos cumpleaños",
-                    "pl": "Następne urodziny",
-                    "zh-cn": "下一个生日"
-                }
-            },
-            "native": {}
-        },
-        {
             "_id": "summary",
             "type": "channel",
             "common": {
@@ -215,6 +196,29 @@
                     "es": "Cumpleaños JSON",
                     "pl": "Urodziny JSON",
                     "zh-cn": "生日 JSON"
+                },
+                "type": "string",
+                "role": "json",
+                "read": true,
+                "write": false
+            },
+            "native": {}
+        },
+        {
+            "_id": "summary.jsonSignificant",
+            "type": "state",
+            "common": {
+                "name": {
+                    "en": "Significant birthdays JSON",
+                    "de": "Bedeutende Geburtstage JSON",
+                    "ru": "Знаменательные дни рождения JSON",
+                    "pt": "JSON de aniversários significativos",
+                    "nl": "Aanzienlijke verjaardagen JSON",
+                    "fr": "Anniversaires significatifs JSON",
+                    "it": "Compleanni significativi JSON",
+                    "es": "Cumpleaños significativos JSON",
+                    "pl": "Ważne urodziny JSON",
+                    "zh-cn": "重要生日 JSON"
                 },
                 "type": "string",
                 "role": "json",
@@ -502,6 +506,140 @@
                     "es": "Después de los próximos cumpleaños: formato de fecha",
                     "pl": "Po następnych urodzinach - data sformatowana",
                     "zh-cn": "在下一个生日之后 - 日期格式化"
+                },
+                "type": "string",
+                "role": "text",
+                "read": true,
+                "write": false
+            },
+            "native": {}
+        },
+        {
+            "_id": "nextSignificant",
+            "type": "channel",
+            "common": {
+                "name": {
+                    "en": "Next significant birthdays",
+                    "de": "Nächste bedeutende Geburtstage",
+                    "ru": "Следующие знаменательные дни рождения",
+                    "pt": "Próximos aniversários significativos",
+                    "nl": "Volgende belangrijke verjaardagen",
+                    "fr": "Prochains anniversaires significatifs",
+                    "it": "Prossimi compleanni significativi",
+                    "es": "Próximos cumpleaños significativos",
+                    "pl": "Kolejne znaczące urodziny",
+                    "zh-cn": "下一个重要的生日"
+                }
+            },
+            "native": {}
+        },
+        {
+            "_id": "nextSignificant.json",
+            "type": "state",
+            "common": {
+                "name": {
+                    "en": "Next significant birthdays JSON",
+                    "de": "Nächste bedeutende Geburtstage JSON",
+                    "ru": "Следующие значимые дни рождения JSON",
+                    "pt": "Próximos aniversários significativos JSON",
+                    "nl": "Volgende belangrijke verjaardagen JSON",
+                    "fr": "Prochains anniversaires significatifs JSON",
+                    "it": "Prossimi compleanni significativi JSON",
+                    "es": "Próximos cumpleaños significativos JSON",
+                    "pl": "Następne znaczące urodziny JSON",
+                    "zh-cn": "下一个重要生日 JSON"
+                },
+                "type": "string",
+                "role": "json",
+                "read": true,
+                "write": false
+            },
+            "native": {}
+        },
+        {
+            "_id": "nextSignificant.text",
+            "type": "state",
+            "common": {
+                "name": {
+                    "en": "Next significant birthdays",
+                    "de": "Nächste bedeutende Geburtstage",
+                    "ru": "Следующие знаменательные дни рождения",
+                    "pt": "Próximos aniversários significativos",
+                    "nl": "Volgende belangrijke verjaardagen",
+                    "fr": "Prochains anniversaires significatifs",
+                    "it": "Prossimi compleanni significativi",
+                    "es": "Próximos cumpleaños significativos",
+                    "pl": "Kolejne znaczące urodziny",
+                    "zh-cn": "下一个重要的生日"
+                },
+                "type": "string",
+                "role": "text",
+                "read": true,
+                "write": false
+            },
+            "native": {}
+        },
+        {
+            "_id": "nextSignificant.daysLeft",
+            "type": "state",
+            "common": {
+                "name": {
+                    "en": "Next significant birthdays - days left",
+                    "de": "Nächste bedeutende Geburtstage - verbleibende Tage",
+                    "ru": "Следующие значимые дни рождения - осталось дней",
+                    "pt": "Próximos aniversários significativos - dias restantes",
+                    "nl": "Volgende belangrijke verjaardagen - resterende dagen",
+                    "fr": "Prochains anniversaires significatifs - jours restants",
+                    "it": "Prossimi compleanni significativi - giorni rimasti",
+                    "es": "Próximos cumpleaños significativos: quedan días",
+                    "pl": "Kolejne znaczące urodziny - pozostały dni",
+                    "zh-cn": "下一个重要生日 - 剩余天数"
+                },
+                "type": "number",
+                "role": "value",
+                "read": true,
+                "write": false
+            },
+            "native": {}
+        },
+        {
+            "_id": "nextSignificant.date",
+            "type": "state",
+            "common": {
+                "name": {
+                    "en": "Next significant birthdays - date",
+                    "de": "Nächste bedeutende Geburtstage - Datum",
+                    "ru": "Следующие значимые дни рождения - дата",
+                    "pt": "Próximos aniversários significativos - data",
+                    "nl": "Volgende belangrijke verjaardagen - datum",
+                    "fr": "Prochains anniversaires significatifs - date",
+                    "it": "Prossimi compleanni significativi - data",
+                    "es": "Próximos cumpleaños significativos - fecha",
+                    "pl": "Następne znaczące urodziny - data",
+                    "zh-cn": "下一个重要生日 - 日期"
+                },
+                "type": "number",
+                "role": "date",
+                "read": true,
+                "write": false
+            },
+            "native": {}
+        },
+        {
+            "_id": "nextSignificant.dateFormat",
+            "type": "state",
+            "common": {
+                "name": {
+                    "en": "Next significant birthdays - date formatted",
+                    "de": "Nächste bedeutende Geburtstage - Datum formatiert",
+                    "ru": "Следующие значимые дни рождения – формат даты",
+                    "pt": "Próximos aniversários significativos - data formatada",
+                    "nl": "Volgende belangrijke verjaardagen - datum geformatteerd",
+                    "fr": "Prochains anniversaires significatifs - format de date",
+                    "it": "Prossimi compleanni significativi - data formattata",
+                    "es": "Próximos cumpleaños significativos: formato de fecha",
+                    "pl": "Kolejne znaczące urodziny - sformatowana data",
+                    "zh-cn": "下一个重要生日 - 格式化日期"
                 },
                 "type": "string",
                 "role": "text",

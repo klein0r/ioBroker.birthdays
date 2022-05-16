@@ -18,6 +18,7 @@ class Birthdays extends utils.Adapter {
 
         this.today = moment({ hour: 0, minute: 0 });
         this.birthdays = [];
+        this.birthdaysSignificant = [];
 
         this.on('ready', this.onReady.bind(this));
         this.on('unload', this.onUnload.bind(this));
@@ -298,23 +299,46 @@ class Birthdays extends utils.Adapter {
             nextBirthday.add(1, 'y');
         }
 
+        const nextAge = nextBirthday.diff(birthday, 'years');
+
         this.birthdays.push({
             name: name,
             birthYear: birthday.year(),
             dateFormat: this.formatDate(nextBirthday.toDate()),
-            age: nextBirthday.diff(birthday, 'years'),
+            age: nextAge,
             daysLeft: nextBirthday.diff(this.today, 'days'),
             _birthday: birthday,
             _nextBirthday: nextBirthday,
+        });
+
+        const nextSignificantBirthday = nextBirthday.clone();
+        const nextSignficantAge = Math.ceil(nextAge / 10) * 10;
+
+        if (nextSignficantAge > nextAge) {
+            nextSignificantBirthday.add(nextSignficantAge - nextAge, 'y');
+        }
+
+        this.birthdaysSignificant.push({
+            name: name,
+            birthYear: birthday.year(),
+            dateFormat: this.formatDate(nextSignificantBirthday.toDate()),
+            age: nextSignificantBirthday.diff(birthday, 'years'),
+            daysLeft: nextSignificantBirthday.diff(this.today, 'days'),
+            _birthday: birthday,
+            _nextBirthday: nextSignificantBirthday,
         });
     }
 
     async fillStates() {
         // Sort by daysLeft
         this.birthdays.sort((a, b) => (a.daysLeft > b.daysLeft ? 1 : -1));
+        this.birthdaysSignificant.sort((a, b) => (a.daysLeft > b.daysLeft ? 1 : -1));
 
         this.log.debug(`[fillStates] birthdays: ${JSON.stringify(this.birthdays)}`);
         await this.setStateAsync('summary.json', { val: JSON.stringify(this.birthdays), ack: true });
+
+        this.log.debug(`[fillStates] birthdays significant: ${JSON.stringify(this.birthdaysSignificant)}`);
+        await this.setStateAsync('summary.jsonSignificant', { val: JSON.stringify(this.birthdaysSignificant), ack: true });
 
         const keepBirthdays = [];
         const allBirthdays = (await this.getChannelsOfAsync('month'))
@@ -332,7 +356,7 @@ class Birthdays extends utils.Adapter {
             keepBirthdays.push(monthPath);
 
             if (allBirthdays.indexOf(monthPath) === -1) {
-                this.log.debug('birthday added: ' + monthPath);
+                this.log.debug(`birthday added: ${monthPath}`);
             }
 
             await this.fillPathWithBirthday(monthPath, birthdayObj);
@@ -353,21 +377,28 @@ class Birthdays extends utils.Adapter {
         if (this.birthdays.length > 0) {
             const nextBirthdayDaysLeft = this.birthdays[0].daysLeft;
 
-            await this.fillAfter('next', nextBirthdayDaysLeft);
+            await this.fillAfter('next', this.birthdays, nextBirthdayDaysLeft);
 
             const nextAfterBirthdaysList = this.birthdays.filter((birthday) => birthday.daysLeft > nextBirthdayDaysLeft);
             if (nextAfterBirthdaysList.length > 0) {
                 const nextAfterBirthdaysLeft = nextAfterBirthdaysList[0].daysLeft;
 
-                await this.fillAfter('nextAfter', nextAfterBirthdaysLeft);
+                await this.fillAfter('nextAfter', this.birthdays, nextAfterBirthdaysLeft);
             }
+        }
+
+        // next significant birthdays
+        if (this.birthdaysSignificant.length > 0) {
+            const nextBirthdaySignificantDaysLeft = this.birthdaysSignificant[0].daysLeft;
+
+            await this.fillAfter('nextSignificant', this.birthdaysSignificant, nextBirthdaySignificantDaysLeft);
         }
     }
 
-    async fillAfter(path, daysLeft) {
+    async fillAfter(path, birthdays, daysLeft) {
         this.log.debug(`[fillAfter] filling ${path} with ${daysLeft} days left`);
 
-        const nextBirthdays = this.birthdays.filter((birthday) => birthday.daysLeft == daysLeft); // get all birthdays with same days left
+        const nextBirthdays = birthdays.filter((birthday) => birthday.daysLeft == daysLeft); // get all birthdays with same days left
 
         const nextBirthdaysText = nextBirthdays.map((birthday) => {
             return this.config.nextTextTemplate.replace('%n', birthday.name).replace('%a', birthday.age);
