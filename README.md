@@ -2,14 +2,25 @@
 
 # ioBroker.birthdays
 
-[![NPM version](http://img.shields.io/npm/v/iobroker.birthdays.svg)](https://www.npmjs.com/package/iobroker.birthdays)
-[![Downloads](https://img.shields.io/npm/dm/iobroker.birthdays.svg)](https://www.npmjs.com/package/iobroker.birthdays)
-[![Stable](http://iobroker.live/badges/birthdays-stable.svg)](http://iobroker.live/badges/birthdays-stable.svg)
-[![installed](http://iobroker.live/badges/birthdays-installed.svg)](http://iobroker.live/badges/birthdays-installed.svg)
-[![Known Vulnerabilities](https://snyk.io/test/github/klein0r/ioBroker.birthdays/badge.svg)](https://snyk.io/test/github/klein0r/ioBroker.birthdays)
-![Test and Release](https://github.com/klein0r/ioBroker.birthdays/workflows/Test%20and%20Release/badge.svg)
+[![NPM version](https://img.shields.io/npm/v/iobroker.birthdays?style=flat-square)](https://www.npmjs.com/package/iobroker.birthdays)
+[![Downloads](https://img.shields.io/npm/dm/iobroker.birthdays?label=npm%20downloads&style=flat-square)](https://www.npmjs.com/package/iobroker.birthdays)
+![Snyk Vulnerabilities for npm package](https://img.shields.io/snyk/vulnerabilities/npm/iobroker.birthdays?label=npm%20vulnerabilities&style=flat-square)
+![node-lts](https://img.shields.io/node/v-lts/iobroker.birthdays?style=flat-square)
+![Libraries.io dependency status for latest release](https://img.shields.io/librariesio/release/npm/iobroker.birthdays?label=npm%20dependencies&style=flat-square)
 
-[![NPM](https://nodei.co/npm/iobroker.birthdays.png?downloads=true)](https://nodei.co/npm/iobroker.birthdays/)
+![GitHub](https://img.shields.io/github/license/klein0r/iobroker.birthdays?style=flat-square)
+![GitHub repo size](https://img.shields.io/github/repo-size/klein0r/iobroker.birthdays?logo=github&style=flat-square)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/klein0r/iobroker.birthdays?logo=github&style=flat-square)
+![GitHub last commit](https://img.shields.io/github/last-commit/klein0r/iobroker.birthdays?logo=github&style=flat-square)
+![GitHub issues](https://img.shields.io/github/issues/klein0r/iobroker.birthdays?logo=github&style=flat-square)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/klein0r/iobroker.birthdays/Test%20and%20Release?label=Test%20and%20Release&logo=github&style=flat-square)
+![Snyk Vulnerabilities for GitHub Repo](https://img.shields.io/snyk/vulnerabilities/github/klein0r/iobroker.birthdays?label=repo%20vulnerabilities&logo=github&style=flat-square)
+
+## Versions
+
+![Beta](https://img.shields.io/npm/v/iobroker.birthdays.svg?color=red&label=beta)
+![Stable](http://iobroker.live/badges/birthdays-stable.svg)
+![Installed](http://iobroker.live/badges/birthdays-installed.svg)
 
 Use an ical file to import your contacts birthdays or define the birthday dates directly in the adapter settings
 
