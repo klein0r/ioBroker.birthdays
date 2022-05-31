@@ -44,6 +44,23 @@
                     "lg": 12,
                     "label": "ical url or path"
                 },
+                "icalUser": {
+                    "newLine": true,
+                    "type": "text",
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 6,
+                    "label": "ical username"
+                },
+                "icalPassword": {
+                    "type": "password",
+                    "repeat": false,
+                    "visible": false,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 6,
+                    "label": "ical password"
+                },
                 "icalUrlIgnoreCertErrors": {
                     "newLine": true,
                     "type": "checkbox",

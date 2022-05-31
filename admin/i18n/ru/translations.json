@@ -10,5 +10,7 @@
     "CardDAV": "CardDAV",
     "carddav url": "URL-адрес CardDAV",
     "carddav username": "Имя пользователя CardDAV",
-    "carddav password": "CardDAV Пароль"
+    "carddav password": "CardDAV Пароль",
+    "ical username": "iCal имя пользователя",
+    "ical password": "iCal пароль"
 }

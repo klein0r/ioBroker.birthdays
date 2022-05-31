@@ -120,6 +120,10 @@ class Birthdays extends utils.Adapter {
                         url: iCalUrl,
                         timeout: 4500,
                         httpsAgent: new https.Agent(httpsAgentOptions),
+                        auth: {
+                            username: this.config.icalUser,
+                            password: this.config.icalPassword,
+                        },
                     })
                         .then(async (response) => {
                             this.log.debug(`[ical] http(s) request finished with status: ${response.status}`);
@@ -134,7 +138,7 @@ class Birthdays extends utils.Adapter {
                             resolve(addedBirthdays);
                         })
                         .catch((error) => {
-                            this.log.warn(error);
+                            this.log.warn(`[ical] ${error}`);
                             this.log.debug(`[ical] done with error`);
                             resolve(0);
                         });
@@ -279,7 +283,7 @@ class Birthdays extends utils.Adapter {
                         resolve(addedBirthdays);
                     })
                     .catch((error) => {
-                        this.log.warn(error);
+                        this.log.warn(`[carddav] ${error}`);
                         this.log.debug(`[carddav] done with error`);
                         resolve(0);
                     });
