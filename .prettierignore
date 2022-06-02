@@ -1,5 +1,6 @@
 package.json
 package-lock.json
 README.md
-docs/**
 io-package.json
+docs/**
+.github/**
