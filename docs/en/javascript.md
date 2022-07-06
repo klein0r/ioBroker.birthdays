@@ -18,7 +18,7 @@ schedule('0 7 * * *', async () => {
     const nextDaysLeft = getState('birthdays.0.next.daysLeft').val;
     const nextText = getState('birthdays.0.next.text').val;
 
-    const nextAfterDaysLeft = getState("birthdays.0.nextAfter.daysLeft").val;
+    const nextAfterDaysLeft = getState('birthdays.0.nextAfter.daysLeft').val;
     const nextAfterText = getState('birthdays.0.nextAfter.text').val;
 
     // Birthday today
