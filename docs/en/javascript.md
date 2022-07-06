@@ -5,7 +5,7 @@
 Common function to send messages / nofications
 
 ```javascript
-async function sendText(text) {
+function sendText(text) {
     // Eigene Logik (pushover, telegram, ...)
     sendTo('pushover', 'send', {
         message: text,
@@ -27,14 +27,14 @@ schedule('0 7 * * *', async () => {
 
     // Birthday today
     if (nextDaysLeft == 0) {
-        await sendText(`Geburtstage heute: ${nextText}`);
+        sendText(`Geburtstage heute: ${nextText}`);
 
         // If tomorrow is also a birthday
         if (nextAfterDaysLeft == 1) {
-            await sendText(`Geburtstage morgen: ${nextAfterText}`);
+            sendText(`Geburtstage morgen: ${nextAfterText}`);
         }
     } else if (nextDaysLeft == 1) {
-        await sendText(`Geburtstage morgen: ${nextText}`);
+        sendText(`Geburtstage morgen: ${nextText}`);
     }
 });
 ```
@@ -51,7 +51,7 @@ schedule('0 7 * * 1', async () => {
         .map(b => `${b.name} turns ${b.age} on ${formatDate(new Date(b._nextBirthday), 'WW')}`);
 
     if (nextBirthdays.length > 0) {
-        await sendText(`Birthdays this week: ${nextBirthdays.join(', ')}`);
+        sendText(`Birthdays this week: ${nextBirthdays.join(', ')}`);
     }
 });
 ```
