@@ -43,7 +43,7 @@ schedule('0 7 * * *', async () => {
 
 ```javascript
 // Geburtstagserinnerung Anfang der Woche
-schedule("0 7 * * 1", async () => {
+schedule('0 7 * * 1', async () => {
     const summaryObj = JSON.parse(getState('birthdays.0.summary.json').val);
 
     const nextBirthdays = summaryObj
