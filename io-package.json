@@ -141,14 +141,18 @@
     },
     "docs": {
       "en": [
-        "docs/en/basics.md",
+        "docs/en/README.md",
         "docs/en/ical.md",
-        "docs/en/carddav.md"
+        "docs/en/carddav.md",
+        "docs/en/blockly.md",
+        "docs/en/javascript.md"
       ],
       "de": [
-        "docs/de/basics.md",
+        "docs/de/README.md",
         "docs/de/ical.md",
-        "docs/de/carddav.md"
+        "docs/de/carddav.md",
+        "docs/en/blockly.md",
+        "docs/en/javascript.md"
       ]
     },
     "globalDependencies": [
