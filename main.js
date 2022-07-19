@@ -582,6 +582,9 @@ class Birthdays extends utils.Adapter {
         return id.replace(re, '');
     }
 
+    /**
+     * @param {() => void} callback
+     */
     onUnload(callback) {
         try {
             this.log.debug('cleaned everything up...');
