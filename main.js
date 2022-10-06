@@ -371,9 +371,8 @@ class Birthdays extends utils.Adapter {
             const id = allBirthdays[i];
 
             if (keepBirthdays.indexOf(id) === -1) {
-                this.delObject(id, { recursive: true }, () => {
-                    this.log.debug(`[fillStates] birthday deleted: ${id}`);
-                });
+                await this.delObjectAsync(id, { recursive: true });
+                this.log.debug(`[fillStates] birthday deleted: ${id}`);
             }
         }
 
