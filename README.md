@@ -48,6 +48,10 @@ iobroker add birthdays
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+
+* (klein0r) Dropped Admin 5 support
+
 ### 2.1.0 (2022-05-31)
 
 * (klein0r) Added username and password option for iCal

@@ -135,7 +135,6 @@
     "compact": true,
     "connectionType": "cloud",
     "dataSource": "poll",
-    "materialize": true,
     "adminUI": {
       "config": "json"
     },
@@ -157,7 +156,7 @@
     },
     "globalDependencies": [
       {
-        "admin": ">=5.3.2"
+        "admin": ">=6.0.0"
       }
     ],
     "dependencies": [
