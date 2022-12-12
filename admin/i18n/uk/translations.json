@@ -1,0 +1,16 @@
+{
+    "iCal": "iCal",
+    "birthdays": "Дні народження",
+    "ical url or path": "iCal url або шлях",
+    "next separator": "Наступний роздільник тексту",
+    "options": "Опції",
+    "text template (next)": "Текстовий шаблон (далі)",
+    "use %n for name and %a for age": "використовуйте %n для імені та %a для віку",
+    "ignore certificate errors": "Ігноруйте помилки сертифіката",
+    "CardDAV": "CardDAV",
+    "carddav url": "URL-адреса CardDAV",
+    "carddav username": "Ім'я користувача CardDAV",
+    "carddav password": "Пароль CardDAV",
+    "ical username": "Ім'я користувача iCal",
+    "ical password": "Пароль iCal"
+}
