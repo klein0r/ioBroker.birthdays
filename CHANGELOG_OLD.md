@@ -1,4 +1,8 @@
 # Older changes
+## 1.1.3 (2022-02-27)
+
+* (klein0r) Stop adapter when everything was processed (with timeout)
+
 ## 1.1.2 (2022-02-27)
 
 * (klein0r) Stop adapter when everything was processed
