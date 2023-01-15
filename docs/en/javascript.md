@@ -2,20 +2,20 @@
 
 # ioBroker.birthdays
 
-Common function to send messages / nofications
+Common function to send messages / notifications
 
 ```javascript
 function sendText(text) {
-    // Eigene Logik (pushover, telegram, ...)
+    // Own logic (pushover, telegram, ...)
     sendTo('pushover', 'send', {
         message: text,
         sound: '',
-        title: 'Geburtstags-Kalender'
+        title: 'Birthday calendar'
     });
 }
 ```
 
-## Remember 1 day before birthday
+## Notify 1 day before birthday
 
 ```javascript
 schedule('0 7 * * *', async () => {
@@ -27,14 +27,14 @@ schedule('0 7 * * *', async () => {
 
     // Birthday today
     if (nextDaysLeft == 0) {
-        sendText(`Geburtstage heute: ${nextText}`);
+        sendText(`Birthdays today: ${nextText}`);
 
         // If tomorrow is also a birthday
         if (nextAfterDaysLeft == 1) {
-            sendText(`Geburtstage morgen: ${nextAfterText}`);
+            sendText(`Birthdays tomorrow: ${nextAfterText}`);
         }
     } else if (nextDaysLeft == 1) {
-        sendText(`Geburtstage morgen: ${nextText}`);
+        sendText(`Birthdays tomorrow: ${nextText}`);
     }
 });
 ```
