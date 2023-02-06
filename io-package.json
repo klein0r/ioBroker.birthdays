@@ -26,8 +26,8 @@
         "it": "Aggiunta opzione nome utente e password per iCal",
         "es": "Se agregó la opción de nombre de usuario y contraseña para iCal",
         "pl": "Dodano opcję nazwy użytkownika i hasła do iCal",
-        "zh-cn": "为 iCal 添加了用户名和密码选项",
-        "uk": "Додано ім’я користувача та пароль для iCal"
+        "uk": "Додано ім’я користувача та пароль для iCal",
+        "zh-cn": "为 iCal 添加了用户名和密码选项"
       },
       "2.0.0": {
         "en": "NodeJS 14.x is required (NodeJS 12.x is EOL)\n\n* Added next significant birthdays\n* Allow to use local ical files by path\n* Updated depedency for js-controller to 4.0.15",
@@ -39,8 +39,8 @@
         "it": "È richiesto NodeJS 14.x (NodeJS 12.x è EOL)\n\n* Aggiunti i prossimi compleanni significativi\n* Consenti di utilizzare i file ical locali per percorso\n* Aggiornata la dipendenza per js-controller a 4.0.15",
         "es": "Se requiere NodeJS 14.x (NodeJS 12.x es EOL)\n\n* Se agregaron los próximos cumpleaños significativos\n* Permitir usar archivos ical locales por ruta\n* Dependencia actualizada para js-controller a 4.0.15",
         "pl": "NodeJS 14.x jest wymagany (NodeJS 12.x to EOL)\n\n* Dodano kolejne znaczące urodziny\n* Zezwól na używanie lokalnych plików ical według ścieżki\n* Zaktualizowano zależność dla kontrolera js do 4.0.15",
-        "zh-cn": "需要 NodeJS 14.x（NodeJS 12.x 已停产）\n\n*添加了下一个重要的生日\n* 允许通过路径使用本地 ical 文件\n* 将 js-controller 的依赖更新到 4.0.15",
-        "uk": "Потрібен NodeJS 14.x (NodeJS 12.x є EOL)\n\n* Додано наступні важливі дні народження\n* Дозволити використовувати локальні файли ical за шляхом\n* Оновлено залежності для js-контролера до 4.0.15"
+        "uk": "Потрібен NodeJS 14.x (NodeJS 12.x є EOL)\n\n* Додано наступні важливі дні народження\n* Дозволити використовувати локальні файли ical за шляхом\n* Оновлено залежності для js-контролера до 4.0.15",
+        "zh-cn": "需要 NodeJS 14.x（NodeJS 12.x 已停产）\n\n*添加了下一个重要的生日\n* 允许通过路径使用本地 ical 文件\n* 将 js-controller 的依赖更新到 4.0.15"
       },
       "1.2.1": {
         "en": "Removed tsdav\nAllow carddav url without valid certificate (configurable)",
@@ -52,8 +52,8 @@
         "it": "Rimosso tsdav\nConsenti URL carddav senza certificato valido (configurabile)",
         "es": "Tsdav eliminado\nPermitir URL carddav sin certificado válido (configurable)",
         "pl": "Usunięto tsdav\nZezwalaj na adres URL carddav bez ważnego certyfikatu (konfigurowalne)",
-        "zh-cn": "删除了 tsdav\n允许没有有效证书的 carddav url（可配置）",
-        "uk": "Видалено цдав\nДозволити URL-адресу carddav без дійсного сертифіката (налаштовується)"
+        "uk": "Видалено цдав\nДозволити URL-адресу carddav без дійсного сертифіката (налаштовується)",
+        "zh-cn": "删除了 tsdav\n允许没有有效证书的 carddav url（可配置）"
       },
       "1.2.0": {
         "en": "Dropped \"node-ical\" dependency and parse events directly\nStop scheduled adapter instance in any case and report errors",
@@ -65,8 +65,8 @@
         "it": "Eliminata la dipendenza \"node-ical\" e analizza direttamente gli eventi\nArresta in ogni caso l'istanza dell'adattatore pianificata e segnala gli errori",
         "es": "Se eliminó la dependencia \"node-ical\" y se analizaron los eventos directamente\nDetenga la instancia del adaptador programado en cualquier caso e informe los errores",
         "pl": "Zrezygnowano z zależności „węzłowej” i bezpośrednio analizowano zdarzenia\nZatrzymaj zaplanowaną instancję adaptera w każdym przypadku i zgłoś błędy",
-        "zh-cn": "删除“node-ical”依赖并直接解析事件\n在任何情况下停止计划的适配器实例并报告错误",
-        "uk": "Відкинуто \"вузлову\" залежність і аналіз подій безпосередньо\nУ будь-якому випадку зупиніть запланований екземпляр адаптера та повідомте про помилки"
+        "uk": "Відкинуто \"вузлову\" залежність і аналіз подій безпосередньо\nУ будь-якому випадку зупиніть запланований екземпляр адаптера та повідомте про помилки",
+        "zh-cn": "删除“node-ical”依赖并直接解析事件\n在任何情况下停止计划的适配器实例并报告错误"
       },
       "1.1.3": {
         "en": "Stop adapter when everything was processed (with timeout)",
@@ -78,8 +78,8 @@
         "it": "Arresta adattatore quando tutto è stato elaborato (con timeout)",
         "es": "Detener el adaptador cuando todo se procesó (con tiempo de espera)",
         "pl": "Zatrzymaj adapter, gdy wszystko zostało przetworzone (z limitem czasu)",
-        "zh-cn": "处理完所有内容后停止适配器（超时）",
-        "uk": "Зупинити адаптер, коли все було оброблено (з тайм-аутом)"
+        "uk": "Зупинити адаптер, коли все було оброблено (з тайм-аутом)",
+        "zh-cn": "处理完所有内容后停止适配器（超时）"
       },
       "1.1.2": {
         "en": "Stop adapter when everything was processed",
@@ -91,8 +91,8 @@
         "it": "Interrompi l'adattatore quando tutto è stato elaborato",
         "es": "Detenga el adaptador cuando todo haya sido procesado",
         "pl": "Zatrzymaj adapter, gdy wszystko zostało przetworzone",
-        "zh-cn": "处理完所有内容后停止适配器",
-        "uk": "Зупиніть адаптер, коли все було оброблено"
+        "uk": "Зупиніть адаптер, коли все було оброблено",
+        "zh-cn": "处理完所有内容后停止适配器"
       }
     },
     "titleLang": {
@@ -105,8 +105,8 @@
       "it": "compleanni",
       "es": "Cumpleaños",
       "pl": "Urodziny",
-      "zh-cn": "生日",
-      "uk": "Дні народження"
+      "uk": "Дні народження",
+      "zh-cn": "生日"
     },
     "desc": {
       "en": "Use an ical file to import your contacts birthdays",
@@ -118,8 +118,8 @@
       "it": "Usa un file ical per importare i compleanni dei tuoi contatti",
       "es": "Utilice un archivo ical para importar los cumpleaños de sus contactos",
       "pl": "Użyj pliku ical, aby zaimportować daty urodzin kontaktów",
-      "zh-cn": "使用 ical 文件导入您的联系人生日",
-      "uk": "Використовуйте файл ical, щоб імпортувати дні народження ваших контактів"
+      "uk": "Використовуйте файл ical, щоб імпортувати дні народження ваших контактів",
+      "zh-cn": "使用 ical 文件导入您的联系人生日"
     },
     "authors": [
       "Matthias Kleine <info@haus-automatisierung.com>"
@@ -213,6 +213,7 @@
           "it": "Riepilogo compleanni",
           "es": "Resumen de cumpleaños",
           "pl": "Podsumowanie urodzin",
+          "uk": "День народження",
           "zh-cn": "生日总结"
         }
       },
@@ -232,6 +233,7 @@
           "it": "Compleanni JSON",
           "es": "Cumpleaños JSON",
           "pl": "Urodziny JSON",
+          "uk": "День народження JSON",
           "zh-cn": "生日 JSON"
         },
         "type": "string",
@@ -255,6 +257,7 @@
           "it": "Compleanni significativi JSON",
           "es": "Cumpleaños significativos JSON",
           "pl": "Ważne urodziny JSON",
+          "uk": "Дні народження JSON",
           "zh-cn": "重要生日 JSON"
         },
         "type": "string",
@@ -278,6 +281,7 @@
           "it": "Per mese",
           "es": "Por mes",
           "pl": "Według miesiąca",
+          "uk": "До місяця",
           "zh-cn": "按月"
         }
       },
@@ -297,6 +301,7 @@
           "it": "Prossimi compleanni",
           "es": "Próximos cumpleaños",
           "pl": "Następne urodziny",
+          "uk": "Наступний день народження",
           "zh-cn": "下一个生日"
         }
       },
@@ -316,6 +321,7 @@
           "it": "Compleanni JSON",
           "es": "Cumpleaños JSON",
           "pl": "Urodziny JSON",
+          "uk": "День народження JSON",
           "zh-cn": "生日 JSON"
         },
         "type": "string",
@@ -339,6 +345,7 @@
           "it": "Prossimi compleanni",
           "es": "Próximos cumpleaños",
           "pl": "Następne urodziny",
+          "uk": "Наступний день народження",
           "zh-cn": "下一个生日"
         },
         "type": "string",
@@ -362,6 +369,7 @@
           "it": "Prossimi compleanni - giorni rimasti",
           "es": "Próximos cumpleaños: quedan días",
           "pl": "Następne urodziny - pozostały dni",
+          "uk": "Наступний день народження - дні зліва",
           "zh-cn": "下一个生日 - 剩余天数"
         },
         "type": "number",
@@ -385,6 +393,7 @@
           "it": "Prossimi compleanni - data",
           "es": "Próximos cumpleaños - fecha",
           "pl": "Następne urodziny - data",
+          "uk": "Дні народження - дата",
           "zh-cn": "下一个生日 - 日期"
         },
         "type": "number",
@@ -408,6 +417,7 @@
           "it": "Prossimi compleanni - data formattata",
           "es": "Próximos cumpleaños: fecha formateada",
           "pl": "Następne urodziny - data sformatowana",
+          "uk": "Наступний день народження - дата форматування",
           "zh-cn": "下一个生日 - 日期格式"
         },
         "type": "string",
@@ -431,6 +441,7 @@
           "it": "Dopo i prossimi compleanni",
           "es": "Después de los próximos cumpleaños",
           "pl": "Po następnych urodzinach",
+          "uk": "Після наступного дня народження",
           "zh-cn": "下一个生日之后"
         }
       },
@@ -450,6 +461,7 @@
           "it": "Compleanni JSON",
           "es": "Cumpleaños JSON",
           "pl": "Urodziny JSON",
+          "uk": "День народження JSON",
           "zh-cn": "生日 JSON"
         },
         "type": "string",
@@ -473,6 +485,7 @@
           "it": "Dopo i prossimi compleanni",
           "es": "Después de los próximos cumpleaños",
           "pl": "Po następnych urodzinach",
+          "uk": "Після наступного дня народження",
           "zh-cn": "下一个生日之后"
         },
         "type": "string",
@@ -496,6 +509,7 @@
           "it": "Dopo i prossimi compleanni - giorni rimasti",
           "es": "Después de los próximos cumpleaños - quedan días",
           "pl": "Po następnych urodzinach - pozostały dni",
+          "uk": "Після наступного дня народження - дні зліва",
           "zh-cn": "下一个生日之后 - 剩下的天数"
         },
         "type": "number",
@@ -519,6 +533,7 @@
           "it": "Dopo i prossimi compleanni - data",
           "es": "Después de los próximos cumpleaños - fecha",
           "pl": "Po następnych urodzinach - data",
+          "uk": "Після наступного дня народження - дата",
           "zh-cn": "在下一个生日之后 - 日期"
         },
         "type": "number",
@@ -542,6 +557,7 @@
           "it": "Dopo i prossimi compleanni - data formattata",
           "es": "Después de los próximos cumpleaños: formato de fecha",
           "pl": "Po następnych urodzinach - data sformatowana",
+          "uk": "Після наступного дня народження - дата форматування",
           "zh-cn": "在下一个生日之后 - 日期格式化"
         },
         "type": "string",
@@ -565,6 +581,7 @@
           "it": "Prossimi compleanni significativi",
           "es": "Próximos cumpleaños significativos",
           "pl": "Kolejne znaczące urodziny",
+          "uk": "Останні дні народження",
           "zh-cn": "下一个重要的生日"
         }
       },
@@ -584,6 +601,7 @@
           "it": "Prossimi compleanni significativi JSON",
           "es": "Próximos cumpleaños significativos JSON",
           "pl": "Następne znaczące urodziny JSON",
+          "uk": "Наступний значних іменинників JSON",
           "zh-cn": "下一个重要生日 JSON"
         },
         "type": "string",
@@ -607,6 +625,7 @@
           "it": "Prossimi compleanni significativi",
           "es": "Próximos cumpleaños significativos",
           "pl": "Kolejne znaczące urodziny",
+          "uk": "Останні дні народження",
           "zh-cn": "下一个重要的生日"
         },
         "type": "string",
@@ -630,6 +649,7 @@
           "it": "Prossimi compleanni significativi - giorni rimasti",
           "es": "Próximos cumpleaños significativos: quedan días",
           "pl": "Kolejne znaczące urodziny - pozostały dni",
+          "uk": "Наступні значні дні народження - дні зліва",
           "zh-cn": "下一个重要生日 - 剩余天数"
         },
         "type": "number",
@@ -653,6 +673,7 @@
           "it": "Prossimi compleanni significativi - data",
           "es": "Próximos cumpleaños significativos - fecha",
           "pl": "Następne znaczące urodziny - data",
+          "uk": "Останні дні народження - дата",
           "zh-cn": "下一个重要生日 - 日期"
         },
         "type": "number",
@@ -676,6 +697,7 @@
           "it": "Prossimi compleanni significativi - data formattata",
           "es": "Próximos cumpleaños significativos: formato de fecha",
           "pl": "Kolejne znaczące urodziny - sformatowana data",
+          "uk": "Колесне значок уродзинний - sformatowana data",
           "zh-cn": "下一个重要生日 - 格式化日期"
         },
         "type": "string",

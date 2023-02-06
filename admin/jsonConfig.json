@@ -134,6 +134,7 @@
                                 "it": "Nome",
                                 "es": "Nombre",
                                 "pl": "Nazwa",
+                                "uk": "Ім'я",
                                 "zh-cn": "姓名"
                             },
                             "filter": true,
@@ -156,6 +157,7 @@
                                 "it": "Giorno",
                                 "es": "Día",
                                 "pl": "Dzień",
+                                "uk": "День народження",
                                 "zh-cn": "日"
                             },
                             "filter": false,
@@ -178,6 +180,7 @@
                                 "it": "Mese",
                                 "es": "Mes",
                                 "pl": "Miesiąc",
+                                "uk": "Місяць",
                                 "zh-cn": "月"
                             },
                             "filter": false,
@@ -200,6 +203,7 @@
                                 "it": "Anno",
                                 "es": "Año",
                                 "pl": "Rok",
+                                "uk": "Рік",
                                 "zh-cn": "年"
                             },
                             "filter": false,
