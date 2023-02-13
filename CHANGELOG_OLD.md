@@ -1,4 +1,9 @@
 # Older changes
+## 1.2.0 (2022-03-04)
+
+* (klein0r) Dropped "node-ical" dependency and parse events directly
+* (klein0r) Stop scheduled adapter instance in any case and report errors
+
 ## 1.1.3 (2022-02-27)
 
 * (klein0r) Stop adapter when everything was processed (with timeout)

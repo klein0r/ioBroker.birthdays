@@ -48,7 +48,7 @@ iobroker add birthdays
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 2.2.1 (2023-02-13)
 
 NodeJS 14.5 is required
 
@@ -76,11 +76,6 @@ NodeJS 14.x is required (NodeJS 12.x is EOL)
 
 * (klein0r) Removed tsdav
 * (klein0r) Allow carddav url without valid certificate (configurable)
-
-### 1.2.0 (2022-03-04)
-
-* (klein0r) Dropped "node-ical" dependency and parse events directly
-* (klein0r) Stop scheduled adapter instance in any case and report errors
 
 ## Credits
 
