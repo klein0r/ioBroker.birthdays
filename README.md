@@ -52,6 +52,7 @@ iobroker add birthdays
 
 NodeJS 14.5 is required
 
+* (klein0r) Allow spaces in text separator
 * (klein0r) Added Ukrainian language
 
 ### 2.2.0 (2022-12-12)
