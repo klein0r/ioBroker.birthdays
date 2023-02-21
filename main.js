@@ -51,7 +51,7 @@ class Birthdays extends utils.Adapter {
         }
 
         Promise.all([this.addBySettings(), this.addByCalendar(), this.addByCardDav()])
-            .then(async (data) => {
+            .then((data) => {
                 this.log.debug(`[onReady] everything collected: ${JSON.stringify(data)}`);
 
                 const addedBirthdaysSum = data.reduce((pv, cv) => pv + cv, 0);
@@ -59,7 +59,9 @@ class Birthdays extends utils.Adapter {
                     this.log.error(`No birthdays found in any configured source - please check configuration and retry`);
                 }
 
-                await this.fillStates();
+                return this.fillStates();
+            })
+            .then(() => {
                 this.log.debug(`[onReady] Everything done`);
             })
             .catch((err) => {
@@ -71,7 +73,7 @@ class Birthdays extends utils.Adapter {
             });
     }
 
-    async addBySettings() {
+    addBySettings() {
         return new Promise((resolve) => {
             const birthdays = this.config.birthdays;
             let addedBirthdays = 0;
@@ -100,7 +102,7 @@ class Birthdays extends utils.Adapter {
         });
     }
 
-    async addByCalendar() {
+    addByCalendar() {
         return new Promise((resolve) => {
             const iCalUrl = this.config.icalUrl;
             if (iCalUrl) {
@@ -171,57 +173,59 @@ class Birthdays extends utils.Adapter {
         });
     }
 
-    async addByIcalData(dataStr) {
-        let addedBirthdays = 0;
+    addByIcalData(dataStr) {
+        return new Promise((resolve) => {
+            let addedBirthdays = 0;
 
-        try {
-            // Parse ical
-            const icalData = ICAL.parse(dataStr);
+            try {
+                // Parse ical
+                const icalData = ICAL.parse(dataStr);
 
-            const comp = new ICAL.Component(icalData);
+                const comp = new ICAL.Component(icalData);
 
-            const vevents = comp.getAllSubcomponents('vevent');
+                const vevents = comp.getAllSubcomponents('vevent');
 
-            this.log.debug(`[ical] found ${vevents.length} events`);
+                this.log.debug(`[ical] found ${vevents.length} events`);
 
-            for (const e in vevents) {
-                const vevent = vevents[e];
+                for (const e in vevents) {
+                    const vevent = vevents[e];
 
-                const event = new ICAL.Event(vevent);
+                    const event = new ICAL.Event(vevent);
 
-                if (event.summary !== undefined && !isNaN(event.description) && event.startDate) {
-                    const name = event.summary;
-                    const birthYear = parseInt(event.description);
+                    if (event.summary !== undefined && !isNaN(event.description) && event.startDate) {
+                        const name = event.summary;
+                        const birthYear = parseInt(event.description);
 
-                    this.log.debug(`[ical] processing event: ${JSON.stringify(event)}`);
+                        this.log.debug(`[ical] processing event: ${JSON.stringify(event)}`);
 
-                    if (name && birthYear && !isNaN(birthYear)) {
-                        const startDate = event.startDate.toJSDate();
-                        const calendarBirthday = moment({ year: birthYear, month: startDate.getMonth(), day: startDate.getDate() });
+                        if (name && birthYear && !isNaN(birthYear)) {
+                            const startDate = event.startDate.toJSDate();
+                            const calendarBirthday = moment({ year: birthYear, month: startDate.getMonth(), day: startDate.getDate() });
 
-                        if (calendarBirthday.isValid() && calendarBirthday.year() <= this.today.year()) {
-                            this.log.debug(`[ical] found birthday: ${name} (${birthYear})`);
+                            if (calendarBirthday.isValid() && calendarBirthday.year() <= this.today.year()) {
+                                this.log.debug(`[ical] found birthday: ${name} (${birthYear})`);
 
-                            this.addBirthday(name, calendarBirthday);
-                            addedBirthdays++;
-                        } else {
-                            this.log.warn(`[ical] invalid birthday date: ${name}`);
+                                this.addBirthday(name, calendarBirthday);
+                                addedBirthdays++;
+                            } else {
+                                this.log.warn(`[ical] invalid birthday date: ${name}`);
+                            }
+                        } else if (name) {
+                            this.log.debug(`[ical] missing birth year in event: ${name}`);
                         }
-                    } else if (name) {
-                        this.log.debug(`[ical] missing birth year in event: ${name}`);
                     }
                 }
+
+                this.log.debug(`[ical] processed all events`);
+            } catch (err) {
+                this.log.error(`[ical] unable to parse ical data (invalid file format?): ${err}`);
             }
 
-            this.log.debug(`[ical] processed all events`);
-        } catch (err) {
-            this.log.error(`[ical] unable to parse ical data (invalid file format?): ${err}`);
-        }
-
-        return addedBirthdays;
+            resolve(addedBirthdays);
+        });
     }
 
-    async addByCardDav() {
+    addByCardDav() {
         return new Promise((resolve) => {
             const carddavUrl = this.config.carddavUrl;
             if (carddavUrl) {
@@ -244,7 +248,7 @@ class Birthdays extends utils.Adapter {
                         password: this.config.carddavPassword,
                     },
                 })
-                    .then(async (response) => {
+                    .then((response) => {
                         this.log.debug(`[carddav] http(s) request finished with status: ${response.status}`);
                         let addedBirthdays = 0;
 
