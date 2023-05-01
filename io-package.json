@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "birthdays",
-    "version": "2.2.1",
+    "version": "2.2.2",
     "news": {
+      "2.2.2": {
+        "en": "Warn if a birthday with the same name has already been added\nCode optimization",
+        "de": "Warnung, wenn bereits ein Geburtstag mit demselben Namen hinzugefügt wurde\nCodeoptimierung",
+        "ru": "Предупреждение, если день рождения с таким же названием уже добавлено\nОптимизация кода",
+        "pt": "Avise se um aniversário com o mesmo nome já foi adicionado\nOtimização de código",
+        "nl": "Als een verjaardag met dezelfde naam al is toegevoegd\nCode optimulatie",
+        "fr": "Warn si un anniversaire avec le même nom a déjà été ajouté\nOptimisation du code",
+        "it": "Avvertito se un compleanno con lo stesso nome è già stato aggiunto\nOttimizzazione del codice",
+        "es": "Aviso si un cumpleaños con el mismo nombre ya se ha añadido\nOptimización del código",
+        "pl": "Warn, jeśli urodziny z taką samą nazwą zostały już dodane\nOptymalizacja kodu",
+        "uk": "Війна, якщо на день народження з такою назвою вже додано\nОптимізація коду",
+        "zh-cn": "如果已经用同一名称添加了一出生日。\n守则的优化"
+      },
       "2.2.1": {
         "en": "NodeJS 14.5 is required\n\n* Allow spaces in text separator\n* Added Ukrainian language",
         "de": "NodeJS 14.5 ist erforderlich\n\n* Räume im Texttrenner zulassen\n* Hinzugefügt Ukrainische Sprache",
@@ -80,19 +93,6 @@
         "pl": "Zrezygnowano z zależności „węzłowej” i bezpośrednio analizowano zdarzenia\nZatrzymaj zaplanowaną instancję adaptera w każdym przypadku i zgłoś błędy",
         "uk": "Відкинуто \"вузлову\" залежність і аналіз подій безпосередньо\nУ будь-якому випадку зупиніть запланований екземпляр адаптера та повідомте про помилки",
         "zh-cn": "删除“node-ical”依赖并直接解析事件\n在任何情况下停止计划的适配器实例并报告错误"
-      },
-      "1.1.3": {
-        "en": "Stop adapter when everything was processed (with timeout)",
-        "de": "Adapter beenden, wenn alles verarbeitet wurde (mit Timeout)",
-        "ru": "Остановить адаптер, когда все было обработано (с тайм-аутом)",
-        "pt": "Parar o adaptador quando tudo foi processado (com tempo limite)",
-        "nl": "Stop adapter als alles is verwerkt (met time-out)",
-        "fr": "Arrêter l'adaptateur lorsque tout a été traité (avec timeout)",
-        "it": "Arresta adattatore quando tutto è stato elaborato (con timeout)",
-        "es": "Detener el adaptador cuando todo se procesó (con tiempo de espera)",
-        "pl": "Zatrzymaj adapter, gdy wszystko zostało przetworzone (z limitem czasu)",
-        "uk": "Зупинити адаптер, коли все було оброблено (з тайм-аутом)",
-        "zh-cn": "处理完所有内容后停止适配器（超时）"
       }
     },
     "titleLang": {

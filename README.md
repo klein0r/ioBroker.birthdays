@@ -48,7 +48,7 @@ iobroker add birthdays
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 2.2.2 (2023-05-01)
 
 * (klein0r) Warn if a birthday with the same name has already been added
 * (klein0r) Code optimization
@@ -76,11 +76,6 @@ NodeJS 14.x is required (NodeJS 12.x is EOL)
 * (klein0r) Added next significant birthdays
 * (klein0r) Allow to use local ical files by path
 * (klein0r) Updated depedency for js-controller to 4.0.15
-
-### 1.2.1 (2022-04-08)
-
-* (klein0r) Removed tsdav
-* (klein0r) Allow carddav url without valid certificate (configurable)
 
 ## Credits
 
