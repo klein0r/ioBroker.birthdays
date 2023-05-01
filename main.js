@@ -73,7 +73,7 @@ class Birthdays extends utils.Adapter {
             });
     }
 
-    addBySettings() {
+    async addBySettings() {
         return new Promise((resolve) => {
             const birthdays = this.config.birthdays;
             let addedBirthdays = 0;
@@ -102,7 +102,7 @@ class Birthdays extends utils.Adapter {
         });
     }
 
-    addByCalendar() {
+    async addByCalendar() {
         return new Promise((resolve) => {
             const iCalUrl = this.config.icalUrl;
             if (iCalUrl) {
@@ -173,7 +173,7 @@ class Birthdays extends utils.Adapter {
         });
     }
 
-    addByIcalData(dataStr) {
+    async addByIcalData(dataStr) {
         return new Promise((resolve) => {
             let addedBirthdays = 0;
 
@@ -225,7 +225,7 @@ class Birthdays extends utils.Adapter {
         });
     }
 
-    addByCardDav() {
+    async addByCardDav() {
         return new Promise((resolve) => {
             const carddavUrl = this.config.carddavUrl;
             if (carddavUrl) {

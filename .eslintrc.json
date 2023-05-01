@@ -12,7 +12,11 @@
     "rules": {
         "no-console": "off",
         "no-var": "error",
-        "prefer-const": "error"
+        "prefer-const": "error",
+        "no-return-await": "error",
+        "no-async-promise-executor": "error",
+        "no-promise-executor-return": "error",
+        "prefer-promise-reject-errors": "error"
     },
     "parserOptions": {
         "ecmaVersion": 2020,
