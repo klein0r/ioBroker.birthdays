@@ -88,8 +88,9 @@ class Birthdays extends utils.Adapter {
                         if (configBirthday.isValid() && configBirthday.year() <= this.today.year()) {
                             this.log.debug(`[settings] found birthday: ${birthday.name} (${birthday.year})`);
 
-                            this.addBirthday(birthday.name, configBirthday);
-                            addedBirthdays++;
+                            if (this.addBirthday(birthday.name, configBirthday)) {
+                                addedBirthdays++;
+                            }
                         } else {
                             this.log.warn(`[settings] invalid birthday date: ${birthday.name}`);
                         }
@@ -205,8 +206,9 @@ class Birthdays extends utils.Adapter {
                             if (calendarBirthday.isValid() && calendarBirthday.year() <= this.today.year()) {
                                 this.log.debug(`[ical] found birthday: ${name} (${birthYear})`);
 
-                                this.addBirthday(name, calendarBirthday);
-                                addedBirthdays++;
+                                if (this.addBirthday(name, calendarBirthday)) {
+                                    addedBirthdays++;
+                                }
                             } else {
                                 this.log.warn(`[ical] invalid birthday date: ${name}`);
                             }
@@ -273,8 +275,9 @@ class Birthdays extends utils.Adapter {
                                     if (carddavBirthday.isValid() && carddavBirthday.year() <= this.today.year()) {
                                         this.log.debug(`[carddav] found birthday: ${name} (${carddavBirthday.year()})`);
 
-                                        this.addBirthday(name, carddavBirthday);
-                                        addedBirthdays++;
+                                        if (this.addBirthday(name, carddavBirthday)) {
+                                            addedBirthdays++;
+                                        }
                                     } else {
                                         this.log.warn(`[carddav] invalid birthdate: ${name}`);
                                     }
@@ -300,6 +303,12 @@ class Birthdays extends utils.Adapter {
     }
 
     addBirthday(name, birthday) {
+        const birthdaysSameName = this.birthdays.find((b) => b.name === name);
+        if (birthdaysSameName) {
+            this.log.warn(`[addBirthday] birthday with name "${name}" has already been added (${birthdaysSameName.dateFormat}) - skipping`);
+            return false;
+        }
+
         const nextBirthday = birthday.clone();
         nextBirthday.add(this.today.year() - birthday.year(), 'y');
 
@@ -336,6 +345,8 @@ class Birthdays extends utils.Adapter {
             _birthday: birthday,
             _nextBirthday: nextSignificantBirthday,
         });
+
+        return true;
     }
 
     async fillStates() {
