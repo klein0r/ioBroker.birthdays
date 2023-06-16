@@ -187,6 +187,7 @@
   "native": {
     "nextTextTemplate": "%n turns %a",
     "nextSeparator": ", ",
+    "currentAgeTemplate": "%y years, %m months and %d days",
     "icalUrl": "",
     "icalUser": "",
     "icalPassword": "",

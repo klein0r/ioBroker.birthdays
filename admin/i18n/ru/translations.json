@@ -12,5 +12,7 @@
     "carddav username": "Имя пользователя CardDAV",
     "carddav password": "CardDAV Пароль",
     "ical username": "iCal имя пользователя",
-    "ical password": "iCal пароль"
+    "ical password": "iCal пароль",
+    "current age template": "шаблон текущего возраста",
+    "use %y for years, %m for months and %d for days": "используйте %y для лет, %m для месяцев и %d для дней"
 }

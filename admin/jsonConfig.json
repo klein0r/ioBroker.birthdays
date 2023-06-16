@@ -23,6 +23,15 @@
                     "lg": 6,
                     "label": "next separator"
                 },
+                "currentAgeTemplate": {
+                    "newLine": true,
+                    "type": "text",
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 6,
+                    "label": "current age template",
+                    "help": "use %y for years, %m for months and %d for days"
+                },
                 "_ioBrokerKursBanner": {
                     "newLine": true,
                     "type": "staticImage",

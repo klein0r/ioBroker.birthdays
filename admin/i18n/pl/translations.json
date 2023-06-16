@@ -12,5 +12,7 @@
     "carddav username": "Nazwa użytkownika CardDAV",
     "carddav password": "Hasło CardDAV",
     "ical username": "Nazwa użytkownika iCal",
-    "ical password": "Hasło iCal"
+    "ical password": "Hasło iCal",
+    "current age template": "obecny szablon wieku",
+    "use %y for years, %m for months and %d for days": "użyj %y dla lat, %m dla miesięcy i %d dla dni"
 }

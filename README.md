@@ -51,6 +51,7 @@ iobroker add birthdays
 **WORK IN PROGRESS**
 
 * (klein0r) Added JSON and count for each month
+* (klein0r) Added current age as text
 
 ### 2.2.2 (2023-05-01)
 

@@ -12,5 +12,7 @@
     "carddav username": "CardDAV 用户名",
     "carddav password": "CardDAV 密码",
     "ical username": "iCal 用户名",
-    "ical password": "iCal 密码"
+    "ical password": "iCal 密码",
+    "current age template": "当前年龄模板",
+    "use %y for years, %m for months and %d for days": "使用 %y 代表年，%m 代表月，%d 代表天"
 }

@@ -552,6 +552,31 @@ class Birthdays extends utils.Adapter {
         });
         await this.setStateChangedAsync(`${path}.age`, { val: birthdayObj.age, ack: true });
 
+        await this.setObjectNotExistsAsync(`${path}.currentAge`, {
+            type: 'state',
+            common: {
+                name: {
+                    en: 'Current age as text',
+                    de: 'Aktuelles Alter als Text',
+                    ru: 'Текущий возраст как текст',
+                    pt: 'Idade atual como texto',
+                    nl: 'Current leeftijd als tekst',
+                    fr: 'Âge actuel du texte',
+                    it: 'Età attuale come testo',
+                    es: 'Edad actual como texto',
+                    pl: 'Aktualny wiek jako tekst',
+                    uk: 'Поточний вік як текст',
+                    'zh-cn': '目前的案文',
+                },
+                type: 'string',
+                role: 'text',
+                read: true,
+                write: false,
+            },
+            native: {},
+        });
+        await this.setStateChangedAsync(`${path}.currentAge`, { val: this.getCurrentAgeAsText(birthdayObj._birthday), ack: true });
+
         await this.setObjectNotExistsAsync(`${path}.day`, {
             type: 'state',
             common: {
@@ -637,6 +662,23 @@ class Birthdays extends utils.Adapter {
         momentCopy.locale(locale);
 
         return momentCopy.format('MMMM');
+    }
+
+    getCurrentAgeAsText(birthday) {
+        const clonedBirthday = birthday.clone();
+
+        const years = this.today.diff(clonedBirthday, 'year');
+        clonedBirthday.add(years, 'years');
+
+        const months = this.today.diff(clonedBirthday, 'months');
+        clonedBirthday.add(months, 'months');
+
+        const days = this.today.diff(clonedBirthday, 'days');
+
+        return String(this.config.currentAgeTemplate)
+            .replace('%y', years.toString())
+            .replace('%m', months.toString())
+            .replace('%d', days.toString());
     }
 
     cleanNamespace(id) {
