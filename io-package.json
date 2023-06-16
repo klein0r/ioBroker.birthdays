@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "birthdays",
-    "version": "2.2.2",
+    "version": "2.3.0",
     "news": {
+      "2.3.0": {
+        "en": "Added JSON and count for each month\nAdded current age as text",
+        "de": "Hinzugefügt JSON und Zählen für jeden Monat\nAktuelles Alter als Text hinzugefügt",
+        "ru": "Добавил JSON и подсчитывал каждый месяц\nДобавлен текущий возраст как текст",
+        "pt": "Adicionado JSON e contagem para cada mês\nAdicionado idade atual como texto",
+        "nl": "_\nVertaling:",
+        "fr": "JSON ajouté et compter pour chaque mois\nAjout de l ' âge actuel au texte",
+        "it": "Aggiunto JSON e contare per ogni mese\nAggiunto l'età corrente come testo",
+        "es": "Añadido JSON y cuenta por cada mes\nEdad actual agregada como texto",
+        "pl": "Dodany JSON i liczy każdego miesiąca\nDziedzinny wiek jako tekst",
+        "uk": "Додано JSON і підрахунк на місяць\nДодано поточний вік як текст",
+        "zh-cn": "增加联合协商会和每个月的计算\n增加目前年龄为案文"
+      },
       "2.2.2": {
         "en": "Warn if a birthday with the same name has already been added\nCode optimization",
         "de": "Warnung, wenn bereits ein Geburtstag mit demselben Namen hinzugefügt wurde\nCodeoptimierung",
@@ -80,19 +93,6 @@
         "pl": "Usunięto tsdav\nZezwalaj na adres URL carddav bez ważnego certyfikatu (konfigurowalne)",
         "uk": "Видалено цдав\nДозволити URL-адресу carddav без дійсного сертифіката (налаштовується)",
         "zh-cn": "删除了 tsdav\n允许没有有效证书的 carddav url（可配置）"
-      },
-      "1.2.0": {
-        "en": "Dropped \"node-ical\" dependency and parse events directly\nStop scheduled adapter instance in any case and report errors",
-        "de": "„Node-ical“-Abhängigkeit entfernt und Ereignisse direkt geparst\nGeplante Adapterinstanz auf jeden Fall stoppen und Fehler melden",
-        "ru": "Отброшена «узловая» зависимость и события синтаксического анализа напрямую\nВ любом случае остановить экземпляр запланированного адаптера и сообщить об ошибках",
-        "pt": "Descartou a dependência \"node-ical\" e analisa os eventos diretamente\nInterrompa a instância do adaptador agendado em qualquer caso e relate erros",
-        "nl": "\"node-ical\" afhankelijkheid verwijderd en gebeurtenissen direct ontleden\nStop de geplande adapterinstantie in ieder geval en meld fouten",
-        "fr": "Suppression de la dépendance \"nœud-ical\" et analyse directe des événements\nArrêtez l'instance d'adaptateur planifiée dans tous les cas et signalez les erreurs",
-        "it": "Eliminata la dipendenza \"node-ical\" e analizza direttamente gli eventi\nArresta in ogni caso l'istanza dell'adattatore pianificata e segnala gli errori",
-        "es": "Se eliminó la dependencia \"node-ical\" y se analizaron los eventos directamente\nDetenga la instancia del adaptador programado en cualquier caso e informe los errores",
-        "pl": "Zrezygnowano z zależności „węzłowej” i bezpośrednio analizowano zdarzenia\nZatrzymaj zaplanowaną instancję adaptera w każdym przypadku i zgłoś błędy",
-        "uk": "Відкинуто \"вузлову\" залежність і аналіз подій безпосередньо\nУ будь-якому випадку зупиніть запланований екземпляр адаптера та повідомте про помилки",
-        "zh-cn": "删除“node-ical”依赖并直接解析事件\n在任何情况下停止计划的适配器实例并报告错误"
       }
     },
     "titleLang": {

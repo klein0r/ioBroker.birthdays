@@ -48,7 +48,7 @@ iobroker add birthdays
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 2.3.0 (2023-06-16)
 
 * (klein0r) Added JSON and count for each month
 * (klein0r) Added current age as text
@@ -73,14 +73,6 @@ NodeJS 14.5 is required
 ### 2.1.0 (2022-05-31)
 
 * (klein0r) Added username and password option for iCal
-
-### 2.0.0 (2022-05-16)
-
-NodeJS 14.x is required (NodeJS 12.x is EOL)
-
-* (klein0r) Added next significant birthdays
-* (klein0r) Allow to use local ical files by path
-* (klein0r) Updated depedency for js-controller to 4.0.15
 
 ## Credits
 

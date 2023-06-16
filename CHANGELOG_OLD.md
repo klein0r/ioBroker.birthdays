@@ -1,4 +1,12 @@
 # Older changes
+## 2.0.0 (2022-05-16)
+
+NodeJS 14.x is required (NodeJS 12.x is EOL)
+
+* (klein0r) Added next significant birthdays
+* (klein0r) Allow to use local ical files by path
+* (klein0r) Updated depedency for js-controller to 4.0.15
+
 ## 1.2.1 (2022-04-08)
 
 * (klein0r) Removed tsdav
