@@ -220,6 +220,30 @@
       "native": {}
     },
     {
+      "_id": "summary.count",
+      "type": "state",
+      "common": {
+        "name": {
+          "en": "Number of birthdays",
+          "de": "Anzahl der Geburtstage",
+          "ru": "Количество дней рождения",
+          "pt": "Número de aniversários",
+          "nl": "Nummer van verjaardagen",
+          "fr": "Nombre d ' anniversaires",
+          "it": "Numero di compleanni",
+          "es": "Número de cumpleaños",
+          "pl": "Liczba urodzin",
+          "uk": "Кількість днів",
+          "zh-cn": "出生日数"
+        },
+        "type": "number",
+        "role": "value",
+        "read": true,
+        "write": false
+      },
+      "native": {}
+    },
+    {
       "_id": "summary.json",
       "type": "state",
       "common": {

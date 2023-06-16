@@ -48,6 +48,54 @@ class Birthdays extends utils.Adapter {
                 },
                 native: {},
             });
+
+            await this.setObjectNotExistsAsync(`${this.getMonthPath(m)}.count`, {
+                type: 'state',
+                common: {
+                    name: {
+                        en: 'Number of birthdays',
+                        de: 'Anzahl der Geburtstage',
+                        ru: 'Количество дней рождения',
+                        pt: 'Número de aniversários',
+                        nl: 'Nummer van verjaardagen',
+                        fr: 'Nombre d\' anniversaires',
+                        it: 'Numero di compleanni',
+                        es: 'Número de cumpleaños',
+                        pl: 'Liczba urodzin',
+                        uk: 'Кількість днів',
+                        'zh-cn': '出生日数',
+                    },
+                    type: 'number',
+                    role: 'value',
+                    read: true,
+                    write: false,
+                },
+                native: {},
+            });
+
+            await this.setObjectNotExistsAsync(`${this.getMonthPath(m)}.json`, {
+                type: 'state',
+                common: {
+                    name: {
+                        en: 'Birthdays JSON',
+                        de: 'Geburtstage JSON',
+                        ru: 'Дни рождения JSON',
+                        pt: 'JSON de aniversários',
+                        nl: 'Verjaardagen JSON',
+                        fr: 'Anniversaires JSON',
+                        it: 'Compleanni JSON',
+                        es: 'Cumpleaños JSON',
+                        pl: 'Urodziny JSON',
+                        uk: 'День народження JSON',
+                        'zh-cn': '生日 JSON',
+                    },
+                    type: 'string',
+                    role: 'json',
+                    read: true,
+                    write: false,
+                },
+                native: {},
+            });
         }
 
         Promise.all([this.addBySettings(), this.addByCalendar(), this.addByCardDav()])
@@ -356,6 +404,7 @@ class Birthdays extends utils.Adapter {
 
         this.log.debug(`[fillStates] birthdays: ${JSON.stringify(this.birthdays)}`);
         await this.setStateAsync('summary.json', { val: JSON.stringify(this.birthdays), ack: true });
+        await this.setStateAsync('summary.count', { val: this.birthdays.length, ack: true });
 
         this.log.debug(`[fillStates] birthdays significant: ${JSON.stringify(this.birthdaysSignificant)}`);
         await this.setStateAsync('summary.jsonSignificant', { val: JSON.stringify(this.birthdaysSignificant), ack: true });
@@ -411,6 +460,13 @@ class Birthdays extends utils.Adapter {
             const nextBirthdaySignificantDaysLeft = this.birthdaysSignificant[0].daysLeft;
 
             await this.fillAfter('nextSignificant', this.birthdaysSignificant, nextBirthdaySignificantDaysLeft);
+        }
+
+        // fill month json
+        for (let m = 1; m <= 12; m++) {
+            const monthlyBirthdays = this.birthdays.filter((birthday) => birthday._birthday.month() + 1 === m); // get all birthdays with same month
+            await this.setStateAsync(`${this.getMonthPath(m)}.json`, { val: JSON.stringify(monthlyBirthdays), ack: true });
+            await this.setStateChangedAsync(`${this.getMonthPath(m)}.count`, { val: monthlyBirthdays.length, ack: true });
         }
     }
 

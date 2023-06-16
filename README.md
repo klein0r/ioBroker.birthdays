@@ -48,6 +48,10 @@ iobroker add birthdays
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
+**WORK IN PROGRESS**
+
+* (klein0r) Added JSON and count for each month
+
 ### 2.2.2 (2023-05-01)
 
 * (klein0r) Warn if a birthday with the same name has already been added
