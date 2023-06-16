@@ -1,4 +1,8 @@
 # Older changes
+## 2.1.0 (2022-05-31)
+
+* (klein0r) Added username and password option for iCal
+
 ## 2.0.0 (2022-05-16)
 
 NodeJS 14.x is required (NodeJS 12.x is EOL)
