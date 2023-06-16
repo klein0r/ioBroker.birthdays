@@ -58,7 +58,7 @@ class Birthdays extends utils.Adapter {
                         ru: 'Количество дней рождения',
                         pt: 'Número de aniversários',
                         nl: 'Nummer van verjaardagen',
-                        fr: 'Nombre d\' anniversaires',
+                        fr: `Nombre d' anniversaires`,
                         it: 'Numero di compleanni',
                         es: 'Número de cumpleaños',
                         pl: 'Liczba urodzin',
@@ -675,10 +675,7 @@ class Birthdays extends utils.Adapter {
 
         const days = this.today.diff(clonedBirthday, 'days');
 
-        return String(this.config.currentAgeTemplate)
-            .replace('%y', years.toString())
-            .replace('%m', months.toString())
-            .replace('%d', days.toString());
+        return String(this.config.currentAgeTemplate).replace('%y', years).replace('%m', months).replace('%d', days);
     }
 
     cleanNamespace(id) {
