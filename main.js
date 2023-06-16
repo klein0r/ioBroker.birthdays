@@ -372,6 +372,7 @@ class Birthdays extends utils.Adapter {
             birthYear: birthday.year(),
             dateFormat: this.formatDate(nextBirthday.toDate()),
             age: nextAge,
+            currentAgeText: this.getCurrentAgeAsText(birthday),
             daysLeft: nextBirthday.diff(this.today, 'days'),
             _birthday: birthday,
             _nextBirthday: nextBirthday,
@@ -575,7 +576,7 @@ class Birthdays extends utils.Adapter {
             },
             native: {},
         });
-        await this.setStateChangedAsync(`${path}.currentAge`, { val: this.getCurrentAgeAsText(birthdayObj._birthday), ack: true });
+        await this.setStateChangedAsync(`${path}.currentAge`, { val: birthdayObj.currentAgeText, ack: true });
 
         await this.setObjectNotExistsAsync(`${path}.day`, {
             type: 'state',

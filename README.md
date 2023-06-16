@@ -48,6 +48,10 @@ iobroker add birthdays
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+
+* (klein0r) Added current age text to JSON
+
 ### 2.3.0 (2023-06-16)
 
 * (klein0r) Added JSON and count for each month
