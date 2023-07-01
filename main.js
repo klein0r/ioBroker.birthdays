@@ -477,7 +477,7 @@ class Birthdays extends utils.Adapter {
         const nextBirthdays = birthdays.filter((birthday) => birthday.daysLeft == daysLeft); // get all birthdays with same days left
 
         const nextBirthdaysText = nextBirthdays.map((birthday) => {
-            return this.config.nextTextTemplate.replace('%n', birthday.name).replace('%a', birthday.age);
+            return this.config.nextTextTemplate.replace('%n', birthday.name).replace('%a', birthday.age).trim();
         });
 
         await this.setStateAsync(`${path}.json`, { val: JSON.stringify(nextBirthdays), ack: true });
