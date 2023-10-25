@@ -1,4 +1,9 @@
 # Older changes
+## 2.2.0 (2022-12-12)
+
+* (klein0r) Dropped Admin 5 support
+* (klein0r) Added Ukrainian language
+
 ## 2.1.0 (2022-05-31)
 
 * (klein0r) Added username and password option for iCal

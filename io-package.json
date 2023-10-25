@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "birthdays",
-    "version": "2.3.1",
+    "version": "2.4.0",
     "news": {
+      "2.4.0": {
+        "en": "NodeJS 16.x is required\n\n* Added icons in admin tabs",
+        "de": "NodeJS 16.x ist erforderlich\n\n* Icons in Admin-Tabs hinzugefügt",
+        "ru": "NodeJS 16.x требуется\n\n* Добавлены иконки в админ табы",
+        "pt": "NodeJS 16.x é necessário\n\n* Ícones adicionados em guias admin",
+        "nl": "NodeJS 16.x is vereist\n\n♪ Added icons in admin tabs ♪",
+        "fr": "NodeJS 16.x est nécessaire\n\n* Ajout d'icônes dans les onglets d'administration",
+        "it": "NodeJS 16.x è richiesto\n\n* Aggiunte le icone nelle schede di amministrazione",
+        "es": "NodeJS 16.x es necesario\n\n* iconos añadidos en pestañas de administración",
+        "pl": "NodeJS 16 (ang.)\n\n* Added icons in admin tabs",
+        "uk": "NodeJS 16.x обов'язковий\n\n* Додано іконки в вкладках адміністратора",
+        "zh-cn": "不需要16.JS16x。\n\n* 括号内增列图"
+      },
       "2.3.1": {
         "en": "Added current age text to JSON",
         "de": "Hinzugefügt aktueller Alterstext zu JSON",
@@ -80,19 +93,6 @@
         "pl": "Dodano opcję nazwy użytkownika i hasła do iCal",
         "uk": "Додано ім’я користувача та пароль для iCal",
         "zh-cn": "为 iCal 添加了用户名和密码选项"
-      },
-      "2.0.0": {
-        "en": "NodeJS 14.x is required (NodeJS 12.x is EOL)\n\n* Added next significant birthdays\n* Allow to use local ical files by path\n* Updated depedency for js-controller to 4.0.15",
-        "de": "NodeJS 14.x ist erforderlich (NodeJS 12.x ist EOL)\n\n* Nächste wichtige Geburtstage hinzugefügt\n* Verwendung lokaler ical-Dateien nach Pfad zulassen\n* Abhängigkeit für js-controller auf 4.0.15 aktualisiert",
-        "ru": "Требуется NodeJS 14.x (NodeJS 12.x является EOL)\n\n* Добавлены следующие значимые дни рождения\n* Разрешить использовать локальные файлы по пути\n* Обновлена зависимость js-контроллера до версии 4.0.15.",
-        "pt": "NodeJS 14.x é necessário (NodeJS 12.x é EOL)\n\n* Adicionado próximos aniversários significativos\n* Permitir usar arquivos ical locais por caminho\n* Dependência atualizada para js-controller para 4.0.15",
-        "nl": "NodeJS 14.x is vereist (NodeJS 12.x is EOL)\n\n* Volgende belangrijke verjaardagen toegevoegd\n* Sta toe om lokale ical-bestanden op pad te gebruiken\n* Afhankelijkheid voor js-controller bijgewerkt naar 4.0.15",
-        "fr": "NodeJS 14.x est requis (NodeJS 12.x est EOL)\n\n* Ajout des prochains anniversaires significatifs\n* Autoriser l'utilisation de fichiers ical locaux par chemin\n* Mise à jour de la dépendance pour js-controller vers 4.0.15",
-        "it": "È richiesto NodeJS 14.x (NodeJS 12.x è EOL)\n\n* Aggiunti i prossimi compleanni significativi\n* Consenti di utilizzare i file ical locali per percorso\n* Aggiornata la dipendenza per js-controller a 4.0.15",
-        "es": "Se requiere NodeJS 14.x (NodeJS 12.x es EOL)\n\n* Se agregaron los próximos cumpleaños significativos\n* Permitir usar archivos ical locales por ruta\n* Dependencia actualizada para js-controller a 4.0.15",
-        "pl": "NodeJS 14.x jest wymagany (NodeJS 12.x to EOL)\n\n* Dodano kolejne znaczące urodziny\n* Zezwól na używanie lokalnych plików ical według ścieżki\n* Zaktualizowano zależność dla kontrolera js do 4.0.15",
-        "uk": "Потрібен NodeJS 14.x (NodeJS 12.x є EOL)\n\n* Додано наступні важливі дні народження\n* Дозволити використовувати локальні файли ical за шляхом\n* Оновлено залежності для js-контролера до 4.0.15",
-        "zh-cn": "需要 NodeJS 14.x（NodeJS 12.x 已停产）\n\n*添加了下一个重要的生日\n* 允许通过路径使用本地 ical 文件\n* 将 js-controller 的依赖更新到 4.0.15"
       }
     },
     "titleLang": {

@@ -46,7 +46,7 @@ iobroker add birthdays
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 2.4.0 (2023-10-25)
 
 NodeJS 16.x is required
 
@@ -71,11 +71,6 @@ NodeJS 16.x is required
 NodeJS 14.5 is required
 
 * (klein0r) Allow spaces in text separator
-* (klein0r) Added Ukrainian language
-
-### 2.2.0 (2022-12-12)
-
-* (klein0r) Dropped Admin 5 support
 * (klein0r) Added Ukrainian language
 
 ## Credits
