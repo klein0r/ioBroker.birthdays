@@ -46,7 +46,7 @@ iobroker add birthdays
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 2.4.1 (2023-10-30)
 
 * (klein0r) Added warnings if birthday event is not recurring
 
@@ -69,13 +69,6 @@ NodeJS 16.x is required
 
 * (klein0r) Warn if a birthday with the same name has already been added
 * (klein0r) Code optimization
-
-### 2.2.1 (2023-02-13)
-
-NodeJS 14.5 is required
-
-* (klein0r) Allow spaces in text separator
-* (klein0r) Added Ukrainian language
 
 ## Credits
 

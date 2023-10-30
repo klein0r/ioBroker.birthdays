@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "birthdays",
-    "version": "2.4.0",
+    "version": "2.4.1",
     "news": {
+      "2.4.1": {
+        "en": "Added warnings if birthday event is not recurring",
+        "de": "Warnungen hinzugefügt, wenn Geburtstagsereignis nicht wiederkehrend ist",
+        "ru": "Добавлены предупреждения, если событие дня рождения не повторяется",
+        "pt": "Adicionado avisos se evento de aniversário não é recorrente",
+        "nl": "Vertaling:",
+        "fr": "Avertissements ajoutés si l'événement d'anniversaire n'est pas récurrent",
+        "it": "Aggiunti avvisi se l'evento di compleanno non è ricorrente",
+        "es": "Advertencias adicionales si el evento de cumpleaños no es recurrente",
+        "pl": "Oświadczenie, czy impreza urodzinowa nie jest powtarzana",
+        "uk": "Додано попередження, якщо подія дня народження не повторюється",
+        "zh-cn": "如果出生日事件不再发生,添加警告"
+      },
       "2.4.0": {
         "en": "NodeJS 16.x is required\n\n* Added icons in admin tabs",
         "de": "NodeJS 16.x ist erforderlich\n\n* Icons in Admin-Tabs hinzugefügt",
@@ -80,19 +93,6 @@
         "pl": "Dropped Admin 5 (ang.)\nJęzyk ukraiński",
         "uk": "Підтримка Dropped Admin 5\nУкраїнська мова",
         "zh-cn": "D. 减少5个支助\n增加乌克兰语"
-      },
-      "2.1.0": {
-        "en": "Added username and password option for iCal",
-        "de": "Option für Benutzername und Passwort für iCal hinzugefügt",
-        "ru": "Добавлена опция имени пользователя и пароля для iCal.",
-        "pt": "Adicionada opção de nome de usuário e senha para iCal",
-        "nl": "Optie voor gebruikersnaam en wachtwoord toegevoegd voor iCal",
-        "fr": "Ajout d'une option de nom d'utilisateur et de mot de passe pour iCal",
-        "it": "Aggiunta opzione nome utente e password per iCal",
-        "es": "Se agregó la opción de nombre de usuario y contraseña para iCal",
-        "pl": "Dodano opcję nazwy użytkownika i hasła do iCal",
-        "uk": "Додано ім’я користувача та пароль для iCal",
-        "zh-cn": "为 iCal 添加了用户名和密码选项"
       }
     },
     "titleLang": {

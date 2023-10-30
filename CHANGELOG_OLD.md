@@ -1,4 +1,11 @@
 # Older changes
+## 2.2.1 (2023-02-13)
+
+NodeJS 14.5 is required
+
+* (klein0r) Allow spaces in text separator
+* (klein0r) Added Ukrainian language
+
 ## 2.2.0 (2022-12-12)
 
 * (klein0r) Dropped Admin 5 support
