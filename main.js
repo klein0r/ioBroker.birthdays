@@ -243,18 +243,18 @@ class Birthdays extends utils.Adapter {
 
                         this.log.debug(`[ical] processing event: ${JSON.stringify(event)} - ${event.isRecurring() ? Object.keys(event.getRecurrenceTypes()) : 'not recurring!'}`);
 
-                        if (!event.isRecurring()) {
-                            this.log.warn(`[ical] birthday event of ${name} is not defined as recurring - will be skipped in future versions: ${JSON.stringify(event)}`);
-                        } else if (!Object.keys(event.getRecurrenceTypes()).includes('YEARLY')) {
-                            this.log.warn(`[ical] birthday event of ${name} is not recurring yearly - will be skipped in future versions: ${JSON.stringify(event)}`);
-                        }
-
                         if (name && birthYear && !isNaN(birthYear)) {
                             const startDate = event.startDate.toJSDate();
                             const calendarBirthday = moment({ year: birthYear, month: startDate.getMonth(), day: startDate.getDate() });
 
                             if (calendarBirthday.isValid() && calendarBirthday.year() <= this.today.year()) {
                                 this.log.debug(`[ical] found birthday: ${name} (${birthYear})`);
+
+                                if (!event.isRecurring()) {
+                                    this.log.warn(`[ical] birthday event of ${name} is not defined as recurring - will be skipped in future versions: ${JSON.stringify(event)}`);
+                                } else if (!Object.keys(event.getRecurrenceTypes()).includes('YEARLY')) {
+                                    this.log.warn(`[ical] birthday event of ${name} is not recurring yearly - will be skipped in future versions: ${JSON.stringify(event)}`);
+                                }
 
                                 if (this.addBirthday(name, calendarBirthday)) {
                                     addedBirthdays++;
