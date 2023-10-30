@@ -1,10 +1,10 @@
 'use strict';
 
 const utils = require('@iobroker/adapter-core');
-const fs = require('fs');
+const fs = require('node:fs');
 const moment = require('moment');
 const axios = require('axios').default;
-const https = require('https');
+const https = require('node:https');
 const ICAL = require('ical.js');
 const adapterName = require('./package.json').name.split('.').pop();
 
@@ -229,23 +229,25 @@ class Birthdays extends utils.Adapter {
             try {
                 // Parse ical
                 const icalData = ICAL.parse(dataStr);
-
                 const comp = new ICAL.Component(icalData);
-
                 const vevents = comp.getAllSubcomponents('vevent');
 
                 this.log.debug(`[ical] found ${vevents.length} events`);
 
-                for (const e in vevents) {
-                    const vevent = vevents[e];
-
+                for (const vevent of vevents) {
                     const event = new ICAL.Event(vevent);
 
                     if (event.summary !== undefined && !isNaN(event.description) && event.startDate) {
                         const name = event.summary;
                         const birthYear = parseInt(event.description);
 
-                        this.log.debug(`[ical] processing event: ${JSON.stringify(event)}`);
+                        this.log.debug(`[ical] processing event: ${JSON.stringify(event)} - ${event.isRecurring() ? Object.keys(event.getRecurrenceTypes()) : 'not recurring!'}`);
+
+                        if (!event.isRecurring()) {
+                            this.log.warn(`[ical] birthday event of ${name} is not defined as recurring - will be skipped in future versions: ${JSON.stringify(event)}`);
+                        } else if (!Object.keys(event.getRecurrenceTypes()).includes('YEARLY')) {
+                            this.log.warn(`[ical] birthday event of ${name} is not recurring yearly - will be skipped in future versions: ${JSON.stringify(event)}`);
+                        }
 
                         if (name && birthYear && !isNaN(birthYear)) {
                             const startDate = event.startDate.toJSDate();
@@ -261,7 +263,7 @@ class Birthdays extends utils.Adapter {
                                 this.log.warn(`[ical] invalid birthday date: ${name}`);
                             }
                         } else if (name) {
-                            this.log.debug(`[ical] missing birth year in event: ${name}`);
+                            this.log.debug(`[ical] missing birth year in event description: ${name}`);
                         }
                     }
                 }
@@ -308,9 +310,7 @@ class Birthdays extends utils.Adapter {
 
                             this.log.debug(`[carddav] found ${vcards.length} contacts`);
 
-                            for (const v in vcards) {
-                                const vcard = vcards[v];
-
+                            for (const vcard of vcards) {
                                 this.log.debug(`[carddav] processing vcard: ${JSON.stringify(vcard)}`);
 
                                 const comp = new ICAL.Component(vcard);
@@ -417,15 +417,13 @@ class Birthdays extends utils.Adapter {
             })
             .filter((id) => new RegExp('month.[0-9]{2}..+', 'g').test(id));
 
-        for (const b in this.birthdays) {
-            const birthdayObj = this.birthdays[b];
-
+        for (const birthdayObj of this.birthdays) {
             const cleanName = this.cleanNamespace(birthdayObj.name);
             const monthPath = this.getMonthPath(birthdayObj._birthday.month() + 1) + '.' + cleanName;
 
             keepBirthdays.push(monthPath);
 
-            if (allBirthdays.indexOf(monthPath) === -1) {
+            if (!allBirthdays.includes(monthPath)) {
                 this.log.debug(`birthday added: ${monthPath}`);
             }
 
@@ -433,12 +431,10 @@ class Birthdays extends utils.Adapter {
         }
 
         // Delete non existent birthdays
-        for (let i = 0; i < allBirthdays.length; i++) {
-            const id = allBirthdays[i];
-
-            if (keepBirthdays.indexOf(id) === -1) {
-                await this.delObjectAsync(id, { recursive: true });
-                this.log.debug(`[fillStates] birthday deleted: ${id}`);
+        for (const birthdayId of allBirthdays) {
+            if (!keepBirthdays.includes(birthdayId)) {
+                await this.delObjectAsync(birthdayId, { recursive: true });
+                this.log.debug(`[fillStates] birthday deleted: ${birthdayId}`);
             }
         }
 
