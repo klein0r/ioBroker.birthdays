@@ -6,22 +6,17 @@ const chai = require('chai');
 const expect = chai.expect;
 
 async function startAdapterAndWaitForStop(harness) {
-    return new Promise(resolve => {
-        harness.startAdapterAndWait()
-            .then(() => {
-                // Wait for adapter stop
-                harness.on('stateChange', async (id, state) => {
-                    if (
-                        id === `system.adapter.${harness.adapterName}.0.alive` &&
-                        state &&
-                        state.val === false
-                    ) {
-                        setTimeout(() => {
-                            resolve(true);
-                        }, 2000);
-                    }
-                });
+    return new Promise((resolve) => {
+        harness.startAdapterAndWait().then(() => {
+            // Wait for adapter stop
+            harness.on('stateChange', async (id, state) => {
+                if (id === `system.adapter.${harness.adapterName}.0.alive` && state && state.val === false) {
+                    setTimeout(() => {
+                        resolve(true);
+                    }, 2000);
+                }
             });
+        });
     });
 }
 
@@ -37,8 +32,7 @@ async function assertStateEquals(harness, id, value) {
 tests.integration(path.join(__dirname, '..'), {
     allowedExitCodes: [11],
     defineAdditionalTests({ suite }) {
-
-        suite('Test Birthday calculation', getHarness => {
+        suite('Test Birthday calculation', (getHarness) => {
             /**
              * @type {IntegrationTestHarness}
              */
@@ -77,10 +71,10 @@ tests.integration(path.join(__dirname, '..'), {
                                 day: 32,
                                 month: 1,
                                 year: 1976,
-                            }
+                            },
                         ],
                         currentAgeTemplate: '%y Jahre, %m Monate und %d Tage',
-                    }
+                    },
                 });
 
                 return startAdapterAndWaitForStop(harness);
@@ -102,5 +96,5 @@ tests.integration(path.join(__dirname, '..'), {
                 await assertStateEquals(harness, `${harness.adapterName}.0.month.02.maxMustermann.year`, 2000);
             });
         });
-    }
+    },
 });
