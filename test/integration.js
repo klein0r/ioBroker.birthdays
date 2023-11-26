@@ -1,7 +1,7 @@
 'use strict';
 
 const path = require('path');
-const { tests, IntegrationTestHarness } = require('@iobroker/testing');
+const { tests } = require('@iobroker/testing');
 const chai = require('chai');
 const expect = chai.expect;
 
@@ -34,7 +34,7 @@ tests.integration(path.join(__dirname, '..'), {
     defineAdditionalTests({ suite }) {
         suite('Test Birthday calculation', (getHarness) => {
             /**
-             * @type {IntegrationTestHarness}
+             * @type {import ('@iobroker/testing').IntegrationTestHarness }
              */
             let harness;
             before(async function () {
