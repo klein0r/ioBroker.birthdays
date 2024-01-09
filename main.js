@@ -351,7 +351,8 @@ class Birthdays extends utils.Adapter {
     }
 
     addBirthday(name, birthday) {
-        const birthdaysSameName = this.birthdays.find((b) => b.name === name);
+        const id = String(name+"_"+birthday.year()+birthday.month()+birthday.day());
+        const birthdaysSameName = this.birthdays.find((b) => b.id === id);
         if (birthdaysSameName) {
             this.log.warn(`[addBirthday] birthday with name "${name}" has already been added (${birthdaysSameName.dateFormat}) - skipping`);
             return false;
@@ -368,6 +369,7 @@ class Birthdays extends utils.Adapter {
         const nextAge = nextBirthday.diff(birthday, 'years');
 
         this.birthdays.push({
+            id: id,
             name: name,
             birthYear: birthday.year(),
             dateFormat: this.formatDate(nextBirthday.toDate()),
