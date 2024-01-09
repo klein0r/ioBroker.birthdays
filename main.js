@@ -496,7 +496,7 @@ class Birthdays extends utils.Adapter {
         await this.setObjectNotExistsAsync(path, {
             type: 'channel',
             common: {
-                name: birthdayObj.name,
+                name: birthdayObj.id,
             },
             native: {},
         });
