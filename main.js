@@ -420,7 +420,7 @@ class Birthdays extends utils.Adapter {
             .filter((id) => new RegExp('month.[0-9]{2}..+', 'g').test(id));
 
         for (const birthdayObj of this.birthdays) {
-            const cleanName = this.cleanNamespace(birthdayObj.name);
+            const cleanName = this.cleanNamespace(birthdayObj.id);
             const monthPath = this.getMonthPath(birthdayObj._birthday.month() + 1) + '.' + cleanName;
 
             keepBirthdays.push(monthPath);
