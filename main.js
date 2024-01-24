@@ -350,6 +350,11 @@ class Birthdays extends utils.Adapter {
         });
     }
 
+    /**
+     * @param {string} name Name
+     * @param {moment.Moment} birthday Birthday date
+     * @returns {boolean} Added
+     */
     addBirthday(name, birthday) {
         const birthdaysSameName = this.birthdays.find((b) => b.name === name);
         if (birthdaysSameName) {
