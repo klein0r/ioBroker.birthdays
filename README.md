@@ -24,7 +24,7 @@ Use an ical file to import your contacts birthdays or define the birthday dates 
 
 ## Sponsored by
 
-[![ioBroker Master Kurs](https://haus-automatisierung.com/images/ads/ioBroker-Kurs.png)](https://haus-automatisierung.com/iobroker-kurs/?refid=iobroker-birthdays)
+[![ioBroker Master Kurs](https://haus-automatisierung.com/images/ads/ioBroker-Kurs.png?2024)](https://haus-automatisierung.com/iobroker-kurs/?refid=iobroker-birthdays)
 
 ## Installation
 
