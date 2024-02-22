@@ -135,7 +135,6 @@
       "license": "MIT",
       "type": "free"
     },
-    "automaticUpgrade": "patch",
     "platform": "Javascript/Node.js",
     "icon": "birthdays.png",
     "extIcon": "https://raw.githubusercontent.com/klein0r/ioBroker.birthdays/master/admin/birthdays.png",
