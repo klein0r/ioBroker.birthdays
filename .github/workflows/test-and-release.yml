@@ -28,12 +28,12 @@ jobs:
     steps:
       - uses: ioBroker/testing-action-check@v1
         with:
-          node-version: '18.x'
+          node-version: '20.x'
           lint: true
           lint-command: 'npm run lint .'
 
   adapter-tests:
-    if: contains(github.event.head_commit.message, '[skip ci]') == false
+    if: contains(github.event.head_commit.message, '[skip ci]') == falseUse node 20.x for all tasks
 
     runs-on: ${{ matrix.os }}
     strategy:
@@ -61,7 +61,7 @@ jobs:
     steps:
       - uses: ioBroker/testing-action-deploy@v1
         with:
-          node-version: '18.x'
+          node-version: '20.x'
           npm-token: ${{ secrets.NPM_TOKEN }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
