@@ -33,7 +33,7 @@ jobs:
           lint-command: 'npm run lint .'
 
   adapter-tests:
-    if: contains(github.event.head_commit.message, '[skip ci]') == falseUse node 20.x for all tasks
+    if: contains(github.event.head_commit.message, '[skip ci]') == false
 
     runs-on: ${{ matrix.os }}
     strategy:
