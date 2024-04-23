@@ -50,8 +50,6 @@ iobroker add birthdays
 
 NodeJS >= 18.x and js-controller >= 5 is required
 
-* (klein0r) Added weekday to all birthdays
-
 ### 2.4.1 (2023-10-30)
 
 * (klein0r) Added warnings if birthday event is not recurring
