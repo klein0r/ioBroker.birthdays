@@ -424,7 +424,7 @@ class Birthdays extends utils.Adapter {
 
         for (const birthdayObj of this.birthdays) {
             const cleanName = this.cleanNamespace(birthdayObj.name);
-            const monthPath = this.getMonthPath(birthdayObj._birthday.month() + 1) + '.' + cleanName;
+            const monthPath = `${this.getMonthPath(birthdayObj._birthday.month() + 1)}.${cleanName}`;
 
             keepBirthdays.push(monthPath);
 
@@ -653,6 +653,31 @@ class Birthdays extends utils.Adapter {
             native: {},
         });
         await this.setStateChangedAsync(`${path}.daysLeft`, { val: birthdayObj.daysLeft, ack: true });
+
+        await this.setObjectNotExistsAsync(`${path}.nextWeekday`, {
+            type: 'state',
+            common: {
+                name: {
+                    en: 'Weekday',
+                    de: 'Woche',
+                    ru: 'День недели',
+                    pt: 'Dia de semana',
+                    nl: 'Weekdag',
+                    fr: 'Jour de semaine',
+                    it: 'Rassegna',
+                    es: 'Día de semana',
+                    pl: 'Weekend',
+                    uk: 'День народження',
+                    'zh-cn': '工作日',
+                },
+                type: 'number',
+                role: 'value',
+                read: true,
+                write: false,
+            },
+            native: {},
+        });
+        await this.setStateChangedAsync(`${path}.nextWeekday`, { val: birthdayObj.daysLeft, ack: true });
     }
 
     getMonthPath(m) {
