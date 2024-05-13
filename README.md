@@ -46,7 +46,7 @@ iobroker add birthdays
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 3.0.0 (2024-05-13)
 
 NodeJS >= 18.x and js-controller >= 5 is required
 
@@ -70,11 +70,6 @@ NodeJS 16.x is required
 
 * (klein0r) Added JSON and count for each month
 * (klein0r) Added current age as text
-
-### 2.2.2 (2023-05-01)
-
-* (klein0r) Warn if a birthday with the same name has already been added
-* (klein0r) Code optimization
 
 ## Credits
 

@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "birthdays",
-    "version": "2.4.1",
+    "version": "3.0.0",
     "news": {
+      "3.0.0": {
+        "en": "NodeJS >= 18.x and js-controller >= 5 is required\n\n* Skipping invalid ical events (e.g. not recurring yearly)",
+        "de": "NodeJS >= 18.x und js-Controller >= 5 ist erforderlich\n\n* Invalide Ereignisse (z.B. nicht jährlich wiederkehrend)",
+        "ru": "NodeJS >= 18.x и js-контроллер >= 5 требуется\n\n* Неправильные события (например, не повторяющиеся ежегодно)",
+        "pt": "NodeJS >= 18.x e js-controller >= 5 é necessário\n\n* Passando eventos ical inválidos (por exemplo, não recorrente anualmente)",
+        "nl": "Voor de toepassing van de onderverdelingen 870190 tot en met 870290 wordt onder post 8702 verstaan: 5 is vereist\n\n* Overslaan ongeldige ical events (bijv. niet jaarlijks)",
+        "fr": "NodeJS >= 18.x et js-controller >= 5 est nécessaire\n\n* Échec d'événements indésirables (par exemple non récurrents chaque année)",
+        "it": "NodeJS >= 18.x e js-controller 5 è richiesto\n\n* Saltare eventi ical non validi (ad esempio non ricorrenti ogni anno)",
+        "es": "NodeJS >= 18.x y js-controller Se requiere 5\n\n* Skipping invalid ical events (e.g. not recurring yearly)",
+        "pl": "NodeJS > = 18.x i kontroler js- > = 5 jest wymagane\n\n* Pominięcie błędnych zdarzeń icznych (np. nie powtarzających się corocznie)",
+        "uk": "NodeJS >= 18.x та js-controller >= 5 обов'язково\n\n* Скопіювати недійсні заходи (наприклад, не відхиляти рік)",
+        "zh-cn": "节点JS18x和js控制器QQ 需要5个\n\n* 跳过无效的事件(例如每年不重复)"
+      },
       "2.4.1": {
         "en": "Added warnings if birthday event is not recurring",
         "de": "Warnungen hinzugefügt, wenn Geburtstagsereignis nicht wiederkehrend ist",
@@ -80,19 +93,6 @@
         "pl": "NodeJS 14,5\n\n* Przestrzenie w tekstach\nJęzyk ukraiński",
         "uk": "NodeJS 14.5 необхідний\n\nІм'я * Дозволяє пробілів в текстовому сепараторі\n* Додано українську мову",
         "zh-cn": "第14.5号申诉要求\n\n* A/64/50。 允许案文分离的空间\n* 增加乌克兰语"
-      },
-      "2.2.0": {
-        "en": "Dropped Admin 5 support\nAdded Ukrainian language",
-        "de": "Droped Admin 5 Unterstützung\nUkrainische Sprache",
-        "ru": "Dropped Admin 5 поддержка\nДобавлен украинский язык",
-        "pt": "Suporte de Admin 5 Dropped\nAdicionado idioma ucraniano",
-        "nl": "Vertaling:\nVoeg Oekraïense taal toe",
-        "fr": "Soutien Admin 5 abandonné\nAjout de la langue ukrainienne",
-        "it": "Supporto per admin goccia 5\nAggiunto lingua ucraina",
-        "es": "Soporte de Admin 5\nIdioma ucraniano añadido",
-        "pl": "Dropped Admin 5 (ang.)\nJęzyk ukraiński",
-        "uk": "Підтримка Dropped Admin 5\nУкраїнська мова",
-        "zh-cn": "D. 减少5个支助\n增加乌克兰语"
       }
     },
     "titleLang": {

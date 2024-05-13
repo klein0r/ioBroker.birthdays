@@ -1,4 +1,9 @@
 # Older changes
+## 2.2.2 (2023-05-01)
+
+* (klein0r) Warn if a birthday with the same name has already been added
+* (klein0r) Code optimization
+
 ## 2.2.1 (2023-02-13)
 
 NodeJS 14.5 is required
