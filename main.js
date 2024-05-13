@@ -251,19 +251,18 @@ class Birthdays extends utils.Adapter {
                                 this.log.debug(`[ical] found birthday: ${name} (${birthYear})`);
 
                                 if (!event.isRecurring()) {
-                                    this.log.warn(`[ical] birthday event of ${name} is not defined as recurring - will be skipped in future versions: ${JSON.stringify(event)}`);
+                                    this.log.info(`[ical] birthday event of ${name} is not defined as recurring - skipped: ${JSON.stringify(event)}`);
                                 } else if (!Object.keys(event.getRecurrenceTypes()).includes('YEARLY')) {
-                                    this.log.warn(`[ical] birthday event of ${name} is not recurring yearly - will be skipped in future versions: ${JSON.stringify(event)}`);
-                                }
-
-                                if (this.addBirthday(name, calendarBirthday)) {
+                                    this.log.info(`[ical] birthday event of ${name} is not recurring yearly - skipped: ${JSON.stringify(event)}`);
+                                } else if (this.addBirthday(name, calendarBirthday)) {
+                                    // everything okay, add it
                                     addedBirthdays++;
                                 }
                             } else {
-                                this.log.warn(`[ical] invalid birthday date: ${name}`);
+                                this.log.info(`[ical] birthday year of ${name} is invalid - skipped`);
                             }
                         } else if (name) {
-                            this.log.debug(`[ical] missing birth year in event description: ${name}`);
+                            this.log.info(`[ical] missing birth year in event description: ${name} - skipped`);
                         }
                     }
                 }

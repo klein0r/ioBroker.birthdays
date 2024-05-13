@@ -50,6 +50,8 @@ iobroker add birthdays
 
 NodeJS >= 18.x and js-controller >= 5 is required
 
+* (klein0r) Skipping invalid ical events (e.g. not recurring yearly)
+
 ### 2.4.1 (2023-10-30)
 
 * (klein0r) Added warnings if birthday event is not recurring
