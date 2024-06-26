@@ -408,11 +408,11 @@ class Birthdays extends utils.Adapter {
         this.birthdaysSignificant.sort((a, b) => (a.daysLeft > b.daysLeft ? 1 : -1));
 
         this.log.debug(`[fillStates] birthdays: ${JSON.stringify(this.birthdays)}`);
-        await this.setStateAsync('summary.json', { val: JSON.stringify(this.birthdays), ack: true });
+        await this.setStateAsync('summary.json', { val: JSON.stringify(this.birthdays, null, 2), ack: true });
         await this.setStateAsync('summary.count', { val: this.birthdays.length, ack: true });
 
         this.log.debug(`[fillStates] birthdays significant: ${JSON.stringify(this.birthdaysSignificant)}`);
-        await this.setStateAsync('summary.jsonSignificant', { val: JSON.stringify(this.birthdaysSignificant), ack: true });
+        await this.setStateAsync('summary.jsonSignificant', { val: JSON.stringify(this.birthdaysSignificant, null, 2), ack: true });
 
         const keepBirthdays = [];
         const allBirthdays = (await this.getChannelsOfAsync('month'))
@@ -465,8 +465,10 @@ class Birthdays extends utils.Adapter {
 
         // fill month json
         for (let m = 1; m <= 12; m++) {
-            const monthlyBirthdays = this.birthdays.filter((birthday) => birthday._birthday.month() + 1 === m); // get all birthdays with same month
-            await this.setStateAsync(`${this.getMonthPath(m)}.json`, { val: JSON.stringify(monthlyBirthdays), ack: true });
+            // get all birthdays with same month
+            const monthlyBirthdays = this.birthdays.filter((birthday) => birthday._birthday.month() + 1 === m);
+
+            await this.setStateAsync(`${this.getMonthPath(m)}.json`, { val: JSON.stringify(monthlyBirthdays, null, 2), ack: true });
             await this.setStateChangedAsync(`${this.getMonthPath(m)}.count`, { val: monthlyBirthdays.length, ack: true });
         }
     }
@@ -480,7 +482,7 @@ class Birthdays extends utils.Adapter {
             return this.config.nextTextTemplate.replace('%n', birthday.name).replace('%a', birthday.age).trim();
         });
 
-        await this.setStateAsync(`${path}.json`, { val: JSON.stringify(nextBirthdays), ack: true });
+        await this.setStateAsync(`${path}.json`, { val: JSON.stringify(nextBirthdays, null, 2), ack: true });
         await this.setStateChangedAsync(`${path}.daysLeft`, { val: daysLeft, ack: true });
         await this.setStateChangedAsync(`${path}.text`, { val: nextBirthdaysText.join(this.config.nextSeparator), ack: true });
 
@@ -676,7 +678,7 @@ class Birthdays extends utils.Adapter {
             },
             native: {},
         });
-        await this.setStateChangedAsync(`${path}.nextWeekday`, { val: birthday.weekday(0), ack: true });
+        await this.setStateChangedAsync(`${path}.nextWeekday`, { val: birthday.weekday(), ack: true });
     }
 
     getMonthPath(m) {
