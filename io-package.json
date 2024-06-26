@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "birthdays",
-    "version": "3.0.0",
+    "version": "3.0.1",
     "news": {
+      "3.0.1": {
+        "en": "Fixed value of nextWeekday in states",
+        "de": "Korrigiert Wert von nextWeekday in Zuständen",
+        "ru": "Фиксированная стоимость следующей недели в штатах",
+        "pt": "Valor fixo de nextWeekday em estados",
+        "nl": "Vaste waarde van volgendeWeekdag in staten",
+        "fr": "Valeur fixe de la prochaine semaine dans les états",
+        "it": "Valore fisso della prossima settimana negli stati",
+        "es": "Valor fijo del próximo miércoles en los estados",
+        "pl": "Wartość stała następnego tygodnia w stanach",
+        "uk": "Фіксована вартість наступногоподії в штатах",
+        "zh-cn": "各州下一周的固定值"
+      },
       "3.0.0": {
         "en": "NodeJS >= 18.x and js-controller >= 5 is required\n\n* Skipping invalid ical events (e.g. not recurring yearly)",
         "de": "NodeJS >= 18.x und js-Controller >= 5 ist erforderlich\n\n* Invalide Ereignisse (z.B. nicht jährlich wiederkehrend)",
@@ -80,19 +93,6 @@
         "pl": "Warn, jeśli urodziny z taką samą nazwą zostały już dodane\nOptymalizacja kodu",
         "uk": "Війна, якщо на день народження з такою назвою вже додано\nОптимізація коду",
         "zh-cn": "如果已经用同一名称添加了一出生日。\n守则的优化"
-      },
-      "2.2.1": {
-        "en": "NodeJS 14.5 is required\n\n* Allow spaces in text separator\n* Added Ukrainian language",
-        "de": "NodeJS 14.5 ist erforderlich\n\n* Räume im Texttrenner zulassen\n* Hinzugefügt Ukrainische Sprache",
-        "ru": "NodeJS 14.5 требуется\n\n* Разрешить пространства в текстовом сепараторе\n* Добавлен украинский язык",
-        "pt": "NodeJS 14.5 é necessário\n\n* Permitir espaços no separador de texto\n* Adicionado idioma ucraniano",
-        "nl": "NodeJS 14.5 is vereist\n\n♪ Vertaling:\n♪ Added Oekraïense taal",
-        "fr": "NodeJS 14.5 est nécessaire\n\n* Permettre des espaces dans le séparateur de texte\n* Ajout de la langue ukrainienne",
-        "it": "NodeJS 14.5 è richiesto\n\n# Permettere spazi nel separatore di testo\n* Aggiunto lingua ucraina",
-        "es": "NodeJS 14.5 es necesario\n\n* Permitir espacios en separador de texto\n* Lenguado ucraniano añadido",
-        "pl": "NodeJS 14,5\n\n* Przestrzenie w tekstach\nJęzyk ukraiński",
-        "uk": "NodeJS 14.5 необхідний\n\nІм'я * Дозволяє пробілів в текстовому сепараторі\n* Додано українську мову",
-        "zh-cn": "第14.5号申诉要求\n\n* A/64/50。 允许案文分离的空间\n* 增加乌克兰语"
       }
     },
     "titleLang": {

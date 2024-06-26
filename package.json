@@ -1,6 +1,6 @@
 {
   "name": "iobroker.birthdays",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Use an ical file to import your contacts birthdays",
   "author": {
     "name": "klein0r",

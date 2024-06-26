@@ -1,4 +1,9 @@
 # Older changes
+## 2.3.0 (2023-06-16)
+
+* (klein0r) Added JSON and count for each month
+* (klein0r) Added current age as text
+
 ## 2.2.2 (2023-05-01)
 
 * (klein0r) Warn if a birthday with the same name has already been added
