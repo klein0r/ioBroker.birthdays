@@ -46,6 +46,10 @@ iobroker add birthdays
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+
+* (@klein0r) Fixed value of nextWeekday in states
+
 ### 3.0.0 (2024-05-13)
 
 NodeJS >= 18.x and js-controller >= 5 is required

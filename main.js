@@ -676,11 +676,11 @@ class Birthdays extends utils.Adapter {
             },
             native: {},
         });
-        await this.setStateChangedAsync(`${path}.nextWeekday`, { val: birthdayObj.daysLeft, ack: true });
+        await this.setStateChangedAsync(`${path}.nextWeekday`, { val: birthday.weekday(0), ack: true });
     }
 
     getMonthPath(m) {
-        return 'month.' + new String(m).padStart(2, '0');
+        return `month.${String(m).padStart(2, '0')}`;
     }
 
     getMonthTranslation(moment, locale) {
