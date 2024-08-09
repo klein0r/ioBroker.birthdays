@@ -732,7 +732,7 @@ class Birthdays extends utils.Adapter {
         try {
             this.log.debug('cleaned everything up...');
             callback();
-        } catch (e) {
+        } catch {
             callback();
         }
     }
