@@ -46,6 +46,9 @@ iobroker add birthdays
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* (simatec) Responsive Design added
+
 ### 3.0.1 (2024-06-26)
 
 * (@klein0r) Fixed value of nextWeekday in states
