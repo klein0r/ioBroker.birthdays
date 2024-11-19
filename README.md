@@ -47,7 +47,9 @@ iobroker add birthdays
   ### **WORK IN PROGRESS**
 -->
 ### **WORK IN PROGRESS**
-* (simatec) Responsive Design added
+
+* (@simatec) Responsive Design added
+* (@klein0r) Updated dependencies
 
 ### 3.0.1 (2024-06-26)
 
