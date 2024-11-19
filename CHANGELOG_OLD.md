@@ -1,4 +1,8 @@
 # Older changes
+## 2.3.1 (2023-06-16)
+
+* (klein0r) Added current age text to JSON
+
 ## 2.3.0 (2023-06-16)
 
 * (klein0r) Added JSON and count for each month

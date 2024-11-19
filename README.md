@@ -46,7 +46,7 @@ iobroker add birthdays
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 3.1.0 (2024-11-19)
 
 * (@simatec) Responsive Design added
 * (@klein0r) Updated dependencies
@@ -70,10 +70,6 @@ NodeJS >= 18.x and js-controller >= 5 is required
 NodeJS 16.x is required
 
 * (klein0r) Added icons in admin tabs
-
-### 2.3.1 (2023-06-16)
-
-* (klein0r) Added current age text to JSON
 
 ## Credits
 

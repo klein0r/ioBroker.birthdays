@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "birthdays",
-    "version": "3.0.1",
+    "version": "3.1.0",
     "news": {
+      "3.1.0": {
+        "en": "Responsive Design added\nUpdated dependencies",
+        "de": "Responsive Design hinzugefügt\nAktualisierte Abhängigkeiten",
+        "ru": "Responsive Design\nОбновленные зависимости",
+        "pt": "Design responsivo adicionado\nDependências atualizadas",
+        "nl": "Responsive Design toegevoegd\nBijgewerkte afhankelijkheden",
+        "fr": "Design sensible ajouté\nDépendances actualisées",
+        "it": "Responsive Design aggiunto\nDipendenze aggiornate",
+        "es": "Diseño responsable añadido\nDependencias actualizadas",
+        "pl": "Dodano projekt odpowiedzialny\nAktualizacja zależności",
+        "uk": "Додано адаптивний дизайн\nОновлені залежності",
+        "zh-cn": "添加响应设计\n更新的依赖关系"
+      },
       "3.0.1": {
         "en": "Fixed value of nextWeekday in states",
         "de": "Korrigiert Wert von nextWeekday in Zuständen",
@@ -80,19 +93,6 @@
         "pl": "Dodany JSON i liczy każdego miesiąca\nDziedzinny wiek jako tekst",
         "uk": "Додано JSON і підрахунк на місяць\nДодано поточний вік як текст",
         "zh-cn": "增加联合协商会和每个月的计算\n增加目前年龄为案文"
-      },
-      "2.2.2": {
-        "en": "Warn if a birthday with the same name has already been added\nCode optimization",
-        "de": "Warnung, wenn bereits ein Geburtstag mit demselben Namen hinzugefügt wurde\nCodeoptimierung",
-        "ru": "Предупреждение, если день рождения с таким же названием уже добавлено\nОптимизация кода",
-        "pt": "Avise se um aniversário com o mesmo nome já foi adicionado\nOtimização de código",
-        "nl": "Als een verjaardag met dezelfde naam al is toegevoegd\nCode optimulatie",
-        "fr": "Warn si un anniversaire avec le même nom a déjà été ajouté\nOptimisation du code",
-        "it": "Avvertito se un compleanno con lo stesso nome è già stato aggiunto\nOttimizzazione del codice",
-        "es": "Aviso si un cumpleaños con el mismo nombre ya se ha añadido\nOptimización del código",
-        "pl": "Warn, jeśli urodziny z taką samą nazwą zostały już dodane\nOptymalizacja kodu",
-        "uk": "Війна, якщо на день народження з такою назвою вже додано\nОптимізація коду",
-        "zh-cn": "如果已经用同一名称添加了一出生日。\n守则的优化"
       }
     },
     "titleLang": {
