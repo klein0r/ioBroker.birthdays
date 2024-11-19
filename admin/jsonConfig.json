@@ -1,6 +1,9 @@
 {
     "i18n": true,
     "type": "tabs",
+    "tabsStyle": {
+        "width": "calc(100% - 100px)"
+    },
     "iconPosition": "top",
     "items": {
         "_options": {
@@ -11,35 +14,43 @@
                 "nextTextTemplate": {
                     "newLine": true,
                     "type": "text",
+                    "xs": 12,
                     "sm": 12,
                     "md": 6,
                     "lg": 6,
+                    "xl": 6,
                     "label": "text template (next)",
                     "help": "use %n for name and %a for age"
                 },
                 "nextSeparator": {
                     "type": "text",
                     "trim": false,
+                    "xs": 12,
                     "sm": 12,
                     "md": 6,
                     "lg": 6,
+                    "xl": 6,
                     "label": "next separator"
                 },
                 "currentAgeTemplate": {
                     "newLine": true,
                     "type": "text",
+                    "xs": 12,
                     "sm": 12,
                     "md": 6,
                     "lg": 6,
+                    "xl": 6,
                     "label": "current age template",
                     "help": "use %y for years, %m for months and %d for days"
                 },
                 "_ioBrokerKursBanner": {
                     "newLine": true,
                     "type": "staticImage",
+                    "xs": 12,
                     "sm": 12,
                     "md": 6,
                     "lg": 6,
+                    "xl": 6,
                     "href": "https://haus-automatisierung.com/iobroker-kurs/?refid=iobroker-birthdays",
                     "src": "https://haus-automatisierung.com/images/ads/ioBroker-Kurs.png"
                 }
@@ -52,34 +63,42 @@
             "items": {
                 "icalUrl": {
                     "type": "text",
+                    "xs": 12,
                     "sm": 12,
                     "md": 12,
                     "lg": 12,
+                    "xl": 12,
                     "label": "ical url or path"
                 },
                 "icalUser": {
                     "newLine": true,
                     "type": "text",
+                    "xs": 12,
                     "sm": 12,
                     "md": 6,
                     "lg": 6,
+                    "xl": 6,
                     "label": "ical username"
                 },
                 "icalPassword": {
                     "type": "password",
                     "repeat": false,
                     "visible": false,
+                    "xs": 12,
                     "sm": 12,
                     "md": 6,
                     "lg": 6,
+                    "xl": 6,
                     "label": "ical password"
                 },
                 "icalUrlIgnoreCertErrors": {
                     "newLine": true,
                     "type": "checkbox",
+                    "xs": 12,
                     "sm": 12,
                     "md": 6,
                     "lg": 6,
+                    "xl": 6,
                     "label": "ignore certificate errors"
                 }
             }
@@ -91,34 +110,42 @@
             "items": {
                 "carddavUrl": {
                     "type": "text",
+                    "xs": 12,
                     "sm": 12,
                     "md": 12,
                     "lg": 12,
+                    "xl": 12,
                     "label": "carddav url"
                 },
                 "carddavUser": {
                     "newLine": true,
                     "type": "text",
+                    "xs": 12,
                     "sm": 12,
                     "md": 6,
                     "lg": 6,
+                    "xl": 6,
                     "label": "carddav username"
                 },
                 "carddavPassword": {
                     "type": "password",
                     "repeat": false,
                     "visible": false,
+                    "xs": 12,
                     "sm": 12,
                     "md": 6,
                     "lg": 6,
+                    "xl": 6,
                     "label": "carddav password"
                 },
                 "carddavIgnoreCertErrors": {
                     "newLine": true,
                     "type": "checkbox",
+                    "xs": 12,
                     "sm": 12,
                     "md": 6,
                     "lg": 6,
+                    "xl": 6,
                     "label": "ignore certificate errors"
                 }
             }
@@ -130,9 +157,11 @@
             "items": {
                 "birthdays": {
                     "type": "table",
+                    "xs": 12,
                     "sm": 12,
                     "md": 12,
                     "lg": 12,
+                    "xl": 12,
                     "label": "birthdays",
                     "items": [
                         {
