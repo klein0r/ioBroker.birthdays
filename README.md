@@ -48,6 +48,8 @@ iobroker add birthdays
 -->
 ### **WORK IN PROGRESS**
 
+NodeJS >= 20.x and js-controller >= 6 is required
+
 * (@klein0r) Replace webcal url with http (for iCloud)
 
 ### 3.1.0 (2024-11-19)
