@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "birthdays",
-    "version": "3.1.0",
+    "version": "4.0.0",
     "news": {
+      "4.0.0": {
+        "en": "NodeJS >= 20.x and js-controller >= 6 is required\n\n* Replace webcal url with http (for iCloud)",
+        "de": "NodeJS >= 20.x und js-Controller >= 6 ist erforderlich\n\n* Ersetzen Sie Webcal URL mit http (für iCloud)",
+        "ru": "NodeJS >= 20.x и js-контроллер >= 6 Требуется\n\n* Заменить URL на http (для iCloud)",
+        "pt": "NodeJS >= 20.x e js-controller >= 6 é necessário\n\n* Substituir url webcal com http (para iCloud)",
+        "nl": "Van niet-gelegeerd staal 6 is vereist\n\n* Vervang webcal url door http (voor iCloud)",
+        "fr": "NodeJS >= 20.x et js-controller >= 6 est nécessaire\n\n* Remplacer l'url webcal par http (pour iCloud)",
+        "it": "NodeJS >= 20.x e js-controller >= 6 è richiesto\n\n* Sostituisci URL webcal con http (per iCloud)",
+        "es": "NodeJS ю= 20.x y js-controller Se requiere 6\n\n* Reemplace webcal url con http (para iCloud)",
+        "pl": "NodeJS > = 20 x i kontroler js- > = 6 jest wymagane\n\n* Zastąp url webcal http (dla iCloud)",
+        "uk": "NodeJS >= 20.x та js-controller >= 6 обов'язковий\n\n* Замінити URL-адресу веб-каль з http://www.facebook.com",
+        "zh-cn": "节点JS20x和js控制器QQ 需要6个\n\n* 将 Webcal url 替换为 http (用于 iCloud)"
+      },
       "3.1.0": {
         "en": "Responsive Design added\nUpdated dependencies",
         "de": "Responsive Design hinzugefügt\nAktualisierte Abhängigkeiten",
@@ -80,19 +93,6 @@
         "pl": "Aktualny tekst wieku",
         "uk": "Додано текст поточного віку до JSON",
         "zh-cn": "将目前的年龄案文提交联合协商会"
-      },
-      "2.3.0": {
-        "en": "Added JSON and count for each month\nAdded current age as text",
-        "de": "Hinzugefügt JSON und Zählen für jeden Monat\nAktuelles Alter als Text hinzugefügt",
-        "ru": "Добавил JSON и подсчитывал каждый месяц\nДобавлен текущий возраст как текст",
-        "pt": "Adicionado JSON e contagem para cada mês\nAdicionado idade atual como texto",
-        "nl": "_\nVertaling:",
-        "fr": "JSON ajouté et compter pour chaque mois\nAjout de l ' âge actuel au texte",
-        "it": "Aggiunto JSON e contare per ogni mese\nAggiunto l'età corrente come testo",
-        "es": "Añadido JSON y cuenta por cada mes\nEdad actual agregada como texto",
-        "pl": "Dodany JSON i liczy każdego miesiąca\nDziedzinny wiek jako tekst",
-        "uk": "Додано JSON і підрахунк на місяць\nДодано поточний вік як текст",
-        "zh-cn": "增加联合协商会和每个月的计算\n增加目前年龄为案文"
       }
     },
     "titleLang": {

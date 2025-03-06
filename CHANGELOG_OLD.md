@@ -1,4 +1,10 @@
 # Older changes
+## 2.4.0 (2023-10-25)
+
+NodeJS 16.x is required
+
+* (klein0r) Added icons in admin tabs
+
 ## 2.3.1 (2023-06-16)
 
 * (klein0r) Added current age text to JSON

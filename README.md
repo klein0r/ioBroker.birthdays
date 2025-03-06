@@ -46,7 +46,7 @@ iobroker add birthdays
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 4.0.0 (2025-03-06)
 
 NodeJS >= 20.x and js-controller >= 6 is required
 
@@ -70,12 +70,6 @@ NodeJS >= 18.x and js-controller >= 5 is required
 ### 2.4.1 (2023-10-30)
 
 * (klein0r) Added warnings if birthday event is not recurring
-
-### 2.4.0 (2023-10-25)
-
-NodeJS 16.x is required
-
-* (klein0r) Added icons in admin tabs
 
 ## Credits
 
