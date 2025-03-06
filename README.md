@@ -46,6 +46,10 @@ iobroker add birthdays
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+
+* (@klein0r) Replace webcal url with http (for iCloud)
+
 ### 3.1.0 (2024-11-19)
 
 * (@simatec) Responsive Design added

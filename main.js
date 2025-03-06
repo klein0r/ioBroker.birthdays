@@ -153,9 +153,13 @@ class Birthdays extends utils.Adapter {
 
     async addByCalendar() {
         return new Promise((resolve) => {
-            const iCalUrl = this.config.icalUrl;
+            let iCalUrl = this.config.icalUrl;
             if (iCalUrl) {
                 this.log.debug(`[ical] url/path: ${iCalUrl}`);
+
+                if (iCalUrl.startsWith('webcal')) {
+                    iCalUrl = iCalUrl.replace('webcal://', 'http://');
+                }
 
                 if (iCalUrl.startsWith('http')) {
                     this.log.debug('[ical] addByCalendar - looks like an http url, performing get request');
@@ -167,16 +171,7 @@ class Birthdays extends utils.Adapter {
                         httpsAgentOptions.rejectUnauthorized = false;
                     }
 
-                    axios({
-                        method: 'get',
-                        url: iCalUrl,
-                        timeout: 4500,
-                        httpsAgent: new https.Agent(httpsAgentOptions),
-                        auth: {
-                            username: this.config.icalUser,
-                            password: this.config.icalPassword,
-                        },
-                    })
+                    axios({ method: 'get', url: iCalUrl, timeout: 4500, httpsAgent: new https.Agent(httpsAgentOptions), auth: { username: this.config.icalUser, password: this.config.icalPassword } })
                         .then(async (response) => {
                             this.log.debug(`[ical] http(s) request finished with status: ${response.status}`);
                             let addedBirthdays = 0;
@@ -408,11 +403,11 @@ class Birthdays extends utils.Adapter {
         this.birthdaysSignificant.sort((a, b) => (a.daysLeft > b.daysLeft ? 1 : -1));
 
         this.log.debug(`[fillStates] birthdays: ${JSON.stringify(this.birthdays)}`);
-        await this.setStateAsync('summary.json', { val: JSON.stringify(this.birthdays, null, 2), ack: true });
-        await this.setStateAsync('summary.count', { val: this.birthdays.length, ack: true });
+        await this.setState('summary.json', { val: JSON.stringify(this.birthdays, null, 2), ack: true });
+        await this.setState('summary.count', { val: this.birthdays.length, ack: true });
 
         this.log.debug(`[fillStates] birthdays significant: ${JSON.stringify(this.birthdaysSignificant)}`);
-        await this.setStateAsync('summary.jsonSignificant', { val: JSON.stringify(this.birthdaysSignificant, null, 2), ack: true });
+        await this.setState('summary.jsonSignificant', { val: JSON.stringify(this.birthdaysSignificant, null, 2), ack: true });
 
         const keepBirthdays = [];
         const allBirthdays = (await this.getChannelsOfAsync('month'))
@@ -468,7 +463,7 @@ class Birthdays extends utils.Adapter {
             // get all birthdays with same month
             const monthlyBirthdays = this.birthdays.filter((birthday) => birthday._birthday.month() + 1 === m);
 
-            await this.setStateAsync(`${this.getMonthPath(m)}.json`, { val: JSON.stringify(monthlyBirthdays, null, 2), ack: true });
+            await this.setState(`${this.getMonthPath(m)}.json`, { val: JSON.stringify(monthlyBirthdays, null, 2), ack: true });
             await this.setStateChangedAsync(`${this.getMonthPath(m)}.count`, { val: monthlyBirthdays.length, ack: true });
         }
     }
@@ -482,7 +477,7 @@ class Birthdays extends utils.Adapter {
             return this.config.nextTextTemplate.replace('%n', birthday.name).replace('%a', birthday.age).trim();
         });
 
-        await this.setStateAsync(`${path}.json`, { val: JSON.stringify(nextBirthdays, null, 2), ack: true });
+        await this.setState(`${path}.json`, { val: JSON.stringify(nextBirthdays, null, 2), ack: true });
         await this.setStateChangedAsync(`${path}.daysLeft`, { val: daysLeft, ack: true });
         await this.setStateChangedAsync(`${path}.text`, { val: nextBirthdaysText.join(this.config.nextSeparator), ack: true });
 
