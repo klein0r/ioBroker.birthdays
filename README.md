@@ -46,6 +46,10 @@ iobroker add birthdays
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+
+* (@klein0r) Added option to use manually uploaded ical files
+
 ### 4.0.0 (2025-03-06)
 
 NodeJS >= 20.x and js-controller >= 6 is required

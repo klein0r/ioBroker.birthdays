@@ -25,6 +25,13 @@ class Birthdays extends utils.Adapter {
     }
 
     async onReady() {
+        const helpFilePath = '/UPLOAD_FILES_HERE.txt';
+        const fileExists = await this.fileExistsAsync(this.namespace, helpFilePath);
+
+        if (!fileExists) {
+            await this.writeFileAsync(this.namespace, helpFilePath, 'Place your *.ics files in this directory');
+        }
+
         // Create month channels
         for (let m = 1; m <= 12; m++) {
             const mm = moment({ month: m - 1 });
@@ -98,7 +105,7 @@ class Birthdays extends utils.Adapter {
             });
         }
 
-        Promise.all([this.addBySettings(), this.addByCalendar(), this.addByCardDav()])
+        Promise.all([this.addBySettings(), this.addByCalendarUrl(), this.addByCalendarFile(), this.addByCardDav()])
             .then((data) => {
                 this.log.debug(`[onReady] everything collected: ${JSON.stringify(data)}`);
 
@@ -151,7 +158,13 @@ class Birthdays extends utils.Adapter {
         });
     }
 
-    async addByCalendar() {
+    async addByCalendarFile() {
+        return new Promise((resolve) => {
+            resolve(0);
+        });
+    }
+
+    async addByCalendarUrl() {
         return new Promise((resolve) => {
             let iCalUrl = this.config.icalUrl;
             if (iCalUrl) {
@@ -162,12 +175,12 @@ class Birthdays extends utils.Adapter {
                 }
 
                 if (iCalUrl.startsWith('http')) {
-                    this.log.debug('[ical] addByCalendar - looks like an http url, performing get request');
+                    this.log.debug('[ical] addByCalendarUrl - looks like an http url, performing get request');
 
                     const httpsAgentOptions = {};
 
                     if (this.config.icalUrlIgnoreCertErrors) {
-                        this.log.debug('[ical] addByCalendar - performing https requests with rejectUnauthorized = false');
+                        this.log.debug('[ical] addByCalendarUrl - performing https requests with rejectUnauthorized = false');
                         httpsAgentOptions.rejectUnauthorized = false;
                     }
 
@@ -177,7 +190,7 @@ class Birthdays extends utils.Adapter {
                             let addedBirthdays = 0;
 
                             if (response.data) {
-                                this.log.silly(`[ical] addByCalendar - received file contents: ${response.data}`);
+                                this.log.silly(`[ical] addByCalendarUrl - received file contents: ${response.data}`);
 
                                 addedBirthdays = await this.addByIcalData(response.data);
                             }
@@ -191,12 +204,12 @@ class Birthdays extends utils.Adapter {
                         });
                 } else {
                     try {
-                        this.log.debug('[ical] addByCalendar - try to load local file');
+                        this.log.debug('[ical] addByCalendarUrl - try to load local file');
 
                         // local file
                         if (fs.existsSync(iCalUrl)) {
                             const data = fs.readFileSync(iCalUrl).toString();
-                            this.log.silly(`[ical] addByCalendar - loaded file contents: ${data}`);
+                            this.log.silly(`[ical] addByCalendarUrl - loaded file contents: ${data}`);
 
                             this.addByIcalData(data).then((addedBirthdays) => {
                                 resolve(addedBirthdays);
@@ -733,7 +746,7 @@ class Birthdays extends utils.Adapter {
     }
 }
 
-// @ts-ignore parent is a valid property on module
+// @ts-expect-error parent is a valid property on module
 if (module.parent) {
     // Export the constructor in compact mode
     /**
