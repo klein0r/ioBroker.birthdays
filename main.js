@@ -106,12 +106,14 @@ class Birthdays extends utils.Adapter {
         }
 
         Promise.all([this.addBySettings(), this.addByCalendarUrl(), this.addByCalendarFile(), this.addByCardDav()])
-            .then((data) => {
+            .then(data => {
                 this.log.debug(`[onReady] everything collected: ${JSON.stringify(data)}`);
 
                 const addedBirthdaysSum = data.reduce((pv, cv) => pv + cv, 0);
                 if (addedBirthdaysSum === 0) {
-                    this.log.error(`No birthdays found in any configured source - please check configuration and retry`);
+                    this.log.error(
+                        `No birthdays found in any configured source - please check configuration and retry`,
+                    );
                 }
 
                 return this.fillStates();
@@ -119,7 +121,7 @@ class Birthdays extends utils.Adapter {
             .then(() => {
                 this.log.debug(`[onReady] Everything done`);
             })
-            .catch((err) => {
+            .catch(err => {
                 this.log.error(`[onReady] Error: ${JSON.stringify(err)}`);
             })
             .finally(() => {
@@ -129,7 +131,7 @@ class Birthdays extends utils.Adapter {
     }
 
     async addBySettings() {
-        return new Promise((resolve) => {
+        return new Promise(resolve => {
             const birthdays = this.config.birthdays;
             let addedBirthdays = 0;
 
@@ -138,7 +140,11 @@ class Birthdays extends utils.Adapter {
                     const birthday = birthdays[b];
 
                     if (birthday.name) {
-                        const configBirthday = moment({ year: birthday.year, month: birthday.month - 1, day: birthday.day });
+                        const configBirthday = moment({
+                            year: birthday.year,
+                            month: birthday.month - 1,
+                            day: birthday.day,
+                        });
 
                         if (configBirthday.isValid() && configBirthday.year() <= this.today.year()) {
                             this.log.debug(`[settings] found birthday: ${birthday.name} (${birthday.year})`);
@@ -159,13 +165,13 @@ class Birthdays extends utils.Adapter {
     }
 
     async addByCalendarFile() {
-        return new Promise((resolve) => {
+        return new Promise(resolve => {
             resolve(0);
         });
     }
 
     async addByCalendarUrl() {
-        return new Promise((resolve) => {
+        return new Promise(resolve => {
             let iCalUrl = this.config.icalUrl;
             if (iCalUrl) {
                 this.log.debug(`[ical] url/path: ${iCalUrl}`);
@@ -180,12 +186,20 @@ class Birthdays extends utils.Adapter {
                     const httpsAgentOptions = {};
 
                     if (this.config.icalUrlIgnoreCertErrors) {
-                        this.log.debug('[ical] addByCalendarUrl - performing https requests with rejectUnauthorized = false');
+                        this.log.debug(
+                            '[ical] addByCalendarUrl - performing https requests with rejectUnauthorized = false',
+                        );
                         httpsAgentOptions.rejectUnauthorized = false;
                     }
 
-                    axios({ method: 'get', url: iCalUrl, timeout: 4500, httpsAgent: new https.Agent(httpsAgentOptions), auth: { username: this.config.icalUser, password: this.config.icalPassword } })
-                        .then(async (response) => {
+                    axios({
+                        method: 'get',
+                        url: iCalUrl,
+                        timeout: 4500,
+                        httpsAgent: new https.Agent(httpsAgentOptions),
+                        auth: { username: this.config.icalUser, password: this.config.icalPassword },
+                    })
+                        .then(async response => {
                             this.log.debug(`[ical] http(s) request finished with status: ${response.status}`);
                             let addedBirthdays = 0;
 
@@ -197,7 +211,7 @@ class Birthdays extends utils.Adapter {
 
                             resolve(addedBirthdays);
                         })
-                        .catch((error) => {
+                        .catch(error => {
                             this.log.warn(`[ical] ${error}`);
                             this.log.debug(`[ical] done with error`);
                             resolve(0);
@@ -211,7 +225,7 @@ class Birthdays extends utils.Adapter {
                             const data = fs.readFileSync(iCalUrl).toString();
                             this.log.silly(`[ical] addByCalendarUrl - loaded file contents: ${data}`);
 
-                            this.addByIcalData(data).then((addedBirthdays) => {
+                            this.addByIcalData(data).then(addedBirthdays => {
                                 resolve(addedBirthdays);
                             });
                         } else {
@@ -231,7 +245,7 @@ class Birthdays extends utils.Adapter {
     }
 
     async addByIcalData(dataStr) {
-        return new Promise((resolve) => {
+        return new Promise(resolve => {
             let addedBirthdays = 0;
 
             try {
@@ -249,19 +263,29 @@ class Birthdays extends utils.Adapter {
                         const name = event.summary;
                         const birthYear = parseInt(event.description);
 
-                        this.log.debug(`[ical] processing event: ${JSON.stringify(event)} - ${event.isRecurring() ? Object.keys(event.getRecurrenceTypes()) : 'not recurring!'}`);
+                        this.log.debug(
+                            `[ical] processing event: ${JSON.stringify(event)} - ${event.isRecurring() ? Object.keys(event.getRecurrenceTypes()) : 'not recurring!'}`,
+                        );
 
                         if (name && birthYear && !isNaN(birthYear)) {
                             const startDate = event.startDate.toJSDate();
-                            const calendarBirthday = moment({ year: birthYear, month: startDate.getMonth(), day: startDate.getDate() });
+                            const calendarBirthday = moment({
+                                year: birthYear,
+                                month: startDate.getMonth(),
+                                day: startDate.getDate(),
+                            });
 
                             if (calendarBirthday.isValid() && calendarBirthday.year() <= this.today.year()) {
                                 this.log.debug(`[ical] found birthday: ${name} (${birthYear})`);
 
                                 if (!event.isRecurring()) {
-                                    this.log.info(`[ical] birthday event of ${name} is not defined as recurring - skipped: ${JSON.stringify(event)}`);
+                                    this.log.info(
+                                        `[ical] birthday event of ${name} is not defined as recurring - skipped: ${JSON.stringify(event)}`,
+                                    );
                                 } else if (!Object.keys(event.getRecurrenceTypes()).includes('YEARLY')) {
-                                    this.log.info(`[ical] birthday event of ${name} is not recurring yearly - skipped: ${JSON.stringify(event)}`);
+                                    this.log.info(
+                                        `[ical] birthday event of ${name} is not recurring yearly - skipped: ${JSON.stringify(event)}`,
+                                    );
                                 } else if (this.addBirthday(name, calendarBirthday)) {
                                     // everything okay, add it
                                     addedBirthdays++;
@@ -285,7 +309,7 @@ class Birthdays extends utils.Adapter {
     }
 
     async addByCardDav() {
-        return new Promise((resolve) => {
+        return new Promise(resolve => {
             const carddavUrl = this.config.carddavUrl;
             if (carddavUrl) {
                 this.log.debug(`[carddav] url: ${carddavUrl}`);
@@ -293,7 +317,9 @@ class Birthdays extends utils.Adapter {
                 const httpsAgentOptions = {};
 
                 if (this.config.carddavIgnoreCertErrors) {
-                    this.log.debug('[carddav] addByCardDav - performing https requests with rejectUnauthorized = false');
+                    this.log.debug(
+                        '[carddav] addByCardDav - performing https requests with rejectUnauthorized = false',
+                    );
                     httpsAgentOptions.rejectUnauthorized = false;
                 }
 
@@ -307,7 +333,7 @@ class Birthdays extends utils.Adapter {
                         password: this.config.carddavPassword,
                     },
                 })
-                    .then((response) => {
+                    .then(response => {
                         this.log.debug(`[carddav] http(s) request finished with status: ${response.status}`);
                         let addedBirthdays = 0;
 
@@ -345,7 +371,7 @@ class Birthdays extends utils.Adapter {
                         this.log.debug(`[carddav] done`);
                         resolve(addedBirthdays);
                     })
-                    .catch((error) => {
+                    .catch(error => {
                         this.log.warn(`[carddav] ${error}`);
                         this.log.debug(`[carddav] done with error`);
                         resolve(0);
@@ -363,9 +389,11 @@ class Birthdays extends utils.Adapter {
      * @returns {boolean} Added
      */
     addBirthday(name, birthday) {
-        const birthdaysSameName = this.birthdays.find((b) => b.name === name);
+        const birthdaysSameName = this.birthdays.find(b => b.name === name);
         if (birthdaysSameName) {
-            this.log.warn(`[addBirthday] birthday with name "${name}" has already been added (${birthdaysSameName.dateFormat}) - skipping`);
+            this.log.warn(
+                `[addBirthday] birthday with name "${name}" has already been added (${birthdaysSameName.dateFormat}) - skipping`,
+            );
             return false;
         }
 
@@ -420,14 +448,17 @@ class Birthdays extends utils.Adapter {
         await this.setState('summary.count', { val: this.birthdays.length, ack: true });
 
         this.log.debug(`[fillStates] birthdays significant: ${JSON.stringify(this.birthdaysSignificant)}`);
-        await this.setState('summary.jsonSignificant', { val: JSON.stringify(this.birthdaysSignificant, null, 2), ack: true });
+        await this.setState('summary.jsonSignificant', {
+            val: JSON.stringify(this.birthdaysSignificant, null, 2),
+            ack: true,
+        });
 
         const keepBirthdays = [];
         const allBirthdays = (await this.getChannelsOfAsync('month'))
-            .map((obj) => {
+            .map(obj => {
                 return this.removeNamespace(obj._id);
             })
-            .filter((id) => new RegExp('month.[0-9]{2}..+', 'g').test(id));
+            .filter(id => new RegExp('month.[0-9]{2}..+', 'g').test(id));
 
         for (const birthdayObj of this.birthdays) {
             const cleanName = this.cleanNamespace(birthdayObj.name);
@@ -456,7 +487,7 @@ class Birthdays extends utils.Adapter {
 
             await this.fillAfter('next', this.birthdays, nextBirthdayDaysLeft);
 
-            const nextAfterBirthdaysList = this.birthdays.filter((birthday) => birthday.daysLeft > nextBirthdayDaysLeft);
+            const nextAfterBirthdaysList = this.birthdays.filter(birthday => birthday.daysLeft > nextBirthdayDaysLeft);
             if (nextAfterBirthdaysList.length > 0) {
                 const nextAfterBirthdaysLeft = nextAfterBirthdaysList[0].daysLeft;
 
@@ -474,30 +505,42 @@ class Birthdays extends utils.Adapter {
         // fill month json
         for (let m = 1; m <= 12; m++) {
             // get all birthdays with same month
-            const monthlyBirthdays = this.birthdays.filter((birthday) => birthday._birthday.month() + 1 === m);
+            const monthlyBirthdays = this.birthdays.filter(birthday => birthday._birthday.month() + 1 === m);
 
-            await this.setState(`${this.getMonthPath(m)}.json`, { val: JSON.stringify(monthlyBirthdays, null, 2), ack: true });
-            await this.setStateChangedAsync(`${this.getMonthPath(m)}.count`, { val: monthlyBirthdays.length, ack: true });
+            await this.setState(`${this.getMonthPath(m)}.json`, {
+                val: JSON.stringify(monthlyBirthdays, null, 2),
+                ack: true,
+            });
+            await this.setStateChangedAsync(`${this.getMonthPath(m)}.count`, {
+                val: monthlyBirthdays.length,
+                ack: true,
+            });
         }
     }
 
     async fillAfter(path, birthdays, daysLeft) {
         this.log.debug(`[fillAfter] filling ${path} with ${daysLeft} days left`);
 
-        const nextBirthdays = birthdays.filter((birthday) => birthday.daysLeft == daysLeft); // get all birthdays with same days left
+        const nextBirthdays = birthdays.filter(birthday => birthday.daysLeft == daysLeft); // get all birthdays with same days left
 
-        const nextBirthdaysText = nextBirthdays.map((birthday) => {
+        const nextBirthdaysText = nextBirthdays.map(birthday => {
             return this.config.nextTextTemplate.replace('%n', birthday.name).replace('%a', birthday.age).trim();
         });
 
         await this.setState(`${path}.json`, { val: JSON.stringify(nextBirthdays, null, 2), ack: true });
         await this.setStateChangedAsync(`${path}.daysLeft`, { val: daysLeft, ack: true });
-        await this.setStateChangedAsync(`${path}.text`, { val: nextBirthdaysText.join(this.config.nextSeparator), ack: true });
+        await this.setStateChangedAsync(`${path}.text`, {
+            val: nextBirthdaysText.join(this.config.nextSeparator),
+            ack: true,
+        });
 
         const birthdayDate = moment().set({ hour: 0, minute: 0, second: 0 }).add(daysLeft, 'days');
 
         await this.setStateChangedAsync(`${path}.date`, { val: birthdayDate.valueOf(), ack: true });
-        await this.setStateChangedAsync(`${path}.dateFormat`, { val: this.formatDate(birthdayDate.toDate()), ack: true });
+        await this.setStateChangedAsync(`${path}.dateFormat`, {
+            val: this.formatDate(birthdayDate.toDate()),
+            ack: true,
+        });
     }
 
     async fillPathWithBirthday(path, birthdayObj) {
@@ -729,7 +772,7 @@ class Birthdays extends utils.Adapter {
     }
 
     removeNamespace(id) {
-        const re = new RegExp(this.namespace + '*\\.', 'g');
+        const re = new RegExp(`${this.namespace}*\\.`, 'g');
         return id.replace(re, '');
     }
 
@@ -750,9 +793,9 @@ class Birthdays extends utils.Adapter {
 if (module.parent) {
     // Export the constructor in compact mode
     /**
-     * @param {Partial<utils.AdapterOptions>} [options={}]
+     * @param {Partial<utils.AdapterOptions>} [options]
      */
-    module.exports = (options) => new Birthdays(options);
+    module.exports = options => new Birthdays(options);
 } else {
     // otherwise start the instance directly
     new Birthdays();
