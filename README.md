@@ -49,6 +49,7 @@ iobroker add birthdays
 ### **WORK IN PROGRESS**
 
 * (@klein0r) Added option to use manually uploaded ical files
+* (@klein0r) admin 7.6.17 and js-controller 6.0.11 (or later) are required
 
 ### 4.0.0 (2025-03-06)
 
