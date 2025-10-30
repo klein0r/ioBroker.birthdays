@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "birthdays",
-    "version": "4.0.0",
+    "version": "5.0.0",
     "news": {
+      "5.0.0": {
+        "en": "Added option to use manually uploaded ical files\nadmin 7.6.17 and js-controller 6.0.11 (or later) are required",
+        "de": "Option hinzugefügt, um manuell hochgeladene ical Dateien zu verwenden\nadmin 7.6.17 und js-controller 6.0.11 (oder später) sind erforderlich",
+        "ru": "Добавлена возможность использовать вручную загруженные ical файлы\nadmin 7.6.17 и js-контроллер 6.0.11 (или более поздние)",
+        "pt": "Adicionada opção para usar arquivos ical enviados manualmente\nadmin 7.6.17 e js-controller 6.0.11 (ou posterior) são necessários",
+        "nl": "Toegevoegd optie om handmatig geüploade ical bestanden te gebruiken\nadmin 7.6.17 en js-controller 6.0.11 (of later) zijn vereist",
+        "fr": "Ajout d'une option pour utiliser des fichiers ical téléchargés manuellement\nadmin 7.6.17 et js-contrôleur 6.0.11 (ou plus tard) sont requis",
+        "it": "Aggiunta opzione per utilizzare manualmente i file ical caricati\nadmin 7.6.17 e js-controller 6.0.11 (o successivo) sono richiesti",
+        "es": "Opción adicional para utilizar archivos icales cargados manualmente\nadmin 7.6.17 y js-controller 6.0.11 (o posterior) son necesarios",
+        "pl": "Dodano opcję do używania ręcznie przesłanych plików icznych\nwymagany jest admin 7.6.17 i kontroler js- 6.0.11 (lub późniejszy)",
+        "uk": "Додана можливість використовувати вручну завантажені файли\nadmin 7.6.17 та js-controller 6.0.11 (або пізніше) обов’язкові",
+        "zh-cn": "添加到手动上传的 ical 文件的选项\n需要admin 7.6.17和js控制器 6.0.11(或以后)"
+      },
       "4.0.0": {
         "en": "NodeJS >= 20.x and js-controller >= 6 is required\n\n* Replace webcal url with http (for iCloud)",
         "de": "NodeJS >= 20.x und js-Controller >= 6 ist erforderlich\n\n* Ersetzen Sie Webcal URL mit http (für iCloud)",
@@ -80,19 +93,6 @@
         "pl": "NodeJS 16 (ang.)\n\n* Added icons in admin tabs",
         "uk": "NodeJS 16.x обов'язковий\n\n* Додано іконки в вкладках адміністратора",
         "zh-cn": "不需要16.JS16x。\n\n* 括号内增列图"
-      },
-      "2.3.1": {
-        "en": "Added current age text to JSON",
-        "de": "Hinzugefügt aktueller Alterstext zu JSON",
-        "ru": "Добавлен текст текущего возраста в JSON",
-        "pt": "Adicionado texto de idade atual para JSON",
-        "nl": "Vermeldde de huidige leeftijds-sms naar JSON",
-        "fr": "Ajout du texte d'âge courant à JSON",
-        "it": "Aggiunto il testo attuale dell'età a JSON",
-        "es": "Texto de la edad actual añadido a JSON",
-        "pl": "Aktualny tekst wieku",
-        "uk": "Додано текст поточного віку до JSON",
-        "zh-cn": "将目前的年龄案文提交联合协商会"
       }
     },
     "titleLang": {

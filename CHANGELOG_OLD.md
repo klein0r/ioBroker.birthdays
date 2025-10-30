@@ -1,4 +1,8 @@
 # Older changes
+## 2.4.1 (2023-10-30)
+
+* (klein0r) Added warnings if birthday event is not recurring
+
 ## 2.4.0 (2023-10-25)
 
 NodeJS 16.x is required
