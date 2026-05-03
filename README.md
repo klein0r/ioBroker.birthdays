@@ -76,6 +76,8 @@ NodeJS >= 18.x and js-controller >= 5 is required
 
 * (klein0r) Skipping invalid ical events (e.g. not recurring yearly)
 
+[Older changelogs can be found there](CHANGELOG_OLD.md)
+
 ## Credits
 
 [Logo by herbanu](https://pixabay.com/de/vectors/geburtstag-karte-cele-feier-design-3148707/)
