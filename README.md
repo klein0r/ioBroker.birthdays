@@ -46,6 +46,10 @@ iobroker add birthdays
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+
+* (@klein0r) admin 7.6.20 and js-controller 6.0.11 (or later) are required
+
 ### 6.0.0 (2026-05-05)
 
 * (copilot) Adapter requires node.js >= 22 now
@@ -79,7 +83,7 @@ NodeJS >= 20.x and js-controller >= 6 is required
 
 The MIT License (MIT)
 
-Copyright (c) 2025-2026 Matthias Kleine <info@haus-automatisierung.com>
+Copyright (c) 2026 Matthias Kleine <info@haus-automatisierung.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
