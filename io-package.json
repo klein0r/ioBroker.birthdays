@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "birthdays",
-    "version": "5.0.0",
+    "version": "6.0.0",
     "news": {
+      "6.0.0": {
+        "en": "Adapter requires node.js >= 22 now\nUpdated dependencies",
+        "de": "Adapter benötigt node.js >= 22 jetzt\nAktualisierte Abhängigkeiten",
+        "ru": "Адаптер требует node.js >= 22 сейчас\nОбновленные зависимости",
+        "pt": "Adaptador requer nod.js >= 22 agora\nDependências atualizadas",
+        "nl": "Voor de adapter zijn node.js < 22 nu nodig\nBijgewerkte afhankelijkheden",
+        "fr": "Adaptateur nécessite node.js >= 22 maintenant\nDépendances actualisées",
+        "it": "Adattatore richiede node.js >= 22 ora\nDipendenze aggiornate",
+        "es": "Adaptador requiere node.js ю= 22 ahora\nDependencias actualizadas",
+        "pl": "Adapter wymaga node.js > = 22\nAktualizacja zależności",
+        "uk": "Адаптер вимагає node.js >= 22 тепер\nОновлені залежності",
+        "zh-cn": "适配器需要节点.js 现在22\n更新的依赖关系"
+      },
       "5.0.0": {
         "en": "Added option to use manually uploaded ical files\nadmin 7.6.17 and js-controller 6.0.11 (or later) are required",
         "de": "Option hinzugefügt, um manuell hochgeladene ical Dateien zu verwenden\nadmin 7.6.17 und js-controller 6.0.11 (oder später) sind erforderlich",
@@ -80,19 +93,6 @@
         "pl": "Oświadczenie, czy impreza urodzinowa nie jest powtarzana",
         "uk": "Додано попередження, якщо подія дня народження не повторюється",
         "zh-cn": "如果出生日事件不再发生,添加警告"
-      },
-      "2.4.0": {
-        "en": "NodeJS 16.x is required\n\n* Added icons in admin tabs",
-        "de": "NodeJS 16.x ist erforderlich\n\n* Icons in Admin-Tabs hinzugefügt",
-        "ru": "NodeJS 16.x требуется\n\n* Добавлены иконки в админ табы",
-        "pt": "NodeJS 16.x é necessário\n\n* Ícones adicionados em guias admin",
-        "nl": "NodeJS 16.x is vereist\n\n♪ Added icons in admin tabs ♪",
-        "fr": "NodeJS 16.x est nécessaire\n\n* Ajout d'icônes dans les onglets d'administration",
-        "it": "NodeJS 16.x è richiesto\n\n* Aggiunte le icone nelle schede di amministrazione",
-        "es": "NodeJS 16.x es necesario\n\n* iconos añadidos en pestañas de administración",
-        "pl": "NodeJS 16 (ang.)\n\n* Added icons in admin tabs",
-        "uk": "NodeJS 16.x обов'язковий\n\n* Додано іконки в вкладках адміністратора",
-        "zh-cn": "不需要16.JS16x。\n\n* 括号内增列图"
       }
     },
     "titleLang": {
