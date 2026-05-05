@@ -75,6 +75,8 @@ NodeJS >= 20.x and js-controller >= 6 is required
 
 * (@klein0r) Fixed value of nextWeekday in states
 
+[Older changelogs can be found there](CHANGELOG_OLD.md)
+
 ## Credits
 
 [Logo by herbanu](https://pixabay.com/de/vectors/geburtstag-karte-cele-feier-design-3148707/)
