@@ -46,7 +46,7 @@ iobroker add birthdays
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 6.0.0 (2026-05-05)
 
 * (copilot) Adapter requires node.js >= 22 now
 * (@klein0r) Updated dependencies
@@ -70,14 +70,6 @@ NodeJS >= 20.x and js-controller >= 6 is required
 ### 3.0.1 (2024-06-26)
 
 * (@klein0r) Fixed value of nextWeekday in states
-
-### 3.0.0 (2024-05-13)
-
-NodeJS >= 18.x and js-controller >= 5 is required
-
-* (klein0r) Skipping invalid ical events (e.g. not recurring yearly)
-
-[Older changelogs can be found there](CHANGELOG_OLD.md)
 
 ## Credits
 
