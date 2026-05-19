@@ -46,6 +46,10 @@ iobroker add birthdays
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+
+* (@klein0r) Increased axios timeout to 30 seconds (for large files)
+
 ### 6.0.1 (2026-05-19)
 
 * (@klein0r) admin 7.6.20 and js-controller 6.0.11 (or later) are required

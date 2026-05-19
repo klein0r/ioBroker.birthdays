@@ -195,7 +195,7 @@ class Birthdays extends utils.Adapter {
                     axios({
                         method: 'get',
                         url: iCalUrl,
-                        timeout: 4500,
+                        timeout: 30000,
                         httpsAgent: new https.Agent(httpsAgentOptions),
                         auth: { username: this.config.icalUser, password: this.config.icalPassword },
                     })
@@ -326,7 +326,7 @@ class Birthdays extends utils.Adapter {
                 axios({
                     method: 'get',
                     url: carddavUrl,
-                    timeout: 4500,
+                    timeout: 30000,
                     httpsAgent: new https.Agent(httpsAgentOptions),
                     auth: {
                         username: this.config.carddavUser,
