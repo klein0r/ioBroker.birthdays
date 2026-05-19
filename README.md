@@ -46,7 +46,7 @@ iobroker add birthdays
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 6.0.1 (2026-05-19)
 
 * (@klein0r) admin 7.6.20 and js-controller 6.0.11 (or later) are required
 
@@ -71,13 +71,7 @@ NodeJS >= 20.x and js-controller >= 6 is required
 * (@simatec) Responsive Design added
 * (@klein0r) Updated dependencies
 
-### 3.0.1 (2024-06-26)
-
-* (@klein0r) Fixed value of nextWeekday in states
-
-[Older changelogs can be found there](CHANGELOG_OLD.md)
-
-## Credits
+[Older changelogs can be found there](CHANGELOG_OLD.md)## Credits
 
 [Logo by herbanu](https://pixabay.com/de/vectors/geburtstag-karte-cele-feier-design-3148707/)
 

@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "birthdays",
-    "version": "6.0.0",
+    "version": "6.0.1",
     "news": {
+      "6.0.1": {
+        "en": "admin 7.6.20 and js-controller 6.0.11 (or later) are required",
+        "de": "admin 7.6.20 und js-controller 6.0.11 (oder später) sind erforderlich",
+        "ru": "admin 7.6.20 и js-контроллер 6.0.11 (или более поздний)",
+        "pt": "admin 7.6.20 e js-controller 6.0.11 (ou posterior) são necessários",
+        "nl": "admin 7.6.20 en js-controller 6.0.11 (of later) zijn vereist",
+        "fr": "admin 7.6.20 et js-controller 6.0.11 (ou plus tard) sont requis",
+        "it": "admin 7.6.20 e js-controller 6.0.11 (o più tardi) sono richiesti",
+        "es": "admin 7.6.20 y js-controller 6.0.11 (o posterior) son necesarios",
+        "pl": "wymagane jest admin 7.6.20 i js- controller 6.0.11 (lub później)",
+        "uk": "admin 7.6.20 і js-controller 6.0.11 (або пізніше) обов'язкові",
+        "zh-cn": "需要admin 7.6.20和js控制器 6.0.11(或以后)"
+      },
       "6.0.0": {
         "en": "Adapter requires node.js >= 22 now\nUpdated dependencies",
         "de": "Adapter benötigt node.js >= 22 jetzt\nAktualisierte Abhängigkeiten",
@@ -80,19 +93,6 @@
         "pl": "NodeJS > = 18.x i kontroler js- > = 5 jest wymagane\n\n* Pominięcie błędnych zdarzeń icznych (np. nie powtarzających się corocznie)",
         "uk": "NodeJS >= 18.x та js-controller >= 5 обов'язково\n\n* Скопіювати недійсні заходи (наприклад, не відхиляти рік)",
         "zh-cn": "节点JS18x和js控制器QQ 需要5个\n\n* 跳过无效的事件(例如每年不重复)"
-      },
-      "2.4.1": {
-        "en": "Added warnings if birthday event is not recurring",
-        "de": "Warnungen hinzugefügt, wenn Geburtstagsereignis nicht wiederkehrend ist",
-        "ru": "Добавлены предупреждения, если событие дня рождения не повторяется",
-        "pt": "Adicionado avisos se evento de aniversário não é recorrente",
-        "nl": "Vertaling:",
-        "fr": "Avertissements ajoutés si l'événement d'anniversaire n'est pas récurrent",
-        "it": "Aggiunti avvisi se l'evento di compleanno non è ricorrente",
-        "es": "Advertencias adicionales si el evento de cumpleaños no es recurrente",
-        "pl": "Oświadczenie, czy impreza urodzinowa nie jest powtarzana",
-        "uk": "Додано попередження, якщо подія дня народження не повторюється",
-        "zh-cn": "如果出生日事件不再发生,添加警告"
       }
     },
     "titleLang": {

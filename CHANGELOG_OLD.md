@@ -1,4 +1,8 @@
 # Older changes
+## 3.0.1 (2024-06-26)
+
+* (@klein0r) Fixed value of nextWeekday in states
+
 ## 3.0.0 (2024-05-13)
 
 NodeJS >= 18.x and js-controller >= 5 is required
