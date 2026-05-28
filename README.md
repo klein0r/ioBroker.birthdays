@@ -46,7 +46,7 @@ iobroker add birthdays
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 6.1.0 (2026-05-28)
 
 * (@klein0r) Increased axios timeout to 30 seconds (for large files)
 
@@ -69,15 +69,6 @@ iobroker add birthdays
 NodeJS >= 20.x and js-controller >= 6 is required
 
 * (@klein0r) Replace webcal url with http (for iCloud)
-
-### 3.1.0 (2024-11-19)
-
-* (@simatec) Responsive Design added
-* (@klein0r) Updated dependencies
-
-[Older changelogs can be found there](CHANGELOG_OLD.md)## Credits
-
-[Logo by herbanu](https://pixabay.com/de/vectors/geburtstag-karte-cele-feier-design-3148707/)
 
 ## License
 

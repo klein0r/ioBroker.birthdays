@@ -1,4 +1,13 @@
 # Older changes
+## 3.1.0 (2024-11-19)
+
+* (@simatec) Responsive Design added
+* (@klein0r) Updated dependencies
+
+[Older changelogs can be found there](CHANGELOG_OLD.md)## Credits
+
+[Logo by herbanu](https://pixabay.com/de/vectors/geburtstag-karte-cele-feier-design-3148707/)
+
 ## 3.0.1 (2024-06-26)
 
 * (@klein0r) Fixed value of nextWeekday in states

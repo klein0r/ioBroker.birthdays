@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "birthdays",
-    "version": "6.0.1",
+    "version": "6.1.0",
     "news": {
+      "6.1.0": {
+        "en": "Increased axios timeout to 30 seconds (for large files)",
+        "de": "Erhöhte Axios Timeout auf 30 Sekunden (für große Dateien)",
+        "ru": "Увеличение тайм-аута до 30 секунд (для больших файлов)",
+        "pt": "Aumento do tempo- limite de axios para 30 segundos (para arquivos grandes)",
+        "nl": "Verhoogde timeout van axio's tot 30 seconden (voor grote bestanden)",
+        "fr": "Augmentation du délai d'axios à 30 secondes (pour les grands fichiers)",
+        "it": "Aumento del timeout assio a 30 secondi (per file di grandi dimensioni)",
+        "es": "Aumento del tiempo de axios a 30 segundos (para archivos grandes)",
+        "pl": "Zwiększony czas Axios do 30 sekund (dla dużych plików)",
+        "uk": "Збільшення часу аксіосу до 30 секунд (для великих файлів)",
+        "zh-cn": "Axios 超时时间增加到 30 秒( 大文件)"
+      },
       "6.0.1": {
         "en": "admin 7.6.20 and js-controller 6.0.11 (or later) are required",
         "de": "admin 7.6.20 und js-controller 6.0.11 (oder später) sind erforderlich",
@@ -80,19 +93,6 @@
         "pl": "Wartość stała następnego tygodnia w stanach",
         "uk": "Фіксована вартість наступногоподії в штатах",
         "zh-cn": "各州下一周的固定值"
-      },
-      "3.0.0": {
-        "en": "NodeJS >= 18.x and js-controller >= 5 is required\n\n* Skipping invalid ical events (e.g. not recurring yearly)",
-        "de": "NodeJS >= 18.x und js-Controller >= 5 ist erforderlich\n\n* Invalide Ereignisse (z.B. nicht jährlich wiederkehrend)",
-        "ru": "NodeJS >= 18.x и js-контроллер >= 5 требуется\n\n* Неправильные события (например, не повторяющиеся ежегодно)",
-        "pt": "NodeJS >= 18.x e js-controller >= 5 é necessário\n\n* Passando eventos ical inválidos (por exemplo, não recorrente anualmente)",
-        "nl": "Voor de toepassing van de onderverdelingen 870190 tot en met 870290 wordt onder post 8702 verstaan: 5 is vereist\n\n* Overslaan ongeldige ical events (bijv. niet jaarlijks)",
-        "fr": "NodeJS >= 18.x et js-controller >= 5 est nécessaire\n\n* Échec d'événements indésirables (par exemple non récurrents chaque année)",
-        "it": "NodeJS >= 18.x e js-controller 5 è richiesto\n\n* Saltare eventi ical non validi (ad esempio non ricorrenti ogni anno)",
-        "es": "NodeJS >= 18.x y js-controller Se requiere 5\n\n* Skipping invalid ical events (e.g. not recurring yearly)",
-        "pl": "NodeJS > = 18.x i kontroler js- > = 5 jest wymagane\n\n* Pominięcie błędnych zdarzeń icznych (np. nie powtarzających się corocznie)",
-        "uk": "NodeJS >= 18.x та js-controller >= 5 обов'язково\n\n* Скопіювати недійсні заходи (наприклад, не відхиляти рік)",
-        "zh-cn": "节点JS18x和js控制器QQ 需要5个\n\n* 跳过无效的事件(例如每年不重复)"
       }
     },
     "titleLang": {
