@@ -46,6 +46,10 @@ iobroker add birthdays
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+
+* (@klein0r) Updated dependencies
+
 ### 6.1.0 (2026-05-28)
 
 * (@klein0r) Increased axios timeout to 30 seconds (for large files)
